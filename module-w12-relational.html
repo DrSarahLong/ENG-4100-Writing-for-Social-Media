@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 12 · The Boycott Is a Relational Medium</title>
+<style>
+  #w12{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w12 *{box-sizing:border-box}
+  #w12 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w12 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w12 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w12 .dek{color:var(--soft); font-size:1.05rem}
+  #w12 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w12 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w12 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w12 p{margin:.7em 0}
+  #w12 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w12 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w12 .recall b{color:var(--accent2)}
+  #w12 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w12 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w12 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w12 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w12 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w12 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w12 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w12 .read a{color:var(--accent); font-weight:600}
+  #w12 .read .g{font-size:.9rem; color:var(--soft)}
+  #w12 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w12 .qa{margin-top:10px}
+  #w12 .qa .qq{font-weight:600; font-size:.95rem}
+  #w12 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w12 .reveal{margin-top:6px}
+  #w12 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w12 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w12 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w12 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w12 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w12 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w12 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w12 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w12 .di .spec{margin-bottom:7px}
+  #w12 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w12 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w12 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w12 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w12 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w12 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w12 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w12 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w12 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w12 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w12 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w12 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w12 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w12 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w12 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w12 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w12 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w12 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w12 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w12 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w12 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w12 .p3{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:13px 16px; margin:16px 0; font-size:.94rem}
+  #w12 .p3 b{color:var(--accent)}
+  #w12 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w12 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w12 .prime b{color:var(--accent)}
+  #w12 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w12 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w12 dialog.pop .in{padding:17px 19px; position:relative}
+  #w12 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w12 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w12 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w12 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w12 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w12 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w12{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w12 .recall{background:#16241c; border-color:#2c4536}
+    #w12 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w12 .read,#w12 .prime,#w12 .p3{background:#171d2b; border-color:#2c3a56}
+    #w12 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w12 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w12 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w12 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w12">
+
+  <div class="mast">
+    <div class="kick">Week 12 · Thursday module</div>
+    <h1>The Boycott Is a Relational Medium</h1>
+    <div class="dek">Tuesday you felt it in the room. Today you meet the evidence, from the grape boycott to the tomato fields of Florida, find where it breaks, and start designing the campaign that becomes Project 3.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing. The reading, the diagnosis, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind. This one plants the seed of <span class="term" data-pop="p3">Project 3</span>.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> almost every hand went up for "a person I know," not a broadcast. Then we watched a movement with no money and no press win a national <span class="term" data-pop="boycott">boycott</span> anyway, because a boycott is a <em>relational medium</em>: one trusted person asking another, face to face, not to buy the grapes. Today we read the real history, test when broadcast still wins, and turn the finding into a campaign.
+  </div>
+
+  <h2>1 · The grape boycott: how the powerless organized</h2>
+  <p>In 1965, Filipino farmworkers walked out of the grape fields around Delano, California, over years of poverty wages. A mostly Mexican-American union led by <span class="term" data-pop="huerta">Dolores Huerta</span> and <span class="term" data-pop="chavez">Cesar Chavez</span> joined them, and the two groups became the <span class="term" data-pop="ufw">United Farm Workers</span>. They had almost none of the tools this course has spent a semester on. No advertising budget. Most could not vote. No newspaper or TV station was on their side. So they reached for the one lever they did have: the shopper.</p>
+  <div class="ex">
+    <div class="t">See it: a boycott is a chain of trusted asks</div>
+    Picture the actual mechanism, because it is the whole lesson. A farmworker who has never left the Central Valley rides a bus to New York, stands outside a supermarket, and says to the person walking in: "I picked these grapes. My family cannot live on what they pay. Would you not buy them, for us?" That shopper goes home and repeats it to a neighbor. The neighbor tells her church. The ask moves the way trust moves, hand to hand. A billboard buys eyeballs. A boycott borrows relationships. Huerta built it with <span class="term" data-pop="housemeeting">house meetings</span> and by sending farmworkers themselves to the cities to stand on the <span class="term" data-pop="picketline">picket line</span> and talk to shoppers one at a time. When a store kept stocking the grapes, they widened it into a <span class="term" data-pop="secondaryboycott">secondary boycott</span> and pressured the whole chain.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://dp.la/primary-source-sets/the-united-farm-workers-and-the-delano-grape-strike" target="_blank" rel="noopener">"The United Farm Workers and the Delano Grape Strike"</a> <span class="g">(Digital Public Library of America, free primary-source set). Read the overview, then click one or two of the actual photos and leaflets. Notice how much of it is people in rooms and on sidewalks, not media stunts.</span></p>
+    <p style="margin:.4em 0"><a href="https://doloreshuerta.org/dolores-huerta/" target="_blank" rel="noopener">Dolores Huerta, a short biography</a> <span class="g">(Dolores Huerta Foundation, free). She ran the New York grape boycott and coined <span class="term" data-pop="sisepuede">"Si se puede."</span> Read the "An Organizer is Born" section for how she actually worked.</span></p>
+    <blockquote>The farmworkers lacked financial capital, so they wielded economic power through the boycott, built by grassroots campaigning, person to person.</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: in your own words, why could a boycott move a shopper in New York that a billboard never could, even though the shopper will never meet that farmworker again?</div>
+      <textarea id="qa1" placeholder="e.g., because a real person asked her directly, so it became a small promise to someone, not an impression she scrolls past…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the mechanism, not the mood: "A real person, standing in front of her, turned 'grapes' into a relationship and a request she'd feel bad breaking. And the moment she agreed, she became the next messenger, telling her own people. The boycott spreads through existing trust, which is exactly what a billboard has none of."</div></details>
+    </div>
+  </div>
+  <div class="honest"><b>Stay honest about the leader.</b> You have heard one name for this movement your whole life: <span class="term" data-pop="chavez">Cesar Chavez</span>. He was central and genuinely gifted. He was also, later, an authoritarian who purged loyal staff, imposed a cult-like group-confrontation ritual (borrowed from a group called Synanon) on union members, and treated people inside the movement, including young people, badly. Historians Miriam Pawel and Frank Bardacke document this in detail. Naming it is the same evidence-honest habit we used for the Robert Moses bridges in Week 2. And it teaches something about today's idea: the boycott worked because of <em>thousands</em> of trusted messengers, Huerta and every farmworker at every store, not one heroic man. Relational power is distributed by nature. Concentrate it in one unaccountable person and the same trust can be used to harm.</div>
+
+  <h2>2 · The same model, this century: Immokalee</h2>
+  <p>If that felt like a history lesson, here is the part that should reorganize how you think about your own campaign. The grape-boycott model was not a one-time thing that died with the 1970s. It has been run again, recently, by some of the poorest workers in the country, and it worked. The <span class="term" data-pop="ciw">Coalition of Immokalee Workers</span>, tomato pickers in Florida, is the clearest modern proof that a boycott is still the strongest medium the powerless have.</p>
+  <div class="ex">
+    <div class="t">See it: pressure the plate, not the field</div>
+    Immokalee's growers were small and hard to pressure. So the workers aimed at the buyers instead: the giant brands that purchased their tomatoes. In 2001 they launched a national boycott of Taco Bell, asking shoppers to stop eating there until the workers were treated right. Same medium as the grape boycott: worker-led education, students organizing their own campuses, churches organizing their own congregations, each person asked by someone they already trusted. Taco Bell gave in by 2005. Then the same method won at Wendy's-era targets and pushed a supermarket boycott of Publix. The result was a <span class="term" data-pop="pennyperpound">penny-per-pound</span> raise and enforceable protections, run through the <span class="term" data-pop="fairfood">Fair Food Program</span>.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://www.campaignforfairfood.org/our-history" target="_blank" rel="noopener">"Our History," Campaign for Fair Food</a> <span class="g">(Coalition of Immokalee Workers, free). The Taco Bell, Wendy's, and Publix boycotts told by the workers who ran them. Watch how much of it is students, faith groups, and ordinary shoppers acting on a trusted ask.</span></p>
+    <blockquote>The Coalition launched the first-ever farmworker boycott of a major fast-food company, calling on shoppers to hold the brand responsible for conditions in the fields where its food is grown.</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: the workers pressured Taco Bell, the buyer, not the farm that employed them. Why is the brand you eat at a better pressure point than the grower, and what does that tell you about where your own cause's real power might hide?</div>
+      <textarea id="qa2" placeholder="e.g., the brand has a reputation with the exact people who can hurt it, its customers, and the customer is the lever I actually control…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer finds the vulnerable relationship: "The farm doesn't care what a stranger thinks, but Taco Bell lives or dies on how eaters feel about it. The boycott aims trust at the one place the target can't ignore. For my cause, the pressure point isn't the hardest wall, it's whoever depends on the goodwill of people I can reach."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Match the medium to the job</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Careful: the lesson is <em>not</em> "relational always wins." A trusted person is strongest per contact but doesn't scale, and for some jobs a <span class="term" data-pop="broadcast">broadcast</span> is exactly right. Two judgments per case. First, which medium best fits <em>this specific job</em>? Second, what is it trading? Commit both, then Check. The obvious answer is sometimes wrong.</div>
+
+    <div class="di" data-spec="relational" data-trade="2">
+      <div class="q">1. You need 30 committed people at a farm-to-table fundraiser this Saturday. You already have a list of 200 past supporters.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Relational, trading reach for commitment. You already know these 200. A real ask from someone they trust is what turns "supporter" into "person standing in the parking lot Saturday." This is Huerta's house meeting: 200 named people beat a public post seen by strangers who won't show.</div>
+    </div>
+
+    <div class="di" data-spec="broadcast" data-trade="1">
+      <div class="q">2. Nobody in your county has ever heard your cause exists. You have $300 and two weeks.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Broadcast, trading depth for reach. Here the "relational always wins" reflex is wrong. You have no relationships yet, so there is nothing to build on. The job is pure first contact at scale, and one person cannot manufacture 100,000 introductions. Broadcast to make the name exist, then move to relational.</div>
+    </div>
+
+    <div class="di" data-spec="relational" data-trade="3">
+      <div class="q">3. One grocery buyer controls whether the co-op stocks your product. You get one meeting to move her.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Relational, trading scale for depth. The outcome hinges on one human. A flood of form emails reads as astroturf. Find the person she already trusts (a supplier, a regular, a fellow manager) and let that voice carry it. This moves one decision, and one decision is the whole game here.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="4">
+      <div class="q">4. A false rumor about your cause is spreading fast in local group chats you can't see into.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Mixed, leaning relational. A public "correction" post won't reach or convince the closed chats where the rumor lives, and outsiders correcting insiders backfires. You need a plain broadcast statement of the facts AND trusted people already inside those chats willing to carry it. The trade is credibility where trust lives, against the fantasy that one post settles it.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="2">
+      <div class="q">5. You have 500 casual Instagram followers. You want some real fraction of them to actually do something.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Mixed. Broadcast built the audience, but converting a lurker into an actor is a relational move: a real DM, an invite to a small in-person thing, a name-by-name ask. You gain commitment and action, and you pay by going deeper with the few instead of shouting at the 500.</div>
+    </div>
+
+    <div class="di" data-spec="broadcast" data-trade="1">
+      <div class="q">6. A local TV station offers you 30 free seconds during the evening news to introduce your cause to the whole county.</div>
+      <div class="spec"><span class="l">Best fit</span><button data-v="broadcast">Broadcast</button><button data-v="mixed">Mixed</button><button data-v="relational">Relational</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains cheap reach and first-contact awareness; costs depth and follow-through</option><option value="2">Gains real commitment and action; costs reach (only touches people you can reach)</option><option value="3">Gains deep persuasion on the few people who decide it; costs scale</option><option value="4">Gains credibility inside the channels where trust already lives; costs the one-post fantasy</option></select></div>
+      <div class="fb">Broadcast, trading depth for reach. Thousands of strangers meet your name in one night, and almost none will act on 30 seconds. That's fine: awareness is a real job, and this is a good awareness tool. Just don't confuse the big audience with people who will show up. Pair it with a relational follow-through.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · One grape, two shoppers</h2>
+  <div class="case">
+    <div class="t">The moment the medium works</div>
+    <p style="margin:.5em 0">Strip the grape boycott down to its smallest unit and you can see why it worked when a bigger, louder movement might not. A shopper reaches for grapes. A stranger on the sidewalk hands her a leaflet: she takes it, drops it in the next trash can, buys the grapes. Now rerun it. The same shopper reaches for grapes, and a farmworker who has traveled two thousand miles looks her in the eye and says, "My kids picked these. Please, not today." She puts the grapes back. Then, at dinner, she tells her sister why. The leaflet was a <span class="term" data-pop="broadcast">broadcast</span>. The farmworker was a relational medium, and the difference is the whole boycott.</p>
+    <p style="margin:.5em 0">Set it against two earlier weeks. <span class="term" data-pop="dean">Jodi Dean</span> warned that a viral post can feel like politics while changing nothing, because it is circulation, not action. The grape display is the opposite: almost no circulation, real action, one returned bag of grapes at a time, multiplied by millions. And it is where Dr. Long's own world lives. Slow Food, farmers' markets, the question of who actually grows what you eat, still runs on this exact medium: a person you trust, telling you the truth about your food, in reach of your hand.</p>
+    <div class="qa">
+      <div class="qq">Your turn: for your cause, write the one sentence you would want a trusted messenger to say, in their own voice, to the single person you most need to move. Make it sound like the farmworker at the grape display, not like the leaflet.</div>
+      <textarea id="qa3" placeholder="write the actual sentence, in their voice…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer sounds like a real human and carries the relationship inside it. Example: "It's Rosa from the co-op. I've watched you shop here for six years. This Saturday's meeting decides whether we stay open. I need you in that room." Specific, personal, impossible to scroll past, because it comes from someone whose opinion already costs the receiver something.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Design the seed of your campaign</h2>
+  <p>This is where <span class="term" data-pop="p3">Project 3</span> begins. P3 is a small, ethical, multimodal campaign for your cause. Today you plant its seed: the people, the ask, and the line you won't cross. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&#8599; Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Trusted messengers: name three real people or roles who already have trust with the exact people you need to move, and what each one has standing to say. These are your farmworkers-at-the-store.</label>
+    <textarea id="n1" placeholder="e.g., 1) Coach D, the players show up if he asks. 2) the pastor at Mount Zion, reaches the older members. 3) the co-op manager, reaches every regular shopper…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. The one action: state the single behavior your campaign will ask a person to take. Not "raise awareness." A real thing a person does. If you can't name it, your campaign has no target yet.</label>
+    <textarea id="n2" placeholder="e.g., show up to the rezoning hearing; stop buying from X until they change; sign the paper petition at the co-op; bring one friend to the meeting…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Broadcast vs. relational, straight up: is your cause mostly broadcasting or building relationships right now? Name the trade you're making by default, and the one you'd rather make.</label>
+    <textarea id="n3" placeholder="e.g., we're all broadcast (posts nobody acts on), trading action for reach. I'd rather trade some reach for 20 people who'll actually show…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. The seed of P3: one relational move (who asks whom, to do what), one broadcast move (what reaches strangers, and the job it does), and the ethical line you won't cross. Remember the Chavez lesson: use trust without using people.</label>
+    <textarea id="n4" placeholder="e.g., RELATIONAL: five regulars each personally invite three friends to the workday. BROADCAST: a pinned 30-sec reel so newcomers can find us. LINE: messengers only ask people they truly know, no scraping contacts, and anyone can say no with no penalty…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="p3"><b>This is your Project 3 on-ramp.</b> Everything you drafted in Section 5, the messengers, the one action, the relational and broadcast moves, and your ethical line, is the raw skeleton of the campaign you'll build and measure for P3. Keep it. You'll shape it into multimodal texts (language, image, sound, design) over the next two weeks, then report on what it actually moved.</div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a rule now that outlasts this course: before you ask "what should I post," ask "who is the one person whose word would actually move the person I need, and how do I earn the right to be that word?" Reach is easy. Trust is the whole game, and the grape display proved it with no budget at all.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 12-minute prime):</b> read the short, plain-language <span class="term" data-pop="emergent">summary of adrienne maree brown's <em>Emergent Strategy</em></span>, then write one line in your notebook: <em>which of her principles ("small is good, small is all," "move at the speed of trust," "critical connections over critical mass") most challenges how you were about to build your campaign?</em> Bring your answer. That's where Week 13 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">&#8249; Week 11 · Communicative Capitalism</a>
+    <a href="#" onclick="return false">Week 13 · Emergent Strategy &#8250;</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle. This week you ask who already has trust with the people your cause needs.</p></div></dialog>
+  <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Project 3: Campaign + Impact Report</h4><p>Your final project: design and produce a small, ethical, multimodal campaign for your cause, grounded in a course media theory, then measure and reflect on what it actually moved. It's introduced this week and presented in the final weeks.</p><p><b>Example:</b> a workday campaign built on five trusted messengers plus one explainer reel, with a simple count of who showed up as the honest impact measure.</p></div></dialog>
+  <dialog class="pop" id="pop-boycott"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Boycott</h4><p>A coordinated refusal to buy from, or deal with, a company or product, used as pressure to force a change. Its power isn't the single skipped purchase, it's the many, organized person to person.</p><p><b>Example:</b> the United Farm Workers asked millions of shoppers to stop buying California table grapes until growers signed union contracts. Grapes went unsold, and by 1970 the growers gave in.</p><p><a href="https://en.wikipedia.org/wiki/Boycott" target="_blank" rel="noopener">What a boycott is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-picketline"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week12-pickets.jpg" alt="Striking farm workers walking a picket line with signs"><h4>Picket line</h4><p>People standing or walking outside a workplace or store, visibly, to protest and to ask others not to cross (not to shop, not to work, not to buy). A physical, human presence, which is what makes it a relational medium and not a poster.</p><p><b>Example:</b> UFW farmworkers picketed outside supermarkets that stocked non-union grapes, talking to shoppers one by one as they arrived.</p><p><a href="https://en.wikipedia.org/wiki/Picketing" target="_blank" rel="noopener">About picketing &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-housemeeting"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>House meeting</h4><p>Organizing in someone's living room: a host gathers a handful of people they already know, and an organizer makes the case face to face, then asks each person to host the next one. The oldest, slowest, and strongest recruiting tool there is.</p><p><b>Example:</b> Dolores Huerta and the UFW built the union one kitchen table at a time, because a neighbor you trust vouching for the cause beats any flyer.</p><p><b>Appalachian tie:</b> the same shape runs deep in the mountains, the church fellowship-hall meeting, the covered-dish supper where the real decisions get talked over, the front-porch conversation. High trust, small reach, and it holds a community together across generations. It is exactly the "social" this course is trying to put back.</p></div></dialog>
+  <dialog class="pop" id="pop-secondaryboycott"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Secondary boycott</h4><p>Instead of only refusing the product itself, you pressure the businesses that sell or handle it, so the pressure travels up the supply chain to the target.</p><p><b>Example:</b> the UFW didn't just ask people to skip grapes, it asked them to boycott entire supermarket chains that kept stocking non-union grapes, which made the stores lean on the growers.</p><p><a href="https://en.wikipedia.org/wiki/Secondary_boycott" target="_blank" rel="noopener">On secondary boycotts &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-huerta"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week12-huerta.jpg" alt="Farm labor leader Dolores Huerta speaking to a crowd"><h4>Dolores Huerta</h4><p>Co-founder of the United Farm Workers and one of the great organizers in American history. She directed the New York City grape boycott, negotiated the union's contracts, and coined the rallying cry "Si se puede" (yes, it can be done).</p><p><b>Why she leads this week:</b> she organized the way a boycott actually works, house meeting by house meeting, person by person, with no money and no press. Received the Presidential Medal of Freedom in 2012.</p><p><a href="https://en.wikipedia.org/wiki/Dolores_Huerta" target="_blank" rel="noopener">More on Dolores Huerta &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-chavez"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Cesar Chavez (handle with honesty)</h4><p>Co-founder of the United Farm Workers and its most famous face, a genuinely gifted organizer who helped build the grape boycott and led hunger strikes for the cause.</p><p><b>Tell the whole truth:</b> later in life he ran the union in an authoritarian, paranoid way, purged loyal staff, and imposed a cult-like group-confrontation ritual (borrowed from a group called Synanon) on members, with real harm to people inside the movement. Historians Miriam Pawel and Frank Bardacke document this. Admire the method; don't sanctify the man. The boycott's power came from thousands of organizers, not one leader.</p><p><a href="https://en.wikipedia.org/wiki/Cesar_Chavez" target="_blank" rel="noopener">More, including the controversies &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-ufw"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>United Farm Workers (UFW)</h4><p>The farmworkers' union formed in 1966 when a mostly Filipino group (the AWOC) and a mostly Mexican-American group (led by Huerta and Chavez) merged. It organized migrant field laborers for better pay, housing, and legal protection, using nonviolent tactics and the boycott.</p><p><b>Example:</b> the UFW's Delano grape boycott (1965&ndash;1970) is the case study in organizing when you have no money and no media.</p><p><a href="https://en.wikipedia.org/wiki/United_Farm_Workers" target="_blank" rel="noopener">About the UFW &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-sisepuede"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>"Si se puede"</h4><p>Spanish for "yes, it can be done." Coined by Dolores Huerta in 1972 as the UFW's rallying cry, and later echoed far beyond the farmworker movement.</p><p><b>Why it fits this week:</b> it names the whole bet of relational organizing, that ordinary people, asking each other, can move something that looked immovable.</p><p><a href="https://en.wikipedia.org/wiki/S%C3%AD,_se_puede" target="_blank" rel="noopener">On the phrase &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-ciw"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week12-immokalee.jpg" alt="Coalition of Immokalee Workers members marching for farmworker rights"><h4>Coalition of Immokalee Workers (CIW)</h4><p>A worker-led human-rights organization of tomato pickers based in Immokalee, Florida, formed in the early 1990s. It runs the modern version of the farmworker boycott, aimed at the big brands that buy the produce.</p><p><b>Example:</b> CIW's national boycott of Taco Bell (2001&ndash;2005) won a raise and protections, and became the model for its later campaigns and the Fair Food Program.</p><p><a href="https://en.wikipedia.org/wiki/Coalition_of_Immokalee_Workers" target="_blank" rel="noopener">About the CIW &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-fairfood"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Fair Food Program</h4><p>The enforcement system the CIW built after its boycotts: participating buyers pay a small premium and agree to a worker-written code of conduct, with real audits and consequences. Workers, not the companies, drive it.</p><p><b>Example:</b> a buyer like Whole Foods or Walmart signs on, pays the penny-per-pound premium, and farms that break the code lose the buyer. It turned boycott pressure into a durable, checkable standard.</p><p><a href="https://en.wikipedia.org/wiki/Fair_Food_Program" target="_blank" rel="noopener">About the Fair Food Program &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-pennyperpound"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Penny per pound</h4><p>The CIW's demand made concrete: buyers pay one extra cent for every pound of tomatoes, and that money flows to the pickers as a raise. A tiny number for a giant brand, a real difference for a worker.</p><p><b>Why it matters:</b> it made an abstract "treat workers right" into a specific, countable ask, which is exactly what a good campaign needs. Vague goals can't be won; "a penny a pound" can.</p><p><a href="https://en.wikipedia.org/wiki/Fair_Food_Program" target="_blank" rel="noopener">More on the penny-per-pound model &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-broadcast"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Broadcast</h4><p>One message sent out to many people at once, with no relationship between sender and receiver: an ad, a mass post, a robocall, a billboard, a leaflet, a TV spot. Good for cheap reach and first-contact awareness, weak for moving anyone to act.</p><p><b>Example:</b> a leaflet handed to 100,000 strangers. Most get dropped in the trash; almost none change what a person does.</p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Jodi Dean (callback)</h4><p>The theorist from Week 11 who named "communicative capitalism": endless posting can feel like politics while changing nothing, because messages become mere contributions to circulation, cut off from action and response.</p><p><b>Why she's here:</b> she's the mirror image of this week. A viral post is circulation without action. A boycott is action with barely any circulation. This week is the antidote to hers.</p></div></dialog>
+  <dialog class="pop" id="pop-emergent"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Emergent Strategy (adrienne maree brown)</h4><p>Writer, activist, and facilitator adrienne maree brown's 2017 book drawing organizing lessons from nature and from Octavia Butler's fiction. Core principles: "small is good, small is all," change is "fractal" (how we are at the small scale is how we are at the large), "move at the speed of trust," and "critical connections over critical mass."</p><p><b>Why it's next:</b> if this week says trust is the strongest medium, brown asks what it means to build a whole movement at the speed of trust, like mycelium, not like an ad campaign.</p><p><a href="https://commonslibrary.org/emergent-strategy/" target="_blank" rel="noopener">A plain-language summary &rarr;</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w12');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. Remember: relational is not always the answer, matching the medium to the job is.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w12_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 12: The Boycott Is a Relational Medium\n'
+      + '1. Three trusted messengers (who, and what they have standing to say):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. The ONE action my campaign asks for:\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. Broadcast vs. relational right now (the trade I make by default / the one I want):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. Seed of P3 (one relational move / one broadcast move / the ethical line I won’t cross):\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week12-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

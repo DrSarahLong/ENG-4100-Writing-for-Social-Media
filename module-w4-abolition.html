@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 4 · Own the Press, Own the Story</title>
+<style>
+  #w4{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w4 *{box-sizing:border-box}
+  #w4 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w4 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w4 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w4 .dek{color:var(--soft); font-size:1.05rem}
+  #w4 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w4 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w4 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w4 p{margin:.7em 0}
+  #w4 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w4 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w4 .recall b{color:var(--accent2)}
+  #w4 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w4 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w4 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w4 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w4 .honest b{color:var(--gold)}
+  #w4 .care{background:#f2eef7; border:1px solid #d8cae8; border-left:4px solid #6a4e8a; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#4a3866}
+  #w4 .care b{color:#5a3f80}
+  /* guided reading */
+  #w4 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w4 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w4 .read a{color:var(--accent); font-weight:600}
+  #w4 .read .g{font-size:.9rem; color:var(--soft)}
+  #w4 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w4 .qa{margin-top:10px}
+  #w4 .qa .qq{font-weight:600; font-size:.95rem}
+  #w4 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w4 .reveal{margin-top:6px}
+  #w4 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w4 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w4 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w4 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w4 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w4 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w4 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w4 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w4 .di .spec{margin-bottom:7px}
+  #w4 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w4 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w4 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w4 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w4 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w4 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w4 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w4 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w4 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w4 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w4 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w4 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w4 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w4 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w4 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w4 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w4 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w4 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w4 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w4 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w4 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w4 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w4 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w4 .prime b{color:var(--accent)}
+  #w4 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w4 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w4 dialog.pop .in{padding:17px 19px; position:relative}
+  #w4 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w4 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w4 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w4 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w4 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w4 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w4{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w4 .recall{background:#16241c; border-color:#2c4536}
+    #w4 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w4 .care{background:#1f1a2a; border-color:#3c3352; color:#cbb9e6}
+    #w4 .read,#w4 .prime{background:#171d2b; border-color:#2c3a56}
+    #w4 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w4 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w4 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w4 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w4">
+
+  <div class="mast">
+    <div class="kick">Week 4 · Thursday module</div>
+    <h1>Own the Press, Own the Story</h1>
+    <div class="dek">Tuesday you saw one event become three different truths. Today you read Douglass in his own words, judge who owns a channel and who rents it, and start the ethics thread this course keeps returning to.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing: the readings, the diagnosis, the case, and the writing are the instruction, not extra credit. A note before we start: today's readings deal directly with enslavement. Read them with the weight they deserve. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your cause in mind.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> the same rally became "an angry mob" or "200 neighbors" depending on who owned the paper. Whoever owns the press owns the story. Today we read the man who understood that better than almost anyone, <span class="term" data-pop="douglass">Frederick Douglass</span>, and we name the ethics that come with a press of your own.
+  </div>
+
+  <h2>1 · Owning your own medium</h2>
+  <p>Douglass escaped enslavement in 1838 and became the most powerful speaker in American abolition. But the white-led movement around <span class="term" data-pop="garrison">William Lloyd Garrison</span> wanted him to supply the raw testimony (the facts of being enslaved) and leave the arguing to them. He was welcome as evidence. He was not welcome as the author. In 1847 he answered that by founding his own newspaper, <span class="term" data-pop="northstar">The North Star</span>, in Rochester, New York. A movement's own <span class="term" data-pop="press">press</span> is infrastructure: the thing that lets it speak for itself when the mainstream press erases or slanders it.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    Think of the difference between being quoted in someone else's article and running your own publication. Quoted, you get a sentence, chosen by an editor, wrapped in their framing. Publishing, you decide what the story is, how long it runs, which words carry it, and whether it appears at all. Douglass had lived the quoted version for years. <em>The North Star</em> was him owning the whole page.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7–9 min)</div>
+    <p style="margin:.4em 0"><a href="https://macmillan.yale.edu/our-paper-and-its-prospects" target="_blank" rel="noopener">Douglass, "Our Paper and Its Prospects" (the founding statement of <em>The North Star</em>, 1847)</a> <span class="g">(Yale, free full text). This is a <span class="term" data-pop="prospectus">prospectus</span>, the announcement that launches a new paper. Read the whole thing; it's short.</span></p>
+    <blockquote>"It has long been our anxious wish to see, in this slave-holding, slave-trading, and Negro-hating land, a printing-press and paper, permanently established, under the complete control and direction of the immediate victims of slavery and oppression."</blockquote>
+    <p style="margin:.5em 0 0" class="g">Notice the exact phrase: <em>under the complete control and direction of the immediate victims</em>. That is a claim about who gets to run the press, and it is the seed of a representation-ethics argument he's making in 1847.</p>
+    <div class="qa">
+      <div class="qq">Your turn: Douglass gives several reasons the paper must be run by formerly enslaved people themselves, not by their white allies. In your own words, what does he say a Black-owned press can do that even a friendly white-owned one cannot?</div>
+      <textarea id="qa1" placeholder="e.g., it proves the point by existing, a people arguing their own freedom in print is itself the argument that they are equal…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer catches that the press is both the message and the proof. Example: "A paper run by formerly enslaved people is evidence for its own claim. White allies can argue that Black people are equal; a Black-edited newspaper, well-written and self-directed, demonstrates it on every page. The medium proves the argument the words are making."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · Moral suasion: the argument as the weapon</h2>
+  <p>Owning the press is step one. The abolitionists' theory of change had a name: <span class="term" data-pop="suasion">moral suasion</span>, moving people by appeal to conscience until the wrong becomes impossible to defend. Douglass's sharpest version held the nation's own stated ideals up against what it was actually doing. His 1852 speech <span class="term" data-pop="fourth">"What to the Slave Is the Fourth of July?"</span> is the masterclass: invited to celebrate American liberty, he turned the celebration into an indictment.</p>
+  <div class="ex">
+    <div class="t">See the move</div>
+    Moral suasion here works by <b>the gap</b>. You take a value your audience already claims to hold ("all men are created equal," "liberty," "the Fourth of July") and you show them the distance between the value and their behavior, until the distance is unbearable and they have to close it. Without the shared value, there's nothing to appeal to. Douglass doesn't reject American ideals; he weaponizes them.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (8–10 min)</div>
+    <p style="margin:.4em 0"><a href="https://teachingamericanhistory.org/document/what-to-the-slave-is-the-fourth-of-july/" target="_blank" rel="noopener">Douglass, "What to the Slave Is the Fourth of July?" (1852)</a> <span class="g">(Teaching American History, free full text). Read from "Fellow-citizens, pardon me" down through the "gross injustice and cruelty" passage. Read it slowly; it's built to be heard.</span></p>
+    <blockquote>"What, to the American slave, is your 4th of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: find the value Douglass is turning against his audience. Which ideal do they already claim to believe, and how does he use it to trap them?</div>
+      <textarea id="qa2" placeholder="e.g., they believe the Fourth of July celebrates freedom, so he makes their own holiday testify against them…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the shared value AND the trap. Example: "They believe the Fourth of July is sacred, proof America is the land of liberty. Douglass accepts the premise completely, then asks what that liberty means to the enslaved, so the holiday they invited him to praise becomes the evidence of their hypocrisy. He doesn't attack their values; he holds them to them."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Own it or rent it?</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Douglass's lesson in 2020s terms: an audience you don't control can be taken from you. For each case, make two calls. First, does the cause <span class="term" data-pop="ownrent">own, rent, or split</span> its channel? Second, what is the real trade or risk? The obvious answer is sometimes wrong (owning a website you can't get anyone to visit is not the same as owning the audience). Commit both, then Check.</div>
+
+    <div class="di" data-spec="rent" data-trade="2">
+      <div class="q">1. Your cause's entire public presence is one TikTok account with 20,000 followers.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Rent, and the risk is eviction. One policy change, shadowban, or account suspension and all 20,000 vanish at once, with no way to reach them again. Huge reach, zero ownership. This is exactly the position Douglass refused.</div>
+    </div>
+
+    <div class="di" data-spec="own" data-trade="1">
+      <div class="q">2. You've built an email list of 300 subscribers and you export the addresses to your own file every month.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Own, trading reach for control. Only 300, and building an email list is slow, unglamorous work. But because you hold the actual addresses, no platform can cut you off from these people. This is the closest modern thing to owning the press.</div>
+    </div>
+
+    <div class="di" data-spec="split" data-trade="4">
+      <div class="q">3. You post constantly on Instagram, and every post pushes people to sign up for your email list.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Split, and the smartest move on the board. You borrow the platform's reach on purpose, then convert those strangers into subscribers you keep. If Instagram bans you tomorrow, the list survives. Rent the megaphone, own the relationship.</div>
+    </div>
+
+    <div class="di" data-spec="split" data-trade="3">
+      <div class="q">4. You run a blog on your own domain, but almost all your readers arrive through Google search.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Split, and this is the trap in the set. You truly own the site, so it feels like ownership. But if Google changes its ranking and your traffic dries up, the readers stop coming and you have no direct line to them. You own the publication and rent the discovery. Owning the page is not the same as owning the audience.</div>
+    </div>
+
+    <div class="di" data-spec="own" data-trade="1">
+      <div class="q">5. You print a physical zine and hand it to people at events and meetings.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Own, completely. No algorithm, no landlord, no terms of service. Just a thing in a hand. The cost is obvious: your reach is only as big as the rooms you can physically get into. Total control, tiny scale. This is the abolitionist <span class="term" data-pop="broadside">broadside</span> in 2020s form.</div>
+    </div>
+
+    <div class="di" data-spec="split" data-trade="3">
+      <div class="q">6. You go all in on a paid <span class="term" data-pop="substack">Substack</span> newsletter, and Substack lets you export your subscriber emails anytime.</div>
+      <div class="spec"><span class="l">Channel</span><button data-v="own">Own</button><button data-v="split">Split</button><button data-v="rent">Rent</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is the trade or risk?</option><option value="1">You own the audience; you pay in slow reach and effort</option><option value="2">You rent the audience; the platform can evict you overnight</option><option value="3">You own the publication but rent the discovery that brings readers</option><option value="4">You use rented reach to build an audience you own</option></select></div>
+      <div class="fb">Split, and notice how it differs from case 1. You're on someone else's platform and you rent its storefront and discovery, but because you can export the email list, you keep the audience even if Substack disappears. The exportable list is what pulls it toward ownership. Same "on a platform" surface as TikTok, very different risk underneath.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <h2>4 · The ethics that come with a press</h2>
+  <p>The second you can publish for yourself, two old questions land on you, and this course will keep circling both. The first is <b>disclosure</b>: telling your audience when something is paid, sponsored, or not what it appears to be. The second is <b>representation</b>: who has the standing to tell a given story. Douglass's line about "the complete control and direction of the immediate victims" is a representation-ethics argument, made in 1847.</p>
+  <div class="ex">
+    <div class="t">Disclosure, with and without</div>
+    <p style="margin:.3em 0"><b>Without:</b> a cause account posts a glowing review of a company's product. Readers assume it's an honest opinion. The company quietly paid for it. That's <span class="term" data-pop="astroturf">astroturfing</span>: fake grassroots. When it surfaces, the trust is gone and it takes the cause's credibility with it.</p>
+    <p style="margin:.3em 0"><b>With:</b> the same post, with one honest line: "Paid partnership. They sponsored this, and here's why I still stand behind it." Nothing hidden, so nothing to expose later. In the US this is good ethics and also the <span class="term" data-pop="ftc">law for paid endorsements</span>.</p>
+  </div>
+  <div class="ex">
+    <div class="t">Representation, with and without</div>
+    <p style="margin:.3em 0"><b>Without:</b> an organization runs a campaign <em>about</em> a community without a single member of that community in the room where the message is made. The affected people become props.</p>
+    <p style="margin:.3em 0"><b>With:</b> the people most affected write, edit, and approve their own story. This is the modern shorthand <span class="term" data-pop="nauwu">"nothing about us without us."</span> Douglass got there first: the press must be run by the people whose lives are on the page.</p>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>5 · A press of our own, nearby</h2>
+  <div class="case">
+    <div class="t">Jonesborough, Tennessee, 1820</div>
+    <p style="margin:.5em 0">The first newspaper in the United States devoted entirely to abolishing slavery was not printed in Boston or New York. It was printed in <span class="term" data-pop="emancipator">Jonesborough, in the mountains of East Tennessee</span>, barely an hour over the ridge from Boone, by a Quaker named Elihu Embree, twenty-seven years before Douglass founded <em>The North Star</em>. His paper was called <em>The Emancipator</em>. Appalachia is often flattened into a single stereotype; the real region held fierce, early, homegrown antislavery organizing, and this course keeps that regional history in view.</p>
+    <div class="care"><b>Hold the whole truth:</b> Embree published an abolitionist paper and had himself enslaved people, freeing them only later, and he argued for gradual emancipation rather than immediate freedom. So the counterpoint to Douglass is built right into the story. A well-meaning white slaveholder printing about slavery is a very different act from a formerly enslaved man editing his own paper. Both mattered. They are not the same, and the difference is exactly the representation question from section 4.</p></div>
+    <div class="qa">
+      <div class="qq">Your turn: put Embree's <em>Emancipator</em> and Douglass's <em>North Star</em> side by side. What could Douglass's paper do, precisely because of who ran it, that Embree's could not? Name it in one sentence.</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"Embree could argue against slavery; Douglass could argue against it and be living proof of the equality he claimed, because the editor was the very person the country said could not think, write, or lead. Who holds the press changes what the press can prove."</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>6 · Aim it at your cause</h2>
+  <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Who tells your cause's story to the public right now: you, or someone else (a reporter, a platform's algorithm, no one)? Be specific.</label>
+    <textarea id="n1" placeholder="e.g., nobody really, except a local reporter who covered us once and got the point of the whole thing wrong…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Audit your channels: which does your cause OWN (email list, website, printed thing), and which does it RENT (Instagram, TikTok, someone else's coverage)? Which is it leaning on most?</label>
+    <textarea id="n2" placeholder="e.g., we RENT everything, one Instagram and word of mouth, we own nothing, if IG banned us tomorrow we'd disappear…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Write your cause's one-sentence moral-suasion argument: the appeal to conscience at its heart. Which shared value are you holding people to (like Douglass held the country to the Fourth of July)?</label>
+    <textarea id="n3" placeholder="e.g., this town says it's a place where working families can build a life, then prices those same families out, we're just asking it to mean what it says…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Run one ethics check. Name a disclosure OR representation issue your cause could hit (a sponsorship you'd need to disclose, or a story you'd be telling about people who aren't in the room), and how you'd handle it in a straight, upfront way.</label>
+    <textarea id="n4" placeholder="e.g., our loudest volunteers aren't the people actually affected, so I need the people it happens to writing and approving what we post about them…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a question now that outlasts any single post: does my cause own the ground it speaks from, or is it standing on rented land? Douglass built a whole newspaper rather than answer that the easy way.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> read the short, free <span class="term" data-pop="suffrage">National Park Service piece on the 1913 Woman Suffrage Procession</span>, and look at the pictures. Then write one line in your notebook: <em>the suffragists made their argument with sashes, banners, floats, and a woman on a white horse, almost no text at all. What could an image say for your cause that a paragraph never could?</em> Bring your answer. That's where Week 5 starts.</p>
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 3 · The Federalist Papers</a>
+    <a href="#" onclick="return false">Week 5 · Suffragist Spectacle ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-douglass"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week4-douglass.png" alt="Portrait of Frederick Douglass"><h4>Frederick Douglass</h4><p>Born enslaved in Maryland around 1818; escaped to the North in 1838. Became the leading Black abolitionist speaker and writer of the 1800s, author of three memoirs, and founder of his own newspaper. He learned to read in secret as a child and later called literacy the road from slavery to freedom.</p><p><a href="https://en.wikipedia.org/wiki/Frederick_Douglass" target="_blank" rel="noopener">Who Frederick Douglass was →</a></p></div></dialog>
+  <dialog class="pop" id="pop-garrison"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week4-garrison.jpg" alt="Portrait of abolitionist William Lloyd Garrison"><h4>William Lloyd Garrison</h4><p>White abolitionist who founded the antislavery newspaper <em>The Liberator</em> in 1831 and mentored the young Douglass. His famous cry from the first issue: "I am in earnest, I will not equivocate, I will not excuse, I will not retreat a single inch, AND I WILL BE HEARD." He and Douglass later split, partly because Douglass insisted on running his own paper and thinking for himself.</p><p><a href="https://en.wikipedia.org/wiki/William_Lloyd_Garrison" target="_blank" rel="noopener">About Garrison →</a></p></div></dialog>
+  <dialog class="pop" id="pop-northstar"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week4-northstar.jpg" alt="The masthead of Frederick Douglass's newspaper The North Star"><h4>The North Star</h4><p>The antislavery newspaper Douglass founded in Rochester, New York, in 1847, edited and controlled by him. Its motto: "Right is of no Sex, Truth is of no Color, God is the Father of us all, and we are all Brethren." Named for the star escaping enslaved people followed north to freedom.</p><p><b>Example:</b> where a white-run paper might print an enslaved person's testimony, <em>The North Star</em> let Douglass write the testimony AND the argument AND the editorial line, the whole page under his control.</p><p><a href="https://en.wikipedia.org/wiki/The_North_Star_(anti-slavery_newspaper)" target="_blank" rel="noopener">About The North Star →</a></p></div></dialog>
+  <dialog class="pop" id="pop-press"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The press (as infrastructure)</h4><p>"The press" means the means of publication: the machine and the operation that let you print and distribute your own words at scale. Owning it, rather than borrowing space in someone else's, is what "infrastructure" means here. It's the road the message travels on.</p><p><b>Example:</b> a modern cause "owning the press" might mean its own email list and website, so it can reach its people even if every social platform bans it.</p></div></dialog>
+  <dialog class="pop" id="pop-prospectus"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Prospectus</h4><p>The opening announcement that launches a new publication: what it's for, who runs it, and why it should exist. Part mission statement, part sales pitch to future readers.</p><p><b>Example:</b> "Our Paper and Its Prospects" is Douglass telling the public what <em>The North Star</em> will be and why a paper run by formerly enslaved people had to exist. A modern version is the "about" post that launches a new newsletter.</p></div></dialog>
+  <dialog class="pop" id="pop-suasion"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Moral suasion</h4><p>A theory of change: move people by appealing to conscience, morality, and shared values (through testimony, argument, and witness) until a wrong becomes impossible to defend. The core method of the abolitionist press.</p><p><b>Example:</b> Douglass holding up "all men are created equal" against the reality of slavery, so the country's own ideals accuse it. Its honest limit: when conscience alone freed no one, Douglass turned toward politics and force.</p><p><a href="https://en.wikipedia.org/wiki/Abolitionism_in_the_United_States" target="_blank" rel="noopener">Abolitionism and its methods →</a></p></div></dialog>
+  <dialog class="pop" id="pop-fourth"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"What to the Slave Is the Fourth of July?"</h4><p>A speech Douglass gave in Rochester on July 5, 1852, to an antislavery society. Invited to honor American independence, he asked what that freedom meant to the millions still enslaved, and turned the celebration into one of the most powerful indictments in American oratory.</p><p><a href="https://teachingamericanhistory.org/document/what-to-the-slave-is-the-fourth-of-july/" target="_blank" rel="noopener">Read the full speech (free) →</a></p></div></dialog>
+  <dialog class="pop" id="pop-ownrent"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Own, rent, or split</h4><p><b>Own:</b> you can reach your audience directly no matter what (email list you can export, your own site, a printed thing). <b>Rent:</b> your audience lives on a platform someone else controls and can cut off. <b>Split:</b> you use a rented platform's reach but funnel people toward something you own. Most real setups are a split; the skill is knowing which part you actually control.</p></div></dialog>
+  <dialog class="pop" id="pop-broadside"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/broadside.jpg" alt="A single printed sheet posted in public, a broadside"><h4>Broadside</h4><p>A single sheet printed on one side and posted in public or handed out, the cheap, fast flyer of the 1700s and 1800s. Abolitionists, revolutionaries, and reformers all used them to reach people directly, no newspaper's permission required.</p><p><b>Example:</b> a printed poster nailed to a town square wall announcing a meeting, or the physical zine and flyer of today. Tiny cost, total control, reach limited to who walks by.</p><p><a href="https://en.wikipedia.org/wiki/Broadside_(printing)" target="_blank" rel="noopener">What a broadside is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-substack"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Substack</h4><p>A platform for publishing email newsletters, with a paid-subscription option. Its key feature for organizers: you can export your subscriber list, so you keep your audience even if you leave the platform.</p><p><b>Example:</b> a writer builds 500 paying subscribers on Substack, then exports the emails and moves elsewhere without losing a single reader. That exportability is what makes it more "owned" than a follower count on a social app.</p><p><a href="https://en.wikipedia.org/wiki/Substack" target="_blank" rel="noopener">About Substack →</a></p></div></dialog>
+  <dialog class="pop" id="pop-astroturf"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Astroturfing</h4><p>Faking grassroots support: making a paid or centrally-run campaign look like it's spontaneously coming from ordinary people. Named as the fake version of real "grassroots" (AstroTurf is fake grass).</p><p><b>Example:</b> a company pays dozens of accounts to post identical praise for a product as if they were independent fans, or funds a "citizens' group" that's really its PR arm. When exposed, it destroys trust fast.</p><p><a href="https://en.wikipedia.org/wiki/Astroturfing" target="_blank" rel="noopener">How astroturfing works →</a></p></div></dialog>
+  <dialog class="pop" id="pop-ftc"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Disclosing paid posts (the law)</h4><p>In the US, the Federal Trade Commission requires that if you have a "material connection" to something you promote (you were paid, or given free product), you clearly say so. A buried hashtag doesn't count; it has to be obvious.</p><p><b>Example:</b> "#ad" or "Paid partnership with ___" placed where people will actually see it, not hidden at the bottom of thirty tags. For a cause, disclosing a sponsor up front protects the one thing you can't buy back: credibility.</p><p><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener">FTC: Disclosures 101 for influencers →</a></p></div></dialog>
+  <dialog class="pop" id="pop-nauwu"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Nothing about us without us"</h4><p>A principle from disability rights and other justice movements: no policy or campaign about a group should be made without members of that group in the room, deciding it. Representation ethics in five words.</p><p><b>Example:</b> a campaign about disabled workers is written and approved by disabled workers, not spoken for them by outsiders. Douglass made the same demand in 1847: the press about slavery must be run by the formerly enslaved.</p><p><a href="https://en.wikipedia.org/wiki/Nothing_About_Us_Without_Us" target="_blank" rel="noopener">About the principle →</a></p></div></dialog>
+  <dialog class="pop" id="pop-emancipator"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The Emancipator (Jonesborough, TN)</h4><p>The first US newspaper devoted entirely to abolishing slavery, printed in 1820 by Elihu Embree in Jonesborough, in the mountains of East Tennessee, twenty-seven years before <em>The North Star</em>.</p><p><b>A little history and the Appalachian tie:</b> East Tennessee and the wider Southern Appalachians held some of the earliest organized antislavery activity in the country, including Quaker manumission societies. It complicates the flat picture of the mountain South. It's also complicated in itself: Embree enslaved people even while publishing against slavery, and argued only for gradual emancipation. The region's antislavery history is real, and it's not tidy.</p><p><a href="https://tennesseeencyclopedia.net/entries/the-emancipator/" target="_blank" rel="noopener">The Emancipator, Tennessee Encyclopedia →</a></p></div></dialog>
+  <dialog class="pop" id="pop-suffrage"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week5-program.jpg" alt="The official program for the 1913 Woman Suffrage Procession in Washington"><h4>1913 Woman Suffrage Procession</h4><p>A massive suffrage parade staged in Washington, D.C., the day before Woodrow Wilson's inauguration, when the national press was already in town. Thousands of women marched with banners, sashes, floats, and costumes to make the argument for the vote as a visual spectacle. Next week's case.</p><p><a href="https://www.nps.gov/articles/woman-suffrage-procession1913.htm" target="_blank" rel="noopener">The 1913 procession (National Park Service) →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w4');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The trade-off is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w4_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 4: Own the Press, Own the Story\n'
+      + '1. Who tells my cause’s story right now:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Owned vs. rented channel audit:\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. My cause’s one-sentence moral-suasion argument:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. One disclosure/representation ethics check:\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week4-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

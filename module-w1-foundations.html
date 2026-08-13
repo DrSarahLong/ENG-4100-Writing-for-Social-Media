@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 1 · Social Media Is Older Than Your Phone</title>
+<style>
+  #w1{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w1 *{box-sizing:border-box}
+  #w1 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w1 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w1 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w1 .dek{color:var(--soft); font-size:1.05rem}
+  #w1 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w1 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w1 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w1 p{margin:.7em 0}
+  #w1 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w1 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w1 .recall b{color:var(--accent2)}
+  #w1 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w1 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w1 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w1 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w1 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w1 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w1 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w1 .read a{color:var(--accent); font-weight:600}
+  #w1 .read .g{font-size:.9rem; color:var(--soft)}
+  #w1 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w1 .qa{margin-top:10px}
+  #w1 .qa .qq{font-weight:600; font-size:.95rem}
+  #w1 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w1 .reveal{margin-top:6px}
+  #w1 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w1 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w1 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w1 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w1 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w1 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w1 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w1 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w1 .di .spec{margin-bottom:7px}
+  #w1 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w1 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w1 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w1 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w1 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w1 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w1 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w1 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w1 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w1 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w1 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w1 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w1 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w1 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w1 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w1 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w1 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w1 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w1 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w1 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w1 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w1 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w1 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w1 .prime b{color:var(--accent)}
+  #w1 .tool{background:#eef4f0; border:1px solid #cfe0d6; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w1 .tool a{color:var(--accent2); font-weight:700}
+  #w1 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w1 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w1 dialog.pop .in{padding:17px 19px; position:relative}
+  #w1 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w1 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w1 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w1 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w1 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w1 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w1{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w1 .recall,#w1 .tool{background:#16241c; border-color:#2c4536}
+    #w1 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w1 .read,#w1 .prime{background:#171d2b; border-color:#2c3a56}
+    #w1 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w1 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w1 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w1 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w1">
+
+  <div class="mast">
+    <div class="kick">Week 1 · Thursday module</div>
+    <h1>Social Media Is Older Than Your Phone</h1>
+    <div class="dek">Tuesday you felt the gap between communicating a lot and connecting a little. Today you name the theory behind it, see how much "social" we've quietly lost, and lock the cause you'll carry all semester.</div>
+  </div>
+
+  <div class="ground">This module is your Thursday class. We're on campus together this week, so I'll open, then you work through the whole thing at your own pace and I'll be here for questions. Do all of it: the readings, the diagnostic, the case, and the cause-vetting are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> you do a staggering amount of communicating and a surprisingly small amount of connecting. We named the two things underneath that gap, <span class="term" data-pop="transmission">transmission</span> and <span class="term" data-pop="ritual">ritual</span>, and saw that "social media" (the potluck, the singing, the front porch) is centuries older than any app. Today we go deeper, then aim it at your cause.
+  </div>
+
+  <h2>1 · Communication as transmission, and as ritual</h2>
+  <p>In 1975, <span class="term" data-pop="carey">James Carey</span> pointed out that we secretly carry two different definitions of the word "communication," and we usually only notice one. The first he called the <b>transmission view</b>: communication as sending, moving a message across space to reach people and, often, to control distance and influence them. The second is the <b>ritual view</b>: communication as gathering, the drawing of people together into a shared world, a common faith, a sense of belonging. Look inside the word and you find its cousins hiding there: <span class="term" data-pop="communion">communion, community, common</span>.</p>
+  <div class="ex">
+    <div class="t">See it: same act, two views</div>
+    Take a small-town newspaper. The <b>transmission</b> reading: it delivers information (the school board voted, rain is coming, the diner changed hands) to readers spread across the county. The <b>ritual</b> reading: opening that same paper over coffee is a small daily ceremony that says "I am part of this place," a shared world reaffirmed. Carey's point is that we obsess over the first reading and barely notice the second, yet the second is where community actually lives.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://pages.mtu.edu/~jdslack/readings/Carey_Culture_Approach_Communication.pdf" target="_blank" rel="noopener">Carey, "A Cultural Approach to Communication"</a> <span class="g">(Michigan Tech, free PDF). Read the first several pages, up through where he lays out the two views. He writes in long, careful sentences, so read slowly. Watch for the moment he ties "communication" to "communion."</span></p>
+    <blockquote>"The ritual view of communication is directed not toward the extension of messages in space but toward the maintenance of society in time; not the act of imparting information but the representation of shared beliefs."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: name one thing you do every day that looks like pure transmission (just sending or getting info) but is secretly also a ritual (it keeps some little world of yours intact). What shared world does it maintain?</div>
+      <textarea id="qa1" placeholder="e.g., the family group chat isn't really about the information in it; it's the daily proof that we're still a we…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer separates the information from the belonging. Example: "Checking my roommates' 'leaving now' texts is transmission on the surface, logistics. Underneath, the ping is ritual: it says we still move through the day as a unit. If they stopped, I'd feel it long before I missed the info."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · The "social" is a skill, and it's been thinning out</h2>
+  <p>Here's why Carey's ritual view matters for this course. The gathering kind of communication, the kind that builds <span class="term" data-pop="socialcapital">social capital</span>, has been quietly shrinking in American life for decades, and it started well before smartphones. In 1995, the political scientist <span class="term" data-pop="putnam">Robert Putnam</span> noticed something strange in the data: more Americans were bowling than ever, but bowling <em>leagues</em> were collapsing. People were bowling alone. He used it as an image for a much larger pattern, fewer clubs, fewer <span class="term" data-pop="quiltingbee">quilting bees</span> and lodges and PTA meetings, less of the face-to-face ritual life that holds a community together.</p>
+  <div class="ex">
+    <div class="t">See it: what "bowling alone" means</div>
+    Two towns, same number of bowlers. In Town A they bowl in leagues: same faces every Thursday, they learn each other's kids' names, and when someone's roof caves in, forty people already know and show up. In Town B everyone bowls solo, scrolling between frames. Identical activity, opposite <b>social capital</b>. Putnam's warning: we have been drifting from Town A toward Town B for fifty years, and a place with no ritual life has no one to call when the roof caves in.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://historyofsocialwork.org/1995_Putnam/1995,%20Putnam,%20bowling%20alone.pdf" target="_blank" rel="noopener">Putnam, "Bowling Alone: America's Declining Social Capital"</a> <span class="g">(open archive, free PDF). Read the opening and the section on the decline of clubs and associations. Ignore the 1990s references; the pattern is the point.</span></p>
+    <div class="qa">
+      <div class="qq">Your turn: name one real place ritual life has thinned in your own world (your hometown, your family, your dorm, this campus). What used to gather people there, and what replaced it?</div>
+      <textarea id="qa2" placeholder="e.g., my church used to fill the fellowship hall for Wednesday suppers; now there's a livestream and the hall's rented out…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the specific ritual and what took its place, not a vague "people are on their phones." Example: "The neighborhood I grew up in had a July block party every year, thirty houses, one street closed. It died when a Facebook group 'replaced' it. The group has 200 members and we've met zero times. Reach went up; the block went cold."</div></details>
+    </div>
+  </div>
+  <div class="honest"><b>Stay honest:</b> the phone is not the villain here, and this course is not going to tell you to throw it in a creek. Putnam was writing before smartphones, so the drift is older and bigger than any one device. And digital media can absolutely build ritual (you'll test that in a second, and you'll design it for your cause). The claim is narrower and truer: gathering people into a shared world is a real skill, most of this generation got very little practice at it, and it can be rebuilt on purpose, phone included.</div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Transmission or ritual?</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per case, and the obvious answer is sometimes wrong. First, does the act lean <span class="term" data-pop="transmission">transmission</span>, <span class="term" data-pop="ritual">ritual</span>, or a genuine mix? Second, what is it really doing underneath? Commit both, then Check. Watch for acts that <em>feel</em> social but only transmit, and acts that look like "just an app" but do real ritual work.</div>
+
+    <div class="di" data-spec="transmission" data-trade="1">
+      <div class="q">1. A county emergency system pushes a flash-flood alert to every phone in the area at 2 a.m.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">Transmission, pure and simple. It moves urgent information across space to reach everyone fast. No shared world forms, and that's fine: this is exactly the job transmission is built for. A warm-up.</div>
+    </div>
+
+    <div class="di" data-spec="ritual" data-trade="2">
+      <div class="q">2. The same dozen neighbors hold a monthly covered-dish supper, phones in a basket by the door.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">Ritual, about as pure as it gets. Almost no new information changes hands, yet the shared world gets rebuilt every month. This is Carey's ritual view you could eat off of.</div>
+    </div>
+
+    <div class="di" data-spec="transmission" data-trade="3">
+      <div class="q">3. After a tragedy in the news, you repost a plain black square. It gets 300 likes, mostly from people you've never met.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">The tempting answer is "ritual," it <em>feels</em> like solidarity. Look closer: it leans transmission wearing ritual's clothes. A signal broadcasts outward, nobody is gathered, no shared world is maintained past the scroll. The feeling of communion without the thing itself. This is the trap the whole course is watching for.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="4">
+      <div class="q">4. In 1969, a whole country stops and watches the same live moon-landing broadcast at the same hour.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">Mixed, and this is the one people miss. Yes it transmits (here is the news, a man is on the moon). But everyone experiencing it together, in the same hour, turns a broadcast into a shared national moment. Carey's real insight: the same act can be read both ways at once, and the ritual layer is the one we forget to see.</div>
+    </div>
+
+    <div class="di" data-spec="ritual" data-trade="2">
+      <div class="q">5. A members-only <span class="term" data-pop="discord">Discord</span> of 30 volunteers who plan, argue, joke, and check in on each other every single day.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">Ritual, on a screen. The easy answer is "it's an app, so transmission," and that's wrong. Thirty people who show up daily, know each other's moods, and maintain a shared world are doing exactly what the covered-dish supper does. The medium is digital; the work is ritual. Remember this when you build your cause's channels.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="4">
+      <div class="q">6. A GoFundMe for a neighbor's cancer bills raises money from far-off strangers, and the whole town starts dropping off casseroles.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="transmission">Transmission</button><button data-v="mixed">Mixed</button><button data-v="ritual">Ritual</button></div>
+      <div class="tr"><span class="l">Doing</span><select><option value="">what is it really doing?</option><option value="1">Pure transmission: delivers information, builds no community</option><option value="2">True ritual: draws people into a shared world</option><option value="3">Transmission dressed as ritual: feels like connection, builds none</option><option value="4">Both at once: it informs AND gathers people into a shared moment</option></select></div>
+      <div class="fb">Mixed, and a hopeful one. The page transmits an ask across huge distance (strangers send money). At the same time it pulls a real, local community into motion (the casseroles, the visits). The best cause media often runs both layers at once: reach to strangers, ritual for the people close by.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · A case built almost entirely out of ritual</h2>
+  <div class="case">
+    <div class="t">The Tennessee mountains, before the marches</div>
+    <p style="margin:.5em 0">Before the buses, before the famous speeches, there was a place up on the Cumberland Plateau in Tennessee called the <span class="term" data-pop="highlander">Highlander Folk School</span>. Founded in 1932, it had almost no "reach." What it had was ritual: Black and white organizers, in the segregated South, eating at the same table, sleeping under the same roof, singing together, and working through problems in workshops. No broadcast. No audience. Just people gathered into a shared world that the world outside said could not exist.</p>
+    <p style="margin:.5em 0">Rosa Parks attended a Highlander workshop a few months before she refused to give up her seat. The song <span class="term" data-pop="overcome">"We Shall Overcome"</span> was shaped and spread there. None of that is transmission. It is Carey's ritual view working as movement infrastructure: the trust and the courage got built in the gathering, years before there was anything to broadcast. And it happened in these mountains.</p>
+    <div class="qa">
+      <div class="qq">Your turn: Highlander had no reach tools at all and still helped seed a movement. In one sentence, what did all that slow, in-person ritual give people that a viral post never could?</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It gave them a rehearsed, trusting community, people who had already eaten together and sung together, so that when the risk came, they weren't strangers deciding whether to be brave; they were a we that had already decided." Ritual builds the trust that makes hard, sustained action possible. Reach can't manufacture that.</div></details>
+    </div>
+  </div>
+  <div class="honest"><b>Handle with care:</b> Highlander's story sits inside the violence of segregation, and the people in it took real risks. The tidy "We Shall Overcome" origin is a little messier than the one-line version (the song passed through Black church tradition, tobacco-workers' picket lines, and musicians like Zilphia Horton, Guy Carawan, and Pete Seeger before it became the anthem). The truth to hold: the anthem, like the movement, was made in ritual, hand to hand and voice to voice, not broadcast into being.</div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Lock your cause, and aim the theory at it</h2>
+  <p>Now the part that's yours. First, if you haven't yet, run your top candidate through the cause-vetting tool, then bring your decision here. Draft privately in the boxes (they autosave on this device), then send it to your Field Notebook.</p>
+  <div class="tool">
+    Haven't vetted your cause yet? <a href="tool-cause-picker.html" target="_blank" rel="noopener">↗ Open the Cause-Vetting Tool</a> and pressure-test your top candidate against the six bars first. It won't decide for you; it structures your own judgment into a clear go-or-rework call.
+  </div>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Name your cause in one specific sentence (the small, real, low-traction one). Did the vetting tool land on go, or rework? If rework, what did you change?</label>
+    <textarea id="n1" placeholder="e.g., 'Getting a safe pedestrian crossing at the Rivers St / Howard St corner where two students were hit last year.' Tool said go, once I made it that specific instead of 'campus safety'…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Right now, is your cause almost all transmission (blasting info outward) or does any real ritual exist (people gathered into a shared world)? Give the evidence.</label>
+    <textarea id="n2" placeholder="e.g., all transmission: a dead Instagram nobody comments on. Zero ritual. There's no room, real or digital, where the people who care about this actually meet…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Name one ritual move you could make for your cause this semester: one way to gather your people into a shared world, not merely inform them. (Steal from the analog list if you want: a supper, a regular meetup, a shared song or object, a standing time and place.)</label>
+    <textarea id="n3" placeholder="e.g., a monthly 'walk the corner' where neighbors literally stand at the crossing together at rush hour, so the people who care meet face to face and the danger is visible…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Your analog experiment log: describe the one real, phone-away conversation you ran this week. What did ritual communication feel like, and what did it build that a text couldn't?</label>
+    <textarea id="n4" placeholder="e.g., sat with my grandfather, no phone, twenty minutes. It felt slow and a little awkward at first, then easy. It built something a text never has: he told me a story I'd never heard…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen. You have a lens now that you'll use every week: before "how do we get the word out," ask "are we only transmitting, or are we actually gathering anyone into a shared world?" Reach without ritual is a raindrop in the ocean. Your cause is now chosen. From here, everything is craft.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> read the short, plain-language <span class="term" data-pop="mim">explainer on "the medium is the message"</span> (<a href="https://en.wikipedia.org/wiki/The_medium_is_the_message" target="_blank" rel="noopener">Wikipedia, 5 min</a>), then write one line in your notebook: <em>take a single sentence you'd say to a friend and imagine sending it five different ways (whispered, texted, shouted through a megaphone, handwritten, posted as a hashtag). Which one changes the meaning the most, and why?</em> Bring your answer. That's where Week 2, "The Medium Is Not Neutral," starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 1 · Tuesday</a>
+    <a href="module-w2-medium.html">Week 2 · The Medium Is Not Neutral ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-carey"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>James W. Carey</h4><p>American communication scholar (1934&ndash;2006), often called the father of "cultural studies" in U.S. communication. His famous move: splitting communication into a <b>transmission</b> view and a <b>ritual</b> view.</p><p><b>Example:</b> he argued that reading a newspaper isn't mainly about getting news (transmission); it's a daily ritual that reaffirms you belong to a world.</p><p><a href="https://en.wikipedia.org/wiki/James_W._Carey" target="_blank" rel="noopener">Who Carey was →</a></p></div></dialog>
+  <dialog class="pop" id="pop-transmission"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Transmission view</h4><p>Communication as <b>sending</b>: moving a message across space to reach people, spread information, and often to influence or control. Strong at reach.</p><p><b>Example:</b> a weather alert pushed to a million phones, or a company blasting the same ad to a whole state. Information travels; no community necessarily forms.</p></div></dialog>
+  <dialog class="pop" id="pop-ritual"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Ritual view</h4><p>Communication as <b>gathering</b>: drawing people together into a shared world, a common meaning, a sense of belonging. Strong at trust. This is the "social" the course rebuilds.</p><p><b>Example:</b> a Sunday supper, a singing, a standing weekly meetup. Little new information changes hands, but the community gets remade every time.</p><p><a href="https://en.wikipedia.org/wiki/Ritual_view_of_communication" target="_blank" rel="noopener">Ritual vs. transmission →</a></p></div></dialog>
+  <dialog class="pop" id="pop-communion"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Communion, community, common</h4><p>All three share a root with "communication." To communicate first meant to <b>make something common</b>, to hold it together, not merely to send it.</p><p><b>Example:</b> "communion" isn't the delivery of a wafer; it's people made one by a shared act. Carey wants you to hear that older meaning inside the word.</p></div></dialog>
+  <dialog class="pop" id="pop-socialcapital"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Social capital</h4><p>The value that lives in relationships: the networks, trust, and habits of helping each other that a group builds up over time. You can't see it, but you feel its absence.</p><p><b>Example:</b> in a street full of neighbors who know each other, a lost dog is home by dinner. Same street full of strangers, it's gone. Same houses, different social capital.</p><p><a href="https://en.wikipedia.org/wiki/Social_capital" target="_blank" rel="noopener">What social capital is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-putnam"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week1-bowling.jpg" alt="An empty bowling lane, the image behind Putnam's essay Bowling Alone"><h4>Robert Putnam</h4><p>American political scientist (born 1941). His 1995 essay "Bowling Alone" argued that Americans had been drifting out of clubs, leagues, and civic groups for decades, thinning the country's social capital.</p><p><b>Example:</b> his signature image, more people bowling than ever, but bowling leagues collapsing, "bowling alone," became shorthand for a whole society doing that.</p></div></dialog>
+  <dialog class="pop" id="pop-quiltingbee"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/quilting-bee.jpg" alt="A 19th-century painting of neighbors gathered around a quilting frame"><h4>Quilting bee</h4><p>A gathering where people (usually women) quilted together, one big shared job done by many hands, with the talk and the company as the real point.</p><p><b>A little history:</b> "bees" (quilting bees, spelling bees, husking bees) were how rural communities turned necessary work into social occasions, so the labor got done and the bonds got built at the same time.</p><p><b>Why it's in this course:</b> in Appalachia the quilting bee (and the "quilting frame" lowered from the ceiling) was a core social medium, news, courtship, grief, and mutual aid all happened over the stitching. High-trust, no-screen ritual: exactly the "social" we're putting back.</p><p><a href="https://en.wikipedia.org/wiki/Quilting_bee" target="_blank" rel="noopener">What a quilting bee was →</a></p></div></dialog>
+  <dialog class="pop" id="pop-highlander"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Highlander Folk School</h4><p>A training center founded in 1932 in the Tennessee mountains (later the Highlander Research and Education Center). It brought organizers together across the color line for workshops, meals, and singing, decades before "influence" meant follower counts.</p><p><b>Example:</b> Rosa Parks trained there months before the Montgomery Bus Boycott. Its power was ritual, people gathered and changed by being together, not broadcast reach.</p></div></dialog>
+  <dialog class="pop" id="pop-overcome"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"We Shall Overcome"</h4><p>The anthem of the U.S. civil rights movement. It came up out of Black church tradition and labor picket lines, was shaped at Highlander (Zilphia Horton, then Guy Carawan and Pete Seeger), and spread the way ritual media spread: sung, hand to hand, not broadcast.</p></div></dialog>
+  <dialog class="pop" id="pop-discord"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Discord</h4><p>A chat app built around private "servers," group spaces split into topic channels for text, voice, and video. Started with gamers; now runs everything from study groups to organizing hubs.</p><p><b>Example:</b> a mutual-aid group might keep a members-only Discord where 30 volunteers coordinate daily, invisible to the public and the algorithm. Digital, but the work inside it can be pure ritual.</p><p><a href="https://en.wikipedia.org/wiki/Discord_(software)" target="_blank" rel="noopener">What Discord is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-sacredharp"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week1-dinner-grounds.jpg" alt="A shared meal spread on tables, the dinner on the grounds at an all-day singing"><h4>Singing convention (Sacred Harp)</h4><p>An all-day gathering where people sing four-part hymns from "shape-note" books, arranged in a hollow square facing inward, taking turns leading. It's participatory, not a performance: there's no audience, everyone sings.</p><p><b>A little history:</b> shape-note singing spread through 1800s singing schools and became a fixture of Southern rural life, often followed by, of course, dinner on the grounds.</p><p><b>Why it's in this course:</b> Sacred Harp is alive across Southern Appalachia. It's a near-perfect ritual medium, no reach, total participation, and a shared world built by voices in a room. You can't stream your way into it; you have to show up and sing.</p><p><a href="https://en.wikipedia.org/wiki/Sacred_Harp" target="_blank" rel="noopener">What Sacred Harp is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-broadside"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/broadside.jpg" alt="A printed broadside sheet with the words to a ballad"><h4>Broadside</h4><p>A single sheet of paper printed on one side, tacked to a post or a wall or handed out in the street, the poster/flyer of earlier centuries. Cheap, fast, public.</p><p><b>Example:</b> a colonial town might wake up to a broadside nailed to the tavern door announcing a meeting or denouncing a tax. It was a way to reach a whole town before newspapers were common.</p><p><a href="https://en.wikipedia.org/wiki/Broadside_(printing)" target="_blank" rel="noopener">What a broadside was →</a></p></div></dialog>
+  <dialog class="pop" id="pop-mim"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week2-mcluhan.jpg" alt="Portrait of Marshall McLuhan, who coined the phrase"><h4>"The medium is the message"</h4><p>Marshall McLuhan's 1964 claim that the biggest effect of any medium isn't the content it carries but how the medium itself reshapes how we think and relate. Next week's starting point.</p><p><b>Example:</b> a text and a handwritten letter can carry the identical words and still mean completely different things, because the medium is doing its own talking.</p><p><a href="https://en.wikipedia.org/wiki/The_medium_is_the_message" target="_blank" rel="noopener">A plain explainer →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries and log your analog experiments. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you choose in Week 1 to carry through the whole course. Its obscurity is the point: on a small, quiet cause, your media work can actually move the needle.</p><p><b>Example:</b> not "climate change" (a raindrop in the ocean) but "getting the town to maintain the culvert that floods the creek behind the high school." Small, real, winnable.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w1');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The "what is it really doing" call is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w1_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 1: Social Media Is Older Than Your Phone\n'
+      + '1. My cause (one specific sentence) + go/rework:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Right now: mostly transmission or any real ritual?\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. One ritual move I could make this semester:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. Analog experiment log (the phones-away conversation):\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week1-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

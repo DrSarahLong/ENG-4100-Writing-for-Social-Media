@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 2 · The Medium Is Not Neutral</title>
+<style>
+  #sm{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #sm *{box-sizing:border-box}
+  #sm .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #sm .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #sm h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #sm .dek{color:var(--soft); font-size:1.05rem}
+  #sm .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #sm h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #sm h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #sm p{margin:.7em 0}
+  #sm .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #sm .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #sm .recall b{color:var(--accent2)}
+  #sm .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #sm .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #sm .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #sm .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #sm .honest b{color:var(--gold)}
+  /* guided reading */
+  #sm .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #sm .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #sm .read a{color:var(--accent); font-weight:600}
+  #sm .read .g{font-size:.9rem; color:var(--soft)}
+  #sm .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #sm .qa{margin-top:10px}
+  #sm .qa .qq{font-weight:600; font-size:.95rem}
+  #sm .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #sm .reveal{margin-top:6px}
+  #sm .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #sm .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #sm .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #sm .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #sm .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #sm .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #sm .di .q{font-size:.97rem; margin-bottom:8px}
+  #sm .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #sm .di .spec{margin-bottom:7px}
+  #sm .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #sm .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #sm .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #sm .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #sm .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #sm .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #sm .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #sm .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #sm .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #sm .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #sm .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #sm .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #sm .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #sm .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #sm .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #sm .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #sm .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #sm .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #sm .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #sm .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #sm .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #sm .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #sm .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #sm .prime b{color:var(--accent)}
+  #sm dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #sm dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #sm dialog.pop .in{padding:17px 19px; position:relative}
+  #sm dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #sm dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #sm dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #sm dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #sm .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #sm .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #sm{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #sm .recall{background:#16241c; border-color:#2c4536}
+    #sm .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #sm .read,#sm .prime{background:#171d2b; border-color:#2c3a56}
+    #sm .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #sm .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #sm .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #sm dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="sm">
+
+  <div class="mast">
+    <div class="kick">Week 2 · Thursday module</div>
+    <h1>The Medium Is Not Neutral</h1>
+    <div class="dek">Tuesday you felt it. Today you build the theory, stress-test it, and aim it at your own cause.</div>
+  </div>
+
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing, the reading, the diagnosis, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your cause in mind.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> the same four words ("I need your help") meant five different things depending on how we sent them. The <span class="term" data-pop="medium">medium</span> wasn't a neutral pipe. Today we name two theories behind that, push on where they break, and put them to work.
+  </div>
+
+  <h2>1 · "The medium is the message"</h2>
+  <p>In 1964, before anyone had a feed, <span class="term" data-pop="mcluhan">Marshall McLuhan</span> made a claim that still unsettles: the real effect of any medium isn't the content it carries. It's how the medium reorganizes how we perceive, relate, and pay attention.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    A light bulb carries no "content," no words, no images. Yet it reshaped human life: night became usable, so work, cities, and nightlife changed. The bulb's <em>message</em> was the new world it made possible. Now swap in the feed. Its real message isn't any single post. It's that it trained a generation to think in fast, scattered fragments where print once trained people to think in long, private lines.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (5–8 min)</div>
+    <p style="margin:.4em 0"><a href="https://web.mit.edu/allanmc/www/mcluhan.mediummessage.pdf" target="_blank" rel="noopener">McLuhan, "The Medium is the Message"</a> <span class="g">(MIT, free PDF). Read the first three or four pages. It reads like poetry, not a manual, so read it for the turns of phrase.</span></p>
+    <blockquote>"The medium is the message. This is merely to say that the personal and social consequences of any medium result from the new scale that is introduced into our affairs by each extension of ourselves."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: pick one platform you use daily. What "new scale" does it introduce, what does it make bigger, faster, or more constant than human life used to be?</div>
+      <textarea id="qa1" placeholder="e.g., the group chat makes 'always reachable' the default, so being unreachable now reads as rude…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the scale, not the app. Example: "TikTok introduces the scale of the infinite, there is never a last video, so 'enough' stops being a category. McLuhan would say the endlessness is the message, more than any clip in it."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · "Do artifacts have politics?"</h2>
+  <p>Tuesday's bridge came from <span class="term" data-pop="winner">Langdon Winner</span>, who asked a strange question in 1980: can a physical object <em>have politics</em>? His answer: yes. Design choices can enforce power quietly, with no law and no sign.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    Robert Moses' <span class="term" data-pop="moses">low parkway bridges</span> on Long Island were built too low for buses. Cars (wealthier, whiter) passed; buses (poorer riders, disproportionately Black families) could not reach the beach. The exclusion was poured into the concrete. You can repeal a law. You cannot vote against a bridge.
+  </div>
+  <div class="honest"><b>Stay honest:</b> historians argue about the bus detail (other rules also barred buses, and Moses' exact intent is contested, see Bernward Joerges' rebuttal). The clean example nobody disputes is <span class="term" data-pop="hostile">hostile architecture</span>: a park bench with a bar down the middle so no one can lie down. A whole politics ("no unhoused people here") built into a bench. Winner's principle survives the messy example.</div>
+  <p>Now your phone. The <span class="term" data-pop="algorithm">algorithm</span> is the new low bridge. It decides who is even allowed to see you, it rewards outrage over nuance, and it optimizes for engagement rather than truth or need. Your cause will be shaped, and sometimes fought, by politics built into the platform before you post a word.</p>
+  <div class="read">
+    <div class="t">Read the real thing (6–8 min)</div>
+    <p style="margin:.4em 0"><a href="https://monoskop.org/File:Winner_Langdon_1980_Do_Artifacts_Have_Politics.pdf" target="_blank" rel="noopener">Winner, "Do Artifacts Have Politics?"</a> <span class="g">(Monoskop, free PDF). Read the opening and the bridge passage. Notice he never says technology is evil, only that it is never neutral.</span></p>
+    <div class="qa">
+      <div class="qq">Your turn: name one design choice on a platform your cause uses that quietly includes some people and excludes others. Who is the "bus" that can't get through?</div>
+      <textarea id="qa2" placeholder="e.g., Instagram is image-first, so a cause carried by people who can't or won't perform on camera is structurally quieter there…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer finds the excluded party, the person the design shuts out, rather than a mere annoyance. Example: "Reels reward polish and youth. Our cause is led by older tenants who don't want their faces online. The medium's 'politics' is that it makes the most affected people the least visible spokespeople."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Diagnose the medium</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per case, and the honest answer is often "mixed." First, where does it fall on the <span class="term" data-pop="spectrum">fast–slow spectrum</span>? Second, what is it really trading? Commit both, then Check.</div>
+
+    <div class="di" data-spec="fast" data-trade="1">
+      <div class="q">1. An organizer posts a raw three-minute video that unexpectedly hits 500,000 views.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Fast, trading depth for reach. Half a million saw it; almost none will remember it next week, and you have no way to reach them again. Reach without a relationship.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="2">
+      <div class="q">2. You launch a paid <span class="term" data-pop="newsletter">newsletter</span>; 90 people subscribe and read your long essays every week.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Mixed. The tech is fast and scalable, but long essays and paying, committed readers make its <em>function</em> slow. It trades reach for depth. Ninety real readers can outrun 500,000 strangers.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="3">
+      <div class="q">3. You run a private, invite-only <span class="term" data-pop="discord">Discord</span> for 40 core volunteers.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Mixed. Instant, digital, always-on (fast), yet gated and intimate (slow). Its main trade is safety and control for public reach, nobody finds you by accident, which is the point.</div>
+    </div>
+
+    <div class="di" data-spec="slow" data-trade="2">
+      <div class="q">4. You mail a printed quarterly <span class="term" data-pop="zine">zine</span> to 200 dues-paying members.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Slow, trading reach for depth and trust. Expensive and small, but a physical object in someone's hands four times a year builds loyalty a feed can't.</div>
+    </div>
+
+    <div class="di" data-spec="fast" data-trade="1">
+      <div class="q">5. You buy <span class="term" data-pop="targetedad">targeted ads</span> shown to 100,000 strangers in your county.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Fast, trading depth for reach. Huge, instant, and paid, so it stops the moment the money does. Rented attention, not earned relationship.</div>
+    </div>
+
+    <div class="di" data-spec="slow" data-trade="2">
+      <div class="q">6. You host a monthly <span class="term" data-pop="potluck">potluck</span> where people actually meet face to face.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="fast">Fast</button><button data-v="mixed">Mixed</button><button data-v="slow">Slow</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains reach; costs depth and trust</option><option value="2">Gains depth and trust; costs reach</option><option value="3">Gains safety and control; costs public reach</option><option value="4">Gains speed; costs care and accuracy</option></select></div>
+      <div class="fb">Slow, trading reach for depth and trust. Twelve people in a room is the strongest medium there is, and the hardest to scale. This is where the "social" actually lives.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · A case with almost no "fast" in it</h2>
+  <div class="case">
+    <div class="t">Montgomery, 1955</div>
+    <p style="margin:.5em 0">The <span class="term" data-pop="montgomery">Montgomery Bus Boycott</span> ran for 381 days and had no internet, no TV strategy, barely any "fast" media at all. The night Rosa Parks was arrested, <span class="term" data-pop="robinson">Jo Ann Robinson</span> and the Women's Political Council secretly <span class="term" data-pop="mimeograph">mimeographed</span> roughly 35,000 handbills and had them distributed across Black Montgomery by morning. The rest ran on the slowest media there is: Sunday church announcements, carpool networks, and word passed person to person, week after week, for over a year.</p>
+    <p style="margin:.5em 0">Notice the callback: the boycott was about buses, the same buses Winner's bridges kept off the parkway. The medium and the message were the same object.</p>
+    <div class="qa">
+      <div class="qq">Your turn: the boycott had almost no reach tools and won anyway. What did all that slow media give the movement that a viral post never could? Name the thing in one sentence.</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It gave them a network dense enough to hold a year-long sacrifice, 35,000 people who knew each other's faces will keep walking; 500,000 strangers who liked a post will not." Slow media builds the trust that makes hard, sustained action possible.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Aim it at your cause</h2>
+  <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Where does your cause live right now (which mediums), and where does it not exist at all?</label>
+    <textarea id="n1" placeholder="e.g., a barely-used Instagram, word of mouth at two churches, nothing in print, no email list…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Name your main medium's politics: what does it make easy for your cause, and who or what does it make hard or invisible? (Use Winner's lens.)</label>
+    <textarea id="n2" placeholder="e.g., Instagram makes it easy to reach young strangers fast, but it buries anything longer than a caption, and it makes our older, camera-shy members invisible…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Diagnose it on the fast–slow spectrum, and name the trade you are currently making without meaning to.</label>
+    <textarea id="n3" placeholder="e.g., we're almost all fast media, so we're trading depth for reach by default, and we have no way to hold the people who do show up…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Name one slow-media move and one fast-media move you could actually make for your cause this semester, and what each would give you.</label>
+    <textarea id="n4" placeholder="e.g., SLOW: a monthly skill-share so regulars meet in person (builds trust). FAST: a pinned explainer reel (buys first-time reach)…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a lens now that you'll use every week: before "what should I post," ask "what is this medium already doing to my message, and who does it quietly leave out?"
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> skim the short, plain-language <span class="term" data-pop="fed">explainer on the Federalist Papers</span> linked in AsULearn, then write one line in your notebook: <em>if you had to convince a whole country of strangers of something in 1788, with no internet, how would you get the word out?</em> Bring your answer. That's where Week 3 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 2 · Tuesday</a>
+    <a href="#" onclick="return false">Week 3 · The Federalist Papers ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-medium"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Medium</h4><p>The channel or form that carries a message: a letter, a megaphone, a printed page, an app. The claim this week is that a medium is never just a neutral container. It shapes what the message can be.</p></div></dialog>
+  <dialog class="pop" id="pop-mcluhan"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week2-mcluhan.jpg" alt="Portrait of media theorist Marshall McLuhan"><h4>Marshall McLuhan</h4><p>Canadian media theorist (1911–1980). Coined "the medium is the message" and "the global village" in the 1960s, decades before the internet made him sound like a prophet.</p></div></dialog>
+  <dialog class="pop" id="pop-winner"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Langdon Winner</h4><p>Political theorist of technology. His 1980 essay "Do Artifacts Have Politics?" argues that the way we design tools and spaces can quietly enforce power, no law required.</p></div></dialog>
+  <dialog class="pop" id="pop-moses"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week2-parkway-underpass.jpg" alt="A low parkway overpass of the kind Robert Moses built on Long Island"><h4>The low bridges</h4><p>Robert Moses shaped much of modern New York. On his Long Island parkways, overpasses were built too low for buses, which had the effect of keeping poorer, disproportionately Black bus riders away from the beaches. Design as gatekeeping.</p></div></dialog>
+  <dialog class="pop" id="pop-hostile"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Hostile architecture</h4><p>Design meant to control behavior: benches you can't lie on, spikes under overpasses, armrests placed to prevent sleeping. The politics ("you're not welcome here") are built into the object.</p></div></dialog>
+  <dialog class="pop" id="pop-algorithm"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The algorithm</h4><p>The ranking system that decides which posts you see and in what order. It isn't neutral: it's tuned to maximize engagement, which tends to reward outrage, novelty, and frequency, and to bury anything that doesn't feed it. Your cause competes inside those rules.</p></div></dialog>
+  <dialog class="pop" id="pop-spectrum"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The fast–slow spectrum</h4><p>Not a box, a slider. Most real media sit somewhere in the middle and mix speeds. The skill isn't labeling; it's seeing what any point on the slider gains and gives up.</p></div></dialog>
+  <dialog class="pop" id="pop-montgomery"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week2-montgomery.jpg" alt="A public bus from the era of the Montgomery Bus Boycott"><h4>Montgomery Bus Boycott</h4><p>1955–56 protest in Alabama against segregated buses, sparked by Rosa Parks' arrest and sustained for 381 days. A landmark of the civil rights movement, and a masterclass in slow media.</p></div></dialog>
+  <dialog class="pop" id="pop-robinson"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jo Ann Robinson</h4><p>English professor and head of the Women's Political Council in Montgomery. The night of Parks' arrest, she and a few students mimeographed tens of thousands of leaflets overnight, arguably the single most important act of "media production" in the boycott.</p></div></dialog>
+  <dialog class="pop" id="pop-zine"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Zine</h4><p>A small, self-made, cheaply-photocopied booklet (say "zeen," short for magazine), stapled together and passed hand to hand. A classic slow medium: tiny reach, high trust, total creative control.</p><p><b>Example:</b> the Riot Grrrl punk-feminist zines of the early '90s spread a whole movement through the mail before it ever hit the news. You'll meet zines again in the ACT UP and Black Panther weeks.</p><p><a href="https://en.wikipedia.org/wiki/Zine" target="_blank" rel="noopener">What a zine is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-newsletter"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Newsletter</h4><p>A message (usually email) sent on a schedule to people who chose to subscribe. Unlike a feed, it lands directly in someone's inbox, and you own the list instead of renting an audience from an algorithm.</p><p><b>Example:</b> platforms like Substack let a writer send long essays to paying subscribers. Ninety committed readers can matter more than a viral post.</p><p><a href="https://en.wikipedia.org/wiki/Substack" target="_blank" rel="noopener">About Substack →</a></p></div></dialog>
+  <dialog class="pop" id="pop-discord"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Discord</h4><p>A chat app built around private "servers," group spaces split into topic channels for text, voice, and video. Started with gamers; now runs everything from study groups to organizing hubs.</p><p><b>Example:</b> a mutual-aid group might keep a members-only Discord where volunteers coordinate in real time, invisible to the public and the algorithm.</p><p><a href="https://en.wikipedia.org/wiki/Discord_(software)" target="_blank" rel="noopener">What Discord is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-targetedad"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Targeted ad</h4><p>A paid post shown only to people who match traits a platform has inferred about you (age, location, interests, behavior). You pay to reach strangers who fit a profile.</p><p><b>Example:</b> boosting a post to "women 25–40 within 20 miles who follow gardening pages." Powerful reach, but the attention stops the second the money does, and it raises real privacy questions.</p><p><a href="https://en.wikipedia.org/wiki/Targeted_advertising" target="_blank" rel="noopener">How targeted ads work →</a></p></div></dialog>
+  <dialog class="pop" id="pop-mimeograph"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/mimeograph.jpg" alt="A person working a hand-cranked mimeograph copying machine"><h4>Mimeograph</h4><p>A hand-cranked copying machine (the "ditto") that pushed ink through a stencil, the cheap mass-printing of the mid-1900s, before photocopiers. Purple ink, a distinct smell, a few thousand copies an hour.</p><p><b>Example:</b> in one night in 1955, Jo Ann Robinson ran off about 35,000 boycott handbills on a college mimeograph. The whole Montgomery Bus Boycott started on that machine.</p></div></dialog>
+  <dialog class="pop" id="pop-potluck"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Potluck</h4><p>A shared meal where everyone brings a dish to pass, so there's no single host and no hierarchy, just a table built by the whole group.</p><p><b>A little history:</b> American potlucks grew up in Protestant churches as a way to build cohesion, raise funds, and simply keep a community fed and together. In the Eastern US it's the "covered-dish supper."</p><p><b>Why it's in this course:</b> in Appalachia the tradition runs deep, "dinner on the grounds" after church, covered-dish suppers at the fire hall or the family reunion. It's one of the oldest and strongest social media there is: no screen, high trust, and it holds a community together across generations. Exactly the "social" this course is trying to put back.</p><p><a href="https://en.wikipedia.org/wiki/Potluck" target="_blank" rel="noopener">History of the potluck →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+  <dialog class="pop" id="pop-fed"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week3-federalist.jpg" alt="Title page of an early printing of The Federalist"><h4>The Federalist Papers</h4><p>85 essays published in New York newspapers in 1787–88 to persuade the public to ratify the U.S. Constitution, written under one shared pseudonym, "Publius." Next week's case in how ideas circulate.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('sm');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The trade-off is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w2_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 2: The Medium Is Not Neutral\n'
+      + '1. Where my cause lives now / where it doesn’t:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. My medium’s politics (easy / hard-or-invisible):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. Fast–slow diagnosis + the trade I’m making:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. One slow move + one fast move:\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week2-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

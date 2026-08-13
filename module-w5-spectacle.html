@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 5 · Arguing Without Words</title>
+<style>
+  #w5{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w5 *{box-sizing:border-box}
+  #w5 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w5 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w5 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w5 .dek{color:var(--soft); font-size:1.05rem}
+  #w5 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w5 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w5 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w5 p{margin:.7em 0}
+  #w5 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w5 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w5 .recall b{color:var(--accent2)}
+  #w5 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w5 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w5 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w5 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w5 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w5 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w5 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w5 .read a{color:var(--accent); font-weight:600}
+  #w5 .read .g{font-size:.9rem; color:var(--soft)}
+  #w5 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w5 .qa{margin-top:10px}
+  #w5 .qa .qq{font-weight:600; font-size:.95rem}
+  #w5 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w5 .reveal{margin-top:6px}
+  #w5 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w5 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w5 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w5 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w5 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w5 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w5 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w5 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w5 .di .spec{margin-bottom:7px}
+  #w5 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w5 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w5 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w5 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w5 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w5 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w5 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w5 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w5 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w5 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w5 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w5 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* workshop */
+  #w5 .shop{border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:9px; padding:15px 17px; margin:18px 0; background:#fbf3e6}
+  #w5 .shop .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); font-weight:700}
+  #w5 .shop ul{margin:.5em 0; padding-left:1.2em}
+  #w5 .shop li{margin:.3em 0; font-size:.95rem}
+  /* notebook */
+  #w5 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w5 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w5 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w5 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w5 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w5 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w5 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w5 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w5 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w5 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w5 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w5 .prime b{color:var(--accent)}
+  #w5 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w5 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w5 dialog.pop .in{padding:17px 19px; position:relative}
+  #w5 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w5 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w5 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w5 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w5 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w5 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w5{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w5 .recall{background:#16241c; border-color:#2c4536}
+    #w5 .honest,#w5 .shop{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w5 .read,#w5 .prime{background:#171d2b; border-color:#2c3a56}
+    #w5 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w5 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w5 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w5 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w5">
+
+  <div class="mast">
+    <div class="kick">Week 5 · Thursday module</div>
+    <h1>Arguing Without Words</h1>
+    <div class="dek">Tuesday you read the argument out of a picture. Today you learn how suffragists engineered it, judge what design moves actually do, and compose one for your own cause.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing. The reading, the diagnosis, the case, and the design work ARE the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind. Dr. Long is in the Zoom room for questions and for <b>Project 1 workshop time</b>, so have your P1 draft handy too.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> before anyone read a banner, the image of Inez Milholland in white robes on a white horse had already argued "we are dignified, and we belong." That is <span class="term" data-pop="visrhet">visual rhetoric</span>. Staging it huge enough that the press had to cover it is <span class="term" data-pop="spectacle">spectacle</span>. Today we take both apart and put them to work.
+  </div>
+
+  <h2>1 · Design is the argument</h2>
+  <p>We tend to think an argument lives in words, and the picture just illustrates it. Design historian <span class="term" data-pop="triggs">Teal Triggs</span> flips that. Studying protest posters, punk zines, and movement graphics, she shows that the <em>look</em> of a thing, its color, its typeface, its handmade roughness or its polish, is itself making a claim about who these people are and what they want. The visual is not the wrapper on the argument. It is part of the argument.</p>
+  <div class="ex">
+    <div class="t">See it: with words vs. with design</div>
+    <b>With words:</b> "Suffragists are respectable women, not the wild-eyed cranks the newspapers caricature." A reader can agree or argue back. <br><br>
+    <b>With design:</b> thousands of marchers in clean white, moving in calm order, led by a woman who looks like a classical statue of Liberty. There's nothing to argue back to. The picture has already made "respectable and dignified" feel like a fact. That is why the suffragists spent so much on <span class="term" data-pop="colorcode">color and costume</span>: the design settled the question before the debate started.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7–9 min)</div>
+    <p style="margin:.4em 0"><a href="https://www.crusadeforthevote.org/imagery-and-propaganda" target="_blank" rel="noopener">"Imagery and Propaganda" (History of U.S. Woman's Suffrage)</a> <span class="g">(free, open). Short, image-rich. Read for HOW color and symbols were used, the gold and yellow, the purple-white-gold sashes, the "Votes for Women" buttons, and the "Jailed for Freedom" pin. Notice they treated color like a brand.</span></p>
+    <div class="qa">
+      <div class="qq">Your turn: pick ONE design element from the reading (a color, a sash, a pin, a slogan set in a certain style). In one sentence, what argument did it make without stating it?</div>
+      <textarea id="qa1" placeholder="e.g., the 'Jailed for Freedom' prison-door pin turned an arrest into a badge of honor, arguing 'we are not criminals, we are prisoners of conscience'…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the element AND the unstated claim. Example: "One shared color across every sash and banner argued 'we are one movement, not a scattering of cranks.' Uniformity itself was the message: this is organized, and it is everywhere."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · Spectacle: engineering the picture the press can't ignore</h2>
+  <p>On March 3, 1913, <span class="term" data-pop="paul">Alice Paul</span> put more than 5,000 marchers down Pennsylvania Avenue the day before Woodrow Wilson's inauguration, when the capital was already full of reporters. Color-coded sections. State floats. A giant Liberty Bell. An <span class="term" data-pop="pageant">allegorical pageant</span> on the Treasury steps with women costumed as Columbia, Justice, and Liberty. It was theater built to be photographed and reprinted for free in every paper in the country. That is <span class="term" data-pop="spectacle">spectacle</span>: not a stunt for its own sake, but staging your argument at a scale the media has to carry.</p>
+  <div class="ex">
+    <div class="t">See it: the spectacle did the distribution</div>
+    A newspaper in 1913 could ignore a petition or a speech. It could not ignore 5,000 women, floats, and a golden-crowned herald on a white horse shutting down the capital's main avenue. The suffragists did not buy that coverage. The <em>design of the event</em> earned it. Spectacle turns your opponents' own media into your printing press.
+  </div>
+  <p>Then the day turned. A hostile crowd surged into the street, jeering, spitting, grabbing and tripping marchers, while police mostly stood by. More than a hundred women were hurt; the Army cavalry was called in to clear the route. On the day it looked like a catastrophe. In print it did the opposite: the image of orderly women in white being mobbed made the marchers sympathetic and their attackers look like brutes. There were congressional hearings. The police chief lost his job. The spectacle absorbed even the violence and turned it into argument.</p>
+  <div class="read">
+    <div class="t">Read + look at the real thing (8–10 min)</div>
+    <p style="margin:.4em 0"><a href="https://www.nps.gov/articles/000/the-great-suffrage-parade-of-1913.htm" target="_blank" rel="noopener">"The Great Suffrage Parade of 1913" (U.S. National Park Service)</a> <span class="g">(free, open). Read the sections on the floats, the pageant, and what happened to the marchers.</span></p>
+    <p style="margin:.4em 0"><a href="https://www.loc.gov/item/rbpe.20801600/" target="_blank" rel="noopener">The official program of the procession (Library of Congress)</a> <span class="g">(free primary source). Look at the cover: a woman on horseback blowing a herald's trumpet, a "Votes for Women" banner streaming behind, the Capitol at her back. Read the cover as an argument, the way you did Tuesday.</span></p>
+    <blockquote>The plan: the artistic and allegorical beauty of the floats and dances would appeal to the eye, while the banners and transparencies would appeal to reason and a sense of justice. (paraphrased from the organizers' own program)</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: the organizers split the work in two, beauty for the eye, argument for the mind. Why stage BOTH? What does the visual spectacle do that a banner full of reasons cannot, and vice versa?</div>
+      <textarea id="qa2" placeholder="e.g., the spectacle stops you and makes you feel something before you can put up defenses; the banner gives the feeling a reason to become, so you leave with a real position instead of a passing mood…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer treats them as a one-two punch. Example: "The image gets past your guard and earns attention no argument can buy. Then the banner tells you what to DO with the feeling, so you leave persuaded, not merely impressed. Spectacle without a claim is just a show; a claim without spectacle never gets seen."</div></details>
+    </div>
+  </div>
+  <div class="honest"><b>Stay honest:</b> the 1913 procession was also <span class="term" data-pop="segregation">racially segregated</span>. Fearing they would lose white Southern support, organizers asked Black suffragists to march at the back. A movement's visual rhetoric decides what the public sees, and also who is allowed to be IN the frame, and this one tried to keep Black women out of the picture. Brilliant design and real exclusion sat in the same parade. Both are true, and the next section is about the woman who refused to be cropped out.</div>
+
+  <div class="ex" style="border-style:solid">
+    <div class="t">Then and now: spectacle still runs the same play</div>
+    You have seen Alice Paul's logic in your own feed. When <span class="term" data-pop="xr">Extinction Rebellion</span> blocks a bridge with hundreds of bodies and a single stark hourglass symbol, or when marchers stage a silent, visually identical mass to be photographed from above, they are doing exactly what 1913 did: build one image so striking the press has to carry it, and let the picture make the argument before a word is read. A century later, the playbook holds.
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Read the design</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Every design move is doing a job. Two judgments per case. First, what is this move PRIMARILY doing: <b>Dignify</b> (change how outsiders see the group), <b>Unite</b> (make members recognize each other and feel like one movement), or <b>Disrupt</b> (force the wider public to look through scale or shock)? Second, name the trade it makes. The obvious answer is sometimes wrong, and some cases do two things at once. Commit both, then Check.</div>
+
+    <div class="di" data-spec="dignify" data-trade="2">
+      <div class="q">1. <span class="term" data-pop="milholland">Inez Milholland</span> leads the 1913 march in flowing white robes and a golden crown, on a white horse.</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">Dignify. The white robes and classical crown answer the slander that suffragists were unwomanly cranks. The trade is respectability: leaning on one conventional (white, beautiful, ladylike) ideal makes the movement palatable, and quietly signals who "belongs" at the front. Ida B. Wells felt that edge directly.</div>
+    </div>
+
+    <div class="di" data-spec="unite" data-trade="3">
+      <div class="q">2. Every marcher, thousands of them, wears the same yellow <span class="term" data-pop="sash">sash</span> reading "Votes for Women."</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">Unite. One repeated color and slogan turns a crowd into a recognizable single body, and lets members find each other on any street after the march. Its main cost is reach: a sash mostly speaks to people already looking. It builds the "we" more than it converts the "them."</div>
+    </div>
+
+    <div class="di" data-spec="disrupt" data-trade="1">
+      <div class="q">3. Later suffragists release images of themselves being force-fed during a <span class="term" data-pop="hunger">hunger strike</span> in prison to the press.</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">Disrupt. A brutal, unignorable image forces the public to reckon with what the state is doing to these women. The risk: a spectacle that shocking can become the whole story ("the force-feeding") and swallow the actual demand (the vote). Attention is captured; steering it is the hard part.</div>
+    </div>
+
+    <div class="di" data-spec="dignify" data-trade="2">
+      <div class="q">4. The <span class="term" data-pop="pageant">allegorical pageant</span> on the Treasury steps: women costumed as Columbia, Justice, and Liberty in flowing robes, releasing a dove.</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">The tempting answer is Disrupt, because a giant pageant is pure spectacle. But its rhetorical JOB is to Dignify: it recasts suffragists as the classical virtues of the Republic itself, Justice and Liberty in person, not agitators. Same respectability trade as #1, and the same blind spot about who gets cast as "Liberty." Spectacle can be a delivery system for a dignifying argument.</div>
+    </div>
+
+    <div class="di" data-spec="unite" data-trade="3">
+      <div class="q">5. A present-day cause asks every supporter to add the same colored frame to their profile photo for a week.</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">Unite. It is the digital sash: a shared visual marker so supporters recognize each other and feel like a movement. It reaches mostly the already-convinced (your friends see your frame), and it can slide into pure identity display with no action behind it, a trap we name hard in Week 11.</div>
+    </div>
+
+    <div class="di" data-spec="disrupt" data-trade="4">
+      <div class="q">6. A cause stages a <span class="term" data-pop="diein">die-in</span> with fake blood on the courthouse steps, timed for the evening news.</div>
+      <div class="spec"><span class="l">Doing</span><button data-v="dignify">Dignify</button><button data-v="unite">Unite</button><button data-v="disrupt">Disrupt</button></div>
+      <div class="tr"><span class="l">Trade</span><select><option value="">what is it trading?</option><option value="1">Gains mass attention; risks the spectacle becoming the story instead of the cause</option><option value="2">Gains respectability; risks excluding people who don't fit the polished image</option><option value="3">Gains internal identity and recognition; costs reach beyond people already in</option><option value="4">Gains shock and virality; risks alienating the undecided you need</option></select></div>
+      <div class="fb">Disrupt. Bodies on the ground and fake blood are engineered for the camera and refuse to be ignored. The trade here is the sharpest one: shock reaches far and fast, and it can also read as extreme to the undecided middle you most need. High risk, high reach. You'll meet the masters of this in the ACT UP week.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · Who gets to be in the picture</h2>
+  <div class="case">
+    <div class="t">Ida B. Wells, 1913</div>
+    <p style="margin:.5em 0"><span class="term" data-pop="wells">Ida B. Wells</span>, journalist, anti-lynching crusader, and founder of a Black women's suffrage club in Chicago, came to Washington to march with her Illinois delegation. Organizers, worried about white Southern support, told the Black suffragists to walk together at the back, out of the main image. Wells stepped off to the side. Then, as her Illinois delegation passed, she walked out of the crowd and took her place in it, in the picture, where she had earned the right to be. No speech. The act itself was the argument.</p>
+    <p style="margin:.5em 0">Every choice about a movement's spectacle is also a choice about who is visible in it. The 1913 procession made a dignified, unified image partly by trying to crop some of its own members out. Wells refused to be cropped. Visual rhetoric is never only about what you show. It is about who you let be seen.</p>
+    <div class="qa">
+      <div class="qq">Your turn: in one sentence, what did Wells's quiet act argue that a banner reading "include Black women" could not have?</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"By simply standing in the frame she belonged in, she made her inclusion a fact on the ground instead of a request, and forced everyone who saw the photo to see that the 'unified' movement had tried to divide itself." An act inside the image can argue what a caption outside it only asks for.</div></details>
+    </div>
+  </div>
+
+  <!-- WORKSHOP -->
+  <h2>5 · Project 1 workshop check</h2>
+  <div class="shop">
+    <div class="t">Use this time on your P1 draft</div>
+    <p style="margin:.4em 0; font-size:.95rem">Dr. Long is in the Zoom room. Your <b>Movement Media Analysis</b> is due next week, so spend this block on it. Run your own draft against this checklist, on your own, then bring any yellow flags to the Zoom.</p>
+    <ul>
+      <li>Have you named your movement's actual <b>media theory</b>, the logic behind HOW it communicated, beyond what it said?</li>
+      <li>Did you cover both its <b>slow</b> and <b>fast</b> media (Week 2), and its <b>visual rhetoric</b> where relevant (this week)?</li>
+      <li>Is there at least one <b>ethics</b> note (Week 4): who was represented, who was left out, who owned the channel?</li>
+      <li>Every claim about the movement: do you have a <b>source</b>, an open one you can link?</li>
+      <li>The pivot: what does this movement's media theory teach <b>your own cause</b>? That transfer is the point of P1.</li>
+    </ul>
+    <p style="margin:.4em 0; font-size:.9rem; color:var(--soft)">Note what you fixed in your Field Notebook so it counts toward your completion check.</p>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>6 · What does your cause look like?</h2>
+  <p>Now the part that's yours. Today you design one visual asset for your cause, in words for now. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. What does your cause look like right now? Name its color, its symbol or logo, its repeated image, or admit it has none (which is also a message about it).</label>
+    <textarea id="n1" placeholder="e.g., no consistent color, a different clip-art image every post, no logo, so it reads as scattered and unofficial even though the work is real…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Dignify, Unite, or Disrupt: which does your cause most NEED right now, and why? (Be honest about which one you keep reaching for out of habit instead of need.)</label>
+    <textarea id="n2" placeholder="e.g., we keep trying to Disrupt for attention, but what we actually need is to Dignify, because locals still picture us as a fringe complaint rather than a serious neighborhood effort…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Design one visual asset in words. Pick a form (a poster, a pin, a sash, a staged photo, a profile frame). Describe exactly what is IN the frame, then name the argument it makes with no words, and the trade it accepts.</label>
+    <textarea id="n3" placeholder="e.g., a poster: one deep-green field, a single line drawing of the empty crosswalk where the kid was hit, no text but a date. It argues 'a real place, a real loss, and it isn't fixed.' Trade: quiet and dignified, so it won't go viral, but it will haunt anyone local…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. The Wells question. Look at the image your cause currently puts forward. Whose face is centered, and who gets left out of frame? What would it take to put the most-affected people IN the picture, on their own terms?</label>
+    <textarea id="n4" placeholder="e.g., our photos are all organizers, none of the tenants actually affected; putting them in frame means asking consent and protecting people who can't be publicly identified…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a new question to carry: before "what should my cause say," ask "what does it LOOK like, what is the image already arguing, and who is in the frame?" Design was never decoration. It was the argument the whole time.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> we swing from the loudest possible medium to the quietest. Skim the short, open <span class="term" data-pop="samizdat">explainer on samizdat</span> (Soviet underground self-publishing, where each reader retyped the next copy by hand and passed it on). Then write one line in your notebook: <em>if publishing your cause could get you arrested, and you had no printing press, how would you still get the word out?</em> Bring your answer. That's where Week 6 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 4 · The Abolitionist Press</a>
+    <a href="#" onclick="return false">Week 6 · Samizdat ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-xr"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Extinction Rebellion</h4><p>A climate movement founded in 2018, known for mass nonviolent actions staged to be unignorable: street and bridge blockades, and a widely copied hourglass "extinction symbol."</p><p><b>Why it's here:</b> like the 1913 procession, XR engineers a striking, photographable scene so the media does its distribution for free. Same spectacle logic, new century and new cause.</p><p><a href="https://en.wikipedia.org/wiki/Extinction_Rebellion" target="_blank" rel="noopener">About Extinction Rebellion →</a></p></div></dialog>
+  <dialog class="pop" id="pop-visrhet"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Visual rhetoric</h4><p>The idea that an image, a color, a layout, or a designed object makes an argument, the same way words do. The visual persuades before, and sometimes instead of, the text.</p><p><b>Example:</b> a stop sign is red and octagonal even before you read "STOP." The color and shape already argue "danger, halt." A movement in all-white argues "we are pure and dignified" with no caption.</p></div></dialog>
+  <dialog class="pop" id="pop-spectacle"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Spectacle</h4><p>Staging something so large, striking, or unusual that the media has to cover it, so the event distributes your message for you. Not a stunt for its own sake: spectacle with a clear demand behind it.</p><p><b>Example:</b> 5,000 marchers, floats, and a costumed pageant shutting down Pennsylvania Avenue in 1913. No newspaper could ignore it, so the suffragists got national coverage they never had to buy.</p></div></dialog>
+  <dialog class="pop" id="pop-triggs"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Teal Triggs</h4><p>British design historian and educator who studies graphic design as communication, especially DIY and protest design: punk <span style="border-bottom:1px dotted">fanzines</span>, movement posters, and self-made publications. Her work argues that the <em>look</em> of a thing (its type, color, and roughness) carries meaning and identity, beyond the words on it.</p><p><b>Why she's here:</b> she gives us the vocabulary to treat a poster or a sash as an argument to be analyzed, which is exactly what this week asks you to do.</p><p><a href="https://en.wikipedia.org/wiki/Teal_Triggs" target="_blank" rel="noopener">About Teal Triggs →</a></p></div></dialog>
+  <dialog class="pop" id="pop-paul"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Alice Paul</h4><p>Suffragist (1885–1977) who organized the 1913 procession at age 28 and later founded the National Woman's Party. She had learned militant, media-savvy tactics from the British suffragettes and brought spectacle and confrontation into the American movement.</p><p><b>Example of her thinking:</b> she picked the date (the eve of Wilson's inauguration) precisely because the press was already in town. Nothing about the event was accidental.</p><p><a href="https://en.wikipedia.org/wiki/Alice_Paul" target="_blank" rel="noopener">About Alice Paul →</a></p></div></dialog>
+  <dialog class="pop" id="pop-milholland"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week5-milholland.jpg" alt="Inez Milholland on horseback leading the 1913 suffrage procession"><h4>Inez Milholland</h4><p>Suffragist, labor lawyer, and activist (1886–1916) chosen to lead the 1913 procession on a white horse in white robes and a crown, cast as a herald of the movement. She was picked in part because the press already called her "the most beautiful suffragist," which the organizers used as a weapon against the "ugly, unwomanly" stereotype.</p><p><a href="https://en.wikipedia.org/wiki/Inez_Milholland" target="_blank" rel="noopener">About Inez Milholland →</a></p></div></dialog>
+  <dialog class="pop" id="pop-colorcode"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The suffrage color code</h4><p>Suffragists treated color like a brand. American groups used gold and yellow (from an early Kansas campaign and the sunflower); the National Woman's Party used purple, white, and gold. Supporters wore the colors on sashes, ribbons, and buttons so the movement was recognizable at a glance, anywhere.</p><p><b>Example:</b> seeing three women in matching gold sashes on a train platform told everyone, with no words, "there is an organized movement, and it is here too."</p></div></dialog>
+  <dialog class="pop" id="pop-sash"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Sash</h4><p>A wide band of cloth worn across the body, printed with a slogan or color. In the suffrage movement, thousands of matching "Votes for Women" sashes turned a crowd into one visibly unified body and let members identify each other instantly.</p><p><b>Example:</b> the modern equivalent is a shared campaign T-shirt or a colored profile-photo frame. Same job: make the group recognizable and make belonging visible.</p></div></dialog>
+  <dialog class="pop" id="pop-pageant"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week5-program.jpg" alt="The 1913 procession program, its cover a costumed allegorical figure"><h4>Allegorical pageant</h4><p>A staged tableau where performers embody abstract ideas as costumed figures, Liberty, Justice, Peace, Columbia, so the audience "sees" the concept as a person. An old form of visual argument, from medieval processions to civic parades.</p><p><b>Example:</b> at the 1913 Treasury-steps pageant, a woman costumed as Justice in purple robes let the crowd literally see suffrage as the cause of Justice herself, not of "agitators." The costume made the claim.</p></div></dialog>
+  <dialog class="pop" id="pop-hunger"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Hunger strike</h4><p>Refusing food while imprisoned to protest and to force a moral crisis on your jailers. Suffragists in the US and Britain used it; authorities responded with brutal force-feeding, and activists made sure images and accounts of it reached the press.</p><p><b>Why it's visual rhetoric:</b> the point was partly the picture. An image of the state violently force-feeding a peaceful woman argued the movement's whole case about power in a single, unignorable frame.</p><p><a href="https://en.wikipedia.org/wiki/Suffragette#Hunger_strikes_and_force-feeding" target="_blank" rel="noopener">On suffrage hunger strikes →</a></p></div></dialog>
+  <dialog class="pop" id="pop-diein"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week8-die-in.jpg" alt="Protesters lying on the ground playing dead in a die-in"><h4>Die-in</h4><p>A protest where people lie on the ground as if dead, often for a set number of minutes, to make an abstract harm (deaths from AIDS, gun violence, traffic crashes) visible and impossible to walk past.</p><p><b>Example:</b> ACT UP used die-ins during the AIDS crisis to force the public and the press to SEE the death toll that officials were treating as a statistic. You'll study ACT UP directly in Week 8.</p><p><a href="https://en.wikipedia.org/wiki/Die-in" target="_blank" rel="noopener">What a die-in is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-wells"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/ida-b-wells.jpg" alt="Portrait of journalist and civil-rights leader Ida B. Wells"><h4>Ida B. Wells</h4><p>Journalist, educator, and civil-rights leader (1862–1931) famous for her investigative reporting against lynching. She founded the Alpha Suffrage Club, one of the first Black women's suffrage organizations, in Chicago.</p><p><b>In 1913:</b> told to march at the back of the procession, she refused, waited in the crowd, and stepped into her Illinois state delegation as it passed, insisting on being seen where she belonged.</p><p><a href="https://en.wikipedia.org/wiki/Ida_B._Wells" target="_blank" rel="noopener">About Ida B. Wells →</a></p></div></dialog>
+  <dialog class="pop" id="pop-segregation"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Segregation in the 1913 march</h4><p>To avoid offending white Southern suffragists, organizers asked Black participants to march together at the back rather than with their state delegations. Some complied under protest; Ida B. Wells refused. It is a clear case of a movement's "unified" image being built by excluding some of its own members.</p><p><b>Why we name it:</b> visual rhetoric decides who is in the frame. Studying the design with clear eyes means studying who it left out.</p></div></dialog>
+  <dialog class="pop" id="pop-quilt"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/quilting-bee.jpg" alt="Neighbors gathered around a quilting frame, many hands on one project"><h4>The quilting bee (and the banner-making circle)</h4><p>A gathering where women sew together, one project passed among many hands, while news, plans, and grievances travel around the frame. The suffrage banners and sashes were often made this same way: collective handwork that produced the movement's visual materials AND organized the women making them.</p><p><b>A little history:</b> in <b>Appalachia</b>, the quilting bee was one of the oldest and strongest social media there was, a slow, high-trust gathering where a mountain community shared information, made decisions, and held itself together across isolated hollers, all while making something durable with their hands. Long before a "feed," the quilting frame was where a community's real news circulated.</p><p><b>Why it's here:</b> making the movement's visual materials was itself an act of organizing. The design and the community that made it were the same work.</p><p><a href="https://en.wikipedia.org/wiki/Quilting" target="_blank" rel="noopener">About quilting →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+  <dialog class="pop" id="pop-samizdat"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Samizdat</h4><p>Underground self-publishing in the Soviet Union and Eastern Bloc: banned writing typed or handwritten a few copies at a time, then passed through trusted networks, with each reader expected to make more copies. The name is a wry Russian coinage meaning roughly "self-published."</p><p><b>Example:</b> a banned poem retyped on a typewriter with five carbon sheets, each copy passed to a friend who retyped five more. Slow, risky, and nearly impossible for censors to shut down, because the reader WAS the publisher.</p><p><a href="https://en.wikipedia.org/wiki/Samizdat" target="_blank" rel="noopener">What samizdat was →</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w5');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The trade-off is the harder, more useful judgment, and #4 is the trap: a spectacle that is really doing dignifying work.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w5_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 - Field Notebook - Week 5: Arguing Without Words (Spectacle & Visual Rhetoric)\n'
+      + '1. What my cause looks like right now:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Dignify / Unite / Disrupt: what it most needs, and why:\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. One visual asset (whats in the frame / the wordless argument / the trade):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. The Wells question (whos in the frame / whos left out):\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week5-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

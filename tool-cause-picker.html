@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Cause-Vetting Tool</title>
+<style>
+  #cp{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #cp *{box-sizing:border-box}
+  #cp .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #cp .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #cp h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #cp .dek{color:var(--soft); font-size:1.05rem}
+  #cp p{margin:.7em 0}
+  #cp h2{font-size:1.15rem; margin:30px 0 6px; letter-spacing:-.01em}
+  #cp .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #cp .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #cp .rulebox{background:#eef1f7; border:1px solid #cfd8ea; border-radius:10px; padding:14px 17px; margin:18px 0; font-size:.93rem}
+  #cp .rulebox b{color:var(--accent)}
+  #cp .rulebox ul{margin:.5em 0 0; padding-left:1.1em}
+  #cp .rulebox li{margin:.25em 0}
+  /* candidate */
+  #cp .cand{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #cp .cand label{display:block; font-weight:700; font-size:.95rem; margin-bottom:6px}
+  #cp .cand input{width:100%; border:1px solid var(--line); border-radius:8px; padding:10px 12px; font:16px/1.4 inherit; color:var(--ink); background:var(--paper)}
+  #cp .cand .hint{font-size:.85rem; color:var(--soft); margin-top:6px}
+  /* dimension cards */
+  #cp .dim{border:1px solid var(--line); border-radius:11px; padding:14px 16px; margin:12px 0; background:var(--paper)}
+  #cp .dim .bar{font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #cp .dim .qq{font-weight:700; font-size:1rem; margin:2px 0 6px}
+  #cp .dim .fatal{display:inline-block; font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:var(--wrong); border:1px solid var(--wrong); border-radius:20px; padding:1px 8px; margin-left:6px; vertical-align:middle; font-weight:700}
+  #cp .dim .pair{border:1px dashed var(--line); border-radius:8px; padding:9px 12px; margin:8px 0; background:var(--panel); font-size:.9rem}
+  #cp .dim .pair .w{color:var(--wrong)} #cp .dim .pair .s{color:var(--accent2)}
+  #cp .dim textarea{width:100%; min-height:48px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:6px}
+  #cp .dim .save{font-size:.8rem; color:var(--accent2); height:1em; margin-top:3px}
+  /* concrete checks */
+  #cp .checks{margin-top:10px}
+  #cp .checks .cl{font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-bottom:5px}
+  #cp .checks label{display:flex; gap:9px; align-items:flex-start; padding:5px 0; font-size:.94rem; cursor:pointer}
+  #cp .checks label input{margin-top:4px; width:17px; height:17px; flex:0 0 auto; accent-color:var(--accent2)}
+  #cp .derived{margin-top:8px; font-size:.9rem; font-weight:700; padding:7px 11px; border-radius:7px; background:var(--panel); color:var(--soft); border:1px solid var(--line)}
+  #cp .derived.strong{background:#e7f2eb; color:#245c3d; border-color:#bfe0cc}
+  #cp .derived.shaky{background:#fbf3e6; color:#6b4e22; border-color:#e8d3ad}
+  #cp .derived.no{background:#f9ebeb; color:#7d2f2f; border-color:#e6c3c3}
+  #cp .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:12px 22px; font:600 .95rem inherit; cursor:pointer; margin-top:8px}
+  #cp .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  /* verdict */
+  #cp .verdict{display:none; border:1px solid var(--line); border-radius:12px; padding:18px; margin:20px 0; background:var(--panel)}
+  #cp .verdict h3{margin:0 0 4px; font-size:1.2rem}
+  #cp .verdict .call{font-size:1.35rem; font-weight:800; margin:6px 0 2px}
+  #cp .verdict.go .call{color:var(--accent2)}
+  #cp .verdict.tune .call{color:var(--gold)}
+  #cp .verdict.reshape .call{color:var(--gold)}
+  #cp .verdict.rework .call{color:var(--wrong)}
+  #cp .verdict .why{font-size:.95rem; color:var(--soft); margin:6px 0 10px}
+  #cp .verdict table{width:100%; border-collapse:collapse; font-size:.9rem; margin:8px 0}
+  #cp .verdict td{border-top:1px solid var(--line); padding:6px 4px; vertical-align:top}
+  #cp .verdict td.r{text-align:right; white-space:nowrap; font-weight:700}
+  #cp .verdict td.r.strong{color:var(--accent2)} #cp .verdict td.r.shaky{color:var(--gold)} #cp .verdict td.r.no{color:var(--wrong)}
+  #cp .verdict .todo{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:10px 13px; margin:10px 0; font-size:.92rem}
+  #cp .decide{margin-top:14px}
+  #cp .decide label{display:block; font-weight:700; font-size:.95rem; margin-bottom:5px}
+  #cp .decide textarea{width:100%; min-height:64px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical}
+  #cp .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #cp .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #cp .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #cp .warn{font-size:.85rem; color:var(--gold); font-weight:600; margin-top:8px; height:1.2em}
+  #cp .sheet{display:inline-block; margin:10px 0 0; font-size:.86rem; color:var(--accent2); font-weight:700; text-decoration:none}
+  #cp dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #cp dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #cp dialog.pop .in{padding:17px 19px; position:relative}
+  #cp dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #cp dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #cp dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  @media (prefers-color-scheme:dark){
+    #cp{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #cp .rulebox{background:#171d2b; border-color:#2c3a56}
+    #cp .derived.strong{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #cp .derived.shaky{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #cp .derived.no{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #cp dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="cp">
+
+  <div class="mast">
+    <div class="kick">ENG 4100 · Week 1 tool</div>
+    <h1>Cause-Vetting Tool</h1>
+    <div class="dek">Pressure-test the cause you want to carry all semester. This tool does not decide for you, and it does not read your writing. It hands you concrete tests, you check the ones that are truly true, and it shows you where each bar lands.</div>
+  </div>
+
+  <div class="ground">This runs entirely on your computer. Nothing is sent anywhere. You'll name a candidate <span class="term" data-pop="cause">cause</span>, then for each of six bars you'll answer a few yes-or-no tests you can actually verify (can you point to it, could you photograph it, would a stranger get it). The tool adds up your checks into a Strong, Shaky, or Not-really reading for that bar, then applies one transparent rule to the whole set. You make the final call.</div>
+
+  <div class="rulebox">
+    <b>How each bar is scored (no mystery, and no guessing your own vibe):</b>
+    <ul>
+      <li>Each bar has <b>three concrete tests</b>. All three true = <b>Strong</b>. Two = <b>Shaky</b>. One or none = <b>Not really</b>.</li>
+      <li>Three bars are non-negotiable: <b>you care</b>, <b>real &amp; specific</b>, and <b>safe &amp; ethical</b>. A "Not really" on any of those = <b>rework or swap</b>.</li>
+      <li>A "Not really" on low-traction, media job, or lasts-a-semester, or three-plus "Shaky" overall = <b>reconsider / reshape</b>.</li>
+      <li>One or two "Shaky" and no fatal problems = <b>go, with a tune-up</b>. All six "Strong" = <b>go</b>.</li>
+    </ul>
+  </div>
+
+  <div class="cand">
+    <label for="candname">Your candidate cause, in one specific sentence</label>
+    <input id="candname" type="text" placeholder="e.g., Getting a protected crosswalk at the Rivers St / Howard St corner where two students were hit last year">
+    <div class="hint"><span class="term" data-pop="specific">Specific beats vast, every time.</span> "Campus safety" is too big to grip. "A crosswalk at that one deadly corner" you can actually move. Write the smallest true version.</div>
+  </div>
+
+  <h2>Test it against the six bars</h2>
+  <p>For each bar: read the strong-vs-weak example, write one line of your own evidence, then <b>check only the tests that are genuinely true</b>. The tool reads your checkboxes, not your prose, so be strict with yourself. A shaky cause you catch now is far easier to fix than one you discover in Week 9.</p>
+
+  <!-- A -->
+  <div class="dim" data-key="care" data-fatal="1">
+    <div class="bar">Bar A <span class="fatal">non-negotiable</span></div>
+    <div class="qq">Do you genuinely care? Is there a real personal stake?</div>
+    <div class="pair"><span class="s">Strong:</span> "My little brother has Type 1 diabetes and our old high school still has zero sugar-free options in the vending machines." <br><span class="w">Weak:</span> "Recycling is good and I guess I should care about it."</div>
+    <textarea data-t="care" placeholder="Why is this yours? What's the stake?"></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> I can name a specific person this affects (myself counts).</label>
+      <label><input type="checkbox"> I've already done or felt something about it before this class (talked about it, showed up, lost sleep over it).</label>
+      <label><input type="checkbox"> If it got solved, I'd actually feel it, more than just nodding in approval.</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="dim" data-key="real" data-fatal="1">
+    <div class="bar">Bar B <span class="fatal">non-negotiable</span></div>
+    <div class="qq">Is it <span class="term" data-pop="specific">real and specific</span>, a nameable thing, not a vast abstraction?</div>
+    <div class="pair"><span class="s">Strong:</span> "The creek behind the high school floods every spring because the county won't clear the culvert." <br><span class="w">Weak:</span> "Climate change" / "mental health" / "inequality." Too big to grip or move.</div>
+    <textarea data-t="real" placeholder="State the concrete, nameable thing at the center of it."></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> I can point to it at one nameable place, moment, or thing, not a whole topic.</label>
+      <label><input type="checkbox"> I could photograph or record real evidence of it this week.</label>
+      <label><input type="checkbox"> A stranger would know exactly what I mean from my one sentence, with no follow-up questions.</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="dim" data-key="lowtraction">
+    <div class="bar">Bar C</div>
+    <div class="qq">Is it <span class="term" data-pop="lowtraction">low-traction</span> / underserved, where your work can actually matter?</div>
+    <div class="pair"><span class="s">Strong:</span> a local issue almost nobody is organizing, so one persistent student moves the needle. <br><span class="w">Weak:</span> a national campaign millions already run. Your effort is a raindrop in the ocean.</div>
+    <textarea data-t="lowtraction" placeholder="Who else is already on this? How much room is there for your work to count?"></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> When I search it, there's little or no organized campaign already on it.</label>
+      <label><input type="checkbox"> The people affected aren't already being reached by someone else.</label>
+      <label><input type="checkbox"> One persistent student could realistically move it (it's not a national machine).</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="dim" data-key="mediajob">
+    <div class="bar">Bar D</div>
+    <div class="qq">Is there an actual <span class="term" data-pop="mediajob">media job to do</span>, people to reach, a story to tell, a shared world to gather?</div>
+    <div class="pair"><span class="s">Strong:</span> "Almost nobody knows the rezoning hearing is in three weeks, and the people affected don't talk to each other yet." <br><span class="w">Weak:</span> "The town already fixed it last month." Nothing left to communicate.</div>
+    <textarea data-t="mediajob" placeholder="What communication work is genuinely undone here? Reach, story, or gathering?"></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> There's a specific group who needs reaching or gathering and isn't reached yet.</label>
+      <label><input type="checkbox"> There's a story here that hasn't been told well, or at all.</label>
+      <label><input type="checkbox"> Something is genuinely left to communicate (it isn't already known-and-agreed, or already solved).</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="dim" data-key="lasts">
+    <div class="bar">Bar E</div>
+    <div class="qq">Can it sustain a whole semester? Enough there to keep finding new angles for 14 weeks?</div>
+    <div class="pair"><span class="s">Strong:</span> an ongoing issue with hearings, people, stages, and moving parts you can follow. <br><span class="w">Weak:</span> a one-time event next Tuesday. It's over before Project 2.</div>
+    <textarea data-t="lasts" placeholder="What will still be alive to work on in Week 12?"></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> It will still be unresolved and active in Week 12.</label>
+      <label><input type="checkbox"> It has moving parts (people, stages, events) I can keep following.</label>
+      <label><input type="checkbox"> It's more than a single one-time event.</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="dim" data-key="safe" data-fatal="1">
+    <div class="bar">Bar F <span class="fatal">non-negotiable</span></div>
+    <div class="qq">Is it <span class="term" data-pop="ethics">safe and ethical</span>? Any risk to you or to others, any privacy or consent concern?</div>
+    <div class="pair"><span class="s">Strong:</span> low risk, and any real people involved would gladly be part of it. <br><span class="w">Shaky:</span> it centers vulnerable people who'd need real consent first. <br><span class="w">Not really:</span> it could put you or someone else in danger, legal, physical, or otherwise.</div>
+    <textarea data-t="safe" placeholder="Who could be harmed or exposed? Whose consent would you need?"></textarea>
+    <div class="save"></div>
+    <div class="checks">
+      <div class="cl">Check what's true</div>
+      <label><input type="checkbox"> I can do this without putting myself in real danger (legal, physical, or otherwise).</label>
+      <label><input type="checkbox"> If real people are centered, they would gladly consent to be part of it.</label>
+      <label><input type="checkbox"> I can avoid exposing anyone vulnerable without their genuine yes.</label>
+      <div class="derived">Answer the tests to see where this bar lands.</div>
+    </div>
+  </div>
+
+  <button class="btn" id="weigh">Weigh my cause</button>
+  <div class="warn" id="warn"></div>
+
+  <!-- VERDICT -->
+  <div class="verdict" id="verdict">
+    <h3 id="vcause">Your cause</h3>
+    <div class="call" id="vcall"></div>
+    <div class="why" id="vwhy"></div>
+    <table id="vtable"></table>
+    <div class="todo" id="vtodo"></div>
+
+    <div class="decide">
+      <label for="decision">Your call. The tool suggested one thing; you decide. What will you carry, and what will you change to make it a clear go?</label>
+      <textarea id="decision" placeholder="e.g., I'm keeping it but tightening Bar C: I'll narrow from 'downtown safety' to the one corner, so my work actually counts…"></textarea>
+    </div>
+
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you pick in Week 1 and carry through the whole course: the weekly Field Notebook, and all three projects. Its obscurity is the point.</p><p><b>Example:</b> not "hunger" but "the campus food pantry runs out of protein every Thursday and nobody knows it's there." Small enough that your semester of media work can genuinely change it.</p></div></dialog>
+  <dialog class="pop" id="pop-specific"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Real &amp; specific</h4><p>A cause you can point at and name, with edges. Big abstractions can't be gripped or moved in a semester; specific things can.</p><p><b>With vs. without:</b> "the environment" (no edges, no handle) becomes "the storm drain on Faculty St dumps straight into the creek, unmarked." Now there's something to photograph, explain, and fix.</p></div></dialog>
+  <dialog class="pop" id="pop-lowtraction"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Low-traction</h4><p>Under-covered, under-organized, not already viral. The opposite of a cause with millions of people and dollars behind it.</p><p><b>Why it matters here:</b> on a huge cause your work vanishes into the crowd. On a quiet local one, a single well-made campaign can be the thing that tips it. Low-traction is where your effort is most meaningful and most measurable.</p></div></dialog>
+  <dialog class="pop" id="pop-mediajob"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>A media job to do</h4><p>Real communication work that isn't done yet: people who need reaching, a story nobody's told well, or a scattered group who've never been gathered into a shared world.</p><p><b>Example:</b> "The affected tenants have never met each other" is a media job (gather them). "Everyone already knows and agrees" is not, there's nothing left to communicate.</p></div></dialog>
+  <dialog class="pop" id="pop-ethics"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Safe &amp; ethical</h4><p>Your media work should not endanger, expose, or exploit anyone, including you. If real people are at the center, especially vulnerable ones, you need their genuine consent before you put them online.</p><p><b>Example:</b> a cause about unhoused neighbors can be powerful and ethical if they're partners who agreed, or harmful if you photograph and post people who never said yes. Same cause, opposite ethics.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Paste this vetting result into your Week 1 row. It stays in your own Drive and private to you until you submit it at midterm and end of term.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('cp');
+  var LABELS = {care:'A. You care (stake)', real:'B. Real & specific', lowtraction:'C. Low-traction', mediajob:'D. A media job to do', lasts:'E. Lasts a semester', safe:'F. Safe & ethical'};
+  var FATAL = {care:1, real:1, safe:1};
+  var RATENAME = {strong:'Strong', shaky:'Shaky', no:'Not really'};
+  var DWHY = {
+    strong:'All three tests hold. This bar is solid.',
+    shaky:'One test is missing. Close, but tighten it before you commit.',
+    no:'Two or three tests failed. This bar is not there yet.'
+  };
+
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+
+  function rateFor(n){ return n >= 3 ? 'strong' : (n === 2 ? 'shaky' : 'no'); }
+
+  // derive a bar's rating from its concrete checks
+  function refresh(dim){
+    var boxes = dim.querySelectorAll('.checks input[type="checkbox"]');
+    var n = 0; boxes.forEach(function(b){ if(b.checked) n++; });
+    var rate = rateFor(n);
+    dim.dataset.rate = rate;
+    dim.dataset.visited = '1';
+    var d = dim.querySelector('.derived');
+    d.className = 'derived ' + rate;
+    d.textContent = 'Based on your checks (' + n + '/3): ' + RATENAME[rate] + '. ' + DWHY[rate];
+  }
+
+  root.querySelectorAll('.dim').forEach(function(dim){
+    var key = dim.dataset.key;
+    var boxes = dim.querySelectorAll('.checks input[type="checkbox"]');
+    boxes.forEach(function(box, i){
+      var ck = 'e4_w1_cp_ck_' + key + '_' + i;
+      try{ if(localStorage.getItem(ck) === '1'){ box.checked = true; } }catch(e){}
+      box.addEventListener('change', function(){
+        try{ localStorage.setItem(ck, box.checked ? '1' : '0'); }catch(e){}
+        refresh(dim);
+      });
+    });
+    // restore derived state if any box was checked before
+    var any = false; boxes.forEach(function(b){ if(b.checked) any = true; });
+    if(any) refresh(dim);
+  });
+
+  // persist text fields
+  function persist(el, key){
+    try{ var v = localStorage.getItem(key); if(v){ el.value = v; } }catch(e){}
+    el.addEventListener('input', function(){
+      try{ localStorage.setItem(key, el.value); }catch(e){}
+      var s = el.parentNode.querySelector('.save'); if(s){ s.textContent='saved on this device'; setTimeout(function(){s.textContent='';},1100); }
+    });
+  }
+  var cand = document.getElementById('candname'); persist(cand, 'e4_w1_cp_candname');
+  root.querySelectorAll('.dim textarea').forEach(function(ta){ persist(ta, 'e4_w1_cp_txt_' + ta.dataset.t); });
+  var dec = document.getElementById('decision'); persist(dec, 'e4_w1_cp_decision');
+
+  function evaluate(rates){
+    var noFatal = [], noOther = [], shaky = [], strong = [];
+    Object.keys(LABELS).forEach(function(k){
+      var r = rates[k];
+      if(r === 'no'){ (FATAL[k] ? noFatal : noOther).push(k); }
+      else if(r === 'shaky'){ shaky.push(k); }
+      else { strong.push(k); }
+    });
+    var cls, call, why, todo = [];
+    if(noFatal.length){
+      cls='rework'; call='Rework or swap';
+      why='Your checks put a non-negotiable bar at "Not really." A cause has to clear all three of those to be worth a semester.';
+      noFatal.forEach(function(k){ todo.push('Fix or drop: ' + LABELS[k] + ' is a hard requirement.'); });
+    } else if(noOther.length || shaky.length >= 3){
+      cls='reshape'; call='Reconsider / reshape';
+      why= noOther.length ? 'Your checks put a key bar at "Not really." Reshape the cause so that bar becomes true, or pick a different one.' : 'Three or more bars came back shaky. That usually means the cause is close but not yet gripped tightly enough.';
+      noOther.forEach(function(k){ todo.push('Reshape so this becomes true: ' + LABELS[k] + '.'); });
+      shaky.forEach(function(k){ todo.push('Shore up: ' + LABELS[k] + '.'); });
+    } else if(shaky.length){
+      cls='tune'; call='Go, with a tune-up';
+      why='No fatal problems. You have '+shaky.length+' shaky bar'+(shaky.length>1?'s':'')+' to tighten, and then this is a strong cause to carry.';
+      shaky.forEach(function(k){ todo.push('Tune up: ' + LABELS[k] + '.'); });
+    } else {
+      cls='go'; call='Go';
+      why='All six bars came back strong. This is a real, specific, low-traction cause with a genuine media job and no ethical red flags. Lock it in.';
+      todo.push('Nothing to fix. Write your one-sentence cause into the Field Notebook and start Week 2 with it.');
+    }
+    return {cls:cls, call:call, why:why, todo:todo};
+  }
+
+  document.getElementById('weigh').addEventListener('click', function(){
+    var name = cand.value.trim();
+    var rates = {}, unvisited = [];
+    root.querySelectorAll('.dim').forEach(function(dim){
+      rates[dim.dataset.key] = dim.dataset.rate || 'no';
+      if(!dim.dataset.visited) unvisited.push(dim.dataset.key);
+    });
+    var warn = document.getElementById('warn');
+    if(!name){ warn.textContent = 'Name your candidate cause first (one specific sentence).'; return; }
+    if(unvisited.length){ warn.textContent = 'Work through the tests on all six bars first (' + (6-unvisited.length) + '/6 done).'; return; }
+    warn.textContent = '';
+
+    var res = evaluate(rates);
+    var v = document.getElementById('verdict');
+    v.className = 'verdict ' + res.cls; v.style.display = 'block';
+    document.getElementById('vcause').textContent = name;
+    document.getElementById('vcall').textContent = res.call;
+    document.getElementById('vwhy').textContent = res.why;
+
+    var rows = '';
+    Object.keys(LABELS).forEach(function(k){
+      var r = rates[k];
+      rows += '<tr><td>' + LABELS[k] + (FATAL[k] ? ' (non-negotiable)' : '') + '</td><td class="r ' + r + '">' + RATENAME[r] + '</td></tr>';
+    });
+    document.getElementById('vtable').innerHTML = rows;
+    document.getElementById('vtodo').innerHTML = '<b>What to do next:</b><br>' + res.todo.join('<br>');
+
+    v.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  function report(){
+    var name = cand.value.trim() || '(unnamed)';
+    var rates = {}, allVisited = true;
+    root.querySelectorAll('.dim').forEach(function(dim){
+      rates[dim.dataset.key] = dim.dataset.rate || 'no';
+      if(!dim.dataset.visited) allVisited = false;
+    });
+    var res = allVisited ? evaluate(rates) : null;
+    var lines = ['ENG 4100 · Field Notebook · Week 1: Cause-vetting result', '', 'Candidate cause:', name, ''];
+    Object.keys(LABELS).forEach(function(k){ lines.push(LABELS[k] + ': ' + (RATENAME[rates[k]] || rates[k])); });
+    lines.push('');
+    if(res){ lines.push('Tool suggests: ' + res.call, res.why, ''); }
+    lines.push('My decision + what I’ll change:', (dec.value.trim() || '(blank)'));
+    return lines.join('\n');
+  }
+
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = report(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([report()],{type:'text/plain'}));
+    a.download='eng4100-week1-cause-vetting.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

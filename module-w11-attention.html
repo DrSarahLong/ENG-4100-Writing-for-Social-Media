@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 11 · Circulation Is Not Action</title>
+<style>
+  #w11{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w11 *{box-sizing:border-box}
+  #w11 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w11 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w11 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w11 .dek{color:var(--soft); font-size:1.05rem}
+  #w11 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w11 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w11 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w11 p{margin:.7em 0}
+  #w11 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w11 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w11 .recall b{color:var(--accent2)}
+  #w11 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w11 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w11 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w11 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w11 .honest b{color:var(--gold)}
+  #w11 .duebox{background:#f0f3f8; border:1px solid #d3ddea; border-left:4px solid var(--accent2); border-radius:9px; padding:12px 16px; margin:16px 0; font-size:.95rem}
+  #w11 .duebox b{color:var(--accent2)}
+  /* guided reading */
+  #w11 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w11 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w11 .read a{color:var(--accent); font-weight:600}
+  #w11 .read .g{font-size:.9rem; color:var(--soft)}
+  #w11 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w11 .qa{margin-top:10px}
+  #w11 .qa .qq{font-weight:600; font-size:.95rem}
+  #w11 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w11 .reveal{margin-top:6px}
+  #w11 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w11 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w11 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w11 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w11 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w11 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w11 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w11 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w11 .di .spec{margin-bottom:7px}
+  #w11 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #w11 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w11 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w11 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w11 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w11 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w11 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w11 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w11 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w11 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w11 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w11 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w11 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w11 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w11 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w11 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w11 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w11 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w11 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w11 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w11 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w11 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w11 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w11 .prime b{color:var(--accent)}
+  #w11 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w11 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w11 dialog.pop .in{padding:17px 19px; position:relative}
+  #w11 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w11 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w11 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w11 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w11 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w11 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w11{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w11 .recall{background:#16241c; border-color:#2c4536}
+    #w11 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w11 .read,#w11 .prime,#w11 .duebox{background:#171d2b; border-color:#2c3a56}
+    #w11 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w11 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w11 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w11 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w11">
+
+  <div class="mast">
+    <div class="kick">Week 11 · Thursday module</div>
+    <h1>Circulation Is Not Action</h1>
+    <div class="dek">Tuesday you felt the gap between posting and doing. Today you name the theory behind it, stress-test it on cases where the obvious call is wrong, and use it to finalize your strategy.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing, the reading, the sorting tool, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your cause in mind.</div>
+
+  <div class="duebox"><b>Due today:</b> Project 2 (Content Strategy &amp; Audit) is due in this module. The last section walks you through finalizing it, so save that part for last and let today's ideas sharpen your strategy before you submit.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> almost every hand went up for "I posted about a cause," and almost every hand dropped for "and something real changed because of it." That empty column has a name. Today we give it two: <span class="term" data-pop="commcap">communicative capitalism</span> (why posting feels like politics while changing nothing) and the <span class="term" data-pop="attention">attention economy</span> (what's actually being mined). Then Jenny Odell on what to do about it.
+  </div>
+
+  <h2>1 · Communicative capitalism</h2>
+  <p>In 2005, before the iPhone, <span class="term" data-pop="dean">Jodi Dean</span> named the trap you felt Tuesday. Her claim: on networked platforms, your political speech stops being a <em>message</em> (something a person receives and answers) and becomes a <em>contribution to circulation</em> (one more unit added to the flow, valued only for moving). The <span class="term" data-pop="foreclosure">foreclosure of politics</span> is her name for the result: the energy that could have become action gets fully spent as circulation instead.</p>
+  <div class="ex">
+    <div class="t">See it (a with / without pair)</div>
+    <p style="margin:.3em 0"><b>Message:</b> you email 200 neighbors, "The rezoning vote is Tuesday at 6pm at Town Hall, be there," and 40 people show up. It was received, answered, and acted on. It had <span class="term" data-pop="usevalue">use value</span>.</p>
+    <p style="margin:.3em 0"><b>Contribution:</b> you post "SAY NO TO REZONING" to 30,000 strangers. It gets 2,000 likes and 400 shares. Nobody who liked it can attend, and no one has to. The likes are the product. It circulated beautifully and did nothing. Same passion, opposite effect.</p>
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7–9 min)</div>
+    <p style="margin:.4em 0"><a href="https://commonconf.wordpress.com/wp-content/uploads/2010/09/proofs-of-tech-fetish.pdf" target="_blank" rel="noopener">Dean, "Communicative Capitalism: Circulation and the Foreclosure of Politics"</a> <span class="g">(free PDF of the 2005 article). Read the opening pages and find her line about messages losing their communicative use and becoming just contributions to circulation. It's dense; read it slowly, one paragraph at a time.</span></p>
+    <blockquote>"The message is simply part of a circulating data stream. Its particular content is irrelevant. Who sent it is irrelevant. Who receives it is irrelevant. That it need be responded to is irrelevant. The only thing that is relevant is circulation."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: find one thing your cause posted in the last month that was pure contribution, no one had to receive it, no one had to answer, nothing changed. Write what it would have taken to make it a message instead.</div>
+      <textarea id="qa1" placeholder="e.g., we posted an infographic about food deserts. 300 likes, zero uptake. To make it a message: attach one real ask (bring a bag to the Saturday drive) to a specific person who has to reply…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the missing <em>uptake</em>, rather than "we should get more engagement." Example: "Our black-square solidarity post asked nothing of anyone and reached no decision-maker. A message version: a templated email our followers could send, with one click, to the specific council member whose vote we needed. Same feeling, but now it lands on someone accountable for a reply."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · The attention economy, and Jenny Odell</h2>
+  <p>If content is infinite and free, the scarce thing is your <span class="term" data-pop="attention">attention</span>. The economist <span class="term" data-pop="simon">Herbert Simon</span> saw it in 1971: "a wealth of information creates a poverty of attention." The platform isn't selling you a service. You are the product, and your attention is the raw material. That reframes the whole problem: what would it mean to take yours back?</p>
+  <p>That's the question <span class="term" data-pop="odell">Jenny Odell</span> takes up. Her "<span class="term" data-pop="donothing">doing nothing</span>" is not a digital detox and it is not apathy. It's two moves at once: refuse to hand your attention to the machine that converts it into circulation, and re-place that attention on something real, a place, a community, the actual people and living things in front of you. Reclaimed attention is the ground everything else stands on. You cannot organize what you can't even notice.</p>
+  <div class="honest"><b>Hold the nuance:</b> this is not "social media bad, touch grass good." Odell would be the first to say withdrawal-as-apathy is its own failure. The sharp version, hers and Dean's together: stop feeding the flow, and aim the same energy at things that produce uptake and durable relationship. Refusal <em>in place</em>, not escape. Attention re-placed on your own <span class="term" data-pop="bioregion">bioregion</span> and neighbors is where real organizing has always started.</div>
+  <div class="read">
+    <div class="t">Read the real thing (8–10 min)</div>
+    <p style="margin:.4em 0"><a href="https://medium.com/@the_jennitaur/how-to-do-nothing-57e100f59bbb" target="_blank" rel="noopener">Odell, "How to Do Nothing" (the 2017 talk that became the book)</a> <span class="g">(free full transcript). Read from the rose-garden opening through her account of what attention is for. Watch how she treats attention as a shared, almost civic resource, not a personal productivity hack.</span></p>
+    <blockquote>"What the tech writer Jonathan Crary calls 'the attention economy' … it's a violence against the human capacity to reflect. And reflection is exactly the thing that this culture, at this moment, cannot afford to lose."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: name one place your own attention gets mined every day (the app, the feed, the notification), and one real thing you could re-place it on that would actually help your cause. Be concrete about both.</div>
+      <textarea id="qa2" placeholder="e.g., I lose 40 minutes a night to the for-you feed. Re-placed: 40 minutes writing three real messages to people I already know who care about this…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer re-places attention on something that builds a <em>relationship or a condition</em>, rather than "read more news." Example: "I doom-scroll local outrage for an hour. Re-placed: I go to the actual county commission meeting once a month, where the decisions I'm angry about are made in a room I can stand in. Odell's move, aimed at the place the power actually is."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Circulation or action?</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per case, and the obvious call is sometimes wrong. First, does the activity <span class="term" data-pop="lean">lean</span> circulation, action, or a genuine mix? Second, what's the honest read of what it's really doing? Commit both, then Check.</div>
+
+    <div class="di" data-spec="circ" data-trade="1">
+      <div class="q">1. A post denouncing a bad policy gets 50,000 shares. Nothing else is attached to it, no ask, no channel, no follow-up.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Pure circulation. 50,000 shares, zero uptake. It moved through the stream and asked nothing of anyone. Dean's exact case: the content circulated, and that was the whole event.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="3">
+      <div class="q">2. A silly viral video challenge sweeps every feed for a month. Baked into it: a one-tap link that has routed real donations into a fund that actually paid for a research breakthrough. (Think the <span class="term" data-pop="icebucket">Ice Bucket Challenge</span>.)</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Mixed, and this is the one where the obvious "it's just slacktivism" call is wrong. The form is pure circulation, but someone wired a conversion channel to it, so the reach actually cashed out as funded research. Circulation is not automatically empty; it's empty when nothing catches it.</div>
+    </div>
+
+    <div class="di" data-spec="action" data-trade="2">
+      <div class="q">3. A cause emails its 200-person list one specific ask, "call this office Tuesday and say these two sentences," and 60 people actually call.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Action. Tiny reach, high uptake. 60 real calls land on someone who has to reckon with them. This is what a message looks like: received, answered, acted on. Nobody counts the "likes" because there aren't any; there are 60 phone calls.</div>
+    </div>
+
+    <div class="di" data-spec="circ" data-trade="1">
+      <div class="q">4. A cause spends its entire budget boosting one video to 300,000 strangers in the region. Views spike. There's no email capture, no follow-up, no way to reach anyone again.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Pure circulation, and the priciest kind. 300,000 rented views that vanish when the money stops, with no channel to hold anyone. This is a whole budget spent buying the <em>feeling</em> of reach. Compare it to case 3: 60 calls beat 300,000 forgotten views.</div>
+    </div>
+
+    <div class="di" data-spec="action" data-trade="4">
+      <div class="q">5. A cause runs a monthly in-person <span class="term" data-pop="repaircafe">repair café</span>. Fifteen regulars come, deep trust builds, people organize real help for each other. Almost no one outside the room knows it exists.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Action, but starved of reach. This is the honest flip side: action is not automatically "better." The trust here is the real thing a viral post can never build, and it's invisible. The fix isn't to stop; it's to wire a little reach to it (a callback to Week 2's fast plus slow), so the strong core can grow.</div>
+    </div>
+
+    <div class="di" data-spec="circ" data-trade="1">
+      <div class="q">6. An online petition hits 80,000 signatures. It looks like real action, it has a demand and a number. But no decision-maker has agreed to receive it, and there's no plan to make them.</div>
+      <div class="spec"><span class="l">Leans</span><button data-v="circ">Circulation</button><button data-v="mixed">Mixed</button><button data-v="action">Action</button></div>
+      <div class="tr"><span class="l">Read</span><select><option value="">what's really happening?</option><option value="1">Pure circulation: adds to the flow, measured in metrics; no reply or changed thing required</option><option value="2">Real action: produces uptake, a reply, or a durable relationship or condition</option><option value="3">Circulation wired to action: the reach is caught by a channel that converts it to a concrete step</option><option value="4">Action starved of reach: real and durable, but so small or quiet it never travels</option></select></div>
+      <div class="fb">Pure circulation wearing action's clothes. A petition <em>looks</em> like uptake because it has a demand, but with no one obligated to receive or answer it, 80,000 signatures are 80,000 contributions to a stream. A petition becomes action only when it's attached to a person who must respond and a plan to make them.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my read</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · The case that spent 100 million views on nothing</h2>
+  <div class="case">
+    <div class="t">Kony 2012</div>
+    <p style="margin:.5em 0">In March 2012, an advocacy group released a 30-minute film urging the world to help capture a warlord, Joseph Kony. <span class="term" data-pop="kony">Kony 2012</span> hit roughly 100 million views in six days, the fastest-spreading video to that point in history. It felt like a movement had happened overnight. Then almost nothing followed. Kony was never captured. The planned real-world action ("Cover the Night") mostly evaporated. The organization was badly criticized and soon fell apart. The circulation was total; the action was near zero.</p>
+    <p style="margin:.5em 0">Hold it against case 2 in the tool. The Ice Bucket Challenge looked just as frivolous, yet it wired a donation channel to the reach and funded a real scientific discovery. Same era, same virality. One converted circulation into action; the other spent it. That difference is the whole lesson, and the whole of Project 2.</p>
+    <div class="qa">
+      <div class="qq">Your turn: Kony 2012 had more reach than your cause will ever get, and produced less than 60 phone calls would. In one sentence, what was it missing that would have turned that ocean of attention into something real?</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It had no channel to catch the attention and no local structure to hand it to, so 100 million people felt something for a week and then the feeling, having nowhere to go, became the whole event." Reach with no conversion and no organization behind it is just very loud circulation.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Finalize your strategy</h2>
+  <p>This is the part that's yours, and it's how you land Project 2. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook and fold it into your strategy before you submit.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Audit: list what your cause did to reach people in the last month, and mark each one circulation or action. Be honest about how much is circulation.</label>
+    <textarea id="n1" placeholder="e.g., 6 posts (circulation), 1 shared reel (circulation), one email with a real ask (action, 12 replies), one table at the market (action, 4 new contacts)…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Where is your P2 strategy secretly optimizing for circulation (chasing reach and metrics) when what your cause actually needs is uptake and relationships? Name the one place you were about to build the wrong thing.</label>
+    <textarea id="n2" placeholder="e.g., my whole calendar was 'post 4x a week to grow followers,' but we have no way to hold anyone who shows up, so I'd have been buying circulation I couldn't cash…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Odell's move, applied: name one thing to WITHDRAW attention from (a vanity metric or channel to stop feeding) and one real, grounded place to RE-PLACE it (a relationship or condition you'll build instead).</label>
+    <textarea id="n3" placeholder="e.g., WITHDRAW: chasing follower count and daily posting. RE-PLACE: a monthly in-person meetup for the 15 people who already care, so the core gets deep enough to hold weight…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Your Project 2 commitment: the single change to your strategy that turns circulation into action for your cause. Write it as one clear sentence you'll actually put in the document.</label>
+    <textarea id="n4" placeholder="e.g., every campaign post from now on carries one concrete ask and one way to capture the person (a list, an event, a reply), so reach can convert instead of evaporate…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a question now that will outlast this class: before "how do I get more reach," ask "if this circulates perfectly, does anything actually change, and who has to answer for it?" That question is the difference between a feed and a movement. Now go finalize P2.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> skim the short, plain-language <span class="term" data-pop="gotv">explainer on getting out the vote</span>, and notice one finding: a real face-to-face conversation moves people that mailers, ads, and robocalls can't. Then write one line in your notebook: <em>who are the three most trusted messengers for your cause, the real people whose word would actually move someone to act?</em> Bring your answer. That's where Week 12 starts, and it's the beginning of Project 3.</p>
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 10 · Networked protest &amp; its limits</a>
+    <a href="#" onclick="return false">Week 12 · Relational organizing ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+  <dialog class="pop" id="pop-commcap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Communicative capitalism</h4><p>Jodi Dean's term (2005) for a system where the sheer volume of our messaging becomes a form of capitalism in itself. Your political speech gets valued for how much it <em>circulates</em>, not for whether anyone receives, answers, or acts on it.</p><p><b>Example:</b> a hashtag trends worldwide for two days, generates millions of posts, and changes no policy and no vote. The trend, not the outcome, was the product.</p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jodi Dean</h4><p>American political theorist (born 1962), professor at Hobart and William Smith Colleges. Her essay "Communicative Capitalism" (2005) argued, years before the like button ruled everything, that networked communication can absorb political energy and convert it into harmless circulation.</p><p><a href="https://en.wikipedia.org/wiki/Jodi_Dean" target="_blank" rel="noopener">About Jodi Dean →</a></p></div></dialog>
+  <dialog class="pop" id="pop-foreclosure"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The foreclosure of politics</h4><p>Dean's phrase for what communicative capitalism does: it doesn't ban politics, it <em>uses it up</em>. The passion that could have become organizing gets spent as posting, so the political possibility is quietly closed off ("foreclosed") while everyone feels active.</p><p><b>Example:</b> you spend the evening arguing a cause online, go to bed exhausted and satisfied, and nothing in the world has moved. The feeling of participation replaced the effect of it.</p></div></dialog>
+  <dialog class="pop" id="pop-usevalue"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Use value vs. exchange value</h4><p>An old distinction Dean borrows. A thing's <b>use value</b> is the actual job it does (a coat keeps you warm). Its <b>exchange value</b> is what it's worth traded in a market (the coat sells for $80). Dean's move: online, a political message loses its use value (did anyone act on it?) and keeps only its exchange value (how much did it circulate?).</p><p><b>Example:</b> "Vote Tuesday, here's your polling place" has use value, it helps someone act. A viral "DEMOCRACY IS DYING" post has exchange value, it circulates, whether or not a single person votes because of it.</p></div></dialog>
+  <dialog class="pop" id="pop-attention"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The attention economy</h4><p>The idea that in a world of unlimited information, human attention is the truly scarce resource, so it becomes the thing companies compete to capture and sell. Free apps aren't charities; they sell your attention to advertisers.</p><p><b>Example:</b> an infinite-scroll feed is engineered to hold your eyes as long as possible, because every extra minute is inventory it can sell. You are not the customer; you're the product.</p><p><a href="https://en.wikipedia.org/wiki/Attention_economy" target="_blank" rel="noopener">What the attention economy is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-simon"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Herbert Simon</h4><p>Economist and cognitive scientist (1916–2001), a Nobel laureate. In 1971 he wrote the line the whole attention economy runs on: "a wealth of information creates a poverty of attention." He saw the trade-off decades before the feed made it a business model.</p></div></dialog>
+  <dialog class="pop" id="pop-odell"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jenny Odell</h4><p>Oakland-based artist and writer. Her book <em>How to Do Nothing: Resisting the Attention Economy</em> (2019) grew from a 2017 talk. Her argument: reclaiming your attention from the feed, and re-placing it on real places and people, is a form of repair and even resistance, not laziness.</p><p><a href="https://en.wikipedia.org/wiki/Jenny_Odell" target="_blank" rel="noopener">About Jenny Odell →</a></p></div></dialog>
+  <dialog class="pop" id="pop-donothing"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Doing nothing"</h4><p>Odell's deliberately provocative name for a practice: refusing to spend your attention on things designed to harvest it, and putting it instead on the slow, unproductive-looking things (a place, a community, sustained thought) that everything real is built from. It is not opting out of the world; it's opting back into the part of it that isn't for sale.</p><p><b>Example:</b> instead of an hour scrolling local outrage, an hour at the actual neighborhood meeting where those decisions get made.</p></div></dialog>
+  <dialog class="pop" id="pop-bioregion"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Bioregionalism</h4><p>Paying attention to the living system you actually live in, your watershed, your soil, your local plants and food and weather, rather than an abstract "everywhere" online. Odell uses it to make attention concrete: know your place before you try to save the world.</p><p><b>Appalachian tie:</b> this is native ground here. Knowing your holler and your creek, saving seeds, foraging ramps in spring, keeping a family foodway alive, the New River is one of the oldest rivers on earth and runs right through this region. That rooted, place-based attention (the same instinct behind Slow Food and regenerative farming) is exactly the kind Odell says the feed erodes. Re-placing attention on your bioregion is a very old Appalachian practice with a new name.</p><p><a href="https://en.wikipedia.org/wiki/Bioregionalism" target="_blank" rel="noopener">What bioregionalism is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-lean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Leans," not a box</h4><p>Real activity rarely sits at a pure extreme. Most of it leans one way while carrying a little of the other. The skill isn't slapping on a label; it's seeing which way the weight falls and what the honest read is underneath.</p></div></dialog>
+  <dialog class="pop" id="pop-icebucket"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/icebucket.jpg" alt="A person dumping a bucket of ice water over their head for the ALS Ice Bucket Challenge"><h4>The Ice Bucket Challenge</h4><p>A 2014 viral trend where people filmed themselves dumping ice water on their heads to raise awareness of ALS, a fatal neurological disease, and nominated friends to do the same.</p><p><b>Why it's here:</b> it looked like the definition of empty slacktivism, yet it raised over $100 million and helped fund the discovery of a gene tied to ALS. The trick was a donation channel wired directly to the reach. Proof that circulation isn't automatically hollow, it's hollow when nothing catches it.</p><p><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge" target="_blank" rel="noopener">What the Ice Bucket Challenge did →</a></p></div></dialog>
+  <dialog class="pop" id="pop-kony"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Kony 2012</h4><p>A 30-minute advocacy film released in March 2012 by the group Invisible Children, calling for the capture of Ugandan warlord Joseph Kony. It hit about 100 million views in six days, the fastest-spreading video of its time.</p><p><b>What happened next:</b> almost nothing. Kony was never caught, the "Cover the Night" real-world action fizzled, and the organization collapsed amid criticism. The textbook case of total circulation and near-zero action, communicative capitalism in one clip.</p><p><a href="https://en.wikipedia.org/wiki/Kony_2012" target="_blank" rel="noopener">The Kony 2012 story →</a></p></div></dialog>
+  <dialog class="pop" id="pop-slacktivism"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Slacktivism</h4><p>A dismissive mashup of "slacker" and "activism": low-effort online gestures (a like, a shared graphic, a profile-frame) that make you feel involved while asking almost nothing and changing almost nothing.</p><p><b>Careful, though:</b> the term can be too blunt. As the Ice Bucket case shows, a "slacktivist" gesture wired to a real channel can convert into action. The useful question isn't "is this slacktivism," it's "does anything catch it?"</p><p><a href="https://en.wikipedia.org/wiki/Slacktivism" target="_blank" rel="noopener">What slacktivism means →</a></p></div></dialog>
+  <dialog class="pop" id="pop-spectacle"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The society of the spectacle</h4><p>An idea from French theorist Guy Debord (1967): in modern life, real relationships and actions get replaced by their <em>images</em>, we relate to representations of life instead of living it. Dean's "communicative capitalism" is a direct descendant, updated for the feed.</p><p><b>Example:</b> attending a protest mainly to post that you were there, until the image of participating matters more than the participating. Debord saw the shape of this fifty years early.</p><p><a href="https://en.wikipedia.org/wiki/The_Society_of_the_Spectacle" target="_blank" rel="noopener">About The Society of the Spectacle →</a></p></div></dialog>
+  <dialog class="pop" id="pop-repaircafe"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/repaircafe.jpg" alt="Volunteers and visitors mending broken household items together at a repair cafe"><h4>Repair café</h4><p>A recurring free gathering where volunteers help neighbors fix broken things, lamps, bikes, clothes, instead of tossing them. The point is as much the connection as the repair: people meet, teach, and build trust over a shared table.</p><p><b>Example:</b> a monthly repair café at a library becomes the room where a neighborhood actually knows each other, the kind of slow, high-trust "social" this course keeps pointing back to.</p><p><a href="https://en.wikipedia.org/wiki/Repair_caf%C3%A9" target="_blank" rel="noopener">What a repair café is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-gotv"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Getting out the vote (GOTV)</h4><p>The work of turning people who agree with you into people who actually act (classically, vote). Field experiments found a striking pattern: a real face-to-face conversation moves people far more than mailers, ads, or robocalls.</p><p><b>Example:</b> researchers Gerber and Green found door-to-door canvassing raised turnout several points, while mass mailings barely moved it. The most powerful medium turned out to be a trusted person. Next week's whole idea.</p><p><a href="https://en.wikipedia.org/wiki/Get_out_the_vote" target="_blank" rel="noopener">What GOTV research shows →</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w11');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The "honest read" is the harder, more useful judgment, and cases 2, 5, and 6 are where the obvious answer misleads.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w11_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 11: Circulation Is Not Action\n'
+      + '1. Audit (each item circulation or action):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Where my strategy is secretly optimizing for circulation:\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. Odell’s move (withdraw / re-place):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. My Project 2 commitment (circulation → action):\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week11-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

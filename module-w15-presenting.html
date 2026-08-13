@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 15 · Present Your Campaign</title>
+<style>
+  #w15{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b; --field:#fffdf9;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w15 *{box-sizing:border-box}
+  #w15 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w15 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w15 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w15 .dek{color:var(--soft); font-size:1.05rem}
+  #w15 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w15 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w15 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w15 p{margin:.7em 0}
+  #w15 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w15 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w15 .recall b{color:var(--accent2)}
+  #w15 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w15 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w15 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w15 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w15 .honest b{color:var(--gold)}
+  /* beats list */
+  #w15 ol.beats{list-style:none; padding-left:0; counter-reset:b; margin:14px 0}
+  #w15 ol.beats li{counter-increment:b; position:relative; padding:11px 0 11px 42px; border-top:1px solid var(--line)}
+  #w15 ol.beats li:first-child{border-top:0}
+  #w15 ol.beats li::before{content:counter(b); position:absolute; left:0; top:11px; width:27px; height:27px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; font-size:.85rem; display:flex; align-items:center; justify-content:center}
+  #w15 ol.beats b{color:var(--accent)}
+  #w15 ol.beats .eg{display:block; font-size:.88rem; color:var(--soft); margin-top:3px}
+  /* planner */
+  #w15 .planner{border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:16px 0; background:var(--panel)}
+  #w15 .planner .take{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:12px 14px; margin-bottom:12px}
+  #w15 .planner label{display:block; font-weight:700; font-size:.93rem; margin:13px 0 4px}
+  #w15 .planner label .n{color:var(--soft); font-weight:600; font-size:.84rem}
+  #w15 .planner .take label{margin-top:0}
+  #w15 .planner input[type=text], #w15 .planner textarea{width:100%; font:15px/1.5 inherit; color:var(--ink); background:var(--field); border:1.5px solid var(--line); border-radius:8px; padding:9px 11px; resize:vertical}
+  #w15 .planner textarea{min-height:46px}
+  #w15 .planner input:focus, #w15 .planner textarea:focus{outline:none; border-color:var(--accent)}
+  #w15 .planner .hint{color:var(--soft); font-size:.84rem; margin:2px 0 0}
+  #w15 .screen{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin:12px 0}
+  #w15 .screen .stake{font-weight:700; font-size:1.08rem; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:8px}
+  #w15 .screen ol{margin:0; padding-left:1.3rem} #w15 .screen li{margin:.35rem 0; font-size:.95rem}
+  #w15 .screen li b{color:var(--accent)}
+  #w15 .screen .empty{color:var(--soft); font-style:italic}
+  #w15 .screen .cnt{font-size:.85rem; color:var(--soft); margin-top:9px}
+  /* diagnose interactive */
+  #w15 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w15 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w15 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w15 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w15 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w15 .di .spec{margin-bottom:7px}
+  #w15 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w15 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w15 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w15 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w15 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w15 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w15 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w15 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w15 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w15 .score{margin-top:11px; font-weight:700; display:none}
+  /* checklist */
+  #w15 .check{list-style:none; padding:0; margin:8px 0}
+  #w15 .check li{display:flex; align-items:flex-start; gap:9px; padding:8px 0; border-top:1px solid var(--line)}
+  #w15 .check li:first-child{border-top:0}
+  #w15 .check input{width:19px; height:19px; margin-top:3px; accent-color:var(--accent2); flex:none}
+  #w15 .check .lbl{font-size:.95rem}
+  #w15 .readycount{font-weight:700; color:var(--accent2); margin-top:8px; min-height:1em}
+  /* mini case */
+  #w15 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w15 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w15 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w15 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w15 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w15 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w15 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w15 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w15 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w15 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w15 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w15 .duebox{background:#fbf3e6; border:1px solid #e8d3ad; border-left:4px solid var(--gold); border-radius:9px; padding:14px 17px; margin:16px 0; font-size:.94rem; color:#6b4e22}
+  #w15 .duebox b{color:var(--gold)}
+  #w15 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w15 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w15 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w15 dialog.pop .in{padding:17px 19px; position:relative}
+  #w15 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w15 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w15 dialog.pop a{color:var(--accent)}
+  #w15 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w15 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w15 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w15{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; --field:#1e232b; background:#12171d}
+    #w15 .recall{background:#16241c; border-color:#2c4536}
+    #w15 .honest,#w15 .duebox{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w15 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w15 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w15 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w15 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w15">
+
+  <div class="mast">
+    <div class="kick">Week 15 · Presentation prep</div>
+    <h1>Present Your Campaign</h1>
+    <div class="dek">The last move: you stand up and tell the room what you built for your cause, and what it actually did. About six minutes. Work through this before you present.</div>
+  </div>
+
+  <div class="ground">This is your prep, not busywork. Read it, build your talk in the planner, run the honest-metrics drill, then do the reflection. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in front of you.</div>
+
+  <div class="recall">
+    <b>Where the semester landed you:</b> you picked one real, low-traction cause in Week 1 and carried it through a media analysis (P1), an audit and strategy (P2), and now a built campaign with a measured result (P3). Nobody in that room knows this cause the way you do. For your six minutes, you are the person who did the work. Own it.
+  </div>
+
+  <h2>1 · A talk is not your report read aloud</h2>
+  <p>Your <span class="term" data-pop="p3">impact report</span> is pages a reader can move through slowly. Your talk is six minutes an audience hears once, live. Different medium, different rules (you spent a whole semester on that idea). You cannot say everything, so stop trying. A strong campaign talk tells one clear story and lands <span class="term" data-pop="one">one</span> point.</p>
+  <div class="ex">
+    <div class="t">The shape of it</div>
+    Not "here is everything in my report, section by section." Instead: here is a cause you should care about, here is what it needed the media to do, here is the move I made and why, here is the work itself on the screen, here is what actually changed, and here is where it goes next. A story with a person in it, not a summary.
+  </div>
+
+  <h2>2 · The six beats</h2>
+  <p>Every good campaign talk hits these, in order. The examples use a made-up cause (a push for a safe pedestrian crossing at a rural school) so you can see each beat land.</p>
+  <ol class="beats">
+    <li><b>The cause, with a face.</b> Open so the room cares in ten seconds. A moment, a number, one real person.
+      <span class="eg">e.g. "Every morning, forty kids cross a fifty-mile-an-hour highway to get to Valle Crucis School. There is no crosswalk. There has never been one."</span></li>
+    <li><b>The problem, and the media job.</b> What did your cause need the media to actually do? Name the gap you found in P2.
+      <span class="eg">e.g. "Everyone local already agreed. The problem was not persuasion, it was that the county had never heard forty separate parents as one voice."</span></li>
+    <li><b>The theory and the move.</b> Which course idea drove your campaign, and why that one for this cause?
+      <span class="eg">e.g. "This called for <span class="term" data-pop="relational">relational organizing</span>, not a viral post. A trusted parent asking another parent beats any ad, so I built a phone tree, not a hashtag."</span></li>
+    <li><b>Show the work.</b> Put your real artifacts on the screen. The reel, the zine, the flyer, the event photo. Let them see it rather than merely describe it.
+      <span class="eg">e.g. "Here is the one-page fact sheet parents handed to each other, and here is the sign-in sheet from the meeting it filled."</span></li>
+    <li><b>Honest impact.</b> What actually changed? Separate real movement from <span class="term" data-pop="vanity">vanity metrics</span>. Say what flopped too. That candor is part of the grade and the whole point of Week 14.
+      <span class="eg">e.g. "The Facebook post got twelve likes, which is nothing. But nineteen families showed up to the county meeting, and the commissioner put a traffic study on the agenda. Bodies in a room, not likes."</span></li>
+    <li><b>What is next, and a close.</b> The cause outlives this class. Name the next slow step, then one line that sticks. End clean, then "thank you."
+      <span class="eg">e.g. "The study runs in the spring. Forty kids still cross that highway tomorrow. So I am not done. Thank you."</span></li>
+  </ol>
+
+  <h2>3 · Build your talk in the planner</h2>
+  <p>Draft your six beats here. It writes your speaker notes as you go, and everything stays on this device. Start with the one thing you want the room to remember, then build every beat to serve it.</p>
+  <div class="planner">
+    <div class="take">
+      <label for="f_take">The one thing they should remember <span class="n">(say it out loud, near the start and again at the close)</span></label>
+      <input type="text" id="f_take" placeholder="e.g. Forty kids cross a highway with no crosswalk, and a phone tree did what a Facebook post never could.">
+    </div>
+
+    <label for="f_hook">1 · The cause, with a face <span class="n">open so they care</span></label>
+    <textarea id="f_hook" placeholder="A moment, a number, one real person. Not 'Hi, my campaign is about…'"></textarea>
+    <div class="hint">Ten seconds to make the room care about a cause they have never heard of.</div>
+
+    <label for="f_gap">2 · The problem and the media job <span class="n">the gap from your audit</span></label>
+    <textarea id="f_gap" placeholder="What did your cause need the media to DO? (reach strangers? build trust? own a channel? get bodies in a room?)"></textarea>
+
+    <label for="f_theory">3 · The theory and the move <span class="n">which course idea, and why</span></label>
+    <textarea id="f_theory" placeholder="e.g. slow/fast, medium-is-message, relational organizing, emergent strategy. Why THIS move for THIS cause?"></textarea>
+
+    <label for="f_show">4 · Show the work <span class="n">name the artifacts you will put on screen</span></label>
+    <textarea id="f_show" placeholder="e.g. the reel, the zine spread, the event flyer, the sign-in sheet. What is your single strongest visual?"></textarea>
+
+    <label for="f_impact">5 · Honest impact <span class="n">real change vs. vanity metrics, including what flopped</span></label>
+    <textarea id="f_impact" placeholder="e.g. the post got 12 likes (nothing), but 19 families showed up and a study got scheduled. Bodies, not likes."></textarea>
+
+    <label for="f_close">6 · What is next, and a close <span class="n">one memorable last line + thanks</span></label>
+    <textarea id="f_close" placeholder="Name the next slow step for the cause, then a line that sticks, then 'thank you.'"></textarea>
+  </div>
+
+  <h2>Your talk, on one screen</h2>
+  <div class="screen" id="screen" aria-live="polite"></div>
+  <button type="button" class="btn ghost" id="download">Download my speaker notes (.txt)</button>
+
+  <h2>4 · Slides that help, not hurt</h2>
+  <div class="ex">
+    <div class="t">The rule</div>
+    Few words per slide. Your audience can read or listen, not both. Put your <span class="term" data-pop="visual">single strongest artifact</span> up large: the reel plays, the zine spread fills the screen, the event photo shows real faces. A slide that needs a paragraph is a handout, not a slide. Show the work; let the room see the campaign was real.
+  </div>
+
+  <h2>5 · Honest impact or vanity metric?</h2>
+  <p>This is the hard part of a campaign talk, and it is the whole lesson of Week 14. A number can look like success and mean almost nothing. Remember <span class="term" data-pop="dean">Jodi Dean</span>: endless <span class="term" data-pop="circulation">circulation</span> can feel like politics while changing nothing. For each result below, make two calls. First, where does it sit: vanity, mixed, or real? Second, what does it actually tell you? Commit both, then Check. The honest answer is often "mixed."</p>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per result. The obvious read is sometimes wrong, a big number can be hollow and a tiny one can be real power.</div>
+
+    <div class="di" data-spec="vanity" data-trade="1">
+      <div class="q">1. Your launch reel hit 8,000 views.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Vanity, on its own. Eight thousand people scrolled past. You cannot reach any of them again, and not one has done anything yet. A view is the start of nothing until it turns into a relationship or an action.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="2">
+      <div class="q">2. Forty-two people signed up for your email list off that reel.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Mixed, leaning real. A list is not action yet, but now you own a way to reach forty-two interested people without renting it from an algorithm. That is worth more than the 8,000 views that fed it.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="3">
+      <div class="q">3. Your petition got 300 online signatures. Six people came to the town council meeting.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Mixed. The 300 signatures are circulation, a click costs nothing. The six bodies in the room are the real signal: those people acted. Dean's warning, live. In a room, six beats three hundred.</div>
+    </div>
+
+    <div class="di" data-spec="real" data-trade="3">
+      <div class="q">4. A local reporter called you for a story after your zine circulated at three churches.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Real. This is <span class="term" data-pop="earned">earned media</span>: someone with a platform chose to act on your slow, high-trust work, no money changed hands. A reporter deciding you are worth covering is a person doing something, and it multiplies your reach for free.</div>
+    </div>
+
+    <div class="di" data-spec="vanity" data-trade="1">
+      <div class="q">5. A post got 1,200 likes, then engagement dropped to zero the next week.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Vanity. A spike that leaves nothing behind is rented attention: it stops the moment the algorithm moves on. If nothing carried over to the next week, the number measured the platform, not your cause.</div>
+    </div>
+
+    <div class="di" data-spec="real" data-trade="4">
+      <div class="q">6. Two volunteers grew into organizers who now run their own meetings without you.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Real, and the deepest kind. This is what <span class="term" data-pop="brown">adrienne maree brown</span> means by growing capacity: the campaign now runs without you. No view count comes close to two people who can carry it forward.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my calls</button>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="honest"><b>Bring this into your talk:</b> when you present your own numbers, do exactly this. Name what is vanity, name what is real, and say plainly what did not work. A presenter who admits the flop reads as more credible, not less. Evidence-honest is the whole brand of this course.</div>
+
+  <h2>6 · Talk, do not read. Then practice out loud.</h2>
+  <p>Reading a script word for word drains the life out of a talk and loses the room. Keep a few <span class="term" data-pop="deliver">notes</span> as reminders, look up, and talk to us like people. Know your first line and your last line cold, so you start and end strong even if the middle wobbles. Then rehearse the whole thing <span class="term" data-pop="practice">out loud, on a clock, at least twice</span>. It is the only way to learn your real length (talks always run long) and to smooth the rough spots. Practicing in your head does not count.</p>
+  <p>A short <span class="term" data-pop="qa">Q and A</span> follows each talk. You can prepare for it. Almost every campaign gets some version of "what would you do differently?", "what surprised you?", and "what is next for the cause?" Have a real answer ready for each. "Good question, I am not sure, but here is my guess" is a respectable answer. You do not have to know everything.</p>
+
+  <h2>Ready to present?</h2>
+  <ul class="check" id="checks">
+    <li><input type="checkbox"><span class="lbl">I have <b>one</b> takeaway, and I say it out loud in the talk.</span></li>
+    <li><input type="checkbox"><span class="lbl">My strongest artifact is on a slide, big, so the room sees the real work.</span></li>
+    <li><input type="checkbox"><span class="lbl">I separate real impact from <span class="term" data-pop="vanity">vanity metrics</span>, and I name what flopped.</span></li>
+    <li><input type="checkbox"><span class="lbl">I can say it without <span class="term" data-pop="deliver">reading</span> from a script, first line and last line cold.</span></li>
+    <li><input type="checkbox"><span class="lbl">I <span class="term" data-pop="practice">practiced out loud</span> and timed it. It is under six minutes.</span></li>
+    <li><input type="checkbox"><span class="lbl">I can answer "what would you do differently?" and "what is next for the cause?"</span></li>
+  </ul>
+  <div class="readycount" id="readycount"></div>
+
+  <!-- NOTEBOOK -->
+  <h2>7 · Close your Field Notebook (final entry)</h2>
+  <p>This is your last notebook entry of the term. Draft privately here (it autosaves on this device), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is the <b>Google Sheet</b> you have kept all semester. Write here, then hit <b>Copy for my notebook</b> and paste into the final row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Your one takeaway, in a sentence: what is the single thing you want the room to remember about your cause and your campaign?</label>
+    <textarea id="n1" placeholder="e.g. Forty kids cross a highway with no crosswalk, and a phone tree moved the county when a Facebook post could not."></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Which course idea drove your campaign, and what is your honest read on whether it worked? (Name one real result and one thing that flopped.)</label>
+    <textarea id="n2" placeholder="e.g. relational organizing. Real: 19 families at the meeting. Flopped: the boosted post, 12 likes and nothing after…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. The cause outlives this class. What is the one next slow step you could actually take after the semester ends?</label>
+    <textarea id="n3" placeholder="e.g. keep the email list warm with a monthly update, and show up to the spring traffic-study hearing with the same families…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="duebox">
+    <b>Due now, and it closes the course:</b> your <b>P3 final</b> (the built campaign plus the impact report) goes in AsULearn. Your <b>Field Notebook end-of-term check-in</b> is also due: open your Sheet, make sure every week is filled in, and submit it to AsULearn. Those two are the finish line.
+  </div>
+
+  <div class="close">
+    <b>Look what you did.</b> You started the semester with the idea that social media is older than your phone. You are ending it having run a real campaign for a real cause, chosen a media theory on purpose, produced the work, and measured what it actually moved. Walk up there and tell us about it. You earned this.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 14 · Measuring impact</a>
+    <a href="module-w16-close.html">Week 16 · What happens now ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Sheet you copied in Week 1 and kept all semester: in-class exercises, analog experiments, case notes, strategy scratch. It stays in your own Drive, private to you, until you submit it. This week you add the final entry and turn the whole thing in.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 and carried through every project. Its obscurity was the point: your media work could actually move the needle. Today you show the room what it moved.</p></div></dialog>
+  <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>P3: Campaign + Impact Report</h4><p>Your final project: a small, ethical, multimodal campaign for your cause, grounded in one course media theory, plus a report that measures and reflects on what it circulated and changed. The presentation is the spoken version of that report.</p></div></dialog>
+  <dialog class="pop" id="pop-one"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>One takeaway</h4><p>An audience forgets nearly everything in a short talk except, if you are lucky, one idea. So pick that idea on purpose and say it twice, near the start and again at the close.</p><p><b>Example:</b> "A phone tree moved the county when a viral post could not." Say that line early, then end on it. Trying to deliver everything usually delivers nothing.</p></div></dialog>
+  <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Vanity metrics</h4><p>Numbers that look impressive but do not track what actually matters: likes, views, follower counts, impressions. They give the rosiest picture possible while telling you little about whether anyone acted, changed, or stuck around.</p><p><b>Example:</b> a post with 5,000 likes and zero new volunteers is loud and empty. Twelve people who showed up to a meeting is quiet and real.</p><p><a href="https://en.wikipedia.org/wiki/Vanity_metric" target="_blank" rel="noopener">What a vanity metric is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jodi Dean · communicative capitalism</h4><p>The political theorist you met in Week 11. Her warning: on social platforms, messages can become mere contributions to circulation, endlessly posted and forwarded while decoupled from any real action or response. Posting can feel like politics while changing nothing.</p><p><b>Why it is here:</b> her lens is exactly how you tell a real result from a hollow one. If your number just added to the churn, it is circulation, not change.</p></div></dialog>
+  <dialog class="pop" id="pop-circulation"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Circulation vs. change</h4><p>Circulation is a message moving around: shares, views, forwards, signatures. Change is someone doing something different because of it: showing up, giving money, shifting a policy, joining.</p><p><b>Example:</b> 300 people sharing your petition is circulation. Six of them driving to the council meeting is change. A campaign talk should be honest about which is which.</p></div></dialog>
+  <dialog class="pop" id="pop-relational"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Relational organizing</h4><p>From Week 12: field research shows a real conversation with someone who knows you moves people that mailers and ads cannot. The most powerful medium is a trusted person.</p><p><b>Example:</b> a parent texting another parent "will you come Tuesday?" outperforms any boosted post. If your campaign leaned on trusted messengers, this is the theory to name.</p></div></dialog>
+  <dialog class="pop" id="pop-brown"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown · emergent strategy</h4><p>From Week 13: "small is good, small is all"; move at the speed of trust; grow like mycelium, not like an ad campaign. Critical connections over critical mass.</p><p><b>Why it is here:</b> two volunteers who become organizers is her whole idea in one result. The deepest impact is capacity that keeps going without you.</p></div></dialog>
+  <dialog class="pop" id="pop-visual"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Show one strong artifact</h4><p>Put your single best piece of the campaign on a slide, large: the reel playing, the zine spread, a photo of real people at your event. A clear visual lands in three seconds what a paragraph of talking cannot.</p><p><b>Example:</b> a full-screen photo of nineteen families at the council meeting says "this was real" faster than any sentence. Avoid text-heavy slides; the room cannot read and listen at once.</p></div></dialog>
+  <dialog class="pop" id="pop-deliver"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Talk, do not read</h4><p>Reading a script flattens your voice and loses eye contact. Keep a few notes as reminders and speak to the audience. You know this cause better than anyone in the room; trust that.</p><p><b>Example:</b> glance at "beat 3: the phone tree, why not a hashtag," then look up and just tell us. Talking to people beats a perfect paragraph read to the floor.</p></div></dialog>
+  <dialog class="pop" id="pop-practice"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Practice out loud and time it</h4><p>Rehearse the whole talk aloud at least twice, on a clock. It is the only way to learn your real length (talks always run long) and to smooth the rough spots before you are in front of people.</p><p><b>Example:</b> your first run comes in at eight minutes; you cut a detail, not your takeaway, and land at five-forty. Practicing silently does not count. Your mouth needs the reps.</p></div></dialog>
+  <dialog class="pop" id="pop-qa"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Handling questions</h4><p>The Q and A is not a trap; people ask because they are interested. Prepare for the usual three, what you would do differently, what surprised you, and what is next for the cause, and you will field most of it.</p><p><b>Example:</b> "What would I do differently? Skip the boosted post and put that time into the phone tree." Confident, specific, and clear about the flop. If you do not know, say so and offer your best guess.</p></div></dialog>
+  <dialog class="pop" id="pop-earned"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Earned media</h4><p>Coverage of your cause that a third party publishes without you paying for it: a reporter's story, a repost from a bigger account, a mention in someone else's newsletter. The opposite of a paid ad, and usually more trusted because you did not buy it.</p><p><b>Example:</b> after your zine circulates at three churches, a local reporter calls and runs a story. You reached the whole county for free because your slow work earned it.</p><p><a href="https://en.wikipedia.org/wiki/Earned_media" target="_blank" rel="noopener">What earned media is →</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w15');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  root.querySelectorAll('dialog.pop').forEach(function(d){
+    d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
+  });
+
+  // planner render + persistence
+  var BEATS = [
+    ['f_hook','The cause, with a face'],['f_gap','The problem and the media job'],
+    ['f_theory','The theory and the move'],['f_show','Show the work'],
+    ['f_impact','Honest impact'],['f_close','What is next, and a close']
+  ];
+  function val(id){ var e=document.getElementById(id); return e ? (e.value||'').trim() : ''; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function render(){
+    var take = val('f_take');
+    var html = '<div class="stake">'+(take ? '★ '+esc(take) : '<span class="empty">Your one takeaway goes here.</span>')+'</div><ol>';
+    BEATS.forEach(function(b){
+      var v = val(b[0]);
+      html += '<li><b>'+esc(b[1])+':</b> '+(v ? esc(v) : '<span class="empty">(add this beat)</span>')+'</li>';
+    });
+    html += '</ol>';
+    var filled = BEATS.filter(function(b){ return val(b[0]); }).length;
+    html += '<p class="cnt">'+filled+' of 6 beats drafted. Aim for about six minutes total, so keep each beat tight.</p>';
+    document.getElementById('screen').innerHTML = html;
+  }
+
+  // on-device autosave for planner + notebook
+  ['f_take','f_hook','f_gap','f_theory','f_show','f_impact','f_close','n1','n2','n3'].forEach(function(id){
+    var el = document.getElementById(id); if(!el) return;
+    var key = 'e4_w15_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ el.value = v; } }catch(e){}
+    el.addEventListener('input', function(){
+      try{ localStorage.setItem(key, el.value); }catch(e){}
+      var tag = el.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+      if(id.indexOf('f_') === 0) render();
+    });
+  });
+
+  document.getElementById('download').addEventListener('click', function(){
+    var lines = ['ENG 4100 · Campaign Talk · Speaker Notes','================================',''];
+    lines.push('MY ONE TAKEAWAY:'); lines.push('  '+(val('f_take')||'(none yet)')); lines.push('');
+    BEATS.forEach(function(b,i){ lines.push((i+1)+'. '+b[1].toUpperCase()); lines.push('  '+(val(b[0])||'(add this beat)')); lines.push(''); });
+    lines.push('Reminder: say the takeaway near the start and again at the close. Aim under six minutes. Talk, do not read. Show the real work.');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'}));
+    a.download='eng4100-campaign-talk-notes.txt'; a.click();
+  });
+
+  // impact interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. Reading a number truthfully is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+
+  // readiness checklist
+  function tally(){
+    var boxes = root.querySelectorAll('#checks input[type=checkbox]'), n=0;
+    boxes.forEach(function(b){ if(b.checked) n++; });
+    var el = document.getElementById('readycount');
+    el.textContent = n===boxes.length ? 'All set. Go tell them what you built.' : (n+' of '+boxes.length+' ready.');
+  }
+  root.querySelectorAll('#checks input[type=checkbox]').forEach(function(b){ b.addEventListener('change', tally); });
+
+  // notebook copy / download
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 15: Present Your Campaign (final entry)\n'
+      + '1. My one takeaway:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. The theory that drove my campaign + my honest read (one real result, one flop):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. The next slow step after the semester ends:\n' + (g('n3')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week15-notebook.txt'; a.click();
+  });
+
+  render(); tally();
+})();
+</script>
+</body>
+</html>

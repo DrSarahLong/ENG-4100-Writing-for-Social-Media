@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Major Projects · ENG 4100 Writing for Social Media</title>
+<style>
+  :root{
+    --paper:#f8fafb; --card:#ffffff; --ink:#1a2230; --muted:#586573;
+    --accent:#365a7a; --accent-soft:#e8eff4; --line:#e0e6ec; --field:#fdfefe;
+    --gold:#a3771f; --good:#2f7d54; --no:#a13a2d; --navbg:#f8fafbee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#111821; --card:#1a2029; --ink:#e7ecf1; --muted:#93a1b0; --accent:#8bb2d2; --accent-soft:#1d2a37; --line:#2a333d; --field:#1a2029; --gold:#d8b168; --good:#7ac598; --no:#e08a7a; --navbg:#111821ee; }
+  }
+  *{box-sizing:border-box} html,body{margin:0} html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--accent)}
+  .nav{position:sticky; top:0; z-index:20; background:var(--navbg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .nav .inner{max-width:1000px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:8px 18px; flex-wrap:wrap}
+  .nav .brand{font-family:Georgia,"Iowan Old Style",serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; margin-right:auto}
+  .nav .brand small{display:block; font-family:system-ui,sans-serif; font-weight:600; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+  .nav a.lnk{color:var(--ink); text-decoration:none; font-weight:600; font-size:.93rem; padding:4px 2px; border-bottom:2px solid transparent}
+  .nav a.lnk:hover{border-bottom-color:var(--accent); color:var(--accent)}
+  .nav a.lnk[aria-current="page"]{color:var(--accent); border-bottom-color:var(--accent)}
+  .nav a.lms{background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:.9rem; border-radius:8px; padding:8px 14px; white-space:nowrap}
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 70px}
+  .masthead{padding:36px 0 16px; border-bottom:2px solid var(--ink); margin-bottom:10px}
+  .masthead .kick{font-size:.78rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:0 0 6px}
+  .masthead h1{font-family:Georgia,"Iowan Old Style",serif; font-size:2rem; margin:0 0 6px; line-height:1.12}
+  .masthead p{color:var(--muted); margin:6px 0 0; max-width:72ch}
+  .howto{background:var(--accent-soft); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:16px 0}
+  .howto b{color:var(--accent)}
+  .keyrow{display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px; font-size:.86rem}
+  .keyrow span{font-weight:700}
+  .k-ex{color:var(--good)} .k-me{color:var(--accent)} .k-de{color:var(--gold)} .k-no{color:var(--no)}
+  .proj{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; border-left:5px solid var(--accent)}
+  .proj .top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .proj .tag{font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--accent)}
+  .proj .wt{margin-left:auto; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums}
+  .proj h2{font-family:Georgia,"Iowan Old Style",serif; font-size:1.3rem; margin:2px 0 2px}
+  .proj .fmt{color:var(--muted); font-size:.86rem; margin:0 0 8px}
+  .proj p{margin:.5rem 0}
+  .sublab{font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:16px 0 6px}
+  .crit{border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin:9px 0; background:var(--field)}
+  .cname{font-weight:700; color:var(--accent); margin-bottom:8px}
+  .levels{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+  @media (max-width:720px){ .levels{grid-template-columns:1fr 1fr} }
+  @media (max-width:460px){ .levels{grid-template-columns:1fr} }
+  .lvl{border:1px solid var(--line); border-top-width:3px; border-radius:8px; padding:8px 10px; font-size:.85rem; background:var(--card)}
+  .lvl .t{display:block; font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:3px}
+  .lvl.exceeds{border-top-color:var(--good)} .lvl.exceeds .t{color:var(--good)}
+  .lvl.meets{border-top-color:var(--accent)} .lvl.meets .t{color:var(--accent)}
+  .lvl.dev{border-top-color:var(--gold)} .lvl.dev .t{color:var(--gold)}
+  .lvl.not{border-top-color:var(--no)} .lvl.not .t{color:var(--no)}
+  .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; border-radius:9px; padding:11px 18px; margin:10px 8px 6px 0}
+  .cta.ghost{background:transparent; color:var(--accent); border:1.5px solid var(--accent)}
+  .note{color:var(--muted); font-size:.92rem}
+  footer{color:var(--muted); font-size:.9rem; margin-top:30px; padding-top:16px; border-top:1px solid var(--line)}
+</style>
+</head>
+<body id="e4-projects">
+
+  <nav class="nav">
+    <div class="inner">
+      <a class="brand" href="index.html">ENG 4100<small>Writing for Social Media</small></a>
+      <a class="lnk" href="index.html">Home</a>
+      <a class="lnk" href="syllabus.html">Syllabus</a>
+      <a class="lnk" href="schedule.html">Schedule</a>
+      <a class="lnk" href="projects.html" aria-current="page">Major Projects</a>
+      <a class="lms" href="https://asulearn.appstate.edu/" target="_blank" rel="noopener">AsULearn &rarr;</a>
+    </div>
+  </nav>
+
+  <div class="wrap" id="projects-wrap">
+
+    <header class="masthead">
+      <p class="kick">Appalachian State University · Fall 2026</p>
+      <h1>Major Projects</h1>
+      <p>Three projects carry the course, and each one builds on the last. You analyze how a movement works, plan a strategy for your own cause, then make and measure a real campaign. Each project is scored on a handful of criteria, and the weekly modules walk you through building it.</p>
+    </header>
+
+    <div class="howto">
+      <b>How to read a rubric.</b> Each criterion is scored on one of four levels. <b>Meets</b> is the target: solid, full-credit work. Read the Meets column first, that's what you're aiming for on every line.
+      <div class="keyrow">
+        <span class="k-ex">Exceeds</span> goes beyond the target
+        <span class="k-me">Meets</span> the target (your goal)
+        <span class="k-de">Developing</span> partway there
+        <span class="k-no">Not yet</span> not present yet
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="top"><span class="tag">Project 1 · introduced Week 3 · due Week 6</span><span class="wt">20%</span></div>
+      <h2>Movement Media Analysis</h2>
+      <p class="fmt">Research-grounded analysis · submitted as a Google Doc</p>
+      <p>Analyze how one movement, one of our cases or one you bring, built connection and spread ideas through its media. Name its "media theory," read its slow and fast tools, and weigh its ethics. Then pull concrete lessons for your own cause. This is close reading of how a movement actually reached people, backed by real sources and primary artifacts.</p>
+      <p class="sublab">The rubric</p>
+      <div class="crit"><div class="cname">Media theory, named and applied</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Names the movement's implicit media theory with precision and uses it to explain choices others would miss</div>
+        <div class="lvl meets"><span class="t">Meets</span>Identifies the movement's media theory (ritual/transmission, slow/fast, owning vs. renting the channel) and uses it to drive the analysis</div>
+        <div class="lvl dev"><span class="t">Developing</span>Gestures at a theory but mostly describes what happened</div>
+        <div class="lvl not"><span class="t">Not yet</span>No guiding idea; a summary of events</div>
+      </div></div>
+      <div class="crit"><div class="cname">Evidence &amp; primary artifacts</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Well-chosen artifacts and sources, closely read and fully cited</div>
+        <div class="lvl meets"><span class="t">Meets</span>Grounded in real artifacts and credible sources, cited consistently</div>
+        <div class="lvl dev"><span class="t">Developing</span>Some evidence, thin or loosely cited</div>
+        <div class="lvl not"><span class="t">Not yet</span>Little evidence, or uncited</div>
+      </div></div>
+      <div class="crit"><div class="cname">Analysis of connection &amp; circulation</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Shows exactly how the media built community and moved ideas, including tensions and trade-offs</div>
+        <div class="lvl meets"><span class="t">Meets</span>Explains how the media drew people together and circulated the message, not merely that it did</div>
+        <div class="lvl dev"><span class="t">Developing</span>Notices effects but doesn't explain the mechanism</div>
+        <div class="lvl not"><span class="t">Not yet</span>Describes the movement without analyzing its media</div>
+      </div></div>
+      <div class="crit"><div class="cname">Lessons for your cause</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Sharp, specific, defensible lessons that reshape how you'd work your cause</div>
+        <div class="lvl meets"><span class="t">Meets</span>Draws concrete, usable lessons for your own cause from the case</div>
+        <div class="lvl dev"><span class="t">Developing</span>Generic takeaways that could apply to anything</div>
+        <div class="lvl not"><span class="t">Not yet</span>No connection to your cause</div>
+      </div></div>
+    </div>
+
+    <div class="proj">
+      <div class="top"><span class="tag">Project 2 · set up Week 9 · due Week 11</span><span class="wt">25%</span></div>
+      <h2>Content Strategy &amp; Audit</h2>
+      <p class="fmt">Strategy document · submitted as a Google Doc</p>
+      <p>For your cause, take an honest read of where it stands right now, then build a strategy to move it forward. Audit the current presence, define the audience and real goals, choose channels and a platform-appropriate voice, and lay out a workable editorial calendar. The test is whether someone could pick this up and run the cause's communications from it.</p>
+      <p class="sublab">The rubric</p>
+      <div class="crit"><div class="cname">Audit</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Clear-eyed audit that separates real traction from vanity and finds the gaps others miss</div>
+        <div class="lvl meets"><span class="t">Meets</span>Reads the cause's current channels, audience, and what is and isn't working, with candor</div>
+        <div class="lvl dev"><span class="t">Developing</span>Describes the presence but doesn't evaluate it</div>
+        <div class="lvl not"><span class="t">Not yet</span>No real audit</div>
+      </div></div>
+      <div class="crit"><div class="cname">Audience &amp; goals</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Specific audiences and goals that are measurable and genuinely reachable</div>
+        <div class="lvl meets"><span class="t">Meets</span>Defines real audience(s) and concrete goals tied to the cause's needs</div>
+        <div class="lvl dev"><span class="t">Developing</span>Vague audience ("everyone") or fuzzy goals</div>
+        <div class="lvl not"><span class="t">Not yet</span>No defined audience or goals</div>
+      </div></div>
+      <div class="crit"><div class="cname">Strategy &amp; platform-appropriate voice</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Channel choices are justified and the voice is tuned convincingly to each platform and audience</div>
+        <div class="lvl meets"><span class="t">Meets</span>Channel choices fit the goals; voice suits both the platform and the cause</div>
+        <div class="lvl dev"><span class="t">Developing</span>Some choices unexplained, or one voice pasted everywhere</div>
+        <div class="lvl not"><span class="t">Not yet</span>No coherent strategy or voice</div>
+      </div></div>
+      <div class="crit"><div class="cname">Editorial calendar &amp; feasibility</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>A concrete, sustainable calendar someone could actually run, with contingencies</div>
+        <div class="lvl meets"><span class="t">Meets</span>A clear editorial calendar sized to real capacity</div>
+        <div class="lvl dev"><span class="t">Developing</span>A rough plan, over-ambitious or thin</div>
+        <div class="lvl not"><span class="t">Not yet</span>No calendar or plan</div>
+      </div></div>
+    </div>
+
+    <div class="proj">
+      <div class="top"><span class="tag">Project 3 · set up Week 12 · due Week 16 · presented</span><span class="wt">30%</span></div>
+      <h2>Campaign + Impact Report</h2>
+      <p class="fmt">Multimodal campaign + written report · presented to the class</p>
+      <p>Design, produce, and present a small, ethical, <b>multimodal</b> campaign for your cause, grounded in one of the media theories from the course, then measure its circulation and impact. While traditional social media channels will likely be part of your campaign, they should not be the focus of it, and you do not have to include them at all if you can justify the effectiveness of analog methods. Then measure and reflect: what circulated, what actually changed, and what counts as real impact versus noise. You present the campaign and its results in the final weeks (the presentation itself is scored under Participation &amp; Final Presentation).</p>
+      <p class="sublab">The rubric</p>
+      <div class="crit"><div class="cname">Multimodal campaign (craft &amp; coherence)</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Polished pieces across modes that clearly belong to one campaign and reinforce each other</div>
+        <div class="lvl meets"><span class="t">Meets</span>Real artifacts combining language, image, sound, or design into a coherent campaign</div>
+        <div class="lvl dev"><span class="t">Developing</span>A few pieces, loosely related or uneven in craft</div>
+        <div class="lvl not"><span class="t">Not yet</span>One mode only, or no finished artifacts</div>
+      </div></div>
+      <div class="crit"><div class="cname">Grounded in a course media theory</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>A named theory visibly shapes every design choice; the campaign is an argument for that approach</div>
+        <div class="lvl meets"><span class="t">Meets</span>A named course theory clearly informs the campaign's design and channel choices</div>
+        <div class="lvl dev"><span class="t">Developing</span>A theory is mentioned but doesn't drive the work</div>
+        <div class="lvl not"><span class="t">Not yet</span>No theoretical grounding</div>
+      </div></div>
+      <div class="crit"><div class="cname">Ethics: disclosure, representation, accessibility</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Ethics are designed in from the start; accessible, fair, transparent throughout</div>
+        <div class="lvl meets"><span class="t">Meets</span>Discloses with candor, represents people fairly, and meets basic accessibility (alt text, captions, contrast)</div>
+        <div class="lvl dev"><span class="t">Developing</span>Some ethical gaps or accessibility oversights</div>
+        <div class="lvl not"><span class="t">Not yet</span>Misleading, unfair, or inaccessible</div>
+      </div></div>
+      <div class="crit"><div class="cname">Impact report (honest metrics)</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Defines real success metrics, measures them, and reflects with unusual honesty on what changed and what didn't</div>
+        <div class="lvl meets"><span class="t">Meets</span>Names real impact metrics (behavior, relationships, reach) over vanity ones, and reflects on the results</div>
+        <div class="lvl dev"><span class="t">Developing</span>Reports mostly likes and follows, with little reflection</div>
+        <div class="lvl not"><span class="t">Not yet</span>No measurement or reflection</div>
+      </div></div>
+    </div>
+
+    <div class="proj" style="border-left-color:var(--gold)">
+      <div class="top"><span class="tag" style="color:var(--gold)">Ongoing · completion</span><span class="wt" style="color:var(--gold)">15%</span></div>
+      <h2>Field Notebook</h2>
+      <p class="fmt">A private Google Sheet · turned in twice</p>
+      <p>Your working notebook holds the in-class exercises, your <b>analog experiments</b> (a real undistracted conversation, a note circulated by hand, a day off the feed, a face-to-face ask), case notes, platform observations, and strategy scratch. It's graded on <b>completion</b>, not polish: full credit for doing the thinking and the fieldwork. You turn it in at the midterm check-in and again at the end of term.</p>
+      <p class="sublab">The rubric</p>
+      <div class="crit"><div class="cname">Weekly entries present</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Every week complete, with extra digging where it got interesting</div>
+        <div class="lvl meets"><span class="t">Meets</span>An entry for each week's prompt, done on time</div>
+        <div class="lvl dev"><span class="t">Developing</span>Several weeks missing or one-line</div>
+        <div class="lvl not"><span class="t">Not yet</span>Mostly empty</div>
+      </div></div>
+      <div class="crit"><div class="cname">Analog experiments done</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Experiments actually attempted in the world and documented with real observation</div>
+        <div class="lvl meets"><span class="t">Meets</span>The analog experiments are done and briefly written up</div>
+        <div class="lvl dev"><span class="t">Developing</span>A few skipped or described without doing them</div>
+        <div class="lvl not"><span class="t">Not yet</span>Not attempted</div>
+      </div></div>
+      <div class="crit"><div class="cname">Applied to your cause</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Each week visibly moves your cause thinking forward</div>
+        <div class="lvl meets"><span class="t">Meets</span>Entries connect the week's idea to your own cause</div>
+        <div class="lvl dev"><span class="t">Developing</span>Generic notes that skip the cause</div>
+        <div class="lvl not"><span class="t">Not yet</span>No link to your cause</div>
+      </div></div>
+      <div class="crit"><div class="cname">Documentation &amp; observation</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Specific, noticing detail; screenshots, quotes, and notes that could seed a project</div>
+        <div class="lvl meets"><span class="t">Meets</span>Concrete observations captured, not bare opinions</div>
+        <div class="lvl dev"><span class="t">Developing</span>Vague or purely reactive notes</div>
+        <div class="lvl not"><span class="t">Not yet</span>No usable documentation</div>
+      </div></div>
+    </div>
+
+    <div class="proj" style="border-left-color:var(--good)">
+      <div class="top"><span class="tag" style="color:var(--good)">Ongoing · in class &amp; Weeks 15&ndash;16</span><span class="wt" style="color:var(--good)">10%</span></div>
+      <h2>Participation &amp; Final Presentation</h2>
+      <p class="fmt">In-class engagement + a campaign presentation</p>
+      <p>Ten percent covers showing up ready and joining the class conversation all semester, plus your final presentation of the P3 campaign and impact report. A strong presentation tells the cause's story, shows the actual work, and reports the results with candor, including what didn't land.</p>
+      <p class="sublab">The rubric</p>
+      <div class="crit"><div class="cname">Participation</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>A generous, prepared presence that lifts the whole room's thinking</div>
+        <div class="lvl meets"><span class="t">Meets</span>Comes ready, engages the exercises, and contributes to the class conversation</div>
+        <div class="lvl dev"><span class="t">Developing</span>Present but often passive or unprepared</div>
+        <div class="lvl not"><span class="t">Not yet</span>Frequently absent or disengaged</div>
+      </div></div>
+      <div class="crit"><div class="cname">Presentation: story &amp; the work</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Tells the cause's story compellingly and shows the campaign so the room can see the choices</div>
+        <div class="lvl meets"><span class="t">Meets</span>Clearly presents the cause, the campaign, and the thinking behind it</div>
+        <div class="lvl dev"><span class="t">Developing</span>Shows the work but the story or logic is unclear</div>
+        <div class="lvl not"><span class="t">Not yet</span>Disorganized or incomplete</div>
+      </div></div>
+      <div class="crit"><div class="cname">Presentation: honest results</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Reports real impact candidly, names what didn't work, and draws a lesson from it</div>
+        <div class="lvl meets"><span class="t">Meets</span>Reports the campaign's results with candor, including limits</div>
+        <div class="lvl dev"><span class="t">Developing</span>Reports only the flattering numbers</div>
+        <div class="lvl not"><span class="t">Not yet</span>No results, or misleading ones</div>
+      </div></div>
+    </div>
+
+    <p class="note">Where and when each piece is due is on the <a href="schedule.html">Schedule</a>. How the course runs and the full grading breakdown are in the <a href="syllabus.html">Syllabus</a>.</p>
+    <p>
+      <a class="cta" href="schedule.html">See the Schedule &rarr;</a>
+      <a class="cta ghost" href="syllabus.html">Read the Syllabus</a>
+    </p>
+
+    <footer>
+      ENG 4100 · Writing for Social Media · Dr. Sarah Long · Appalachian State University · Fall 2026
+    </footer>
+
+  </div>
+</body>
+</html>

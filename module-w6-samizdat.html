@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 6 · The Reader Is the Publisher</title>
+<style>
+  #w6{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w6 *{box-sizing:border-box}
+  #w6 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w6 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w6 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w6 .dek{color:var(--soft); font-size:1.05rem}
+  #w6 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w6 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w6 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w6 p{margin:.7em 0}
+  #w6 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w6 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w6 .recall b{color:var(--accent2)}
+  #w6 .due{background:#fbf3e6; border:1px solid #e8d3ad; border-left:4px solid var(--gold); border-radius:9px; padding:13px 16px; margin:20px 0; font-size:.96rem; color:#6b4e22}
+  #w6 .due b{color:var(--gold)}
+  #w6 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w6 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w6 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w6 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w6 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w6 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w6 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w6 .read a{color:var(--accent); font-weight:600}
+  #w6 .read .g{font-size:.9rem; color:var(--soft)}
+  #w6 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w6 .qa{margin-top:10px}
+  #w6 .qa .qq{font-weight:600; font-size:.95rem}
+  #w6 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w6 .reveal{margin-top:6px}
+  #w6 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w6 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* judgment interactive */
+  #w6 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w6 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w6 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w6 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w6 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w6 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w6 .di .spec{margin-bottom:7px}
+  #w6 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w6 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w6 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w6 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w6 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w6 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w6 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w6 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w6 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w6 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w6 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w6 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w6 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w6 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w6 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w6 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w6 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w6 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w6 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w6 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w6 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w6 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w6 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w6 .prime b{color:var(--accent)}
+  #w6 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w6 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w6 dialog.pop .in{padding:17px 19px; position:relative}
+  #w6 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w6 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w6 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w6 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w6 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w6 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w6{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w6 .recall{background:#16241c; border-color:#2c4536}
+    #w6 .honest,#w6 .due{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w6 .read,#w6 .prime{background:#171d2b; border-color:#2c3a56}
+    #w6 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w6 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w6 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w6 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w6">
+
+  <div class="mast">
+    <div class="kick">Week 6 · Thursday module</div>
+    <h1>The Reader Is the Publisher</h1>
+    <div class="dek">Tuesday you became the press. Today you learn how samizdat actually held together, then you face the ethics it raises for your own cause: privacy, surveillance, and what you owe the people you make visible.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing. The reading, the ethics tool, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind.</div>
+
+  <div class="due"><b>Project 1 is due this week.</b> Your Movement Media Analysis drops in AsULearn. Check the assignment page there for the exact deadline and upload format, then finish this module. Do not let the reading crowd out the deadline.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> you hand-copied a banned poem, passed it down a chain, and watched it drift and slow, the human version of a carbon copy. You felt why <span class="term" data-pop="samizdat">samizdat</span> was slow, small, and built on trust. Today we learn how that slowness became a security system, then turn it on the ethics of your own media work.
+  </div>
+
+  <h2>1 · How samizdat actually held together</h2>
+  <p>Start with the mechanism, because it explains everything else. In the USSR the State owned the presses, so a banned text spread the only way left: a reader retyped it on a home typewriter, laid in <span class="term" data-pop="carbon">carbon paper</span> to make a few copies at once, and passed those to people they trusted, who retyped it again. No headquarters. No mailing list. The phrase for it is exact: <b>the reader is the publisher.</b> The same tradition of slow, hand-to-hand circulation shows up closer to home too, in the <span class="term" data-pop="ballad">mountain ballad</span> world of Southern Appalachia.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    A poem you could go to prison for holding reaches ten thousand people, and there is no press to raid, no server to seize, no subscriber list to demand. To stop it, the KGB would have to find and silence every reader, and every reader is also a printer. The constraint (no copying allowed) did not shrink the network into nothing. It reshaped it into something the State could not grab: decentralized, personal, and slow.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://www.opendemocracy.net/en/samizdat-in-samara/" target="_blank" rel="noopener">"Samizdat in Samara," a firsthand account by Valery Pavlukevich</a> <span class="g">(openDemocracy, free full text). A dissident remembers the underground book world of his provincial city: the coded phone calls, the risk, the typewriters that had to be kept off the KGB's radar.</span></p>
+    <blockquote>"It was dangerous to try to photocopy anything by Solzhenitsyn. A mass run of 100 copies could land you in prison." (Pavlukevich describes how even electric typewriters registered with the KGB were avoided, and pre-revolutionary machines were prized because the police had no sample of their type.)</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: the account is full of small, careful choices (which typewriter, which words on the phone, whom to trust). Pick one and say what it reveals about how surveillance shapes a movement's media, even before anyone is arrested.</div>
+      <textarea id="qa1" placeholder="e.g., choosing a pre-revolutionary typewriter so the type can't be traced shows that under surveillance the medium itself becomes evidence, so form gets chosen for safety, not reach…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer connects a tiny craft choice to the politics around it. Example: "The coded word 'chocolates' for banned books shows the movement had to build a private language just to talk about its own media. Surveillance doesn't only punish speech after the fact; it reaches back and reshapes how people can even ask for a book."</div></details>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="t">The callback</div>
+    Two weeks ago <span class="term" data-pop="winner">Langdon Winner</span> argued that artifacts have politics. Samizdat is the cleanest case you will meet. A printing press is central, costly, and seizable. A typewriter with carbon paper is none of those, so the tool's very limits (slow, by hand, a few copies at a time) forced a decentralized network with no center to seize. The politics were poured into the object. The weakness became the security feature.
+  </div>
+
+  <h2>2 · What surveillance does before it arrests anyone</h2>
+  <p>Here is the turn from history to your own work. Samizdat existed because people were watched. You are not facing the KGB, but your cause still lives under watchful systems: platforms that log everything, employers who search names, opponents who screenshot. The most important effect of being watched is not arrest. It is what people stop doing on their own. Researchers call it the <span class="term" data-pop="chilling">chilling effect</span>, and it works through quiet <span class="term" data-pop="selfcensor">self-censorship</span>.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    After the 2013 revelations that the NSA was collecting bulk internet data, traffic to Wikipedia articles on terms like "car bomb" and "Al Qaeda" dropped measurably. Nobody was arrested for reading them. People simply stopped, because they felt watched. That is the chilling effect: surveillance changes behavior without ever charging a soul. For a movement, the danger is that your most vulnerable members go quiet before you even ask them to speak.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (8&ndash;10 min)</div>
+    <p style="margin:.4em 0"><a href="https://policyreview.info/articles/analysis/internet-surveillance-regulation-and-chilling-effects-online-comparative-case" target="_blank" rel="noopener">Jonathon Penney, "Internet surveillance, regulation, and chilling effects online"</a> <span class="g">(Internet Policy Review, open access, CC-BY). Read the introduction and the findings. Penney surveyed over 1,200 people; skim for the numbers on who self-censors most.</span></p>
+    <blockquote>Penney found that a personal legal threat made about 75% of people say they would speak less online, and awareness of government surveillance chilled about 62%. Younger people and women reported the strongest effect.</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: your cause wants people to speak up (share a story, sign a public letter, show their face). Name one group in your cause who would likely self-censor under watch, and one thing you could design so they can act <em>without</em> being exposed.</div>
+      <textarea id="qa2" placeholder="e.g., undocumented parents at the school won't post under their names; I could collect their stories anonymously and read them aloud myself, so the message travels but they don't…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer pairs a real group with a real design fix. Example: "Nurses reporting unsafe staffing fear their managers, so a public petition with names will get almost no signatures. A better design is a private, aggregated survey that reports numbers, not names. The point isn't to hide; it's to lower the cost of telling the truth."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Whose safety are you spending?</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Every media move for a cause exposes someone, or protects them. For each case, make two calls. First, how much does this expose a real person, <span class="term" data-pop="exposure">low, medium, or high</span>? Second, what's the right move? The obvious "post it, it'll spread" is often the wrong one, because it spends someone else's safety. Commit both, then Check.</div>
+
+    <div class="di" data-spec="low" data-trade="1">
+      <div class="q">1. You make a public explainer graphic for your issue: facts, numbers, and a call to action. No people appear in it.</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Get informed consent from someone first</option><option value="3">Strip identifying details, then publish</option><option value="4">Keep it inside your trusted network only</option><option value="5">Protect a source and verify before posting</option></select></div>
+      <div class="fb">Low exposure, so publish openly. Public is not automatically dangerous. When a message carries no person's name, face, or location, the fast, open feed is exactly the right tool. Save your caution for the cases that actually cost someone.</div>
+    </div>
+
+    <div class="di" data-spec="high" data-trade="2">
+      <div class="q">2. At a rally, a woman gives a raw, moving speech about her eviction. Filming and posting it would boost your reach, but she is afraid her landlord will retaliate.</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Get her informed consent first, on the record</option><option value="3">Strip identifying details, then publish</option><option value="4">Keep it inside your trusted network only</option><option value="5">Protect a source and verify before posting</option></select></div>
+      <div class="fb">High exposure, and her <span class="term" data-pop="consent">informed consent</span> comes first, before a frame is posted. Ask plainly what she is comfortable with, and offer to blur or use only audio. Her reach is worth less than her home. If she says no, you have your answer.</div>
+    </div>
+
+    <div class="di" data-spec="med" data-trade="3">
+      <div class="q">3. You want to screenshot your private organizing group chat to show momentum and recruit. The screenshot includes members' names and profile photos.</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Get informed consent from someone first</option><option value="3">Strip the names and photos, then share</option><option value="4">Keep it inside your trusted network only</option><option value="5">Protect a source and verify before posting</option></select></div>
+      <div class="fb">Medium exposure. Members opted into a private room, not a public post, so the fix is to strip the identifying details: recreate the message clean, or crop and blur. You keep the proof of momentum and spend nobody's privacy to get it. This is the same move as blurring a face.</div>
+    </div>
+
+    <div class="di" data-spec="high" data-trade="5">
+      <div class="q">4. An anonymous insider emails you documents exposing wrongdoing by your cause's opponent. Posting them would help. Careless posting could reveal who leaked.</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Get informed consent from someone first</option><option value="3">Strip identifying details, then publish</option><option value="4">Keep it inside your trusted network only</option><option value="5">Protect the source and verify before posting</option></select></div>
+      <div class="fb">High exposure, to the source. Protect them and verify first. Documents carry hidden <span class="term" data-pop="metadata">metadata</span> that can name the leaker, and a false document can sink your cause. Strip the metadata, confirm the facts, and never expose who handed it over. This is the samizdat instinct: guard the person before the page.</div>
+    </div>
+
+    <div class="di" data-spec="med" data-trade="4">
+      <div class="q">5. For convenience, your volunteer contact list lives in a Google Sheet set to "anyone with the link can view."</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Get informed consent from someone first</option><option value="3">Strip identifying details, then publish</option><option value="4">Lock it down, keep it inside the trusted network</option><option value="5">Protect a source and verify before posting</option></select></div>
+      <div class="fb">Medium exposure, and rising. A "just a spreadsheet" list is exactly the single seizable point samizdat was built to avoid. One shared link, one search, and your whole network is mapped. Lock it to named people only. The politics of the low bridge apply to a permissions setting too.</div>
+    </div>
+
+    <div class="di" data-spec="med" data-trade="2">
+      <div class="q">6. A sympathetic local reporter wants the real names of your quietly organizing members for a feature story that could help your cause.</div>
+      <div class="spec"><span class="l">Exposure</span><button data-v="low">Low</button><button data-v="med">Medium</button><button data-v="high">High</button></div>
+      <div class="tr"><span class="l">Move</span><select><option value="">the right move is&hellip;</option><option value="1">Publish it openly, no real person is exposed</option><option value="2">Let each member choose, informed consent, one by one</option><option value="3">Strip identifying details, then publish</option><option value="4">Keep it inside your trusted network only</option><option value="5">Protect a source and verify before posting</option></select></div>
+      <div class="fb">Medium exposure, and it is not yours to spend. Even a friendly story is public and permanent. Let each member decide for themselves; some will step forward and some will stay in the trusted core, and both are fine. Never hand over a name that its owner did not offer.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my calls</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · A newsletter that outlived its own editors</h2>
+  <div class="case">
+    <div class="t">Moscow, 1968&ndash;1983</div>
+    <p style="margin:.5em 0">The <span class="term" data-pop="chronicle">Chronicle of Current Events</span> was a samizdat newsletter that did one plain, dangerous thing: it documented arrests, trials, and abuses, dryly and accurately, for about fifteen years. Editors were arrested; the Chronicle kept coming. Its secret was structural. There was no central subscriber list to seize and no single office to raid. Each issue told readers, in effect, "if you know of an arrest, pass the facts back up the same chain you got this from." Information traveled through trust, in both directions, and the network had no middle for the KGB to cut.</p>
+    <p style="margin:.5em 0">Notice the callback: the Chronicle's safety came from the same thing you felt Tuesday. The medium had no center. That is Winner's point, turned into a survival tactic, and it is the exact opposite of a public list on a shared link.</p>
+    <div class="qa">
+      <div class="qq">Your turn: the Chronicle was harder to kill than one big publication would have been, precisely because it was decentralized. Name one thing about your cause you would deliberately keep decentralized (no single list, no one account, no lone organizer), and why.</div>
+      <textarea id="qa3" placeholder="one or two sentences…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"I would never let our whole contact network live in one person's phone. If that organizer burns out or that account gets locked, the cause shouldn't die with it. Spread across a few trusted people, it survives any single failure, the same reason the Chronicle outlived its editors."</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Aim it at your cause</h2>
+  <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&#8599; Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Name the slow, high-trust core of your cause: the specific people who would show up and do real work, beyond reacting to a post. How many are there, really?</label>
+    <textarea id="n1" placeholder="e.g., about nine regulars from two churches and the community garden, plus my aunt who knows everyone…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Where is your cause spending someone's safety without meaning to? Point to one specific place (a public post, a shared list, a tagged photo) where a person is more exposed than they chose to be.</label>
+    <textarea id="n2" placeholder="e.g., we tag volunteers in event photos by name, and one of them is job-hunting and doesn't want this searchable…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Pick one thing to move OFF the public feed and into a smaller, higher-trust channel this semester. What is it, and what does the private version protect that the public one couldn't?</label>
+    <textarea id="n3" placeholder="e.g., planning moves to a private signal thread; the public page keeps only the finished asks, so opponents can't watch us decide…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Design one disclosure rule you'll actually follow: a plain sentence about consent, before you post any real person for your cause. Write it as a rule, not a wish.</label>
+    <textarea id="n4" placeholder="e.g., 'No face or full name goes public without a yes I can point to, and I always offer audio-only or blur first.'…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have two lenses now, and they pull against each other on purpose. Reach wants everything public and fast. Care asks who pays for that reach. Before you post for your cause, ask the samizdat question: <em>whose safety am I spending, and did they agree to spend it?</em>
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> Week 7 is lighter (Fall Break), and we move from hiding to being seen on your own terms. Read the short, image-rich piece on <span class="term" data-pop="panther">Emory Douglas and <em>The Black Panther</em> newspaper</span>, then write one line in your notebook: <em>when mainstream media told the story of your cause, or a cause like it, who got to draw the picture, and what did they get wrong?</em> Bring your answer. That's where Week 7 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">&#8249; Week 5 · Suffragist Spectacle</a>
+    <a href="#" onclick="return false">Week 7 · The Black Panther Newspaper &#8250;</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-samizdat"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week6-samizdat.jpg" alt="Typed samizdat pages, self-published underground writing"><h4>Samizdat</h4><p>From Russian <em>sam</em> (self) + <em>izdat</em> (publishing): the underground copying and hand-to-hand passing of censored texts in the USSR, roughly the 1950s through the 1980s. Readers retyped banned works and circulated them privately, since the State owned every legal press.</p><p><b>Example:</b> a poem or an arrest report typed at a kitchen table, carbon-copied five or six sheets at a time, then handed to trusted friends who retyped it again. No publisher, no store, no list.</p><p><a href="https://en.wikipedia.org/wiki/Samizdat" target="_blank" rel="noopener">What samizdat was &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-carbon"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Carbon copy</h4><p>Before photocopiers, you stacked thin sheets with sheets of inky carbon paper between them. Type or press hard on top, and the pressure prints the same marks onto every layer at once. That is where "cc" in email comes from.</p><p><b>Example:</b> a samizdat typist could make up to about six copies in one typing. Hit the keys harder, get more copies, but the bottom sheets came out faint. That faintness is the "carbon-copy fade" you saw drift down Tuesday's chain.</p><p><a href="https://en.wikipedia.org/wiki/Carbon_copy" target="_blank" rel="noopener">How carbon copies worked &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-ballad"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>The mountain ballad tradition</h4><p>Long before recordings, songs and stories traveled the Southern Appalachians the same slow, human way samizdat did: person to person, sung or hand-copied into a family "ballad book" and passed along. Each carrier kept a song alive by teaching it to the next, and small changes crept in with every pass.</p><p><b>A little history:</b> many of these ballads arrived with Scots-Irish and English settlers and were carried by memory through the mountains for generations, collected only much later. The remedy books and recipe cards handed down the same way follow the same logic.</p><p><b>Why it's in this course:</b> it is a home-grown "reader is the publisher" network. No central press, high trust, and it held a culture together across generations by the simple act of passing it on. That is the social doing the work, the exact thing this course tries to put back.</p><p><a href="https://en.wikipedia.org/wiki/Appalachian_music" target="_blank" rel="noopener">Appalachian music and its roots &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-winner"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Langdon Winner</h4><p>Political theorist of technology. His 1980 essay "Do Artifacts Have Politics?" (Week 2) argues that the way we design tools and systems can quietly enforce power, no law required.</p><p><b>Here:</b> a typewriter with carbon paper "has politics" too. Its limits forced samizdat to be decentralized, which is precisely what let it survive.</p></div></dialog>
+  <dialog class="pop" id="pop-chilling"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>The chilling effect</h4><p>When people believe they are being watched, they hold back from things they are legally free to do: they read less, say less, and avoid certain topics. The harm is the silence itself, produced without a single arrest.</p><p><b>Example:</b> after the 2013 NSA surveillance revelations, searches for words like "car bomb" dropped on Wikipedia. Nobody was charged; people just stopped, because they felt watched.</p><p><a href="https://en.wikipedia.org/wiki/Chilling_effect" target="_blank" rel="noopener">More on the chilling effect &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-selfcensor"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Self-censorship</h4><p>Editing or silencing yourself out of fear of consequences, before anyone tells you to. It is how surveillance mostly works: not by punishing speech, but by making people quietly decide it isn't worth the risk.</p><p><b>Example:</b> a nurse who won't sign a public petition about unsafe staffing because her manager might see it. No rule stopped her. The watching did.</p></div></dialog>
+  <dialog class="pop" id="pop-exposure"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Exposure, low to high</h4><p>Not a box, a slider, like Week 2's fast&ndash;slow scale. It asks: how much does this media move reveal about a real person, and how badly could that hurt them?</p><p><b>Low:</b> facts and figures, no person named. <b>Medium:</b> a name or face of someone who chose some visibility but not this. <b>High:</b> reveals someone who could face retaliation, arrest, or real harm. The skill is reading the case, not defaulting to "post it."</p></div></dialog>
+  <dialog class="pop" id="pop-consent"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Informed consent</h4><p>A person agrees to be shown <em>after</em> they clearly understand what will happen: where it posts, how public it is, that it may be permanent, and that they can say no. A quick "is this okay?" in a loud moment is not it.</p><p><b>With vs. without:</b> Without: you post the rally clip because she spoke at a public event. With: you show her the clip, explain it will go on a public page forever, offer audio-only, and post only if she says yes. Same footage, very different ethics.</p></div></dialog>
+  <dialog class="pop" id="pop-metadata"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Metadata</h4><p>Data about data: the hidden information a file carries along with its contents. A document or photo can quietly store who made it, when, on what device, and even where.</p><p><b>Example:</b> a leaked Word file can name its author in its properties, and a phone photo can hold GPS coordinates. Post it raw and you may expose the very person you meant to protect. Stripping metadata is a basic act of care.</p><p><a href="https://en.wikipedia.org/wiki/Metadata" target="_blank" rel="noopener">What metadata is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-chronicle"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>The Chronicle of Current Events</h4><p>A samizdat newsletter (1968&ndash;1983) that plainly documented Soviet arrests, trials, and abuses of rights. It ran for about fifteen years despite the KGB arresting people connected to it.</p><p><b>Example:</b> it had no central subscriber list to seize. Readers who learned of an arrest passed the facts back up the same trusted chain that brought them the issue, so the network fed itself and had no middle to cut.</p><p><a href="https://en.wikipedia.org/wiki/Chronicle_of_Current_Events_(samizdat)" target="_blank" rel="noopener">About the Chronicle &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-panther"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week7-panthers-banner.jpg" alt="The Black Panther Party newspaper, its bold graphic front page"><h4>Emory Douglas &amp; <em>The Black Panther</em></h4><p>The Black Panther Party's weekly newspaper (from 1967) was its most powerful organizing tool, and Emory Douglas, its art director and Minister of Culture, gave it a bold, unmistakable visual style. When mass media criminalized the community, the paper let it picture itself on its own terms.</p><p><b>Next week's prime read:</b> a short, image-rich essay from the Letterform Archive. Free to read.</p><p><a href="https://letterformarchive.org/news/emory-douglas-and-the-black-panther/" target="_blank" rel="noopener">Emory Douglas &amp; The Black Panther &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w6');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // judgment interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The move is the harder judgment, and the one that protects a real person.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w6_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 6: The Reader Is the Publisher (samizdat)\n'
+      + '1. The slow, high-trust core of my cause (who, how many):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Where my cause spends someone’s safety without meaning to:\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. One thing to move off the public feed, and what it protects:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. My disclosure rule (consent, before I post any real person):\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week6-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

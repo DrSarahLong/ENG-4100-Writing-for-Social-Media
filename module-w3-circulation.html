@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 3 · How Ideas Circulate</title>
+<style>
+  #w3{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w3 *{box-sizing:border-box}
+  #w3 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w3 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w3 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w3 .dek{color:var(--soft); font-size:1.05rem}
+  #w3 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w3 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w3 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w3 p{margin:.7em 0}
+  #w3 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w3 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w3 .recall b{color:var(--accent2)}
+  #w3 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w3 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w3 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w3 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w3 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w3 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w3 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w3 .read a{color:var(--accent); font-weight:600}
+  #w3 .read .g{font-size:.9rem; color:var(--soft)}
+  #w3 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w3 .qa{margin-top:10px}
+  #w3 .qa .qq{font-weight:600; font-size:.95rem}
+  #w3 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w3 .reveal{margin-top:6px}
+  #w3 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w3 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w3 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w3 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w3 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w3 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w3 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w3 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w3 .di .spec{margin-bottom:7px}
+  #w3 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #w3 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w3 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w3 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w3 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w3 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w3 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w3 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w3 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w3 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w3 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w3 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* project 1 callout */
+  #w3 .p1{background:#eef4f0; border:1px solid #cfe0d6; border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:22px 0}
+  #w3 .p1 .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700; margin-bottom:4px}
+  #w3 .p1 a{color:var(--accent2); font-weight:600}
+  /* notebook */
+  #w3 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w3 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w3 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w3 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w3 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w3 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w3 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w3 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w3 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w3 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w3 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w3 .prime b{color:var(--accent)}
+  #w3 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w3 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w3 dialog.pop .in{padding:17px 19px; position:relative}
+  #w3 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w3 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w3 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w3 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w3 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w3 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w3{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w3 .recall,#w3 .p1{background:#16241c; border-color:#2c4536}
+    #w3 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w3 .read,#w3 .prime{background:#171d2b; border-color:#2c3a56}
+    #w3 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w3 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w3 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w3 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w3">
+
+  <div class="mast">
+    <div class="kick">Week 3 · Thursday module</div>
+    <h1>How Ideas Circulate</h1>
+    <div class="dek">Tuesday you took a 1787 newspaper essay apart. Today you name the machinery, meet the other side, judge real circulation moves, and aim it at your own cause.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class, our first on Zoom. Move at your own pace, but do the whole thing. The reading, the tool, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> you reverse-engineered the opening of the first <span class="term" data-pop="fed">Federalist</span> essay and found the whole machine, an argument, a <span class="term" data-pop="public">public</span> it conjured out of strangers, a feeling it planted, and a <span class="term" data-pop="circulation">circulation</span> plan to spread it. And you learned it was signed by a fake name. Today we build that into a toolkit you'll use for the rest of the course.
+  </div>
+
+  <h2>1 · Circulation and the making of a public</h2>
+  <p>Start with the counterintuitive part. A <span class="term" data-pop="public">public</span> does not sit around waiting for a message. The message <em>creates</em> the public. When a writer tells thousands of strangers "you are called upon to decide," and each one knows the others are reading the same words, a scattered crowd becomes one body with a shared job. That is <span class="term" data-pop="circulation">circulation</span> doing its real work. It spreads information, and in the same motion it assembles the people who will act on it.</p>
+  <div class="ex">
+    <div class="t">See it: with vs. without</div>
+    <b>Without circulation:</b> you have the best idea for fixing your town and you tell your roommate. It dies in the room. <b>With circulation:</b> the same idea is printed, reprinted, read aloud, and repeated until ten thousand strangers have met it and know that other strangers have too. Now it is a public that can be moved. The idea did not get better. It got <em>legs</em>, and it got a crowd.
+  </div>
+  <p>In 1787 the fastest legs available were newsprint. The essays we call the Federalist ran in New York papers, got reprinted up and down the states, were bound into <span class="term" data-pop="pamphlet">pamphlets</span>, and were read aloud where people gathered. Eighty-five of them, week after week, aimed at winning <span class="term" data-pop="ratification">ratification</span>. Repetition was the strategy. A public is built by showing up again and again, not once.</p>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://avalon.law.yale.edu/18th_century/fed01.asp" target="_blank" rel="noopener">Federalist No. 1, by "Publius" (Alexander Hamilton)</a> <span class="g">(Yale Avalon Project, free full text). Read the whole thing, it's short. Watch how fast he turns "readers" into "the people of this country" with a decision to make. New to the backstory? The one-page <a href="https://bensguide.gpo.gov/m-federalist-papers-1787-1788" target="_blank" rel="noopener">Ben's Guide explainer</a> (U.S. Government Publishing Office) sets it up.</span></p>
+    <blockquote>"It has been frequently remarked that it seems to have been reserved to the people of this country&hellip; to decide the important question, whether societies of men are really capable&hellip; of establishing good government from reflection and choice, or whether they are forever destined to depend&hellip; on accident and force."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: find the exact moment in the essay where Hamilton turns individual readers into a single "public" with a shared job. Quote the phrase, and say what job he hands them.</div>
+      <textarea id="qa1" placeholder="e.g., 'you are called upon to deliberate'&hellip; the job is: you personally are now responsible for whether this country succeeds&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the pivot from "you" to "the people of this country," and sees the flattery in the job: he doesn't ask readers to approve a document, he tells them their choice will decide "whether societies of men are really capable" of self-government at all. He hands each reader the fate of the species. That is how you make a public care.</div></details>
+    </div>
+  </div>
+
+  <h2>2 · The mask: pseudonymity as amplifier</h2>
+  <p>Now the hidden lever. Every one of those 85 essays was signed <span class="term" data-pop="publius">Publius</span>, a single mask worn by <span class="term" data-pop="authors">three different men</span>. We usually think a real name builds trust. Sometimes the mask builds more. <span class="term" data-pop="pseudonymity">Pseudonymity</span> here was doing at least three jobs at once: it kept the focus on the argument instead of the arguer, it let three writers sound like one steady, inevitable voice, and it borrowed <span class="term" data-pop="ethos">ethos</span> from a Roman republican hero before the reader hit a single word.</p>
+  <div class="ex">
+    <div class="t">See it: the same essay, two bylines</div>
+    <b>Signed "Alexander Hamilton, ambitious New York lawyer":</b> readers who dislike Hamilton stop reading; the argument rises or falls on one man's reputation. <b>Signed "Publius":</b> the voice sounds like the republic itself speaking, three men become one, and there's no single face to attack. The words didn't change. The mask changed who could hear them.
+  </div>
+  <div class="honest"><b>Stay honest:</b> pseudonyms weren't a trick invented by the Federalists, and they weren't only used by the "good guys." The other side wore masks too (you'll meet "Brutus" below), and anonymity has always cut both ways. It shields a whistleblower and it also shields a liar. The lesson isn't "hide your name." It's that <em>the authorship choice is itself a rhetorical move</em> with a real trade attached. Name it every time.</div>
+  <p>Draw the straight line to now. A protest hashtag is a shared mask: everyone posts under one banner, the message scales past any single author, and no one can be personally blamed or credited. That is Publius, reborn as a pound sign. The trade is the same one Hamilton made: reach and cover, paid for with a face people can hold responsible.</p>
+  <div class="ex" style="border-style:solid">
+    <div class="t">Then and now: one mask, many hands</div>
+    The sharpest modern Publius is <span class="term" data-pop="anonymous">Anonymous</span>, the loose online collective that acts under one shared name and one borrowed face, the Guy Fawkes mask. No leader, no membership, no single author to credit or arrest, so the actions travel under the mask and the "we" scales past any one person. The Federalists' 1787 lever, wired to the internet. And the same double edge: a mask this strong works for whoever puts it on.
+  </div>
+  <div class="read">
+    <div class="t">Look again, with the mask in mind (4&ndash;6 min)</div>
+    <p style="margin:.4em 0">Go back into <a href="https://avalon.law.yale.edu/18th_century/fed01.asp" target="_blank" rel="noopener">Federalist No. 1</a> and read the last two paragraphs, where Publius promises to lay out his whole plan of essays. Notice he speaks as "I" while being three people. The mask lets a committee sound like a single trustworthy narrator.</p>
+    <div class="qa">
+      <div class="qq">Your turn: pick one movement or account you follow that speaks through a shared or hidden name (a hashtag, an anonymous org account, a collective). What does the mask buy it, and what does the mask cost it?</div>
+      <textarea id="qa2" placeholder="e.g., our mutual-aid account posts as 'we' with no names. It buys safety for volunteers and one clean voice; it costs us the trust that comes from a real person putting their face on it&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer weighs both sides. Example: "An anonymous whistleblower account buys protection and lets the leak travel on its own weight. It costs credibility, anyone can claim anything behind a mask, and it costs the movement a person others can rally around. The mask is right for exposing danger, wrong for building long-term trust."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Diagnose the circulation move</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per case, and the obvious answer is sometimes wrong. First, does this move build a <span class="term" data-pop="publicnet">public or a network</span> (or a mix)? Second, what is the authorship <em>mask</em> trading? Commit both, then Check.</div>
+
+    <div class="di" data-spec="public" data-trade="1">
+      <div class="q">1. "Publius" publishes the Federalist essays in open New York newspapers, week after week.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Public, worn as a shared mask. It ran in papers open to any reader in the state, so it convened a public of strangers. Signing it "Publius" let three men speak as one steady voice and kept the argument, not the author, in front of you.</div>
+    </div>
+
+    <div class="di" data-spec="public" data-trade="2">
+      <div class="q">2. An <span class="term" data-pop="viral">anonymous video</span> nobody expected suddenly hits three million views.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Public, wearing anonymity. Millions can see it and it cost nothing, but no one can be held to it, followed up with, or found again next week. Reach with no relationship and no accountability.</div>
+    </div>
+
+    <div class="di" data-spec="public" data-trade="1">
+      <div class="q">3. A protest <span class="term" data-pop="hashtag">hashtag</span> anyone can post under spreads across the country in a day.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Public, worn as a shared mask, the modern Publius. It feels like a community, but a hashtag binds no one: it convenes strangers under one banner, scales fast, and can be picked up or hijacked by anyone. Everyone is Publius now.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="3">
+      <div class="q">4. A <span class="term" data-pop="committee">committee of correspondence</span> hand-copies letters from town to town across the colonies in 1772.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Mixed. The obvious read is "old and slow," and copying by hand is slow. But it linked known committees (a trust network) precisely to build a shared inter-colonial public. A network reaching for a public, signed by real, known men who could be trusted and also arrested.</div>
+    </div>
+
+    <div class="di" data-spec="network" data-trade="3">
+      <div class="q">5. A private, invite-only <span class="term" data-pop="signal">Signal thread</span> holds 30 core organizers.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Network. Closed, invited, known to each other. It trades public reach for trust, safety, and the ability to actually coordinate. Nobody finds you by accident, which is the point.</div>
+    </div>
+
+    <div class="di" data-spec="network" data-trade="4">
+      <div class="q">6. A <span class="term" data-pop="broadside">broadside ballad</span> is passed hand to hand and sung together at a community <span class="term" data-pop="singing">singing</span>.</div>
+      <div class="spec"><span class="l">Builds</span><button data-v="public">Public</button><button data-v="mixed">Mixed</button><button data-v="network">Network</button></div>
+      <div class="tr"><span class="l">Mask trades</span><select><option value="">what is the authorship trading?</option><option value="1">Shared pseudonym: gains unity and scale, hides and shields the individual</option><option value="2">Anonymity: gains reach and safety, costs accountability and any lasting tie</option><option value="3">Named or known authorship: gains trust and accountability, costs safety and reach</option><option value="4">Communal or traditional authorship: gains staying power and shared ownership, no one to credit or blame</option></select></div>
+      <div class="fb">Network, communal authorship. A printed ballad passed hand to hand and sung together circulates through a known community, and the song belongs to everyone. Slow reach, but it can outlive any single author, which no viral post ever manages.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · Brutus answers back</h2>
+  <div class="case">
+    <div class="t">New York, 1787&ndash;88</div>
+    <p style="margin:.5em 0">Publius did not write into silence. Weeks before Federalist No. 1, an <span class="term" data-pop="antifed">Anti-Federalist</span> writer signing himself <span class="term" data-pop="brutus">Brutus</span> was already in the same New York papers arguing the opposite: a republic this large will swallow liberty, a distant government will lose touch with real people. Notice the pattern. He wore a mask too (Brutus, the Roman who killed a tyrant), he built his own public out of the same strangers, and he used the same medium. The Federalist essays were partly written to answer him. A powerful circulating text does more than persuade. It calls its own opposition into being, a <span class="term" data-pop="counterpublic">counterpublic</span> that organizes against it.</p>
+    <div class="read" style="margin-top:10px">
+      <div class="t">Read a little of the other side (5&ndash;7 min)</div>
+      <p style="margin:.4em 0"><a href="https://teachingamericanhistory.org/document/brutus-i/" target="_blank" rel="noopener">"Brutus" No. 1 (1787)</a> <span class="g">(Teaching American History, free full text). Read the opening. Hear how he too tells readers "the most important question&hellip; is before you," building his own public with the very same move.</span></p>
+    </div>
+    <div class="qa">
+      <div class="qq">Your turn: both sides used the same medium, the same masks, and the same "you decide" move to build opposite publics. So what actually decided who won? Name one thing in one sentence.</div>
+      <textarea id="qa3" placeholder="one sentence&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer looks past the tools to the thing the tools can't supply. Example: "When both sides have the same megaphone, the winner is whoever out-organizes and out-lasts the other, the Federalists coordinated across states and kept publishing, while the Anti-Federalists stayed scattered." The medium is equal; the circulation stamina and coordination are not.</div></details>
+    </div>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="p1">
+    <div class="t">This is Project 1</div>
+    <p style="margin:.3em 0 .5em">The lenses you just used, how a text <b>circulates</b>, the <b>public</b> it builds, and the <b>mask</b> its authors wear, plus last week's <b>medium</b> and <b>slow/fast</b>, are the toolkit for <b>Project 1: Movement Media Analysis</b>. You'll pick one movement (one of our cases or one you bring) and analyze how it built connection and spread its ideas through its media. We keep adding tools every week between now and the due date, so you're gathering them before you need them.</p>
+    <p style="margin:.3em 0 0">Full description and rubric live on the <a href="projects.html">Major Projects page</a>. Introduced this week, due around Week 6. Start noticing which movement pulls at you.</p>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Aim it at your cause</h2>
+  <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Trace one idea from your cause. Where does it start, and how (if at all) does it actually move from one person or screen to the next? Where does it stall?</label>
+    <textarea id="n1" placeholder="e.g., it starts in our group chat, gets posted once to Instagram, and dies there. Nothing gets reprinted, forwarded, or repeated. No legs&hellip;"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Does your cause have a PUBLIC (strangers who could find it and join) or mostly a NETWORK (people who already know each other), or neither yet? Name which, and what that costs you right now.</label>
+    <textarea id="n2" placeholder="e.g., we have a small network of friends and no public at all, so we can plan a potluck but we can't grow past the people we personally know&hellip;"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. The mask question: whose name is on your cause's message right now? Would a shared banner, a named person, or a real face serve it better, and what would each choice trade?</label>
+    <textarea id="n3" placeholder="e.g., right now it's a faceless account. A named local organizer would build more trust but takes on risk and can't speak for everyone&hellip;"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Name one circulation move you could make this semester to WIDEN the public or DEEPEN the network for your cause, and say which one it does and why that's the one you need.</label>
+    <textarea id="n4" placeholder="e.g., a monthly one-page printed update people can hand to a neighbor deepens the network; a shareable explainer built to be reposted widens the public. We need the public first because&hellip;"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have three new lenses now, on top of last week's: before "what should I post," ask "how does this move, who does it turn into a public, and whose name is on it?" That is how you read any movement's media, and it is exactly what Project 1 asks you to do.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> read the short opening editorial Frederick Douglass wrote for the very first issue of his newspaper, <a href="https://macmillan.yale.edu/our-paper-and-its-prospects" target="_blank" rel="noopener">"Our Paper and Its Prospects" (The North Star, 1847)</a> <span class="g">(Yale, free full text)</span>. Then write one line in your notebook: <em>Publius borrowed a mask and a newspaper he did not own. Douglass built his own. Why would a movement go to the trouble and cost of owning its own medium instead of renting one?</em> Bring your answer. That's where Week 4 starts.
+  </div>
+
+  <div class="foot">
+    <a href="module-w2-medium.html">‹ Week 2 · The Medium Is Not Neutral</a>
+    <a href="#" onclick="return false">Week 4 · The Abolitionist Press ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-anonymous"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/guy-fawkes-mask.jpg" alt="A Guy Fawkes mask, the emblem the Anonymous collective adopted"><h4>Anonymous</h4><p>A leaderless online collective that grew out of internet message boards around 2008. Anyone can act "as Anonymous," under the shared Guy Fawkes mask, so it has no members, no leaders, and no single author, the same shared-mask move Publius made.</p><p><b>The controversy:</b> Anonymous works through <b>digital disruption, not physical violence</b>, its tools are things like knocking target websites offline (DDoS attacks), leaks, and doxxing. Those tactics are still real harm and are genuinely contested, even among sympathizers: leaks and doxxing can expose innocent bystanders, a leaderless mask means no one is accountable when an action goes wrong, and the name "Anonymous" has been claimed by people chasing opposite aims. A powerful mask is powerful for anyone who wears it.</p><p><a href="https://en.wikipedia.org/wiki/Anonymous_(hacker_group)" target="_blank" rel="noopener">About Anonymous →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+  <dialog class="pop" id="pop-circulation"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Circulation</h4><p>How a text moves from person to person and place to place, and how often it gets repeated. A message is only as strong as its ability to travel.</p><p><b>Example:</b> a flyer taped to one door reaches one person. The same flyer photocopied, mailed, reposted, and read aloud at a meeting has circulation. Same words, wildly different reach.</p></div></dialog>
+  <dialog class="pop" id="pop-public"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>A public</h4><p>A body of strangers brought into being by a shared text. No one elects them and no one knows them all. Reading the same thing, and knowing others are too, is what turns scattered people into "the public" that can be moved.</p><p><b>Example:</b> before #MeToo, the people who would post it were strangers to each other. The two words, circulating, called a public into existence that had not existed the day before.</p></div></dialog>
+  <dialog class="pop" id="pop-publicnet"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Public vs. network</h4><p>Two different things a circulation move can build. A <b>public</b> is open: strangers who can find it and join, scalable but loosely bound. A <b>network</b> is closed: people who already know and trust each other, hard to grow but strong. Most real moves lean one way or mix both.</p><p><b>Example:</b> a viral hashtag builds a public (huge, thin). A 30-person organizing chat builds a network (small, dense). You usually need both, for different jobs.</p></dialog>
+  <dialog class="pop" id="pop-fed"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week3-federalist.jpg" alt="Title page of an early printing of The Federalist"><h4>The Federalist Papers</h4><p>85 essays published in New York newspapers in 1787&ndash;88 to persuade the public to ratify the new U.S. Constitution, all signed with one shared pseudonym, "Publius."</p><p><b>Example:</b> Federalist No. 10 (on factions) and No. 51 (on checks and balances) are still quoted in Supreme Court opinions today. A newspaper op-ed campaign became founding scripture.</p></div></dialog>
+  <dialog class="pop" id="pop-ratification"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Ratification</h4><p>The approval process that made the Constitution real. Special state conventions had to vote yes; nine of thirteen states were needed for it to take effect. It was not guaranteed, which is why the persuasion campaign mattered so much.</p><p><b>Example:</b> New York, the target of the Federalist essays, ratified by a razor-thin 30 to 27. The writing campaign was arguing over a genuinely close vote.</p></div></dialog>
+  <dialog class="pop" id="pop-pamphlet"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week3-first-edition.jpg" alt="An early unbound printed booklet"><h4>Pamphlet</h4><p>A short, unbound booklet, cheap to print and easy to pass around, the mass medium of political argument for centuries before newspapers and radio.</p><p><b>Example:</b> Thomas Paine's <em>Common Sense</em> (1776) sold hundreds of thousands of copies as a pamphlet and helped turn colonists toward independence. The Federalist essays were later bound and sold as pamphlets too.</p><p><a href="https://en.wikipedia.org/wiki/Pamphlet" target="_blank" rel="noopener">What a pamphlet is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-publius"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Publius</h4><p>The single pen name signing all 85 Federalist essays. It honors Publius Valerius Publicola, remembered as a founder of the Roman Republic who set up rule by law and handed power back to the people. The name itself argues "written by a friend of the republic," before you read a word.</p><p><b>Example:</b> it works like a brand voice. "Publius" sounds like the republic speaking; "Alexander Hamilton, ambitious lawyer" sounds like one man with an agenda.</p></div></dialog>
+  <dialog class="pop" id="pop-authors"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The three behind Publius</h4><p>Alexander Hamilton (who started the project and wrote the most), James Madison (the sharpest on political theory, later a president), and John Jay (who fell ill and wrote only a few). Three very different men, one unified voice.</p><p><b>Example:</b> readers at the time argued about who "Publius" really was. The mask held so well that scholars still debate the authorship of a few essays.</p></div></dialog>
+  <dialog class="pop" id="pop-pseudonymity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Pseudonymity</h4><p>Writing under a false name on purpose. Different from full anonymity: a pseudonym is a stable mask you can build a reputation on, without attaching it to your real identity.</p><p><b>With vs. without:</b> "posted by anonymous" tells you nothing and connects to nothing. "Posted by Publius," essay after essay, builds a recognizable voice and a track record, while still hiding the humans behind it.</p></div></dialog>
+  <dialog class="pop" id="pop-ethos"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Ethos</h4><p>Persuasion through the speaker's character and credibility, one of Aristotle's three appeals (alongside logos, reason, and pathos, emotion). It's the "why should I trust you" layer.</p><p><b>Example:</b> a doctor saying "as a physician, I've seen this" leans on ethos. "Publius" borrows ethos from ancient Rome, the name does the trust-building before the argument starts.</p></dialog>
+  <dialog class="pop" id="pop-viral"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Going viral</h4><p>When a piece of content spreads rapidly from person to person, each share sparking more, like a contagion. Fast, huge, and usually brief.</p><p><b>Example:</b> a raw phone video hits millions overnight, then vanishes from feeds in a week. Viral reach is real but rarely leaves behind a public you can reach again. It's circulation without roots.</p></dialog>
+  <dialog class="pop" id="pop-hashtag"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Hashtag</h4><p>A word or phrase after a "#" that turns a post into a searchable, joinable thread anyone can add to. A shared banner with no owner.</p><p><b>Example:</b> #BlackLivesMatter let millions of strangers post under one phrase and find each other, building an instant public. The flip side: because no one owns it, anyone can flood or hijack the tag. Publius with a pound sign.</p><p><a href="https://en.wikipedia.org/wiki/Hashtag" target="_blank" rel="noopener">What a hashtag is →</a></p></dialog>
+  <dialog class="pop" id="pop-committee"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Committee of correspondence</h4><p>Networks of colonial activists in the 1760s and 70s who wrote and hand-copied letters passed from town to town, so news and arguments could travel between colonies before there was any national press. A human relay system.</p><p><b>Example:</b> when Boston wanted the other colonies to hear its side of a dispute with Britain, its committee wrote letters that were copied and forwarded across New England, coordinating resistance long before the Revolution. Slow, trusted, and quietly powerful.</p><p><a href="https://en.wikipedia.org/wiki/Committees_of_correspondence" target="_blank" rel="noopener">About the committees →</a></p></dialog>
+  <dialog class="pop" id="pop-signal"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Signal</h4><p>An encrypted messaging app where conversations are private by default, widely used by organizers, journalists, and activists who need to coordinate without being surveilled.</p><p><b>Example:</b> a campaign might run its 30 core volunteers on a private Signal thread so plans stay off public platforms. Total control and safety, zero public reach, nobody stumbles onto it.</p><p><a href="https://en.wikipedia.org/wiki/Signal_(software)" target="_blank" rel="noopener">What Signal is →</a></p></dialog>
+  <dialog class="pop" id="pop-broadside"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/broadside.jpg" alt="A printed broadside sheet carrying the words to a ballad"><h4>Broadside ballad</h4><p>A single cheap sheet printed on one side, often carrying the words to a song, sold for pennies and passed hand to hand from the 1500s into the 1800s. One of the oldest ways ordinary people circulated news and stories.</p><p><b>A little history + why it's here:</b> broadsides carried ballads across Britain and Ireland, and those songs sailed to the mountains of Appalachia, where they were sung, changed, and handed down for generations. Many of the old ballads collected in Western North Carolina and Tennessee trace back to printed broadsides. It's a perfect slow medium: tiny reach per sheet, but the song enters a community's memory and outlives everyone who first sang it. No single author, shared ownership, the opposite of a viral post that's gone in a week.</p><p><a href="https://en.wikipedia.org/wiki/Broadside_(music)" target="_blank" rel="noopener">About broadside ballads →</a></p></dialog>
+  <dialog class="pop" id="pop-singing"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The community singing</h4><p>A gathering where people come together to sing from a shared songbook, no audience and no performers, everyone sings. In the American South and Appalachia this often means <b>shape-note</b> or Sacred Harp singing, where the notes are printed in special shapes so people who don't read music can still join.</p><p><b>A little history + Appalachian tie:</b> "singing conventions" and "dinner-on-the-grounds" singings have anchored mountain communities for generations, a whole day of singing shared songs, sharing a meal, and holding a community together across families and years. It's circulation you can hear: a songbook spreads a repertoire from town to town, and the singing binds the people who share it. Exactly the "social" this course keeps pointing at, no screen required.</p><p><a href="https://en.wikipedia.org/wiki/Shape_note" target="_blank" rel="noopener">About shape-note singing →</a></p></dialog>
+  <dialog class="pop" id="pop-antifed"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Anti-Federalists</h4><p>The loose movement that opposed ratifying the Constitution, fearing a strong central government would crush states and individual liberty. They lost the ratification fight but won a lasting prize.</p><p><b>Example:</b> their pressure is why we got the Bill of Rights, the first ten amendments were added to answer Anti-Federalist fears. Losing the argument still shaped the country.</p></dialog>
+  <dialog class="pop" id="pop-brutus"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Brutus"</h4><p>The pen name of a leading Anti-Federalist essayist (likely Robert Yates) who published in New York papers arguing against the Constitution. The name honors the Roman Brutus who helped end tyranny, another mask chosen to argue by itself.</p><p><b>Example:</b> Brutus warned that a republic stretched across so vast a territory would lose touch with ordinary people. The Federalist essays were written partly to answer him directly. Two masks, dueling in the same newspapers.</p></dialog>
+  <dialog class="pop" id="pop-counterpublic"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Counterpublic</h4><p>A public that forms in opposition to a dominant one, organizing the people a message left out or provoked. A strong circulating text tends to summon its own counterpublic.</p><p><b>Example:</b> the Federalists built a public for ratification; "Brutus" and the Anti-Federalists built a counterpublic against it, in the same papers. Today, one viral campaign almost always breeds an opposing hashtag. The argument creates both sides.</p></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w3');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The mask trade is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w3_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 3: How Ideas Circulate\n'
+      + '1. How one idea from my cause circulates (and where it stalls):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Public or network (which, and what it costs me):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. The mask: whose name is on it, and what each choice trades:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. One circulation move (widen the public / deepen the network) + why:\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week3-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

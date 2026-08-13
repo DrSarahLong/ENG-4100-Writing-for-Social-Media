@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 8 · Design as a Weapon</title>
+<style>
+  #w8{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w8 *{box-sizing:border-box}
+  #w8 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w8 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w8 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w8 .dek{color:var(--soft); font-size:1.05rem}
+  #w8 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w8 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w8 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w8 p{margin:.7em 0}
+  #w8 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w8 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w8 .recall b{color:var(--accent2)}
+  #w8 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w8 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w8 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w8 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w8 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w8 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w8 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w8 .read a{color:var(--accent); font-weight:600}
+  #w8 .read .g{font-size:.9rem; color:var(--soft)}
+  #w8 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w8 .qa{margin-top:10px}
+  #w8 .qa .qq{font-weight:600; font-size:.95rem}
+  #w8 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w8 .reveal{margin-top:6px}
+  #w8 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w8 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w8 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w8 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w8 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w8 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w8 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w8 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w8 .di .spec{margin-bottom:7px}
+  #w8 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #w8 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w8 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w8 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w8 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w8 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w8 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w8 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w8 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w8 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w8 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w8 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w8 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w8 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w8 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w8 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w8 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w8 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w8 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w8 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w8 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w8 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w8 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w8 .prime b{color:var(--accent)}
+  #w8 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w8 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w8 dialog.pop .in{padding:17px 19px; position:relative}
+  #w8 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w8 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w8 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w8 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w8 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w8 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w8{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w8 .recall{background:#16241c; border-color:#2c4536}
+    #w8 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w8 .read,#w8 .prime{background:#171d2b; border-color:#2c3a56}
+    #w8 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w8 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w8 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w8 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w8">
+
+  <div class="mast">
+    <div class="kick">Week 8 · Thursday module</div>
+    <h1>Design as a Weapon</h1>
+    <div class="dek">Tuesday you met ACT UP's rage and craft. Today you study how they made an image travel, then turn to the harder question: can everyone actually receive it?</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing. The reading, the diagnosis, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your cause in mind. <b>This is midterm check-in week:</b> you will submit your Field Notebook Sheet as it stands, so update it as you go today.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> facing a plague and a wall of official <span class="term" data-pop="aidscrisis">silence</span>, ACT UP turned grief into graphic design (SILENCE=DEATH, <span class="term" data-pop="granfury">Gran Fury</span>) and staged direct actions engineered for the camera, held together by small, bonded <span class="term" data-pop="affinity">affinity groups</span>. Today: how the design worked, and how to build activist media that reaches people the loud version leaves out.
+  </div>
+
+  <h2>1 · Design activism: make them look</h2>
+  <p>ACT UP's insight was blunt. If the press won't cover your dying and the government won't say your name, you make an image so sharp and so clean that it moves on its own, the way a good ad does. The point of <span class="term" data-pop="designactivism">design activism</span> is to put a message where people already look and make it impossible to un-see.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    The <span class="term" data-pop="silencedeath">SILENCE=DEATH</span> poster is solid black, one small pink triangle, three words. No logo, no photo, no paragraph. That emptiness is the craft: the reader has to complete the equation themselves, and a thought you finish yourself sticks harder than one you are handed. Then <span class="term" data-pop="granfury">Gran Fury</span> pushed it further, borrowing the gloss of advertising (<span class="term" data-pop="kissing">"Kissing Doesn't Kill"</span> ran on city buses looking exactly like a Benetton ad) so protest could ride the same rails as everything people already scroll past.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://actupny.org/indexfolder/GranFury1.html" target="_blank" rel="noopener">Gran Fury, in their own words (ACT UP Historical Archive)</a> <span class="g">(free, primary source). Read the opening account of how they worked. Notice they start with almost no money and illegal wheat-pasting.</span></p>
+    <blockquote>"Our first projects were poster sniping (illegal wheat-pasting of posters on vacant signage), and Xeroxed flyers, a working method which grew out of an ACT UP aesthetic and our limited funds."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: pick one image or symbol your cause could own. What is the single idea it would carry, and what would you leave OUT so the viewer has to finish it themselves?</div>
+      <textarea id="qa1" placeholder="e.g., a worn crosswalk button that never worked, one line under it, no logo, so people fill in 'nobody is coming to fix this'…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names one idea and one deliberate absence. Example: "A single child's shoe on an empty road shoulder, and the words 'still no sidewalk.' No stats, no org name. The viewer supplies the fear themselves, which is what makes them remember it at the next council meeting."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · Affinity groups and the zap</h2>
+  <p>A movement that is only big is a mob; a movement that is only close is a clique. ACT UP got both at once by building from small <span class="term" data-pop="affinity">affinity groups</span>, cells of five to fifteen people who knew and trusted each other, planned their own piece of an action, and looked after their own members. Dozens of cells could plug into one giant demonstration and still move fast, because the trust lived in the cells, not in a central command.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    Two speeds. A <span class="term" data-pop="zap">zap</span> is fast and surgical: an affinity group jams a phone line, drops a banner at a press conference, or floods one official's office to embarrass a single target this week. An <span class="term" data-pop="diein">action</span> is big and staged: at the 1988 FDA action, activists lay down in <span class="term" data-pop="diein">die-ins</span> with fake tombstones and blood-spattered lab coats, roughly 180 arrested on camera, on purpose. Both are built for one viewer: the lens. Drama becomes strategy, because a picture the news cannot resist is worth more than a press release it will ignore.
+  </div>
+  <div class="honest"><b>Stay honest:</b> engineered drama carries real costs, and the people running it knew that. ACT UP's 1989 "Stop the Church" action put a die-in inside St. Patrick's Cathedral during Mass. It drew enormous coverage and real public anger, and it split the movement, some members felt disrupting a religious service crossed an ethical line and lost them sympathy. The tactic worked as spectacle and was contested as ethics at the same time. Hold both.</div>
+
+  <h2>3 · Now the harder half: can everyone receive it?</h2>
+  <p>Here is the turn. A message no one can receive is not a message. If your loud, beautiful poster can't be read by a blind supporter, or your gut-punch video can't be heard by a Deaf one, you have quietly rebuilt Winner's low bridge inside your own campaign: a design that decides who gets through. <span class="term" data-pop="inclusive">Accessible, inclusive design</span> is the discipline of making sure the people you claim to fight for can actually get the message.</p>
+  <div class="ex">
+    <div class="t">See it (with / without)</div>
+    <b>Without:</b> you post a protest photo with no <span class="term" data-pop="alttext">alt text</span>. A blind supporter's screen reader announces "image," and the moment is gone for her. <b>With:</b> you add alt text, "Fifty people lie still on the courthouse steps holding white tombstone signs." Now she is in the room too. Same photo, one line of code, and the door is open instead of shut. Accessibility is a design choice you make on purpose, or fail to make by default.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/" target="_blank" rel="noopener">"Accessibility Principles" (W3C Web Accessibility Initiative)</a> <span class="g">(free, plain-language). Skim the sections on text alternatives, captions, contrast, and understandable language. It is the "how" behind the idea.</span></p>
+    <p>Four everyday moves cover most of it: <span class="term" data-pop="alttext">alt text</span> so images reach screen readers; <span class="term" data-pop="captions">captions</span> so audio reaches Deaf and hard-of-hearing viewers; <span class="term" data-pop="contrast">real contrast and never color-alone</span> so meaning survives low vision and color blindness; and <span class="term" data-pop="plain">plain language</span> so a tired, stressed, or non-expert reader can still follow you.</p>
+    <div class="qa">
+      <div class="qq">Your turn: take the image or symbol you named in section 1. Name one way it currently locks someone out, and the one change that would let them in.</div>
+      <textarea id="qa2" placeholder="e.g., our explainer reel has fast on-screen text and no captions, so it's silent to a Deaf follower and unreadable if you scroll past sound-off; burning in captions fixes both…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names a specific excluded person and a specific fix, not "make it nicer." Example: "Our infographic marks 'safe' green and 'unsafe' red with no labels, so a colorblind reader gets nothing. Adding a word and an icon to each color carries the meaning without relying on color at all."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>4 · Diagnose the design</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two judgments per case, and the loud, obvious answer is often the trap. First: how <span class="term" data-pop="loud">LOUD</span> is it (how hard does it grab attention)? Second: who can't receive it? The sharpest activist design is loud AND open. Commit both, then Check.</div>
+
+    <div class="di" data-spec="loud" data-trade="4">
+      <div class="q">1. A <span class="term" data-pop="diein">die-in</span>: hundreds lie still on the courthouse steps while cameras roll.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">Loud, and it quietly shuts out people who can't be visibly "out" (undocumented, closeted, in an unsafe job) or can't physically lie on stone steps (many disabled supporters). The most affected people can be the ones the tactic excludes. A remote or masked way to join fixes some of it.</div>
+    </div>
+
+    <div class="di" data-spec="loud" data-trade="5">
+      <div class="q">2. The <span class="term" data-pop="silencedeath">SILENCE=DEATH</span> poster: black field, pink triangle, three words.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">The trap. High contrast and three words make it very readable, so people call it fully accessible. But the whole punch depends on knowing the pink triangle's Nazi-camp history. Miss that and it is a shape on black. It is loud AND gated to insiders, which is why the movement had to teach the symbol alongside it.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="2">
+      <div class="q">3. An infographic where "safe" is a green box and "danger" is a red box, no labels.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">Mixed loudness (charts inform more than they grab), and it fails anyone who can't tell red from green, roughly one in twelve men, plus every blind reader. When color carries the whole meaning, the meaning disappears. A word and an icon per box rescue it.</div>
+    </div>
+
+    <div class="di" data-spec="quiet" data-trade="1">
+      <div class="q">4. A short explainer video, calm tone, with burned-in <span class="term" data-pop="captions">captions</span> and full alt text on every frame.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">Quiet, and that is fine. It won't stop a scroll the way a die-in does, but it was built to be received: captions for Deaf viewers, alt text for blind ones, plain words for everyone. Loud is not the only kind of strong. Reach that actually lands beats reach that bounces off.</div>
+    </div>
+
+    <div class="di" data-spec="loud" data-trade="3">
+      <div class="q">5. A raw one-minute video of a survivor speaking, autoplaying muted, no captions.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">Loud and gutting, and completely lost on Deaf and hard-of-hearing viewers, plus everyone scrolling sound-off (which is most of a feed). The whole message lives in audio no one can hear. Captions turn it back on for all of them.</div>
+    </div>
+
+    <div class="di" data-spec="quiet" data-trade="4">
+      <div class="q">6. The <span class="term" data-pop="quilt">AIDS Memorial Quilt</span>: names sewn by hand, walked through in person on the Mall.</div>
+      <div class="spec"><span class="l">Loudness</span><button data-v="loud">Loud</button><button data-v="mixed">Mixed</button><button data-v="quiet">Quiet</button></div>
+      <div class="tr"><span class="l">Who's shut out</span><select><option value="">who can't receive or join it?</option><option value="1">Reaches nearly everyone (built to be received)</option><option value="2">Blind / low-vision people (meaning by image or color alone)</option><option value="3">Deaf / hard-of-hearing people (audio with no captions)</option><option value="4">People who can't safely be seen, or can't physically take part</option><option value="5">Insiders only (needs inside knowledge to decode)</option></select></div>
+      <div class="fb">Quiet by design, the opposite of a zap. Deeply open to make (anyone who loved someone can sew a panel), yet its power needs your body in the space, so it shuts out anyone who can't travel to it. That is exactly why the project also went digital: a searchable online Quilt lets the people who can't be present still find their name.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my diagnosis</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>5 · The slowest media there is</h2>
+  <div class="case">
+    <div class="t">The AIDS Memorial Quilt, 1987</div>
+    <p style="margin:.5em 0">While ACT UP built fast, loud images, others fought the same silence with the slowest medium imaginable. Cleve Jones saw names taped to a federal building and thought they looked like a <span class="term" data-pop="quilt">patchwork quilt</span>. Each panel is three feet by six, the size of a grave, sewn by the people who loved the person named on it. Laid out on the National Mall in 1987, it was 1,920 panels. Today it is the largest piece of community folk art on earth.</p>
+    <p style="margin:.5em 0">Notice the medium. Quilting is old folk media, and it runs deep in Appalachia: memorial quilts, and the quilting bee where a community gathers to sew and grieve together. The Quilt did what no zap could. It made each death a specific, handmade, unignorable object you have to walk past slowly, one name at a time.</p>
+    <div class="qa">
+      <div class="qq">Your turn: the Quilt had almost no "reach" and changed how a whole country felt anyway. What did the slow, handmade Quilt give the movement that a viral post never could? One sentence.</div>
+      <textarea id="qa3" placeholder="one sentence…"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It turned an abstract death toll back into individual people with names and hands that made things, which is the one thing a scrolling number can never do, and it gave the grieving a way to act together that lasted decades." Slow media builds the meaning and the bond that fast media burns through.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>6 · Aim it at your cause</h2>
+  <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook. This is your midterm entry, so make it real.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row. You submit the Sheet at the midterm check-in this week.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. What silence is your cause up against? Who is staying quiet, and what does that silence cost the people you care about?</label>
+    <textarea id="n1" placeholder="e.g., the town keeps 'studying' the missing sidewalk while kids walk the shoulder; the silence costs safety and says the neighborhood doesn't count…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Design ONE ethical attention action (legal, doable). What is the single image the camera would carry away? What do you leave out so the viewer finishes the thought?</label>
+    <textarea id="n2" placeholder="e.g., a line of empty children's shoes across the intersection at rush hour, one hand-lettered sign, no org name…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Who is your affinity group? Name 5 to 15 real people who would help pull it off, and one job each would own (permit, photos, safety, press).</label>
+    <textarea id="n3" placeholder="e.g., two neighbors on logistics, my cousin on photo/video, a teacher who'll speak, someone tracking everyone's safety…"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Make it receivable, and name your line. One accessibility choice so your people can actually get it (alt text, captions, high contrast, plain words, a way to join from home), and the ethical line you will not cross for attention.</label>
+    <textarea id="n4" placeholder="e.g., caption every clip and describe the photos in the post; line I won't cross: no using a real family's grief without their yes…"></textarea>
+    <div class="save" id="v4"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have two tools now that pull against each other on purpose: make it loud enough that no one can look away, and make it open enough that everyone you're fighting for can receive it. The best activist design does both at once.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> read the short <span class="term" data-pop="zapatistas">First Declaration of the Lacandón Jungle</span>, the Zapatistas' 1994 message from the Chiapas rainforest, then write one line in your notebook: <em>who is this really written for, the Mexican government it's addressed to, or the strangers around the world it needs on its side?</em> Bring your answer. That tension is where Week 9 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 7 · Black Panther paper</a>
+    <a href="#" onclick="return false">Week 9 · The Zapatistas ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over. This week is the midterm check-in.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+  <dialog class="pop" id="pop-aidscrisis"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The AIDS crisis</h4><p>A worldwide epidemic that, in the United States, became visible in the early 1980s. HIV/AIDS killed hundreds of thousands of Americans over the following decades. Early on it hit gay men, people who inject drugs, and other marginalized groups hardest, and it met deep stigma and years of official silence and neglect. Treatment that turned HIV from a death sentence into a manageable condition did not arrive until the mid-1990s.</p><p><b>Close to home:</b> the rural South, including parts of Appalachia, still carries a high share of new HIV diagnoses today, tied to poverty, stigma, and thin health services, the same forces ACT UP named forty years ago.</p><p><a href="https://en.wikipedia.org/wiki/HIV/AIDS_in_the_United_States" target="_blank" rel="noopener">Background →</a></p></div></dialog>
+  <dialog class="pop" id="pop-designactivism"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Design activism</h4><p>Using the tools of graphic design, posters, logos, ads, symbols, to carry a political argument and move it through public space, rather than to sell a product.</p><p><b>Example:</b> ACT UP put SILENCE=DEATH on t-shirts, stickers, and buttons so a single equation walked itself across a city on people's chests.</p></div></dialog>
+  <dialog class="pop" id="pop-silencedeath"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>SILENCE=DEATH</h4><p>The emblem of AIDS activism: a pink triangle on a black field over three words. Made by six activists in 1986 and wheat-pasted across Manhattan, it was adopted by ACT UP as its signature.</p><p><b>The pink triangle:</b> in Nazi camps, gay men were forced to wear a downward-pointing pink triangle. The poster flips it to point up, turning a badge of extermination into one of defiance.</p><p><a href="https://en.wikipedia.org/wiki/Silence=Death_Project" target="_blank" rel="noopener">The Silence=Death Project →</a></p></div></dialog>
+  <dialog class="pop" id="pop-granfury"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Gran Fury</h4><p>The art-and-design cell that came out of ACT UP in 1988, called the movement's "guerrilla graphic designers." They took their name from the Plymouth Gran Fury sedan the NYPD drove, rage and a police car in one phrase.</p><p><b>Example:</b> their "Kissing Doesn't Kill" bus ad mimicked a fashion campaign so closely that people had to read it twice to see it was about AIDS. All their work is public domain.</p><p><a href="https://en.wikipedia.org/wiki/Gran_Fury" target="_blank" rel="noopener">About Gran Fury →</a></p></div></dialog>
+  <dialog class="pop" id="pop-kissing"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Kissing Doesn't Kill"</h4><p>A 1989 Gran Fury poster and bus ad showing three couples kissing (mixed races and genders) under ad-style type, arguing that "greed and indifference," not kissing, spread AIDS. It borrowed the exact look of a Benetton clothing campaign so it would travel on public transit as if it belonged there.</p></div></dialog>
+  <dialog class="pop" id="pop-affinity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Affinity group</h4><p>A small, self-run cell of about 5 to 15 people who know and trust each other, plan their own part of a larger action, and take care of their own members (someone's job is tracking everyone and handling arrests).</p><p><b>A little history:</b> the model comes from Spanish anarchist "grupos de afinidad" and was revived by the 1970s anti-nuclear movement before ACT UP used it. It lets a movement be huge in the street and bonded in the cells at the same time, with no single leader to arrest.</p><p><b>Example:</b> at a big ACT UP action, one affinity group might handle the banner drop while another does the die-in, each deciding its own risk level.</p><p><a href="https://actupny.org/documents/CDdocuments/Affinity.html" target="_blank" rel="noopener">ACT UP on affinity groups →</a></p></div></dialog>
+  <dialog class="pop" id="pop-zap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Zap</h4><p>A fast, focused, surprise action aimed at embarrassing one target right now: a phone-in that jams a switchboard, a banner unfurled at a press conference, an office flooded with protesters and fact sheets.</p><p><b>A little history:</b> the "zap" was pioneered by gay activists in the early 1970s (the Gay Activists Alliance) and inherited by ACT UP. Unlike a big planned "action," a zap needs no permit and little lead time, just nerve and timing.</p><p><a href="https://actupny.org/documents/newmem2.html" target="_blank" rel="noopener">ACT UP on actions and zaps →</a></p></div></dialog>
+  <dialog class="pop" id="pop-diein"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week8-die-in.jpg" alt="Protesters lying on the ground playing dead in a die-in"><h4>Die-in</h4><p>A protest where people lie on the ground and play dead, sometimes with fake tombstones or blood, to force onlookers to picture the deaths a policy is causing.</p><p><b>Example:</b> ACT UP staged die-ins at the FDA and outside churches and pharmaceutical offices, turning a sidewalk into a graveyard the cameras could not ignore. The image does the arguing.</p><p><a href="https://en.wikipedia.org/wiki/Die-in" target="_blank" rel="noopener">What a die-in is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-inclusive"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Accessible / inclusive design</h4><p>Designing so that people with disabilities, and people in hard conditions (bright sun, no sound, slow connection, tired eyes), can still receive your message. It overlaps everything you make: images, video, color, wording, layout.</p><p><b>Example:</b> adding captions to a video serves a Deaf viewer AND the 80 percent of people scrolling with the sound off. Access built in usually helps everyone.</p></div></dialog>
+  <dialog class="pop" id="pop-alttext"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Alt text</h4><p>A short written description attached to an image so a screen reader can speak it to a blind or low-vision user (and so it shows if the image fails to load).</p><p><b>With / without:</b> without, the screen reader just says "image." With, it says "Fifty people lie still on the courthouse steps holding white tombstone signs." One line of text, and a blind supporter is in the room.</p><p><a href="https://www.w3.org/WAI/tips/writing/" target="_blank" rel="noopener">Writing good alt text →</a></p></div></dialog>
+  <dialog class="pop" id="pop-captions"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Captions</h4><p>On-screen text of what is spoken (and important sounds) in a video, timed to the audio. They serve Deaf and hard-of-hearing viewers, and anyone watching muted.</p><p><b>With / without:</b> a survivor's one-minute testimony with no captions is silent to a Deaf follower and to everyone scrolling sound-off. Add captions and the whole message switches back on for all of them.</p></div></dialog>
+  <dialog class="pop" id="pop-contrast"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Contrast, and never color alone</h4><p>Two rules that keep meaning visible: make text stand out strongly from its background (dark on light or light on dark), and never let color be the ONLY thing carrying meaning.</p><p><b>Example:</b> a chart that shows "safe" as green and "danger" as red, with no words or icons, is blank to a colorblind reader. Add a label and a symbol to each and the color becomes a bonus, not a barrier.</p></div></dialog>
+  <dialog class="pop" id="pop-plain"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Plain language</h4><p>Short sentences, common words, one idea at a time. It serves people with cognitive disabilities, non-native readers, and pretty much everyone who is tired or in a hurry.</p><p><b>With / without:</b> "Utilize the aforementioned mechanism to submit grievances" versus "Use this form to report a problem." Same instruction, and only one of them actually reaches a stranger.</p></div></dialog>
+  <dialog class="pop" id="pop-loud"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Loud vs. quiet media</h4><p>Not a quality judgment, a description of tempo and grab. LOUD media stops a scroll and demands the camera (a die-in, a shocking poster). QUIET media asks for time and attention on purpose (a captioned explainer, a hand-sewn quilt). The skill is knowing which one a moment needs, and that loud is not always stronger.</p></div></dialog>
+  <dialog class="pop" id="pop-quilt"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week8-quilt.jpg" alt="Panels of the AIDS Memorial Quilt spread across the ground"><h4>The AIDS Memorial Quilt</h4><p>Begun by activist Cleve Jones in 1987, it is a giant fabric memorial: one 3-by-6-foot panel (the size of a grave) for each person lost to AIDS, sewn by those who loved them. First shown on the National Mall in 1987 with 1,920 panels; now the largest piece of community folk art in the world.</p><p><b>A little history:</b> American quilting has long been a folk art and a political one, used by people shut out of official media to take up space and grieve in public.</p><p><b>Appalachian tie:</b> memorial quilts and the quilting bee, where a community gathers to sew together, are deep mountain traditions. The Quilt turned that communal, slow, hands-on practice into a national act of mourning and protest.</p><p><a href="https://www.aidsmemorial.org/quilt-history" target="_blank" rel="noopener">History of the Quilt →</a></p></div></dialog>
+  <dialog class="pop" id="pop-zapatistas"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week9-ezln.jpg" alt="Masked Zapatista supporters in Chiapas, Mexico"><h4>The Zapatistas</h4><p>An Indigenous-led movement in Chiapas, Mexico. On January 1, 1994, the day NAFTA took effect, the EZLN rose up and began sending out "communiqués" from the rainforest. Their spokesman, Subcomandante Marcos, wrote in a strange, literary, story-driven voice that traveled the early internet and pulled in supporters worldwide. Next week's case in slow-and-fast media working together.</p><p><a href="https://schoolsforchiapas.org/library/declaration-lacandona-jungle-2/" target="_blank" rel="noopener">First Declaration of the Lacandona Jungle →</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w8');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. Who-gets-shut-out is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w8_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 8: Design as a Weapon (ACT UP)\n'
+      + '1. The silence my cause faces / what it costs:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. My attention action + the single image (and what I leave out):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. My affinity group (5 to 15 people + jobs):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. One accessibility choice + the ethical line I won’t cross:\n' + (g('n4')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week8-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 16 · What Happens Now</title>
+<style>
+  #w16{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --field:#fffdf9;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w16 *{box-sizing:border-box}
+  #w16 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w16 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w16 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w16 .dek{color:var(--soft); font-size:1.05rem}
+  #w16 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w16 p{margin:.7em 0}
+  #w16 .arc{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w16 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w16 .grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0}
+  #w16 .skill{border:1px solid var(--line); border-radius:10px; padding:13px 15px; background:var(--panel)}
+  #w16 .skill h3{margin:0 0 4px; font-size:1rem; color:var(--accent)}
+  #w16 .skill p{margin:0; font-size:.92rem; color:var(--soft)}
+  #w16 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w16 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w16 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w16 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w16 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w16 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w16 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w16 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w16 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w16 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w16 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w16 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w16 .duebox{background:#fbf3e6; border:1px solid #e8d3ad; border-left:4px solid var(--gold); border-radius:9px; padding:14px 17px; margin:16px 0; font-size:.94rem; color:#6b4e22}
+  #w16 .duebox b{color:var(--gold)}
+  #w16 .sendoff{background:#eef4f0; border:1px solid #cfe0d6; border-radius:12px; padding:18px 20px; margin:26px 0 10px; font-size:1.02rem}
+  #w16 .sendoff b{color:var(--accent2)}
+  #w16 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w16 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w16 dialog.pop .in{padding:17px 19px; position:relative}
+  #w16 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w16 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w16 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w16 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w16 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w16 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (max-width:560px){ #w16 .grid{grid-template-columns:1fr} }
+  @media (prefers-color-scheme:dark){
+    #w16{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; --field:#1e232b; background:#12171d}
+    #w16 .sendoff{background:#16241c; border-color:#2c4536}
+    #w16 .duebox{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w16 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w16">
+
+  <div class="mast">
+    <div class="kick">Week 16 · Course close</div>
+    <h1>What Happens Now</h1>
+    <div class="dek">The presentations are done. Here is the arc you just walked, the skills that travel with you, and the one thing this course actually asks of you next.</div>
+  </div>
+
+  <div class="arc">
+    Sixteen weeks ago the claim was that <b>social media is older than your phone</b>. You started by learning that a medium is never neutral (<span class="term" data-pop="mcluhan">McLuhan</span>, <span class="term" data-pop="winner">Winner</span>), watched movements build connection with pamphlets, presses, banners, retyped pages, and church announcements, and then you ran a real campaign for a real cause and measured what it actually moved. You did not study social media from the outside. You practiced putting the <span class="term" data-pop="social">social</span> back into it.
+  </div>
+
+  <h2>The skills you are leaving with</h2>
+  <p>These do not stay in this classroom. They travel to any job, any platform, any cause you take up for the rest of your life.</p>
+  <div class="grid">
+    <div class="skill"><h3>Read a medium</h3><p>You can look at any channel and ask what it makes easy, what it buries, and who it quietly leaves out. That is <span class="term" data-pop="rhetoric">rhetorical analysis</span>, and every employer wants it.</p></div>
+    <div class="skill"><h3>Slow and fast, on purpose</h3><p>You know reach is not trust, and that lasting things get built slowly. You can pick the right speed for the job instead of defaulting to the loudest one.</p></div>
+    <div class="skill"><h3>Tell a true story</h3><p>You can make a stranger care about something obscure in ten seconds, and back it with a claim that holds up. That is the whole game in marketing, nonprofits, and organizing.</p></div>
+    <div class="skill"><h3>Measure what matters</h3><p>You can tell a vanity metric from a real result and say so plainly. In a world that runs on dashboards, honest measurement is rare and valuable.</p></div>
+    <div class="skill"><h3>Build with people, not at them</h3><p>From <span class="term" data-pop="relational">relational organizing</span> to <span class="term" data-pop="brown">emergent strategy</span>, you learned that the strongest medium is a trusted person. That works in a team, a community, and a movement.</p></div>
+    <div class="skill"><h3>Compose across modes</h3><p>You produced language, image, sound, and design toward one goal. Multimodal fluency is now the baseline for almost any communication role.</p></div>
+  </div>
+
+  <h2>Keep organizing your cause</h2>
+  <p>Here is the ask. Your cause did not end when the semester did. The kids still cross the highway. The tenants still need the meeting. The <span class="term" data-pop="cause">low-traction cause</span> you picked in Week 1 is still low-traction, and now you are one of the few people with both the skills and the history to move it.</p>
+  <div class="ex">
+    <div class="t">The smallest strong next step</div>
+    You do not need a big relaunch. Pick one slow move you can keep doing: send the email list a monthly note, hold one more in-person gathering, show up to the next public hearing with the same people. <span class="term" data-pop="brown">brown's</span> whole point is that small and steady beats big and gone. Trust builds at the speed of trust.
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>Your last word (final notebook entry)</h2>
+  <p>One more entry, then your Field Notebook is complete. Draft privately here (it autosaves on this device), then copy it into your Sheet.</p>
+  <div class="nb">
+    <div class="lead">This is the final row of the <b>Google Sheet</b> you have kept all term. Write here, then hit <b>Copy for my notebook</b>.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. Which course idea changed how you actually see a feed, a platform, or a cause? Name it and say what shifted.</label>
+    <textarea id="n1" placeholder="e.g. Winner. I cannot look at an app anymore without asking who the 'low bridge' shuts out…"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Your one next step for the cause. What is the small, slow thing you will keep doing after this class?</label>
+    <textarea id="n2" placeholder="e.g. a monthly text to the nineteen families, and I will be at the spring hearing with them…"></textarea>
+    <div class="save" id="v2"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="duebox">
+    <b>The finish line (both in AsULearn):</b> your <b>P3 final</b>, the built campaign and the impact report, and your <b>Field Notebook, end-of-term</b>. Make sure every week is filled in, then submit the Sheet. That closes the course.
+  </div>
+
+  <div class="sendoff">
+    <p><b>A last word from me.</b> You walked in as people who scroll. You are walking out as people who can build. You know how a movement holds itself together, why a bench with a bar in it is a political act, and what it takes to get real bodies into a real room for something that matters. That is a rare thing to carry, and most people twice your age do not have it.</p>
+    <p>So go be a little dangerous with it. Pick your cause back up next month, not next year. Put the social back. I am proud of you, and I cannot wait to see what you organize. Now go rest, you earned it.</p>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-mcluhan"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week2-mcluhan.jpg" alt="Portrait of media theorist Marshall McLuhan"><h4>Marshall McLuhan</h4><p>The Week 2 theorist behind "the medium is the message." His claim: a medium's biggest effect is not the content it carries but how it reshapes the way we perceive and relate. You now read every platform this way.</p></div></dialog>
+  <dialog class="pop" id="pop-winner"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Langdon Winner</h4><p>"Do artifacts have politics?" His answer: yes. Design can enforce power quietly, no law required. The low bridge that keeps buses out, the bench you cannot lie on, the algorithm that decides who sees you.</p></div></dialog>
+  <dialog class="pop" id="pop-social"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Putting the "social" back</h4><p>The frame of the whole course: real connection and community-building is a skill, and much of it got lost as "social" media optimized for reach over relationship. Every case you studied was a lesson in building the trust a feed cannot.</p></div></dialog>
+  <dialog class="pop" id="pop-rhetoric"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Rhetorical analysis</h4><p>Reading a message, or a medium, for how it works on an audience: what it assumes, what it rewards, who it addresses, who it excludes.</p><p><b>Example:</b> looking at a recruiting flyer and naming its appeal, its target, and the person it quietly writes off. You did this to platforms all semester.</p></div></dialog>
+  <dialog class="pop" id="pop-relational"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Relational organizing</h4><p>From Week 12: a real conversation with someone who knows you moves people that ads and mailers cannot. The most powerful medium is a trusted person.</p><p><b>Example:</b> one neighbor asking another to show up beats any boosted post. This works far past this course, in any team or community.</p></div></dialog>
+  <dialog class="pop" id="pop-brown"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown · emergent strategy</h4><p>From Week 13: "small is good, small is all"; move at the speed of trust; critical connections over critical mass. Movements grow like mycelium, not like ad campaigns.</p><p><b>Example:</b> instead of chasing a viral moment, you deepen a handful of real relationships and let them spread. That is the next-step advice for your cause.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your low-traction cause</h4><p>The real cause you chose in Week 1 precisely because it had not gained much traction, so your media work could actually matter. It is still yours after the grade posts.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Sheet you kept all term: exercises, analog experiments, case notes, strategy scratch. Add this final entry, confirm every week is in, and submit it to AsULearn. That is your notebook grade and the end of the course.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w16');
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  root.querySelectorAll('dialog.pop').forEach(function(d){
+    d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
+  });
+  ['n1','n2'].forEach(function(id){
+    var el = document.getElementById(id); if(!el) return;
+    var key = 'e4_w16_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ el.value = v; } }catch(e){}
+    el.addEventListener('input', function(){
+      try{ localStorage.setItem(key, el.value); }catch(e){}
+      var tag = el.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 16: What Happens Now (final entry)\n'
+      + '1. The idea that changed how I see a feed / platform / cause:\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. My one next step for the cause:\n' + (g('n2')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week16-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

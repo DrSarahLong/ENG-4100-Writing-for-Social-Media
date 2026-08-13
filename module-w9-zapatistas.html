@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 9 · An Army of Words</title>
+<style>
+  #w9{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w9 *{box-sizing:border-box}
+  #w9 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w9 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w9 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w9 .dek{color:var(--soft); font-size:1.05rem}
+  #w9 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w9 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w9 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w9 p{margin:.7em 0}
+  #w9 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w9 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w9 .recall b{color:var(--accent2)}
+  #w9 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w9 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w9 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w9 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w9 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w9 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w9 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w9 .read a{color:var(--accent); font-weight:600}
+  #w9 .read .g{font-size:.9rem; color:var(--soft)}
+  #w9 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w9 .qa{margin-top:10px}
+  #w9 .qa .qq{font-weight:600; font-size:.95rem}
+  #w9 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w9 .reveal{margin-top:6px}
+  #w9 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w9 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w9 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w9 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w9 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w9 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w9 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w9 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w9 .di .spec{margin-bottom:7px}
+  #w9 .di .spec select,#w9 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w9 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w9 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w9 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w9 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w9 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w9 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w9 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w9 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w9 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w9 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w9 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w9 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w9 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w9 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w9 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w9 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w9 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w9 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w9 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w9 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w9 .prime b{color:var(--accent)}
+  #w9 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w9 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w9 dialog.pop .in{padding:17px 19px; position:relative}
+  #w9 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w9 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w9 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w9 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w9 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w9 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w9{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w9 .recall{background:#16241c; border-color:#2c4536}
+    #w9 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w9 .read,#w9 .prime{background:#171d2b; border-color:#2c3a56}
+    #w9 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w9 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w9 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w9 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w9">
+
+  <div class="mast">
+    <div class="kick">Week 9 · Thursday module</div>
+    <h1>An Army of Words</h1>
+    <div class="dek">Tuesday you met the Zapatistas. Today you read the real dispatch, see how the network carried it, and then run the first audit of your own cause. That audit starts Project 2.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This module is your Thursday class. Dr. Long opens the Zoom, then you work through this on your own and reconvene at the end. Move at your own pace, but do the whole thing: the readings, the audit interactive, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> a few thousand <span class="term" data-pop="ezln">Zapatista</span> farmers held off an army by pairing the slowest medium (a community <span class="term" data-pop="assembly">assembly</span> that decides over days) with the fastest (the early internet). Today we read their actual words, name the network that carried them, and turn the same lens on your cause.
+  </div>
+
+  <h2>1 · Read the communiqu&eacute;</h2>
+  <p>The Zapatistas' main weapon was writing. Not a rifle, a <span class="term" data-pop="communique">communiqu&eacute;</span>: a public dispatch mailed from the <span class="term" data-pop="lacandon">Lacand&oacute;n jungle</span> to newspapers, then typed onto the internet by volunteers within hours. Most of them came from one masked spokesman, <span class="term" data-pop="marcos">Subcomandante Marcos</span>, who wrote like a poet and a comedian more than a general.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    A government press release says: "The administration announces new measures regarding regional development." A Zapatista communiqu&eacute; says: "We are a product of 500 years of struggle&hellip; But today, we say <span class="term" data-pop="yabasta">&iexcl;Ya Basta!</span>, Enough!" Same category of document, a public bulletin, but one is built to bore insiders and the other is built to make a stranger three countries away feel something.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://radiozapatista.org/?p=20280&amp;lang=en" target="_blank" rel="noopener">First Declaration of the Lacand&oacute;n Jungle</a> <span class="g">(Radio Zapatista, free, Creative-Commons text). Read the opening and the list of demands. Notice how fast it moves from "500 years" to a plain list of ordinary needs.</span></p>
+    <blockquote>"We are the inheritors of the true builders of our nation&hellip; we have nothing, absolutely nothing, not even a roof over our heads: no land, no work, no health care, no food, no education."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: the demand is written as a list of plain human needs (land, work, health care, food, education), not a political program. Why would a movement whose survival depends on the whole world watching write it that way?</div>
+      <textarea id="qa1" placeholder="e.g., a program speaks to insiders; a list of basic needs lets a stranger in Berlin or Boone recognize their own life and take the side of&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the audience. Example: "Jargon recruits people who already agree. A list of needs recruits strangers, because anyone can read 'no health care, no food' and feel it. When your defense is the world's attention, you write for the stranger, not the specialist."</div></details>
+    </div>
+  </div>
+  <div class="read">
+    <div class="t">Optional, if you want to hear the storyteller (5 min)</div>
+    <p style="margin:.4em 0"><a href="https://struggle.ws/mexico/ezln/1999/marcos_parrot.html" target="_blank" rel="noopener">Marcos, "The Parrot and the Macaw"</a> <span class="g">(struggle.ws, free full text). A short Marcos tale. This is the other half of the weapon: he didn't only declare, he told <span class="term" data-pop="storytelling">stories</span>, so people kept reading the way you keep watching a series.</span></p>
+  </div>
+
+  <h2>2 · The network that carried it</h2>
+  <p>A communiqu&eacute; is only paper until something moves it. What moved these was a <span class="term" data-pop="solidarity">solidarity network</span>: volunteers who translated each dispatch and pushed it onto email lists and the young internet, so that a message written in a jungle with no phone line reached forty countries in days. When the army pressed its offensive, that global noise, faxes, embassy protests, headlines, helped force it to stop. Analysts gave the pattern a name: <span class="term" data-pop="netwar">netwar</span>.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    Picture the difference. A traditional army has a chain of command: knock out the general and it stalls. The Zapatista support network had no general. It was thousands of small groups, a listserv here, a student club there, a union local somewhere else, all acting on the same communiqu&eacute; at once. There was no headquarters to raid. Scholar <span class="term" data-pop="cleaver">Harry Cleaver</span> called it "an electronic fabric of struggle": pull one thread and the cloth holds.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://la.utexas.edu/users/hcleaver/zapeffect.html" target="_blank" rel="noopener">Harry Cleaver, "The Zapatista Effect"</a> <span class="g">(University of Texas, free full text). Read the opening section on how the internet turned local solidarity work into a worldwide fabric. Skip the dense economics if you like; you want the argument about the network.</span></p>
+    <blockquote>"The computer networks&hellip; provided vehicles not only for the traditional work of solidarity but for the weaving of a new electronic fabric of struggle to carry the resistance."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: netwar's edge is that there's no head to cut off. Name one strength and one real weakness of a movement with no headquarters and no single leader. (Hold onto the weakness; it's the whole point of next week.)</div>
+      <textarea id="qa2" placeholder="e.g., STRENGTH: you can't arrest it into silence, everyone carries the message. WEAKNESS: with no one in charge, it may not be able to&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer sees the trade. Example: "Strength: it survives repression, there's no boss to jail. Weakness: it can't easily decide, change course, or negotiate, because there's no one with the authority to say yes. It can assemble a crowd overnight and then not know what to do with it." That weakness is exactly Tufekci's Week 10 argument.</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · Read the audit</h2>
+  <p>Project 2 is a <span class="term" data-pop="audit">content audit</span> and strategy for your cause. An audit isn't a scolding list of "post more." It's a diagnosis: what is this cause's media presence actually missing, and what's the smartest first move to fix it? The Zapatistas are your model. They knew a viral message is empty without a real community behind it, and a real community gets crushed in silence without reach. Watch for that both/and here.</p>
+  <div class="diag" id="diag">
+    <div class="hint">Six real-world audit snapshots. For each, make two calls. First: <b>what's actually missing?</b> Second: <b>the smartest first move.</b> The obvious reflex ("just post more") is almost never the right move. Commit both, then Check.</div>
+
+    <div class="di" data-miss="a1" data-move="m1">
+      <div class="q">1. Your cause's posts average 2,000 views, but you have no email list, no group chat, no way to ever contact a single person who cared.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: a way to hold people. Two thousand views that vanish are reach with no relationship, the Zapatista trap in reverse. Build an owned channel (an email list, a group) so the people who care don't leak away. Numbers you can't contact again aren't an audience.</div>
+    </div>
+
+    <div class="di" data-miss="a2" data-move="m2">
+      <div class="q">2. You post on five platforms. A stranger who reads all of them still can't tell what your cause actually wants or who it's for.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: a throughline. Five platforms and no clear message is just noise on more channels. The Zapatista "&iexcl;Ya Basta!" worked because it was one sharp thing a stranger could grasp instantly. Define one message and one audience before you post another word. More posting only spreads the confusion.</div>
+    </div>
+
+    <div class="di" data-miss="a3" data-move="m3">
+      <div class="q">3. Your cause serves rural older adults. Ninety percent of your effort goes into short-video apps, where the people you actually serve almost never are.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: presence where your people are. Beautiful videos are worthless if your audience isn't in the room. The Zapatistas reached the world by the internet but reached their own base by church, radio, and word of mouth, the channels their people already used. Go where the affected people already gather, even if it's a printed flyer or a local radio slot.</div>
+    </div>
+
+    <div class="di" data-miss="a4" data-move="m4">
+      <div class="q">4. One post hit 80,000 views. Traffic spiked for a day, then flatlined. There was no link, no ask, no follow-up anywhere on it.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: a next step. The reach worked; the on-ramp didn't exist, so 80,000 people arrived at a door with no handle. The tempting move is to chase another viral hit. The smart move is to make sure the next spike converts: one clear ask or link on everything, so attention turns into a name on a list, a signature, a person who shows up.</div>
+    </div>
+
+    <div class="di" data-miss="a5" data-move="m5">
+      <div class="q">5. Fifteen volunteers meet every month and do real, sustained work. None of it is documented anywhere online, so to an outsider your cause looks dead.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: visibility for a strong slow core. You have the rarest thing in this whole course, a real bonded community, and it's invisible. This is the Zapatista lesson exactly: the assembly was the strength, the internet just let the world see it. Start documenting the offline work (photos, short notes, a monthly recap) so the network can see itself and strangers can find the real thing.</div>
+    </div>
+
+    <div class="di" data-miss="a6" data-move="m6">
+      <div class="q">6. You have a small, loyal newsletter (200 devoted readers) and steady monthly meetings. You've never once tried to reach anyone new. Growth is flat and the group is quietly aging out.</div>
+      <div class="spec"><span class="l">Missing</span>
+        <select class="mi"><option value="">what's actually missing?</option>
+          <option value="a1">A way to hold the people who care (an owned channel)</option>
+          <option value="a2">A clear message and audience (a throughline)</option>
+          <option value="a3">Presence where your people actually are</option>
+          <option value="a4">A next step after the attention (an on-ramp)</option>
+          <option value="a5">Visibility for real offline work</option>
+          <option value="a6">Any reach at all to new people</option>
+        </select></div>
+      <div class="tr"><span class="l">Move</span>
+        <select class="mo"><option value="">smartest first move?</option>
+          <option value="m1">Start an owned list or group to capture people who care</option>
+          <option value="m2">Nail one message and one audience before posting again</option>
+          <option value="m3">Move your effort to where your people already gather</option>
+          <option value="m4">Put one clear ask or on-ramp on everything you post</option>
+          <option value="m5">Start documenting the offline work so it's visible</option>
+          <option value="m6">Add one fast-reach move to introduce a strong core to new people</option>
+          <option value="m7">Just post more often to grow the numbers</option>
+        </select></div>
+      <div class="fb">Missing: any reach to new people. This is case 1 flipped. Here the slow, high-trust core is strong and there's zero fast reach, so it's dying quietly. The fix isn't "build more trust," you have that. It's the missing half of the Zapatista pairing: add one fast-reach move (a public explainer, a shareable clip, one open event) to introduce the strong core to strangers. Diagnosis first, then the move follows.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my audit</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · Twelve days that ran on words</h2>
+  <div class="case">
+    <div class="t">Chiapas, January 1994</div>
+    <p style="margin:.5em 0">On January 1, 1994, the Zapatistas seized several towns in <span class="term" data-pop="chiapas">Chiapas</span>. The Mexican army answered with overwhelming force. By any military math, this was over. What broke the math was the network: within days, communiqu&eacute;s were translated and posted worldwide, solidarity groups flooded embassies and newsrooms, and the government found it could not press a quiet offensive against people the whole world was now reading about. Around twelve days in, it declared a ceasefire and, remarkably, sat down to talk.</p>
+    <p style="margin:.5em 0">Notice the pairing. The <span class="term" data-pop="mandar">slow assembly</span> built a real community worth defending. The <span class="term" data-pop="netwar">fast network</span> made sure the world watched them defend it. Neither alone would have worked: a viral post with no community behind it is empty, and a real community nobody hears about gets crushed in silence.</p>
+    <div class="honest"><b>Stay honest.</b> Don't romanticize the ending. The Zapatistas never won their formal demands, the state response stayed harsh, and in 1997 a paramilitary group massacred 45 people at Acteal, most of them women and children. What they won was survival, self-rule in their own territory, and a playbook every networked movement since has borrowed. Both things are true at once.</div>
+    <div class="qa">
+      <div class="qq">Your turn: the ceasefire came because the world was watching, not because the Zapatistas could win a battle. In one sentence, what did the slow assembly give the movement that the fast network never could?</div>
+      <textarea id="qa3" placeholder="one sentence&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It gave them something real to broadcast, a bonded community that had already decided, together, to hold the line, so that when the world tuned in there was a genuine thing to defend rather than a hashtag." The network amplifies; it can't manufacture the thing being amplified.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Audit your own cause (this starts Project 2)</h2>
+  <p>Now the part that's yours, and the first real step of <span class="term" data-pop="p2">Project 2</span>. You're going to run a plain audit of your cause's current media presence, Zapatista-style: where's the slow core, where's the fast reach, and what's actually missing? Draft privately here (it autosaves on this device), then send it to your Field Notebook. You'll build on this exact audit when P2 opens.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&#8599; Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. The inventory. List every place your cause currently has a presence (each app, a website, a newsletter, word of mouth, a physical spot), and every place it's completely silent.</label>
+    <textarea id="n1" placeholder="e.g., a barely-used Instagram, a Facebook group of 40, word of mouth at one church. Silent everywhere else: no email list, nothing in print, no website&hellip;"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. The message test. In one sentence a total stranger could understand, what does your cause want and who is it for? If you can't write that sentence cleanly, that itself is your first audit finding.</label>
+    <textarea id="n2" placeholder="e.g., 'We want a safe crosswalk at the elementary school on Route 105, for the families who walk their kids there.' Or: I couldn't get it to one sentence, which tells me&hellip;"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. The slow core. What real, bonded, offline part does your cause have or could have, the people who'd actually keep showing up? Is any of it visible online right now?</label>
+    <textarea id="n3" placeholder="e.g., about eight regulars who meet at the library monthly. None of it is documented anywhere, so from outside we look dead&hellip;"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. The leak. When someone does care, what's the very next step you offer them right now? If the honest answer is "nothing," name that, it's the gap Project 2 will fix.</label>
+    <textarea id="n4" placeholder="e.g., right now there's no ask at all, someone who cares just&hellip; scrolls past. There's no link, no sign-up, no 'come to this'&hellip;"></textarea>
+    <div class="save" id="v4"></div>
+
+    <label for="n5">5. The both/and plan. Name one slow-media move (build or deepen the trust core) and one fast-media move (reach new people) you could make for your cause this semester, and what each would give you.</label>
+    <textarea id="n5" placeholder="e.g., SLOW: a standing monthly meetup so regulars actually bond (builds a core worth broadcasting). FAST: one short explainer clip plus a sign-up link (introduces the core to strangers)&hellip;"></textarea>
+    <div class="save" id="v5"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You have a working audit lens now, and it's the spine of Project 2: before "what should we post," ask "what is this cause actually missing, the slow core, the fast reach, the throughline, the on-ramp, and what's the one smart move that follows?"
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> the Zapatista network could assemble the world overnight. Next week we ask what that speed <em>costs</em>. Skim the free introduction of Zeynep Tufekci's <a href="https://www.twitterandteargas.org/downloads/twitter-and-tear-gas-by-zeynep-tufekci.pdf" target="_blank" rel="noopener">Twitter and Tear Gas</a> (free full PDF, read just the intro), then write one line in your notebook: <em>if a protest can gather half a million people in a week without any real organization, what might it <b>not</b> be able to do when things get hard?</em> Bring your answer. That's where Week 10 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">&#8249; Week 9 · Tuesday</a>
+    <a href="#" onclick="return false">Week 10 · Networked Protest &amp; Its Limits &#8250;</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-ezln"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week9-ezln.jpg" alt="Masked Zapatista supporters marching under EZLN banners in Chiapas, Mexico"><h4>The Zapatistas (EZLN)</h4><p>The Zapatista Army of National Liberation, mostly Maya farmers in Chiapas, Mexico, named for Emiliano Zapata of the Mexican Revolution. They rose up on January 1, 1994, the day the NAFTA trade deal took effect.</p><p><b>Example:</b> instead of trying to seize the capital, they seized the world's attention, and turned a local uprising into a global cause.</p></div></dialog>
+  <dialog class="pop" id="pop-marcos"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week9-marcos.jpg" alt="Subcomandante Marcos, masked and smoking a pipe, the Zapatista spokesman"><h4>Subcomandante Marcos</h4><p>The masked, pipe-smoking spokesman who wrote most of the Zapatista communiqu&eacute;s. "Subcomandante," sub-commander, was deliberate: he insisted he served the indigenous command, not the reverse. A former professor who said he had to learn to listen for years before he earned the right to speak.</p><p><b>Example:</b> asked to reveal his "real" identity, he answered that he was every excluded person everywhere. The refusal to have one face was the point.</p></div></dialog>
+  <dialog class="pop" id="pop-communique"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Communiqu&eacute;</h4><p>A public dispatch or bulletin issued by a group to the world (say "kuh-MEW-nih-kay"). Armies and governments issue dry ones; the Zapatistas made them literary, part manifesto, part letter, part story.</p><p><b>Example:</b> the First Declaration of the Lacand&oacute;n Jungle was a communiqu&eacute;, written in the jungle, mailed to newspapers, then posted online and translated into dozens of languages within days.</p><p><a href="https://en.wikipedia.org/wiki/Communiqu%C3%A9" target="_blank" rel="noopener">What a communiqu&eacute; is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-netwar"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Netwar</h4><p>Conflict waged by a swarm of small, networked groups rather than one chain of command. Coined by analysts John Arquilla and David Ronfeldt at the RAND think tank, who studied the Zapatistas as the first clear case.</p><p><b>Example:</b> no general to capture, no headquarters to raid. Thousands of scattered solidarity groups all acted on the same communiqu&eacute; at once, which made the movement almost impossible to shut down by force.</p><p><a href="https://en.wikipedia.org/wiki/Netwar" target="_blank" rel="noopener">Netwar explained &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-solidarity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Solidarity network</h4><p>People who don't share your location or your exact struggle but choose to act on your behalf, spreading your message, showing up, applying pressure from afar. For the Zapatistas, this was the fast half of the strategy: strangers worldwide carrying a jungle communiqu&eacute; in days.</p><p><b>A little history + a Southern tie:</b> long before the internet, the coalfields of West Virginia and eastern Kentucky ran on solidarity networks. In the 1921 Battle of Blair Mountain, thousands of miners tied red bandanas around their necks so they could recognize each other across a scattered uprising, one likely root of the word "redneck." A distributed movement with no single head, held together by a shared sign. Same logic the Zapatistas would run on the wire seventy years later.</p><p><a href="https://en.wikipedia.org/wiki/Battle_of_Blair_Mountain" target="_blank" rel="noopener">The Battle of Blair Mountain &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-cleaver"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Harry Cleaver</h4><p>An economist at the University of Texas who tracked the Zapatista support network in the 1990s. He named the way computer networks turned scattered solidarity into a worldwide "electronic fabric of struggle," an early, prescient read on internet organizing.</p></div></dialog>
+  <dialog class="pop" id="pop-yabasta"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>&iexcl;Ya Basta!</h4><p>Spanish for "Enough!" The rallying cry of the 1994 uprising. Two words that anyone anywhere can feel, which is exactly why they traveled.</p><p><b>Example:</b> a stranger who knows nothing about Chiapas still understands "Enough." That instant grasp is what let the phrase jump borders.</p></div></dialog>
+  <dialog class="pop" id="pop-assembly"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>The community assembly</h4><p>How the Zapatistas make decisions: the community talks a question through, sometimes for days, until it reaches consensus, rather than taking an order from the top. Slow on purpose.</p><p><b>Example:</b> a decision the whole community shaped is one the whole community will actually carry out, and there's no single boss to arrest, because the authority lives in everyone.</p></div></dialog>
+  <dialog class="pop" id="pop-mandar"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Mandar obedeciendo</h4><p>"To lead by obeying." The Zapatista principle that leaders carry out what the community's assembly decides, instead of the community obeying the leader.</p><p><b>Example:</b> it's why capturing Marcos wouldn't have ended the movement. He was a spokesman for a decision made by many, not the decider.</p></div></dialog>
+  <dialog class="pop" id="pop-chiapas"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/chiapas-map.png" alt="Map of Mexico with the southernmost state of Chiapas highlighted"><h4>Chiapas</h4><p>Mexico's southernmost state, mountainous, heavily indigenous, and among its poorest. The Zapatista base. The gap between its resource wealth and its people's poverty was central to the uprising.</p></div></dialog>
+  <dialog class="pop" id="pop-lacandon"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/week9-jungle.jpg" alt="Dense green rainforest of the Lacandon jungle in eastern Chiapas"><h4>The Lacand&oacute;n jungle</h4><p>The rainforest region of eastern Chiapas where the Zapatistas organized and from which the communiqu&eacute;s were "issued." Naming the jungle as the dateline was itself a move: it located the words in a real, rooted place.</p></div></dialog>
+  <dialog class="pop" id="pop-storytelling"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Marcos's storytelling</h4><p>The communiqu&eacute;s weren't only declarations. Marcos wrote recurring characters: Old Antonio, a Mayan elder who teaches through fable, and Durito, a talking beetle who fancies himself a knight-errant and lectures Marcos on politics.</p><p><b>Example:</b> people who didn't care about Mexican policy read the Durito tales like a comic serial, and absorbed the politics anyway. Story was the sugar on the argument.</p></div></dialog>
+  <dialog class="pop" id="pop-audit"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Content audit</h4><p>A clear-eyed inventory of what a cause or organization is actually putting out, where, for whom, and to what effect, so you can see what's missing before you plan what's next.</p><p><b>Example:</b> "We post daily on three apps, but we have no email list, no clear ask, and our real offline work is invisible." That sentence is an audit. It tells you exactly where to start.</p></div></dialog>
+  <dialog class="pop" id="pop-p2"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Project 2: Content Strategy &amp; Audit</h4><p>Your second major project (25% of the grade, due around Week 11). For your cause, you audit its current media presence and then build a real strategy: audience, goals, a platform-appropriate voice, and an editorial calendar. The five audit prompts on this page are your running start.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w9');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // audit interactive
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var miss = di.querySelector('.mi').value, move = di.querySelector('.mo').value;
+      if(!miss || !move){ return; }
+      answered++;
+      var mOk = miss === di.dataset.miss, vOk = move === di.dataset.move;
+      di.classList.remove('right','partial','wrong');
+      if(mOk && vOk){ di.classList.add('right'); full++; }
+      else if(mOk || vOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. Matching the missing piece to the right move is the audit skill Project 2 is built on.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4','n5'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w9_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 9: An Army of Words (cause audit, Project 2 start)\n'
+      + '1. The inventory (where my cause is present / silent):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. The message test (one sentence: what it wants, who for):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. The slow core (bonded offline part / is it visible?):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. The leak (the next step offered when someone cares):\n' + (g('n4')||'(blank)') + '\n\n'
+      + '5. The both/and plan (one slow move + one fast move):\n' + (g('n5')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week9-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>

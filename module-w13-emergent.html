@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 13 · Small Is All</title>
+<style>
+  #w13{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#365a7a; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w13 *{box-sizing:border-box}
+  #w13 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w13 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w13 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w13 .dek{color:var(--soft); font-size:1.05rem}
+  #w13 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w13 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w13 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w13 p{margin:.7em 0}
+  #w13 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w13 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w13 .recall b{color:var(--accent2)}
+  #w13 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w13 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w13 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w13 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w13 .honest b{color:var(--gold)}
+  /* guided reading */
+  #w13 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w13 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w13 .read a{color:var(--accent); font-weight:600}
+  #w13 .read .g{font-size:.9rem; color:var(--soft)}
+  #w13 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w13 .qa{margin-top:10px}
+  #w13 .qa .qq{font-weight:600; font-size:.95rem}
+  #w13 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w13 .reveal{margin-top:6px}
+  #w13 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w13 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w13 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w13 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w13 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w13 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w13 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w13 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w13 .di .spec{margin-bottom:7px}
+  #w13 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #w13 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w13 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w13 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w13 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w13 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w13 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w13 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w13 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w13 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w13 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w13 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w13 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w13 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w13 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w13 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w13 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w13 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w13 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w13 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w13 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w13 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w13 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w13 .prime b{color:var(--accent)}
+  #w13 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w13 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w13 dialog.pop .in{padding:17px 19px; position:relative}
+  #w13 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w13 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w13 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w13 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w13 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w13 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  @media (prefers-color-scheme:dark){
+    #w13{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; background:#12171d}
+    #w13 .recall{background:#16241c; border-color:#2c4536}
+    #w13 .honest{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w13 .read,#w13 .prime{background:#171d2b; border-color:#2c3a56}
+    #w13 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w13 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w13 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w13 dialog.pop{background:#1a2129}
+  }
+</style>
+</head>
+<body>
+<div id="w13">
+
+  <div class="mast">
+    <div class="kick">Week 13 · Thursday module</div>
+    <h1>Small Is All</h1>
+    <div class="dek">Tuesday you watched a flock move as one with no leader. Today you read the theory under it, then build the smallest strong version of your own campaign.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">This is the module for our Thursday class on Zoom. Dr. Long will open, orient you, and stay on for questions while you work. Move at your own pace, but do the whole thing: the reading, the diagnosis, the case, and the making are the instruction. This is the softer, more philosophical week of the course. Let it breathe. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in mind.</div>
+
+  <div class="recall">
+    <b>Tuesday, in one line:</b> a hundred thousand starlings turn as one with no lead bird, because each one tracks only about seven neighbors. The big pattern grew from small relationships. That is <span class="term" data-pop="emergence">emergence</span>, and this week's whole idea is that lasting movements grow the same way.
+  </div>
+
+  <h2>1 · Emergence, and "small is all"</h2>
+  <p>In 2017, an organizer and writer named <span class="term" data-pop="amb">adrienne maree brown</span> published a book called <em>Emergent Strategy</em>. Her core move: stop borrowing your strategy from war and advertising (conquer, scale, dominate), and start borrowing it from living systems (adapt, connect, grow from the small). A lot of it she draws from the science-fiction writer <span class="term" data-pop="octavia">Octavia Butler</span>, who imagined communities that survive collapse by bending instead of breaking.</p>
+  <div class="ex">
+    <div class="t">See it</div>
+    Her most-quoted line: "Small is good, small is all. The large is a reflection of the small." Picture a compost bin and a whole regenerative farm. The farm is only ever as healthy as the soil life in one handful of that compost, multiplied. You cannot fake healthy soil at scale. You build it small, and the large becomes a reflection of it. brown says movements work the same way: the big thing carries the character of its smallest parts, for better or worse.
+  </div>
+  <div class="read">
+    <div class="t">Read the real thing (7&ndash;9 min)</div>
+    <p style="margin:.4em 0"><a href="https://commonslibrary.org/emergent-strategy/" target="_blank" rel="noopener">"Emergent Strategy" (The Commons Social Change Library)</a> <span class="g">(free, open access). Read the "Core Principles" and "Elements" lists slowly. This is the plainest map of brown's whole framework.</span></p>
+    <blockquote>"Small is good, small is all. (The large is a reflection of the small.) &hellip; Focus on critical connections more than critical mass, build the resilience by building the relationships."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: read the list of principles. Pick the ONE that most argues with how you have been running your cause so far. Name it, and say what it would change.</div>
+      <textarea id="qa1" placeholder="e.g., 'move at the speed of trust' argues with me. I keep pushing people to commit fast, and I lose them. It would mean slowing down and letting trust catch up before I ask for anything big&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names a real tension, not a compliment to yourself. Example: "'What you pay attention to grows' argues with me. I spend my energy tracking follower counts, so follower counts are what grow, not relationships. It would mean pointing my attention at the twelve people who already show up, and watching that grow instead."</div></details>
+    </div>
+  </div>
+
+  <h2>2 · Fractal, and the speed of trust</h2>
+  <p>brown's key word is <span class="term" data-pop="fractal">fractal</span>: how we are at the small scale is how we are at the large scale. The way two people treat each other in your campaign is the way ten thousand people will experience it later, scaled up. Which leads to her most practical rule: <span class="term" data-pop="speedtrust">move at the speed of trust</span>. You cannot rush a relationship, and if you try to grow faster than trust can hold, the whole thing tears.</p>
+  <div class="ex">
+    <div class="t">See it (a with / without pair)</div>
+    <b>Without the fractal lens:</b> "Our public image is warm and welcoming, so we're fine," while behind the scenes the two organizers snipe at each other and burn out every volunteer in a month. <b>With the fractal lens:</b> you see that the private sniping IS the movement's true character, and it will surface publicly the second you scale. The small is the tell. Fix the two-person dynamic and you are fixing the future ten-thousand-person one.
+  </div>
+  <p>Instead of <span class="term" data-pop="criticalmass">critical mass</span> (a big number of loosely-attached people), brown points at <span class="term" data-pop="criticalconn">critical connections</span> (a few strong relationships that can actually bear weight). A crowd scatters when the moment passes. A web of trust holds. And the whole thing grows less like an ad campaign and more like <span class="term" data-pop="mycelium">mycelium</span>: mostly underground, relational, <span class="term" data-pop="decentralization">decentralized</span>, with no single point of failure.</p>
+  <div class="read">
+    <div class="t">Read the real thing (6&ndash;8 min)</div>
+    <p style="margin:.4em 0"><a href="https://longreads.com/2018/04/24/earning-our-place-on-the-planet-an-interview-with-adrienne-maree-brown/" target="_blank" rel="noopener">"Earning Our Place on the Planet: An Interview with adrienne maree brown" (Longreads)</a> <span class="g">(free, open access). brown in her own voice on emergence, trust, and change. Read for how she talks, warm, slow, unhurried, the tone is part of the argument.</span></p>
+    <blockquote>"When two different ways of being come into contact with each other there's also an opportunity there to generate a new way of being &hellip; that neither one person could have come up with on their own."</blockquote>
+    <div class="qa">
+      <div class="qq">Your turn: where in your campaign are you moving faster than trust can hold? Name one place you are asking people for more than the relationship can currently carry.</div>
+      <textarea id="qa2" placeholder="e.g., I ask first-time followers to donate before they know us at all. That's outrunning trust. The relationship isn't there yet to carry that ask&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">A strong answer names the specific ask and the missing trust behind it. Example: "I keep asking people to 'commit to organizing' after one Instagram comment. I'm asking for marriage on a first date. The speed-of-trust move is a much smaller first ask, come to one low-stakes thing, and let the trust build before I ask for their time."</div></details>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE -->
+  <h2>3 · The emergent read</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Two calls per case, and the obvious answer is sometimes the wrong one. First: does this move try to grow by <b>mass</b> (numbers, reach) or by <b>connection</b> (relationships)? Some are genuinely mixed. Second: name <span class="term" data-pop="emergence">the emergent read</span>, what brown would actually say is happening. Commit both, then Check.</div>
+
+    <div class="di" data-spec="mass" data-trade="1">
+      <div class="q">1. Two weeks before a big event, a cause spends its whole budget on <span class="term" data-pop="multimodal">ads</span> shown to 100,000 strangers in the county.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">Mass, chasing reach without relationship. A hundred thousand impressions and almost no one who knows your name. When the money stops, so does the movement. brown would ask what those dollars would have grown if you had spent them on twelve real relationships instead.</div>
+    </div>
+
+    <div class="di" data-spec="connection" data-trade="2">
+      <div class="q">2. Before launching anything public, an organizer spends three months just having coffee with fifteen local pastors, teachers, and shop owners.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">Connection, moving at the speed of trust. It looks like doing nothing. It is actually the whole foundation. Fifteen trusted people, each with their own network, is a base that can hold real weight later. This is the slow media of Week 2 as a growth strategy.</div>
+    </div>
+
+    <div class="di" data-spec="connection" data-trade="3">
+      <div class="q">3. A cause has a warm, welcoming public feed. Inside the private group chat, the founder belittles volunteers and two quit every week.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">The tempting answer is "the public image is fine, so the cause is fine." Wrong. This is the fractal trap: the small-scale cruelty IS the movement's real character, and it will surface at scale. A cause that treats twelve volunteers badly cannot treat twelve thousand people well. The relationship layer is where it lives, and it is rotting.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="4">
+      <div class="q">4. A cause lets any local chapter act without asking headquarters first. One small chapter tries something odd; it unexpectedly reaches a huge audience.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">Mixed, and the point is the structure. Because it is decentralized, a small part could adapt and try something no central office would have approved, and the network got the upside. No single point of failure, and lots of small experiments running at once. This is how living systems find what works: many small tries, keep what survives.</div>
+    </div>
+
+    <div class="di" data-spec="mass" data-trade="5">
+      <div class="q">5. A cause has 40,000 followers. When it calls a real meeting, five people show up.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">Mass without connection. The number looks like power and holds none. This is exactly the fragility Tufekci named in Week 10 and Dean named in Week 11: circulation that feels like a movement but cannot act. Forty thousand who watch is weaker than forty who will walk.</div>
+    </div>
+
+    <div class="di" data-spec="mixed" data-trade="6">
+      <div class="q">6. A cause hosts one deep eight-person <span class="term" data-pop="shapenote">story circle</span>, then edits it into a short three-minute film that gets shared widely.</div>
+      <div class="spec"><span class="l">Grows by</span><button data-v="mass">Mass</button><button data-v="mixed">Mixed</button><button data-v="connection">Connection</button></div>
+      <div class="tr"><span class="l">Emergent read</span><select><option value="">what would brown say?</option><option value="1">Chases critical mass; buys reach without relationship</option><option value="2">Moves at the speed of trust; builds the base slowly</option><option value="3">Fractal: the small-scale behavior becomes the whole</option><option value="4">Decentralized and adaptive; resilient, no single point of failure</option><option value="5">Critical mass without critical connections; looks strong, breaks under pressure</option><option value="6">Small and strong, then fractaled outward (the both / and)</option></select></div>
+      <div class="fb">Mixed, and this is the ideal. Something small and real (eight people telling the truth to each other) made first, then fractaled outward through fast media. The reach carries the character of the small thing, because there was a real small thing to carry. This is what you are building Thursday.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my read</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>4 · A movement with no headquarters</h2>
+  <div class="case">
+    <div class="t">Fayetteville, Arkansas, 2016</div>
+    <p style="margin:.5em 0">A woman named Jessica McClard built one small wooden box on a post outside a church, stocked it with food, and painted three words on it: take what you need, leave what you can. She called it a <span class="term" data-pop="mutualaid">little free pantry</span>. She did not start a nonprofit, launch a campaign, or hire anyone. She just built one good small thing and posted a photo of it.</p>
+    <p style="margin:.5em 0">People copied it. Not her organization, because there was none: they copied the <em>pattern</em>. A pantry in one town, then a hundred, then thousands, each one built and stocked and watched over by whoever lives nearby, in whatever wood and paint they had. No headquarters could shut it down because there is no headquarters. Cut any one node and the network is fine. It grew like <span class="term" data-pop="mycelium">mycelium</span>, not like a franchise. The small unit already held the whole idea, so the whole idea could travel by being copied.</p>
+    <div class="qa">
+      <div class="qq">Your turn: the little free pantry had no central plan and spread anyway. What did growing by <em>copying a small pattern</em> give this movement that a single big national campaign never could? Name it in one sentence.</div>
+      <textarea id="qa3" placeholder="one sentence&hellip;"></textarea>
+      <details class="reveal"><summary>Compare with one sharp reading</summary><div class="model">"It gave every pantry a local owner who actually cares, so there's no single thing to defund or shut down, and the trust is built in because your neighbor made the box, not a logo." Decentralization plus a small, copyable pattern equals resilience. That is fractal growth in the wild.</div></details>
+    </div>
+  </div>
+
+  <!-- NOTEBOOK -->
+  <h2>5 · Make the smallest strong version</h2>
+  <p>Now you build it. This is the Thursday deliverable: draft the actual <span class="term" data-pop="multimodal">multimodal</span> pieces of your campaign, the language, the image, the sound, and the design, working through the emergent lens. Do not design for a million strangers. Design the smallest version that is genuinely good and already carries the whole thing, the version that could fractal outward because the small unit is strong. Draft privately here (it autosaves on this device), then send it to your Field Notebook.</p>
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Draft here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+
+    <label for="n1">1. LANGUAGE, the smallest strong line. Write the one sentence at the center of your campaign. Not a slogan for strangers: the true thing you would say to one person you trust. If it only reached twelve people, it should still be worth saying.</label>
+    <textarea id="n1" placeholder="e.g., 'Our block deserves a crosswalk before another kid gets hit, and we are the ones who can get it.'"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. IMAGE, the one picture. Describe (or sketch in words) a single image that carries your line without shouting. What is in the frame, and what does it make a stranger feel in one second? Small and specific beats big and generic.</label>
+    <textarea id="n2" placeholder="e.g., a child's chalk drawing of a crosswalk on the real, uncrossed street, shot at kid height, the traffic blurred behind it&hellip;"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. SOUND, what it sounds like. Name the sound of your campaign: a specific voice, a song, an ambient noise, a silence. Even a still image travels with a sound in people's heads. What is yours, and why that one? (Think of a <span class="term" data-pop="shapenote">room full of people singing</span> versus a polished ad voice.)</label>
+    <textarea id="n3" placeholder="e.g., no music at all, just the real sound of that intersection, tires and horns, so the danger is audible. Or one neighbor's voice, unpolished&hellip;"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. DESIGN, how it is arranged and where it lives. How do the words, image, and sound sit together, and on what medium does the small strong version actually live (a printed flyer, a single pinned post, a short film, a physical object like the pantry)? Match the design to the trust you are building, not the reach you wish you had.</label>
+    <textarea id="n4" placeholder="e.g., a single black-and-white flyer, the chalk image big, the line small underneath, taped at eye level on the four corners of that exact intersection. It lives where the problem is, not on a feed&hellip;"></textarea>
+    <div class="save" id="v4"></div>
+
+    <label for="n5">5. THE FRACTAL CHECK. In one line: if this small version worked and got copied a hundred times, would the big version carry the same character you want? If not, what in the small piece do you fix now?</label>
+    <textarea id="n5" placeholder="e.g., yes, because it keeps a real local voice at the center. The thing to protect as it grows is that a neighbor always makes it, never a logo&hellip;"></textarea>
+    <div class="save" id="v5"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <div class="close">
+    <b>Close it out.</b> Look up from the screen for a second. You came into this course trying to make your cause bigger. This week flipped it: get the small right, keep the connections real, move at the speed of trust, and let the large become a reflection of the small. You now have the actual pieces of your campaign drafted, built small and strong on purpose.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (a 10-minute prime):</b> next week we ask the hard, unglamorous question, did any of it work. Skim <span class="term" data-pop="vanity">this short piece on vanity metrics</span> and write one line in your notebook: <em>if you could only measure ONE thing to know your campaign is actually working, and likes and follower counts were off the table, what would you measure?</em> Bring your answer. That is where Week 14 starts.
+  </div>
+
+  <div class="foot">
+    <a href="#" onclick="return false" style="opacity:.4">‹ Week 13 · Tuesday</a>
+    <a href="#" onclick="return false">Week 14 · Measuring Impact ›</a>
+  </div>
+
+  <!-- POPUPS -->
+  <dialog class="pop" id="pop-emergence"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week13-murmuration.jpg" alt="Thousands of starlings forming a shifting shape in the sky, a murmuration"><h4>Emergence</h4><p>When a big, complex pattern arises from many small, simple interactions, with no one in charge of the whole. The parts follow local rules; the order appears on its own.</p><p><b>Example:</b> a flock of starlings turning as one (no lead bird), or a market price, or a language. No one designs these from the top; they emerge from the small parts relating.</p><p><a href="https://en.wikipedia.org/wiki/Emergence" target="_blank" rel="noopener">What emergence is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-amb"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown</h4><p>American writer, facilitator, and organizer (she lowercases her name). Her 2017 book <em>Emergent Strategy</em> argues that social movements should grow the way living systems do, small, adaptive, relational, decentralized, rather than the way ad campaigns do.</p><p>She draws heavily on the science-fiction of Octavia Butler and on the patterns of nature. This week is the philosophical turn of our course, and she is its voice.</p></div></dialog>
+  <dialog class="pop" id="pop-octavia"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Octavia Butler</h4><p>Pathbreaking American science-fiction writer (1947&ndash;2006), one of the first Black women to win the field's top awards. Her <em>Parable</em> novels imagine communities surviving societal collapse by adapting and cooperating instead of dominating.</p><p><b>Why she's here:</b> brown built much of <em>Emergent Strategy</em> on Butler's line "the only lasting truth is change," turning a novelist's vision into an organizing practice.</p><p><a href="https://en.wikipedia.org/wiki/Octavia_E._Butler" target="_blank" rel="noopener">About Octavia Butler →</a></p></div></dialog>
+  <dialog class="pop" id="pop-fractal"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/romanesco.jpg" alt="Romanesco broccoli, whose spiraling buds repeat the same cone shape at every scale"><h4>Fractal</h4><p>A shape or pattern that repeats at every scale: zoom in or out and you see the same form again.</p><p><b>Example:</b> a fern (each small frond is the shape of the whole leaf), a coastline, a branching tree, a snowflake. brown's version for people: "how we are at the small scale is how we are at the large scale," so a two-person conversation already carries the shape of the whole movement.</p><p><a href="https://en.wikipedia.org/wiki/Fractal" target="_blank" rel="noopener">What a fractal is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-mycelium"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/week13-mycelium.jpg" alt="White threadlike mycelium fanning through soil and wood"><h4>Mycelium</h4><p>The root-like network of a fungus: a vast web of fine threads spreading underground through soil and connecting trees, trading water and nutrients. The mushroom you see is just the small fruit; the mycelium is the real, mostly-invisible organism.</p><p><b>Example:</b> a single forest floor can hold miles of mycelium linking hundreds of trees, sometimes called the "wood wide web." brown uses it as the model for how movements should grow: relational, decentralized, patient, resilient.</p><p><b>An Appalachian note:</b> these forests are some of the most fungally rich in the world. The old mountain practice of foraging (ramps, morels, chanterelles) depends on knowing that the mushroom is only the tip of a living network you never see.</p><p><a href="https://en.wikipedia.org/wiki/Mycelium" target="_blank" rel="noopener">What mycelium is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-speedtrust"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Move at the speed of trust</h4><p>One of brown's principles: relationships have their own pace, and you cannot force them faster. If a movement grows faster than the trust holding it together, it tears.</p><p><b>Example:</b> asking a first-time follower to donate or organize is outrunning trust. A smaller first ask (come to one low-stakes thing) lets trust build until a bigger ask can hold.</p></div></dialog>
+  <dialog class="pop" id="pop-criticalmass"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Critical mass</h4><p>A big number of people, loosely attached: followers, impressions, a crowd. It looks like power. It scatters the moment the attention moves on.</p><p><b>Example:</b> 40,000 followers who like your posts but will not show up to anything. Real reach, almost no holding power.</p></div></dialog>
+  <dialog class="pop" id="pop-criticalconn"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Critical connections</h4><p>brown's counter to critical mass: a smaller number of strong, real relationships that can bear weight and act. Build resilience by building relationships, not follower counts.</p><p><b>Example:</b> twelve people who each know you and will show up at 6am when you call. That web holds under pressure where a crowd does not.</p></div></dialog>
+  <dialog class="pop" id="pop-decentralization"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Decentralization</h4><p>Spreading power and decision-making out across many small parts instead of one central command. No headquarters to capture, defund, or shut down; the parts can adapt on their own.</p><p><b>Example:</b> a network where any local chapter can act without asking permission. Cut one node and the rest keep going. The trade-off is less top-down control, which is often the point.</p><p><a href="https://en.wikipedia.org/wiki/Decentralization" target="_blank" rel="noopener">What decentralization is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-mutualaid"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Mutual aid</h4><p>People in a community directly helping each other meet needs (food, care, money) as equals, without waiting on a charity or government. "Solidarity, not charity."</p><p><b>Example:</b> the little free pantry, take what you need, leave what you can. No application, no gatekeeper, neighbors keeping neighbors fed.</p><p><b>An Appalachian note:</b> this runs deep in the mountains, from old "workings" (a whole community showing up to raise a barn or bring in a harvest) to church pantries and pass-the-plate care. Small, trusted, decentralized help is one of the region's oldest strengths.</p><p><a href="https://en.wikipedia.org/wiki/Mutual_aid_(organization_theory)" target="_blank" rel="noopener">What mutual aid is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-shapenote"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/sacredharp.jpg" alt="Singers seated in a hollow square at a Sacred Harp shape-note singing"><h4>Shape-note singing (Sacred Harp)</h4><p>A very old style of communal singing where people sit in a hollow square facing each other and sing loud, unaccompanied four-part harmony from books that use shaped noteheads to teach the parts.</p><p><b>Why it's here:</b> there is no audience and no single conductor. Singers take turns leading from the middle, and the point is the shared experience, not a performance. It is emergent, leaderless music: the whole sound comes from everyone relating in the moment.</p><p><b>An Appalachian note:</b> shape-note and "singing convention" traditions are woven through Southern Appalachian church and community life, an all-day sing with dinner on the grounds. A room full of untrained neighbors making something powerful together, exactly the "social" this course keeps chasing.</p><p><a href="https://en.wikipedia.org/wiki/Sacred_Harp" target="_blank" rel="noopener">What shape-note singing is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-multimodal"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Multimodal</h4><p>Made of more than one "mode" of meaning at once: written language, image, sound, and design all working together. Most real messages are multimodal, and each mode does a job the others cannot.</p><p><b>Example:</b> a short film uses words (the script), image (what you see), sound (voice and music), and design (how it is cut and paced). Change any one mode and the meaning shifts. This week you build your campaign in all four.</p><p><a href="https://en.wikipedia.org/wiki/Multimodality" target="_blank" rel="noopener">What multimodality is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Vanity metrics</h4><p>Numbers that look impressive and tell you almost nothing about real change: likes, follower counts, impressions. Easy to grow, easy to feel good about, disconnected from whether anything actually moved.</p><p><b>Example:</b> a post with 50,000 likes and zero people who changed a behavior or joined the work. Week 14's whole job is telling these apart from metrics that mean something.</p><p><a href="https://leanstartup.co/resources/articles/measuring-impact-vanity-metrics/" target="_blank" rel="noopener">Read the prime →</a></p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle. This week you build the smallest strong version of its campaign.</p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w13');
+  // popups
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // emergent-read interactive
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The emergent read is the harder, more useful judgment.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // notebook persistence (on-device draft)
+  ['qa1','qa2','qa3','n1','n2','n3','n4','n5'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w13_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function entryText(){
+    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
+    return 'ENG 4100 · Field Notebook · Week 13: Small Is All (Emergent Strategy)\n'
+      + '1. LANGUAGE (smallest strong line):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. IMAGE (the one picture):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. SOUND (what it sounds like):\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. DESIGN (arrangement + where it lives):\n' + (g('n4')||'(blank)') + '\n\n'
+      + '5. FRACTAL CHECK (does the small carry the whole?):\n' + (g('n5')||'(blank)') + '\n';
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week13-notebook.txt'; a.click();
+  });
+})();
+</script>
+</body>
+</html>
