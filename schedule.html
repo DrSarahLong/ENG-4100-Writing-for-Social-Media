@@ -35,9 +35,10 @@
   .keybox b{color:var(--ink)}
   .projhead{font-family:Georgia,serif; font-size:1.25rem; margin:28px 0 2px}
   .projhead .rng{color:var(--muted); font-size:.9rem; font-family:system-ui,sans-serif; font-weight:600}
-  .grid{column-count:2; column-gap:12px; margin-top:10px}
-  @media (max-width:640px){ .grid{column-count:1} }
-  .wk{display:block; break-inside:avoid; margin-bottom:22px; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 17px}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:10px; align-items:stretch}
+  @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+  .wk{display:block; color:var(--ink); text-decoration:none; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 17px; transition:border-color .15s, transform .15s}
+  .wk:hover{border-color:var(--accent); transform:translateY(-1px)}
   .wk .day + .day{margin-top:6px}
   .wk .n{font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--accent)}
   .wk .t{font-weight:700; margin:2px 0 6px}
@@ -59,7 +60,7 @@
       <a class="lnk" href="syllabus.html">Syllabus</a>
       <a class="lnk" href="schedule.html" aria-current="page">Schedule</a>
       <a class="lnk" href="projects.html">Major Projects</a>
-      <a class="lms" href="https://asulearn.appstate.edu/" target="_blank" rel="noopener">AsULearn &rarr;</a>
+      <a class="lms" href="https://www.appstate.edu/" target="_blank" rel="noopener">Canvas &rarr;</a>
     </div>
   </nav>
 
@@ -68,7 +69,7 @@
     <header class="masthead">
       <p class="kick">Appalachian State University · Fall 2026</p>
       <h1>Schedule</h1>
-      <p>Sixteen weeks, grouped into five units. Each week has a <b>Tuesday</b> analog case in class and a <b>Thursday</b> digital module. Read down the first column, then the second. Thursday modules open in AsULearn; exact calendar dates are posted there.</p>
+      <p>Sixteen weeks, grouped into five units. Each week has a <b>Tuesday</b> analog case in class and a <b>Thursday</b> digital module. Read left to right, then down. Click any week to open its module. Exact calendar dates are posted in Canvas.</p>
     </header>
 
     <div class="keybox">
@@ -88,43 +89,43 @@
 
     <div class="projhead">Unit A · Foundations: what "social" media actually is <span class="rng">Weeks 1&ndash;3</span></div>
     <div class="grid">
-      <div class="wk"><div class="n">Week 1 <span class="tag">both on campus</span></div><div class="t">Social Media Is Older Than Your Phone</div><div class="day"><span class="lbl">Tue</span>Communication as ritual vs. transmission (Carey); your own media and attention audit; begin the cause hunt.</div><div class="day"><span class="lbl">Thu</span>Deepen Carey, set up the Field Notebook, run the cause-vetting tool. Lock your cause.</div></div>
-      <div class="wk"><div class="n">Week 2 <span class="tag">both on campus</span></div><div class="t">The Medium Is Not Neutral</div><div class="day"><span class="lbl">Tue</span>"The medium is the message" (McLuhan) and "Do artifacts have politics?" (Winner); slow vs. fast media; make and circulate something by hand.</div><div class="day"><span class="lbl">Thu</span>Diagnose the medium: trade-offs of fast, mixed, and slow media, applied to your cause.</div></div>
-      <div class="wk"><div class="n">Week 3</div><div class="t">The Federalist Papers</div><div class="day"><span class="lbl">Tue</span>Publics, pseudonymity ("Publius"), and persuading a country of strangers in 1788.</div><div class="day"><span class="lbl">Thu</span>How ideas circulate on platforms now, plus a rhetorical-analysis toolkit. <b>Project 1 introduced.</b></div></div>
+      <a class="wk" href="module-w1-foundations.html"><div class="n">Week 1 <span class="tag">both on campus</span></div><div class="t">Social Media Is Older Than Your Phone</div><div class="day"><span class="lbl">Tue</span>Communication as ritual vs. transmission (Carey); your own media and attention audit; begin the cause hunt.</div><div class="day"><span class="lbl">Thu</span>Deepen Carey, set up the Field Notebook, run the cause-vetting tool. Lock your cause.</div></a>
+      <a class="wk" href="module-w2-medium.html"><div class="n">Week 2 <span class="tag">both on campus</span></div><div class="t">The Medium Is Not Neutral</div><div class="day"><span class="lbl">Tue</span>"The medium is the message" (McLuhan) and "Do artifacts have politics?" (Winner); slow vs. fast media; make and circulate something by hand.</div><div class="day"><span class="lbl">Thu</span>Diagnose the medium: trade-offs of fast, mixed, and slow media, applied to your cause.</div></a>
+      <a class="wk" href="module-w3-circulation.html"><div class="n">Week 3</div><div class="t">The Federalist Papers</div><div class="day"><span class="lbl">Tue</span>Publics, pseudonymity ("Publius"), and persuading a country of strangers in 1788.</div><div class="day"><span class="lbl">Thu</span>How ideas circulate on platforms now, plus a rhetorical-analysis toolkit. <b>Project 1 introduced.</b></div></a>
     </div>
 
     <div class="projhead">Unit B · Movements &amp; their media theories <span class="rng">Weeks 4&ndash;8 · toward Project 1</span></div>
     <div class="grid">
-      <div class="wk"><div class="n">Week 4</div><div class="t">The Abolitionist Press</div><div class="day"><span class="lbl">Tue</span>Frederick Douglass and <i>The North Star</i>: owning your own medium, moral suasion, the paper as movement infrastructure.</div><div class="day"><span class="lbl">Thu</span>Analyze a movement's media strategy; ethics intro (disclosure, representation).</div></div>
-      <div class="wk"><div class="n">Week 5</div><div class="t">Suffragist Spectacle &amp; Visual Rhetoric</div><div class="day"><span class="lbl">Tue</span>The 1913 procession, banners, sashes, color-coding; arguing with image and design (Triggs).</div><div class="day"><span class="lbl">Thu</span>Composing meaning through image and design; P1 workshop.</div></div>
-      <div class="wk due"><div class="n">Week 6</div><div class="t">Samizdat</div><div class="day"><span class="lbl">Tue</span>Underground self-publishing under censorship; slow media, trust networks, real risk; "the reader is the publisher."</div><div class="day"><span class="lbl">Thu</span>Privacy, surveillance, and disclosure ethics.</div><div class="day due-line">Project 1 (Movement Media Analysis) due</div></div>
-      <div class="wk"><div class="n">Week 7 <span class="tag">Fall Break</span></div><div class="t">The Black Panther Party Newspaper</div><div class="day"><span class="lbl">Tue</span>Community media and self-representation; Emory Douglas' art; distribution as organizing. Lighter week.</div><div class="day"><span class="lbl">Thu</span>Representation ethics and accessibility.</div></div>
-      <div class="wk due"><div class="n">Week 8</div><div class="t">ACT UP</div><div class="day"><span class="lbl">Tue</span>Design activism (SILENCE=DEATH, Gran Fury), direct action engineered for attention, affinity groups.</div><div class="day"><span class="lbl">Thu</span>Accessible, inclusive multimodal design.</div><div class="day due-line">Field Notebook midterm check-in</div></div>
+      <a class="wk" href="module-w4-abolition.html"><div class="n">Week 4</div><div class="t">The Abolitionist Press</div><div class="day"><span class="lbl">Tue</span>Frederick Douglass and <i>The North Star</i>: owning your own medium, moral suasion, the paper as movement infrastructure.</div><div class="day"><span class="lbl">Thu</span>Analyze a movement's media strategy; ethics intro (disclosure, representation).</div></a>
+      <a class="wk" href="module-w5-spectacle.html"><div class="n">Week 5</div><div class="t">Suffragist Spectacle &amp; Visual Rhetoric</div><div class="day"><span class="lbl">Tue</span>The 1913 procession, banners, sashes, color-coding; arguing with image and design (Triggs).</div><div class="day"><span class="lbl">Thu</span>Composing meaning through image and design; P1 workshop.</div></a>
+      <a class="wk due" href="module-w6-samizdat.html"><div class="n">Week 6</div><div class="t">Samizdat</div><div class="day"><span class="lbl">Tue</span>Underground self-publishing under censorship; slow media, trust networks, real risk; "the reader is the publisher."</div><div class="day"><span class="lbl">Thu</span>Privacy, surveillance, and disclosure ethics.</div><div class="day due-line">Project 1 (Movement Media Analysis) due</div></a>
+      <a class="wk" href="module-w7-panthers.html"><div class="n">Week 7</div><div class="t">The Black Panther Party Newspaper</div><div class="day"><span class="lbl">Tue</span>Community media and self-representation; Emory Douglas' art; distribution as organizing.</div><div class="day"><span class="lbl">Thu</span>Representation ethics and accessibility.</div></a>
+      <a class="wk due" href="module-w8-actup.html"><div class="n">Week 8 <span class="tag">Fall Break</span></div><div class="t">ACT UP</div><div class="day"><span class="lbl">Tue</span>Fall break, no class. Design activism (SILENCE=DEATH, Gran Fury), direct action engineered for attention, affinity groups.</div><div class="day"><span class="lbl">Thu</span>Accessible, inclusive multimodal design. Module is optional extra credit this week.</div><div class="day due-line">Field Notebook midterm check-in due</div></a>
     </div>
 
     <div class="projhead">Unit C · Strategy: building connection on purpose <span class="rng">Weeks 9&ndash;11 · toward Project 2</span></div>
     <div class="grid">
-      <div class="wk"><div class="n">Week 9</div><div class="t">The Zapatistas</div><div class="day"><span class="lbl">Tue</span>Communiqu&eacute;s from Chiapas; slow (indigenous assembly) and fast (early internet, global solidarity) working together.</div><div class="day"><span class="lbl">Thu</span>Content strategy and the audit. <b>Project 2 set up.</b></div></div>
-      <div class="wk"><div class="n">Week 10</div><div class="t">Networked Protest &amp; Its Limits</div><div class="day"><span class="lbl">Tue</span>Scaling without organizational muscle and the "tactical freeze" (Tufekci).</div><div class="day"><span class="lbl">Thu</span>Audience, goals, editorial calendar, and platform-appropriate voice.</div></div>
-      <div class="wk due"><div class="n">Week 11</div><div class="t">Communicative Capitalism &amp; Attention</div><div class="day"><span class="lbl">Tue</span>When posting feels like politics but changes nothing (Jodi Dean); refusing the attention economy (Jenny Odell).</div><div class="day"><span class="lbl">Thu</span>Finalize your strategy.</div><div class="day due-line">Project 2 (Content Strategy &amp; Audit) due</div></div>
+      <a class="wk" href="module-w9-zapatistas.html"><div class="n">Week 9</div><div class="t">The Zapatistas</div><div class="day"><span class="lbl">Tue</span>Communiqu&eacute;s from Chiapas; slow (indigenous assembly) and fast (early internet, global solidarity) working together.</div><div class="day"><span class="lbl">Thu</span>Content strategy and the audit. <b>Project 2 set up.</b></div></a>
+      <a class="wk" href="module-w10-networked.html"><div class="n">Week 10</div><div class="t">Networked Protest &amp; Its Limits</div><div class="day"><span class="lbl">Tue</span>Scaling without organizational muscle and the "tactical freeze" (Tufekci).</div><div class="day"><span class="lbl">Thu</span>Audience, goals, editorial calendar, and platform-appropriate voice.</div></a>
+      <a class="wk due" href="module-w11-attention.html"><div class="n">Week 11</div><div class="t">Communicative Capitalism &amp; Attention</div><div class="day"><span class="lbl">Tue</span>When posting feels like politics but changes nothing (Jodi Dean); refusing the attention economy (Jenny Odell).</div><div class="day"><span class="lbl">Thu</span>Finalize your strategy.</div><div class="day due-line">Project 2 (Content Strategy &amp; Audit) due</div></a>
     </div>
 
     <div class="projhead">Unit D · The campaign: put the social back <span class="rng">Weeks 12&ndash;14 · toward Project 3</span></div>
     <div class="grid">
-      <div class="wk"><div class="n">Week 12</div><div class="t">Relational Organizing &amp; the Ground Game</div><div class="day"><span class="lbl">Tue</span>Field research shows face-to-face contact beats broadcast; the most powerful medium is a trusted person.</div><div class="day"><span class="lbl">Thu</span>Design an ethical, multimodal campaign. <b>Project 3 set up.</b></div></div>
-      <div class="wk"><div class="n">Week 13</div><div class="t">Emergent Strategy</div><div class="day"><span class="lbl">Tue</span>adrienne maree brown: small is all, fractal, "move at the speed of trust," critical connections over critical mass.</div><div class="day"><span class="lbl">Thu</span>Produce multimodal texts: language, image, sound, and design.</div></div>
-      <div class="wk"><div class="n">Week 14</div><div class="t">Measuring Circulation &amp; Impact</div><div class="day"><span class="lbl">Tue</span>Analytics and engagement vs. vanity metrics: what actually counts as impact for a cause.</div><div class="day"><span class="lbl">Thu</span>Build a simple, honest impact framework. P3 built and the impact report drafted.</div></div>
+      <a class="wk" href="module-w12-relational.html"><div class="n">Week 12</div><div class="t">Relational Organizing &amp; the Ground Game</div><div class="day"><span class="lbl">Tue</span>Field research shows face-to-face contact beats broadcast; the most powerful medium is a trusted person.</div><div class="day"><span class="lbl">Thu</span>Design an ethical, multimodal campaign. <b>Project 3 set up.</b></div></a>
+      <a class="wk" href="module-w13-emergent.html"><div class="n">Week 13</div><div class="t">Emergent Strategy</div><div class="day"><span class="lbl">Tue</span>adrienne maree brown: small is all, fractal, "move at the speed of trust," critical connections over critical mass.</div><div class="day"><span class="lbl">Thu</span>Produce multimodal texts: language, image, sound, and design.</div></a>
+      <a class="wk" href="module-w14-impact.html"><div class="n">Week 14</div><div class="t">Measuring Circulation &amp; Impact</div><div class="day"><span class="lbl">Tue</span>Analytics and engagement vs. vanity metrics: what actually counts as impact for a cause.</div><div class="day"><span class="lbl">Thu</span>Build a simple, honest impact framework. P3 built and the impact report drafted.</div></a>
     </div>
 
     <div class="projhead">Unit E · Presentations &amp; close <span class="rng">Weeks 15&ndash;16</span></div>
     <div class="grid">
-      <div class="wk"><div class="n">Week 15</div><div class="t">Campaign Presentations</div><div class="day"><span class="lbl">Tue</span>Students present their P3 campaign and impact report to the class.</div><div class="day"><span class="lbl">Thu</span>Presentations continue.</div></div>
-      <div class="wk due"><div class="n">Week 16</div><div class="t">Presentations &amp; Course Close</div><div class="day"><span class="lbl">Tue</span>Final presentations.</div><div class="day"><span class="lbl">Thu</span>Course close: where we go from here, keep organizing your cause, and how the skills transfer.</div><div class="day due-line">Project 3 (Campaign + Impact Report) due · Field Notebook end-of-term</div></div>
+      <a class="wk" href="module-w15-presenting.html"><div class="n">Week 15</div><div class="t">Campaign Presentations</div><div class="day"><span class="lbl">Tue</span>Students present their P3 campaign and impact report to the class.</div><div class="day"><span class="lbl">Thu</span>Presentations continue.</div></a>
+      <a class="wk due" href="module-w16-close.html"><div class="n">Week 16</div><div class="t">Presentations &amp; Course Close</div><div class="day"><span class="lbl">Tue</span>Final presentations.</div><div class="day"><span class="lbl">Thu</span>Course close: where we go from here, keep organizing your cause, and how the skills transfer.</div><div class="day due-line">Project 3 (Campaign + Impact Report) due · Field Notebook end-of-term</div></a>
     </div>
 
     <footer>
       ENG 4100 · Writing for Social Media · Dr. Sarah Long · Appalachian State University · Fall 2026<br>
-      Schedule subject to reasonable change; changes announced in class and via email. Exact calendar dates are posted on AsULearn.
+      Schedule subject to reasonable change; changes announced in class and via email. Exact calendar dates are posted on Canvas.
     </footer>
 
   </div>
