@@ -86,9 +86,42 @@
     #cp .derived.no{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
     #cp dialog.pop{background:#1a2129}
   }
+
+  /* injected: shared site menu + prev/next (self-contained, oxblood) */
+  .rcnav{position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #dbe1e8;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .rcnav .in{max-width:820px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;gap:5px 15px;flex-wrap:wrap}
+  .rcnav .bd{font-family:Georgia,"Iowan Old Style",serif;font-weight:700;color:#1f2933;text-decoration:none;margin-right:auto;font-size:1rem}
+  .rcnav .bd small{display:block;font-family:system-ui,sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:#8c2f39}
+  .rcnav a.l{color:#1f2933;text-decoration:none;font-weight:600;font-size:.88rem;border-bottom:2px solid transparent;padding:2px 0}
+  .rcnav a.l:hover{color:#8c2f39;border-bottom-color:#8c2f39}
+  .rcnav a.lms{background:#8c2f39;color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;border-radius:8px;padding:6px 12px}
+  .rcpn{max-width:760px;margin:20px auto 44px;padding:0 20px;display:flex;gap:10px;align-items:stretch;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .rcpn a{flex:1;text-decoration:none;background:#faf6f3;border:1px solid #dbe1e8;border-radius:10px;padding:10px 14px;color:#1f2933;font-weight:700;font-size:.9rem;display:flex;flex-direction:column;justify-content:center}
+  .rcpn a:hover{border-color:#8c2f39;color:#8c2f39}
+  .rcpn a.nx{text-align:right}
+  .rcpn a.hm{flex:0 0 auto;text-align:center;color:#8c2f39;justify-content:center}
+  .rcpn a .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:#7a828c;font-weight:800}
+  @media (prefers-color-scheme:dark){
+    .rcnav{background:#12171d;border-bottom-color:#38424d}
+    .rcnav .bd{color:#e6eaef}.rcnav .bd small{color:#d98a92}
+    .rcnav a.l{color:#e6eaef}.rcnav a.l:hover{color:#d98a92;border-bottom-color:#d98a92}
+    .rcnav a.lms{background:#d98a92;color:#12171d}
+    .rcpn a{background:#1a2129;border-color:#38424d;color:#e6eaef}
+    .rcpn a:hover{border-color:#d98a92;color:#d98a92}
+    .rcpn a.hm{color:#d98a92}.rcpn a .s{color:#9aa5b1}
+  }
+
 </style>
 </head>
 <body>
+<nav class="rcnav"><div class="in">
+<a class="bd" href="index.html">ENG 4100<small>Writing for Social Media</small></a>
+<a class="l" href="index.html">Home</a>
+<a class="l" href="syllabus.html">Syllabus</a>
+<a class="l" href="schedule.html">Schedule</a>
+<a class="l" href="projects.html">Major Projects</a>
+<a class="lms" href="https://appstate.instructure.com/" target="_blank" rel="noopener">Canvas &rarr;</a>
+</div></nav>
 <div id="cp">
 
   <div class="mast">
