@@ -127,8 +127,8 @@
   <h2>Your last word (final notebook entry)</h2>
   <p>One more entry, then your Field Notebook is complete. Draft privately here (it autosaves on this device), then copy it into your Sheet.</p>
   <div class="nb">
-    <div class="lead">This is the final row of the <b>Google Sheet</b> you have kept all term. Write here, then hit <b>Copy for my notebook</b>.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <div class="lead">This is the final row of the <b>Google Doc</b> you have kept all term. Write here, then hit <b>Copy for my notebook</b>.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
 
     <label for="n1">1. Which course idea changed how you actually see a feed, a platform, or a cause? Name it and say what shifted.</label>
     <textarea id="n1" placeholder="e.g. Winner. I cannot look at an app anymore without asking who the 'low bridge' shuts out…"></textarea>
@@ -162,7 +162,7 @@
   <dialog class="pop" id="pop-relational"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Relational organizing</h4><p>From Week 12: a real conversation with someone who knows you moves people that ads and mailers cannot. The most powerful medium is a trusted person.</p><p><b>Example:</b> one neighbor asking another to show up beats any boosted post. This works far past this course, in any team or community.</p></div></dialog>
   <dialog class="pop" id="pop-brown"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown · emergent strategy</h4><p>From Week 13: "small is good, small is all"; move at the speed of trust; critical connections over critical mass. Movements grow like mycelium, not like ad campaigns.</p><p><b>Example:</b> instead of chasing a viral moment, you deepen a handful of real relationships and let them spread. That is the next-step advice for your cause.</p></div></dialog>
   <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your low-traction cause</h4><p>The real cause you chose in Week 1 precisely because it had not gained much traction, so your media work could actually matter. It is still yours after the grade posts.</p></div></dialog>
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Sheet you kept all term: exercises, analog experiments, case notes, strategy scratch. Add this final entry, confirm every week is in, and submit it to Canvas. That is your notebook grade and the end of the course.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Doc you kept all term: exercises, analog experiments, case notes, strategy scratch. Add this final entry, confirm every week is in, and submit it to Canvas. That is your notebook grade and the end of the course.</p></div></dialog>
 
 </div>
 
@@ -197,7 +197,7 @@
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });

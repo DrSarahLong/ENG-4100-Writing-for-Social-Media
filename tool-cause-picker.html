@@ -263,7 +263,7 @@
       <textarea id="decision" placeholder="e.g., I'm keeping it but tightening Bar C: I'll narrow from 'downtown safety' to the one corner, so my work actually counts…"></textarea>
     </div>
 
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
     <div class="btns">
       <button class="btn" id="copy">Copy for my notebook</button>
       <span class="copied" id="copied"></span>
@@ -277,7 +277,7 @@
   <dialog class="pop" id="pop-lowtraction"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Low-traction</h4><p>Under-covered, under-organized, not already viral. The opposite of a cause with millions of people and dollars behind it.</p><p><b>Why it matters here:</b> on a huge cause your work vanishes into the crowd. On a quiet local one, a single well-made campaign can be the thing that tips it. Low-traction is where your effort is most meaningful and most measurable.</p></div></dialog>
   <dialog class="pop" id="pop-mediajob"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>A media job to do</h4><p>Real communication work that isn't done yet: people who need reaching, a story nobody's told well, or a scattered group who've never been gathered into a shared world.</p><p><b>Example:</b> "The affected tenants have never met each other" is a media job (gather them). "Everyone already knows and agrees" is not, there's nothing left to communicate.</p></div></dialog>
   <dialog class="pop" id="pop-ethics"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Safe &amp; ethical</h4><p>Your media work should not endanger, expose, or exploit anyone, including you. If real people are at the center, especially vulnerable ones, you need their genuine consent before you put them online.</p><p><b>Example:</b> a cause about unhoused neighbors can be powerful and ethical if they're partners who agreed, or harmful if you photograph and post people who never said yes. Same cause, opposite ethics.</p></div></dialog>
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Paste this vetting result into your Week 1 row. It stays in your own Drive and private to you until you submit it at midterm and end of term.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Paste this vetting result into your Week 1 row. It stays in your own Drive and private to you until you submit it at midterm and end of term.</p></div></dialog>
 
 </div>
 
@@ -423,7 +423,7 @@
 
   document.getElementById('copy').addEventListener('click', function(){
     var txt = report(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });

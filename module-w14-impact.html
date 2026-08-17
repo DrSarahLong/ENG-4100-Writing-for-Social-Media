@@ -147,7 +147,7 @@
   </div>
 
   <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
-  <div class="ground">This module is your Thursday class. Move at your own pace, but do the whole thing. The readings, the sort, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your campaign in mind, because the last section is a real draft of your <span class="term" data-pop="p3">P3 impact report</span>.</div>
+  <div class="ground">Move at your own pace, but do the whole thing. The readings, the sort, the case, and the writing are the instruction, not extra credit. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your campaign in mind, because the last section is a real draft of your <span class="term" data-pop="p3">P3 impact report</span>.</div>
 
   <div class="recall">
     <b>Tuesday, in one line:</b> KONY 2012 got about 100 million views and changed almost nothing; a 40-person crosswalk campaign got the crosswalk. The big number measured the wrong thing. We named the trap (<span class="term" data-pop="vanity">vanity metrics</span>), the callback to <span class="term" data-pop="dean">Jodi Dean</span> ("circulation is not change"), and the ladder from reach up to power. Today we make it usable.
@@ -266,8 +266,8 @@
   <h2>5 · Draft your impact report</h2>
   <p>Now the part that's yours, and it's a real draft of your <span class="term" data-pop="p3">P3 impact report</span>. Write privately here (it autosaves on this device), then send it to your Field Notebook. Bring the three metrics you wrote Tuesday.</p>
   <div class="nb">
-    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&uarr; Open your Field Notebook (Google Sheet)</a>
+    <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&uarr; Open your Field Notebook (Google Doc)</a>
 
     <label for="n1">1. Your theory of change, in one line. If your campaign works, WHO does WHAT differently? (This is what all your metrics are really trying to detect.)</label>
     <textarea id="n1" placeholder="e.g., if this works, 30 renters in our building who were silent will show up to the next housing meeting and speak…"></textarea>
@@ -293,7 +293,7 @@
   </div>
 
   <div class="close">
-    <b>Close it out.</b> Look up from the screen for a second. You have a rule you'll carry past this class: before you celebrate a number, ask what rung it reaches and whether you could fake it. If it's reach or engagement, it's fuel. If it's action, relationship, or power, it's a result. Report the results, and be honest when they're small.
+    <b>Close it out.</b> You have a rule you'll carry past this class: before you celebrate a number, ask what rung it reaches and whether you could fake it. If it's reach or engagement, it's fuel. If it's action, relationship, or power, it's a result. Report the results, and be honest when they're small.
   </div>
 
   <div class="prime">
@@ -318,7 +318,7 @@
   <dialog class="pop" id="pop-icebucket"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/icebucket.jpg" alt="A person dumping a bucket of ice water over their head for the ALS Ice Bucket Challenge"><h4>The ALS Ice Bucket Challenge</h4><p>A 2014 viral fundraiser: people filmed themselves dumping ice water over their heads, challenged friends to do the same or donate to fight ALS (a fatal nerve disease), and posted it. It spread worldwide in weeks.</p><p><b>Why it's here:</b> it raised roughly $115 million and funded research that helped find a gene tied to ALS. The rare viral moment with a real engine (a clear ask and an organization ready to spend the money) behind it.</p><p><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge" target="_blank" rel="noopener">About the Ice Bucket Challenge &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-present"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Giving Effective Presentations</h4><p>A short, plain guide from the UNC Learning Center (free, Creative Commons) on structuring and delivering a talk: the kinds of delivery, how to practice, how to handle nerves, and how to keep an audience with you. Your Week 15 prime.</p><p><a href="https://learningcenter.unc.edu/tips-and-tools/giving-effective-presentations/" target="_blank" rel="noopener">Read the guide &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>P3: Campaign + Impact Report</h4><p>Your third project: the small, ethical, multimodal campaign you've been building for your cause, plus a short report that measures and reflects on its real circulation and impact. This week you draft the impact-report half. You present it in the final weeks.</p></div></dialog>
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
 
 </div>
 
@@ -380,7 +380,7 @@
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });

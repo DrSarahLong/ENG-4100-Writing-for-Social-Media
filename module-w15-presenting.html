@@ -293,8 +293,8 @@
   <h2>7 · Close your Field Notebook (final entry)</h2>
   <p>This is your last notebook entry of the term. Draft privately here (it autosaves on this device), then send it to your Field Notebook.</p>
   <div class="nb">
-    <div class="lead">Your Field Notebook is the <b>Google Sheet</b> you have kept all semester. Write here, then hit <b>Copy for my notebook</b> and paste into the final row.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <div class="lead">Your Field Notebook is the <b>Google Doc</b> you have kept all semester. Write here, then hit <b>Copy for my notebook</b> and paste into the final row.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
 
     <label for="n1">1. Your one takeaway, in a sentence: what is the single thing you want the room to remember about your cause and your campaign?</label>
     <textarea id="n1" placeholder="e.g. Forty kids cross a highway with no crosswalk, and a phone tree moved the county when a Facebook post could not."></textarea>
@@ -329,7 +329,7 @@
   </div>
 
   <!-- POPUPS -->
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Sheet you copied in Week 1 and kept all semester: in-class exercises, analog experiments, case notes, strategy scratch. It stays in your own Drive, private to you, until you submit it. This week you add the final entry and turn the whole thing in.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Doc you copied in Week 1 and kept all semester: in-class exercises, analog experiments, case notes, strategy scratch. It stays in your own Drive, private to you, until you submit it. At the end of the course you add the final entry and turn the whole thing in.</p></div></dialog>
   <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 and carried through every project. Its obscurity was the point: your media work could actually move the needle. Today you show the room what it moved.</p></div></dialog>
   <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>P3: Campaign + Impact Report</h4><p>Your final project: a small, ethical, multimodal campaign for your cause, grounded in one course media theory, plus a report that measures and reflects on what it circulated and changed. The presentation is the spoken version of that report.</p></div></dialog>
   <dialog class="pop" id="pop-one"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>One takeaway</h4><p>An audience forgets nearly everything in a short talk except, if you are lucky, one idea. So pick that idea on purpose and say it twice, near the start and again at the close.</p><p><b>Example:</b> "A phone tree moved the county when a viral post could not." Say that line early, then end on it. Trying to deliver everything usually delivers nothing.</p></div></dialog>
@@ -451,7 +451,7 @@
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });

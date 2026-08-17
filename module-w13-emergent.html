@@ -248,8 +248,8 @@
   <h2>5 · Make the smallest strong version</h2>
   <p>Now you build it. This is the Thursday deliverable: draft the actual <span class="term" data-pop="multimodal">multimodal</span> pieces of your campaign, the language, the image, the sound, and the design, working through the emergent lens. Do not design for a million strangers. Design the smallest version that is genuinely good and already carries the whole thing, the version that could fractal outward because the small unit is strong. Draft privately here (it autosaves on this device), then send it to your Field Notebook.</p>
   <div class="nb">
-    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Draft here, then hit <b>Copy for my notebook</b> and paste into this week's row.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Draft here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
 
     <label for="n1">1. LANGUAGE, the smallest strong line. Write the one sentence at the center of your campaign. Not a slogan for strangers: the true thing you would say to one person you trust. If it only reached twelve people, it should still be worth saying.</label>
     <textarea id="n1" placeholder="e.g., 'Our block deserves a crosswalk before another kid gets hit, and we are the ones who can get it.'"></textarea>
@@ -279,7 +279,7 @@
   </div>
 
   <div class="close">
-    <b>Close it out.</b> Look up from the screen for a second. You came into this course trying to make your cause bigger. This week flipped it: get the small right, keep the connections real, move at the speed of trust, and let the large become a reflection of the small. You now have the actual pieces of your campaign drafted, built small and strong on purpose.
+    <b>Close it out.</b> You came into this course trying to make your cause bigger. This week flipped it: get the small right, keep the connections real, move at the speed of trust, and let the large become a reflection of the small. You now have the actual pieces of your campaign drafted, built small and strong on purpose.
   </div>
 
   <div class="prime">
@@ -305,7 +305,7 @@
   <dialog class="pop" id="pop-shapenote"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/sacredharp.jpg" alt="Singers seated in a hollow square at a Sacred Harp shape-note singing"><h4>Shape-note singing (Sacred Harp)</h4><p>A very old style of communal singing where people sit in a hollow square facing each other and sing loud, unaccompanied four-part harmony from books that use shaped noteheads to teach the parts.</p><p><b>Why it's here:</b> there is no audience and no single conductor. Singers take turns leading from the middle, and the point is the shared experience, not a performance. It is emergent, leaderless music: the whole sound comes from everyone relating in the moment.</p><p><b>An Appalachian note:</b> shape-note and "singing convention" traditions are woven through Southern Appalachian church and community life, an all-day sing with dinner on the grounds. A room full of untrained neighbors making something powerful together, exactly the "social" this course keeps chasing.</p><p><a href="https://en.wikipedia.org/wiki/Sacred_Harp" target="_blank" rel="noopener">What shape-note singing is →</a></p></div></dialog>
   <dialog class="pop" id="pop-multimodal"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Multimodal</h4><p>Made of more than one "mode" of meaning at once: written language, image, sound, and design all working together. Most real messages are multimodal, and each mode does a job the others cannot.</p><p><b>Example:</b> a short film uses words (the script), image (what you see), sound (voice and music), and design (how it is cut and paced). Change any one mode and the meaning shifts. This week you build your campaign in all four.</p><p><a href="https://en.wikipedia.org/wiki/Multimodality" target="_blank" rel="noopener">What multimodality is →</a></p></div></dialog>
   <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Vanity metrics</h4><p>Numbers that look impressive and tell you almost nothing about real change: likes, follower counts, impressions. Easy to grow, easy to feel good about, disconnected from whether anything actually moved.</p><p><b>Example:</b> a post with 50,000 likes and zero people who changed a behavior or joined the work. Week 14's whole job is telling these apart from metrics that mean something.</p><p><a href="https://leanstartup.co/resources/articles/measuring-impact-vanity-metrics/" target="_blank" rel="noopener">Read the prime →</a></p></div></dialog>
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
   <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle. This week you build the smallest strong version of its campaign.</p></div></dialog>
 
 </div>
@@ -369,7 +369,7 @@
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });

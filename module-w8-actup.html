@@ -255,8 +255,8 @@
   <h2>6 · Aim it at your cause</h2>
   <p>Now the part that's yours. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook. This is your midterm entry, so make it real.</p>
   <div class="nb">
-    <div class="lead">Your Field Notebook is a <b>Google Sheet</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into this week's row. You submit the Sheet at the midterm check-in this week.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Sheet)</a>
+    <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading. You submit the Sheet at the midterm check-in this week.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
 
     <label for="n1">1. What silence is your cause up against? Who is staying quiet, and what does that silence cost the people you care about?</label>
     <textarea id="n1" placeholder="e.g., the town keeps 'studying' the missing sidewalk while kids walk the shoulder; the silence costs safety and says the neighborhood doesn't count…"></textarea>
@@ -282,7 +282,7 @@
   </div>
 
   <div class="close">
-    <b>Close it out.</b> Look up from the screen for a second. You have two tools now that pull against each other on purpose: make it loud enough that no one can look away, and make it open enough that everyone you're fighting for can receive it. The best activist design does both at once.
+    <b>Close it out.</b> You have two tools now that pull against each other on purpose: make it loud enough that no one can look away, and make it open enough that everyone you're fighting for can receive it. The best activist design does both at once.
   </div>
 
   <div class="prime">
@@ -295,7 +295,7 @@
   </div>
 
   <!-- POPUPS -->
-  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Sheet you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over. This week is the midterm check-in.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over. This week is the midterm check-in.</p></div></dialog>
   <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
   <dialog class="pop" id="pop-aidscrisis"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The AIDS crisis</h4><p>A worldwide epidemic that, in the United States, became visible in the early 1980s. HIV/AIDS killed hundreds of thousands of Americans over the following decades. Early on it hit gay men, people who inject drugs, and other marginalized groups hardest, and it met deep stigma and years of official silence and neglect. Treatment that turned HIV from a death sentence into a manageable condition did not arrive until the mid-1990s.</p><p><b>Close to home:</b> the rural South, including parts of Appalachia, still carries a high share of new HIV diagnoses today, tied to poverty, stigma, and thin health services, the same forces ACT UP named forty years ago.</p><p><a href="https://en.wikipedia.org/wiki/HIV/AIDS_in_the_United_States" target="_blank" rel="noopener">Background →</a></p></div></dialog>
   <dialog class="pop" id="pop-designactivism"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Design activism</h4><p>Using the tools of graphic design, posters, logos, ads, symbols, to carry a political argument and move it through public space, rather than to sell a product.</p><p><b>Example:</b> ACT UP put SILENCE=DEATH on t-shirts, stickers, and buttons so a single equation walked itself across a city on people's chests.</p></div></dialog>
@@ -374,7 +374,7 @@
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
-    function done(){ tag.textContent = 'Copied. Paste it into your Google Sheet.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });
