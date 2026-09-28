@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 2 Details &middot; Narrative Strategy &middot; ENG 4100</title>
+<style>
+  :root{
+    --paper:#faf6f3; --card:#ffffff; --ink:#1a2230; --muted:#586573;
+    --accent:#8c2f39; --accent-soft:#f3e4e5; --line:#e0e6ec; --field:#fdfefe;
+    --gold:#a3771f; --good:#2f7d54; --no:#a13a2d; --navbg:#faf6f3ee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#111821; --card:#1a2029; --ink:#e7ecf1; --muted:#93a1b0; --accent:#d98a92; --accent-soft:#3a2023; --line:#2a333d; --field:#1a2029; --gold:#d8b168; --good:#7ac598; --no:#e08a7a; --navbg:#111821ee; }
+  }
+  *{box-sizing:border-box} html,body{margin:0} html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--accent)}
+  .nav{position:sticky; top:0; z-index:20; background:var(--navbg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .nav .inner{max-width:1000px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:8px 18px; flex-wrap:wrap}
+  .nav .brand{font-family:Georgia,"Iowan Old Style",serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; margin-right:auto}
+  .nav .brand small{display:block; font-family:system-ui,sans-serif; font-weight:600; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+  .nav a.lnk{color:var(--ink); text-decoration:none; font-weight:600; font-size:.93rem; padding:4px 2px; border-bottom:2px solid transparent}
+  .nav a.lnk:hover{border-bottom-color:var(--accent); color:var(--accent)}
+  .nav a.lnk[aria-current="page"]{color:var(--accent); border-bottom-color:var(--accent)}
+  .nav a.lms{background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:.9rem; border-radius:8px; padding:8px 14px; white-space:nowrap}
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 70px}
+  .masthead{padding:36px 0 16px; border-bottom:2px solid var(--ink); margin-bottom:10px}
+  .masthead .kick{font-size:.78rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:0 0 6px}
+  .masthead h1{font-family:Georgia,"Iowan Old Style",serif; font-size:2rem; margin:0 0 6px; line-height:1.12}
+  .masthead p{color:var(--muted); margin:6px 0 0; max-width:72ch}
+  .howto{background:var(--accent-soft); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:16px 0}
+  .howto b{color:var(--accent)}
+  .keyrow{display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px; font-size:.86rem}
+  .keyrow span{font-weight:700}
+  .k-ex{color:var(--good)} .k-me{color:var(--accent)} .k-de{color:var(--gold)} .k-no{color:var(--no)}
+  /* worked examples + build steps (added Sep 2026 for the narrative/creative redesign) */
+  .eg{background:var(--accent-soft); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:8px; padding:11px 14px; margin:8px 0 12px; font-size:.92rem}
+  .eg .lab{display:block; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:800; margin-bottom:5px}
+  .eg .was, .eg .now{display:block; margin:5px 0; padding-left:.85rem; border-left:2px solid var(--line)}
+  .eg .was{color:var(--muted)}
+  .eg .now{font-weight:600}
+  .eg .who{display:block; font-size:.8rem; color:var(--muted); font-style:italic; margin:1px 0 4px .85rem}
+  .steps{counter-reset:st; list-style:none; padding:0; margin:6px 0 10px}
+  .steps li{counter-increment:st; position:relative; padding-left:2.1rem; margin:.7rem 0; font-size:.95rem}
+  .steps li::before{content:counter(st); position:absolute; left:0; top:.05rem; width:1.5rem; height:1.5rem; border-radius:50%; background:var(--accent); color:#fff; font:800 .78rem/1.5rem system-ui,sans-serif; text-align:center}
+  .steps li b{color:var(--accent)}
+  .elem{border:1px solid var(--line); border-radius:9px; padding:0; margin:8px 0 12px; overflow:hidden}
+  .elem .row{display:grid; grid-template-columns:minmax(120px,1fr) 2.1fr; gap:0; border-top:1px solid var(--line)}
+  .elem .row:first-child{border-top:none}
+  .elem .n{background:var(--accent-soft); padding:9px 12px; font-weight:800; font-size:.86rem; color:var(--accent)}
+  .elem .d{padding:9px 12px; font-size:.9rem}
+  .elem .d i{color:var(--muted)}
+  @media (max-width:560px){ .elem .row{grid-template-columns:1fr} .elem .n{border-bottom:1px solid var(--line)} }
+  .proj{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; border-left:5px solid var(--accent)}
+  .proj .top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .proj .tag{font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--accent)}
+  .proj .wt{margin-left:auto; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums}
+  .proj h2{font-family:Georgia,"Iowan Old Style",serif; font-size:1.3rem; margin:2px 0 2px}
+  .proj .fmt{color:var(--muted); font-size:.86rem; margin:0 0 8px}
+  .proj p{margin:.5rem 0}
+  .sublab{font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:16px 0 6px}
+  .needs{margin:2px 0 4px; padding-left:1.2rem; font-size:.95rem}
+  .needs li{margin:.3rem 0}
+  .model{background:var(--field); border:1px dashed var(--accent); border-radius:9px; padding:9px 12px; margin:8px 0 2px; font-size:.9rem}
+  .model b{color:var(--accent)}
+  .crit{border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin:9px 0; background:var(--field)}
+  .cname{font-weight:700; color:var(--accent); margin-bottom:8px}
+  .levels{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+  @media (max-width:720px){ .levels{grid-template-columns:1fr 1fr} }
+  @media (max-width:460px){ .levels{grid-template-columns:1fr} }
+  .lvl{border:1px solid var(--line); border-top-width:3px; border-radius:8px; padding:8px 10px; font-size:.85rem; background:var(--card)}
+  .lvl .t{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:3px}
+  .lvl .pts{color:var(--muted); font-weight:800; letter-spacing:0; text-transform:none; white-space:nowrap}
+  .lvl.exceeds{border-top-color:var(--good)} .lvl.exceeds .t{color:var(--good)}
+  .lvl.meets{border-top-color:var(--accent)} .lvl.meets .t{color:var(--accent)}
+  .lvl.dev{border-top-color:var(--gold)} .lvl.dev .t{color:var(--gold)}
+  .lvl.not{border-top-color:var(--no)} .lvl.not .t{color:var(--no)}
+  .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; border-radius:9px; padding:11px 18px; margin:10px 8px 6px 0}
+  .cta.ghost{background:transparent; color:var(--accent); border:1.5px solid var(--accent)}
+  .note{color:var(--muted); font-size:.92rem}
+  footer{color:var(--muted); font-size:.9rem; margin-top:30px; padding-top:16px; border-top:1px solid var(--line)}
+</style>
+</head>
+<body id="e4-projects">
+
+  <nav class="nav">
+    <div class="inner">
+      <a class="brand" href="index.html">ENG 4100<small>Writing for Social Media</small></a>
+      <a class="lnk" href="index.html">Home</a>
+      <a class="lnk" href="syllabus.html">Syllabus</a>
+      <a class="lnk" href="schedule.html">Schedule</a>
+      <a class="lnk" href="projects.html" aria-current="page">Major Projects</a>
+      <a class="lms" href="https://appstate.instructure.com/" target="_blank" rel="noopener">Canvas &rarr;</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <header class="masthead">
+      <p class="kick">ENG 4100 &middot; Project 2 &middot; the long version</p>
+      <h1>Narrative Strategy: the details</h1>
+      <p>Every step of Project 2, worked out, with the model to study, the frameworks it runs on, and an example of each move. The short version (description, the six steps, the rubric) is on the <a href="projects.html">Major Projects</a> page.</p>
+    </header>
+
+    <p><a class="cta ghost" href="projects.html">&larr; Back to Major Projects</a></p>
+
+    <div class="proj">
+      <p class="sublab">Start here</p>
+<p class="model"><b>New to this? Here's the model to study:</b> <i>Story-Based Strategy 101</i> from the Center for Story-based Strategy (free, via the Commons Social Change Library). It is the short version of the method this project runs on: the five elements of narrative, control mythologies, and how to choose a point of intervention. Read it before you start Step&nbsp;1. <a href="https://commonslibrary.org/story-based-strategy-101/" target="_blank" rel="noopener">Read it free &rarr;</a></p>
+      <p class="note">Everything else you need sits under two headings of the Commons Library's <i>Communications and Media: Start Here</i>: <b>Framing and Messaging</b> and <b>Story and Narrative</b>. <a href="https://commonslibrary.org/communications-and-media-start-here/" target="_blank" rel="noopener">Open the hub &rarr;</a> Useful specifics: <a href="https://commonslibrary.org/how-to-change-the-narrative/" target="_blank" rel="noopener">How to Change the Narrative</a> &middot; <a href="https://commonslibrary.org/the-power-of-story-the-story-of-self-us-and-now/" target="_blank" rel="noopener">The Power of Story: Self, Us and Now</a> &middot; <a href="https://commonslibrary.org/frame-the-debate-insights-from-dont-think-of-an-elephant/" target="_blank" rel="noopener">Frame the Debate</a> &middot; <a href="https://commonslibrary.org/simplifying-your-campaign-message/" target="_blank" rel="noopener">Simplifying your Campaign Message</a> &middot; <a href="https://commonslibrary.org/call-to-action-worksheet/" target="_blank" rel="noopener">Call to Action Worksheet</a> &middot; <a href="https://commonslibrary.org/what-makes-people-tick-the-three-hidden-worlds-of-settlers-prospectors-and-pioneers-book/" target="_blank" rel="noopener">What Makes People Tick</a></p>
+
+      
+      <p class="sublab">Then work the six steps</p>
+      <p class="note">The steps themselves are on the <a href="projects.html">Major Projects</a> page. What follows is each one worked out, with an example you can copy the shape of. The examples deliberately use causes that are not yours, so you are not inventing and applying at the same time.</p>
+
+<p class="sublab">Step 1, in detail: the five elements of narrative</p>
+      <p>From <i>Story-Based Strategy 101</i>, developed by the Center for Story-based Strategy. Run all five on the dominant story, then run them again on the story you intend to tell.</p>
+      <div class="elem">
+        <div class="row"><div class="n">Conflict</div><div class="d">"The backbone of narrative, what defines the drama, point of view." <i>Example, campus food insecurity: the circulating conflict is "students who budget badly versus a dining plan that already exists." Yours could be "a campus that charges for a meal plan most students cannot afford versus students who are hungry in class."</i></div></div>
+        <div class="row"><div class="n">Characters</div><div class="d">"Subjects, protagonists, and narrators of stories." <i>Example: in the circulating story the protagonist is the administrator managing a budget and the student is a problem. In yours the protagonist is a junior working 28 hours a week, and the administration is a character who has a decision to make.</i></div></div>
+        <div class="row"><div class="n">Imagery</div><div class="d">"Words to capture imagination with metaphor, anecdote, and descriptions." <i>Example: the circulating image is a swipe card. Yours is the shelf in the campus pantry at 4pm on a Thursday, empty.</i></div></div>
+        <div class="row"><div class="n">Foreshadowing</div><div class="d">"The ways that a story provides hints to its outcome." <i>Example: the circulating story foreshadows nothing changing, because it presents hunger as a personal budgeting problem, which no policy can fix. Yours foreshadows a fix, because a swipe-donation program exists at three peer schools.</i></div></div>
+        <div class="row"><div class="n">Underlying assumptions</div><div class="d">"Unstated parts of the story that must be accepted." <i>Example: the circulating story assumes a student who is hungry did something wrong. Name that out loud and it gets much harder to keep believing.</i></div></div>
+      </div>
+
+      <p class="sublab">Step 3, in detail: the reframe</p>
+      <div class="eg">
+        <span class="lab">Worked example &middot; a needle exchange facing closure</span>
+        <span class="was">"Needle program draws addicts downtown." Arguing back with "the program does not draw addicts downtown" repeats <i>addicts</i> and <i>downtown</i> and leaves the frame stronger than you found it.</span>
+        <span class="who">the frame you inherit, and the trap</span>
+        <span class="now">"Nobody who used this program died this year." Same program. A different frame entirely, built from a value nobody argues with, and it never touches their words.</span>
+        <span class="who">the frame you build</span>
+      </div>
+      <p class="note">For a full worked version of this move on a live issue, read <i>Passing the Message Stick</i> (Australian Progress and GetUp, 2023), a tested messaging guide that replaced problem-focused framing with strength and values-based framing on First Nations justice. <a href="https://commonslibrary.org/passing-the-message-stick-messages-that-build-support-for-change-on-first-nations-justice/" target="_blank" rel="noopener">Free &rarr;</a></p>
+
+      <p class="sublab">Step 4, in detail: Story of Self, Us, and Now</p>
+      <div class="eg">
+        <span class="lab">Worked example &middot; a tenants' union fighting a rent hike</span>
+        <span class="now"><b>Self.</b> "The week I got the notice I sat in my car in the lot for an hour because I could not go inside and tell my daughter." Challenge: the notice. Choice: he organized instead of moving. Outcome: he knocked on 40 doors.</span>
+        <span class="now"><b>Us.</b> "There are 240 units in this complex and 190 of us got the same letter on the same day." Challenge: shared. Choice: shared. Outcome: shared.</span>
+        <span class="now"><b>Now.</b> "The rent board votes on the 14th, and they have never once heard from a tenant in this building." Challenge: the date. Choice: yours. Outcome: open.</span>
+      </div>
+      <p class="note">Self without Us is a personal essay. Us without Now is a history lesson. Now without a specific ask is a complaint.</p>
+
+      <p class="sublab">Step 5, in detail: audience by values</p>
+      <p>Chris Rose and Cultural Dynamics describe three broad values groups in <i>What Makes People Tick</i>: <b>Settlers</b> (security, belonging, the familiar), <b>Prospectors</b> (esteem, success, being seen), and <b>Pioneers</b> (ethics, complexity, the bigger picture). The same argument lands differently on each.</p>
+      <div class="eg">
+        <span class="lab">Worked example &middot; one campaign, three versions of the same ask</span>
+        <span class="now"><b>Settlers:</b> "This is the block your grandmother walked. It should still be safe to walk it."</span>
+        <span class="now"><b>Prospectors:</b> "Three towns nearby already fixed this. We are the last one that hasn't."</span>
+        <span class="now"><b>Pioneers:</b> "The people who pay the most for this had the least say in it."</span>
+      </div>
+
+      <p class="sublab">Step 6, in detail: the Story Canvas</p>
+      <p>One free page, eleven boxes, developed by Digital Storytellers and built on Alex Osterwalder's Business Model Canvas (CC BY-SA). You hand in a completed one alongside the strategy document. The boxes: <b>Purpose</b> (why tell this story, how things are now, what change you want) &middot; <b>Audience</b> (who you want to reach, each segment named and profiled) &middot; <b>Story</b> (how it starts, how it ends, what happens in between) &middot; <b>People &amp; Places</b> &middot; <b>Style &amp; Tone</b> &middot; <b>Key Messages</b> (the three things they should remember) &middot; <b>Call To Action</b> &middot; <b>Campaign</b> (the touchpoints, on a timeline) &middot; <b>Outcomes</b> &middot; <b>Indicators</b> (how you measure it). <a href="https://commonslibrary.org/the-story-canvas/" target="_blank" rel="noopener">Download it free &rarr;</a></p>
+      <div class="eg">
+        <span class="lab">Worked example &middot; three indicators that are not follower counts</span>
+        <span class="now">Language: the student paper's next article on the pantry uses the word "cost" instead of "budgeting." Somebody else started telling your version.</span>
+        <span class="now">Behavior: 60 signatures, and 11 of those people show up to the board meeting. Showing up is a much higher bar than signing.</span>
+        <span class="now">Relationships: four people who had never met before the campaign now text each other without you in the thread.</span>
+      </div>
+
+      <p class="sublab">What it needs</p>
+      <ul class="needs">
+        <li>A <b>diagnosis of the dominant story</b> using all five elements of narrative, and the <b>underlying assumption</b> named&nbsp;explicitly.</li>
+        <li>A <b>reframe</b> that states the frame you refuse, explains why arguing with it backfires, and builds one from your own&nbsp;values.</li>
+        <li>A written <b>Story of Self, Us, and Now</b>, each part carrying a challenge, a choice, and an&nbsp;outcome.</li>
+        <li>One or two <b>audiences named by what they value</b>, and one <b>call to action</b> a person could finish this&nbsp;week.</li>
+        <li>A completed <b>Story Canvas</b> (all eleven boxes) with <b>indicators</b> that measure language, behavior, or relationships rather than&nbsp;follower&nbsp;counts.</li>
+        <li>Roughly <b>2,000 words plus the canvas</b>, in a Google Doc someone else could tell your story&nbsp;from.</li>
+      </ul>
+
+          </div>
+
+    <p class="note">Where and when each piece is due is on the <a href="schedule.html">Schedule</a>. How the course runs and the full grading breakdown are in the <a href="syllabus.html">Syllabus</a>.</p>
+    <p>
+      <a class="cta" href="projects.html">&larr; Back to Major Projects</a>
+      <a class="cta ghost" href="schedule.html">See the Schedule</a>
+    </p>
+
+    <footer>
+      ENG 4100 &middot; Writing for Social Media &middot; Dr. Sarah Long &middot; Appalachian State University &middot; Fall 2026
+    </footer>
+
+  </div>
+</body>
+</html>

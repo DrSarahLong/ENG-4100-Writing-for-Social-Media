@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 3 Details &middot; Creative Campaign + &AElig;ffect Report &middot; ENG 4100</title>
+<style>
+  :root{
+    --paper:#faf6f3; --card:#ffffff; --ink:#1a2230; --muted:#586573;
+    --accent:#8c2f39; --accent-soft:#f3e4e5; --line:#e0e6ec; --field:#fdfefe;
+    --gold:#a3771f; --good:#2f7d54; --no:#a13a2d; --navbg:#faf6f3ee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#111821; --card:#1a2029; --ink:#e7ecf1; --muted:#93a1b0; --accent:#d98a92; --accent-soft:#3a2023; --line:#2a333d; --field:#1a2029; --gold:#d8b168; --good:#7ac598; --no:#e08a7a; --navbg:#111821ee; }
+  }
+  *{box-sizing:border-box} html,body{margin:0} html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--accent)}
+  .nav{position:sticky; top:0; z-index:20; background:var(--navbg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .nav .inner{max-width:1000px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:8px 18px; flex-wrap:wrap}
+  .nav .brand{font-family:Georgia,"Iowan Old Style",serif; font-weight:700; font-size:1.05rem; color:var(--ink); text-decoration:none; margin-right:auto}
+  .nav .brand small{display:block; font-family:system-ui,sans-serif; font-weight:600; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent)}
+  .nav a.lnk{color:var(--ink); text-decoration:none; font-weight:600; font-size:.93rem; padding:4px 2px; border-bottom:2px solid transparent}
+  .nav a.lnk:hover{border-bottom-color:var(--accent); color:var(--accent)}
+  .nav a.lnk[aria-current="page"]{color:var(--accent); border-bottom-color:var(--accent)}
+  .nav a.lms{background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:.9rem; border-radius:8px; padding:8px 14px; white-space:nowrap}
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 70px}
+  .masthead{padding:36px 0 16px; border-bottom:2px solid var(--ink); margin-bottom:10px}
+  .masthead .kick{font-size:.78rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:0 0 6px}
+  .masthead h1{font-family:Georgia,"Iowan Old Style",serif; font-size:2rem; margin:0 0 6px; line-height:1.12}
+  .masthead p{color:var(--muted); margin:6px 0 0; max-width:72ch}
+  .howto{background:var(--accent-soft); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:16px 0}
+  .howto b{color:var(--accent)}
+  .keyrow{display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px; font-size:.86rem}
+  .keyrow span{font-weight:700}
+  .k-ex{color:var(--good)} .k-me{color:var(--accent)} .k-de{color:var(--gold)} .k-no{color:var(--no)}
+  /* worked examples + build steps (added Sep 2026 for the narrative/creative redesign) */
+  .eg{background:var(--accent-soft); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:8px; padding:11px 14px; margin:8px 0 12px; font-size:.92rem}
+  .eg .lab{display:block; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:800; margin-bottom:5px}
+  .eg .was, .eg .now{display:block; margin:5px 0; padding-left:.85rem; border-left:2px solid var(--line)}
+  .eg .was{color:var(--muted)}
+  .eg .now{font-weight:600}
+  .eg .who{display:block; font-size:.8rem; color:var(--muted); font-style:italic; margin:1px 0 4px .85rem}
+  .steps{counter-reset:st; list-style:none; padding:0; margin:6px 0 10px}
+  .steps li{counter-increment:st; position:relative; padding-left:2.1rem; margin:.7rem 0; font-size:.95rem}
+  .steps li::before{content:counter(st); position:absolute; left:0; top:.05rem; width:1.5rem; height:1.5rem; border-radius:50%; background:var(--accent); color:#fff; font:800 .78rem/1.5rem system-ui,sans-serif; text-align:center}
+  .steps li b{color:var(--accent)}
+  .elem{border:1px solid var(--line); border-radius:9px; padding:0; margin:8px 0 12px; overflow:hidden}
+  .elem .row{display:grid; grid-template-columns:minmax(120px,1fr) 2.1fr; gap:0; border-top:1px solid var(--line)}
+  .elem .row:first-child{border-top:none}
+  .elem .n{background:var(--accent-soft); padding:9px 12px; font-weight:800; font-size:.86rem; color:var(--accent)}
+  .elem .d{padding:9px 12px; font-size:.9rem}
+  .elem .d i{color:var(--muted)}
+  @media (max-width:560px){ .elem .row{grid-template-columns:1fr} .elem .n{border-bottom:1px solid var(--line)} }
+  .proj{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; border-left:5px solid var(--accent)}
+  .proj .top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .proj .tag{font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--accent)}
+  .proj .wt{margin-left:auto; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums}
+  .proj h2{font-family:Georgia,"Iowan Old Style",serif; font-size:1.3rem; margin:2px 0 2px}
+  .proj .fmt{color:var(--muted); font-size:.86rem; margin:0 0 8px}
+  .proj p{margin:.5rem 0}
+  .sublab{font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:800; margin:16px 0 6px}
+  .needs{margin:2px 0 4px; padding-left:1.2rem; font-size:.95rem}
+  .needs li{margin:.3rem 0}
+  .model{background:var(--field); border:1px dashed var(--accent); border-radius:9px; padding:9px 12px; margin:8px 0 2px; font-size:.9rem}
+  .model b{color:var(--accent)}
+  .crit{border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin:9px 0; background:var(--field)}
+  .cname{font-weight:700; color:var(--accent); margin-bottom:8px}
+  .levels{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+  @media (max-width:720px){ .levels{grid-template-columns:1fr 1fr} }
+  @media (max-width:460px){ .levels{grid-template-columns:1fr} }
+  .lvl{border:1px solid var(--line); border-top-width:3px; border-radius:8px; padding:8px 10px; font-size:.85rem; background:var(--card)}
+  .lvl .t{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:3px}
+  .lvl .pts{color:var(--muted); font-weight:800; letter-spacing:0; text-transform:none; white-space:nowrap}
+  .lvl.exceeds{border-top-color:var(--good)} .lvl.exceeds .t{color:var(--good)}
+  .lvl.meets{border-top-color:var(--accent)} .lvl.meets .t{color:var(--accent)}
+  .lvl.dev{border-top-color:var(--gold)} .lvl.dev .t{color:var(--gold)}
+  .lvl.not{border-top-color:var(--no)} .lvl.not .t{color:var(--no)}
+  .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; border-radius:9px; padding:11px 18px; margin:10px 8px 6px 0}
+  .cta.ghost{background:transparent; color:var(--accent); border:1.5px solid var(--accent)}
+  .note{color:var(--muted); font-size:.92rem}
+  footer{color:var(--muted); font-size:.9rem; margin-top:30px; padding-top:16px; border-top:1px solid var(--line)}
+</style>
+</head>
+<body id="e4-projects">
+
+  <nav class="nav">
+    <div class="inner">
+      <a class="brand" href="index.html">ENG 4100<small>Writing for Social Media</small></a>
+      <a class="lnk" href="index.html">Home</a>
+      <a class="lnk" href="syllabus.html">Syllabus</a>
+      <a class="lnk" href="schedule.html">Schedule</a>
+      <a class="lnk" href="projects.html" aria-current="page">Major Projects</a>
+      <a class="lms" href="https://appstate.instructure.com/" target="_blank" rel="noopener">Canvas &rarr;</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <header class="masthead">
+      <p class="kick">ENG 4100 &middot; Project 3 &middot; the long version</p>
+      <h1>Creative Campaign + &AElig;ffect Report: the details</h1>
+      <p>What counts as an artifact that cannot travel online, the evidence for going creative, all seven elements of the &aelig;ffect report with an example of each, and how access works for things you make by hand. The short version is on the <a href="projects.html">Major Projects</a> page.</p>
+    </header>
+
+    <p><a class="cta ghost" href="projects.html">&larr; Back to Major Projects</a></p>
+
+    <div class="proj">
+      <p class="sublab">Start here</p>
+
+      <p class="model"><b>New to this? Here's the model to study:</b> <b>BUGA UP</b> (Billboard Utilising Graffitists Against Unhealthy Promotions), Australia, 1979 to 1994, via the Commons Social Change Library (free). Bill Snow and Rick Bolzan started it in October 1979 with one analog tactic: altering cigarette billboards by spray-painting a few letters, so Sterling became Stinking and Dunhill became Dunghill. At its peak members altered at least 50 billboards a week for fifteen years. Twenty to thirty were arrested, and the group ran a fund that paid half of members' fines. In September 1994 Australian federal and state governments banned tobacco billboard advertising, and observers credit BUGA UP with shifting public awareness that made the ban possible. Study it for three things: an artifact that only exists in a place, a tiny intervention that changes a story, and a campaign that kept a record of what it did. <a href="https://commonslibrary.org/billboard-utilising-graffitists-against-unhealthy-promotions-buga-up-campaigns-against-tobacco-advertising-australia-1978-1994/" target="_blank" rel="noopener">Read it free &rarr;</a></p>
+      <p class="note">Your reporting framework: the <i>&AElig;ffect Planning and Assessment Toolset</i> from the Center for Artistic Activism (free, CC BY-NC-SA), including the &AElig;ffect Worksheet and the 50-question &AElig;ffect Script. <a href="https://commonslibrary.org/aeffect-planning-and-assessment-toolset/" target="_blank" rel="noopener">Get it free &rarr;</a> For making things by hand, start with the Commons Library's <i>Creative Activism: Start Here</i>. <a href="https://commonslibrary.org/creative-activism-start-here/" target="_blank" rel="noopener">Open the hub &rarr;</a> Specifics: <a href="https://commonslibrary.org/items-of-mass-instruction-posters-stickers-memes-and-more/" target="_blank" rel="noopener">Items of Mass Instruction</a> (posters, stickers, badges, postcards, stamps, and an 1891 suffrage petition presented as a 260-metre scroll) &middot; <a href="https://commonslibrary.org/a-better-world-is-paintable/" target="_blank" rel="noopener">A Better World is Paintable</a> (banners, stencils, street murals) &middot; <a href="https://commonslibrary.org/craftivism-a-manifesto-methodology/" target="_blank" rel="noopener">Craftivism: A Manifesto Methodology</a> &middot; <a href="https://commonslibrary.org/cheeky-and-disorganized-nannagogy-and-the-knitting-nannas/" target="_blank" rel="noopener">The Knitting Nannas</a></p>
+
+      
+<p class="sublab">What "not distributable on social media" means</p>
+      <p>Not "a photo of a physical thing." The artifact itself has to be something a person receives by being somewhere, holding something, or doing something with other people. A picture of it is documentation, not the artifact.</p>
+      <div class="eg">
+        <span class="lab">Examples that qualify</span>
+        <span class="now">A <b>zine</b> you print, fold, and hand to 60 people at the bus stop on the same route each week.</span>
+        <span class="now">A <b>sidewalk chalk installation</b> that shows the walking distance to the nearest grocery store, marked in feet along the actual sidewalk.</span>
+        <span class="now">A <b>quilt square drive</b>, where each person stitches one square and the squares only mean anything assembled.</span>
+        <span class="now">A <b>listening booth</b> at the student union with two chairs, a question card, and a notebook people write in by hand.</span>
+        <span class="now">A <b>letter-writing table</b> where the artifact is the 40 signed letters that go to the rent board in an envelope.</span>
+        <span class="now">A <b>silent procession</b> carrying 190 numbered cards, one for each unit that got the notice.</span>
+        <span class="now">A <b>hand-built object</b>: screen-printed shirts, stencils, a wheatpaste poster, a banner, stickers, seed packets, a rubber-stamped receipt.</span>
+        <span class="was">Does not qualify on its own: an Instagram carousel, a TikTok, a reel of the event, a PDF flyer emailed out, a hashtag, a Canva graphic.</span>
+      </div>
+
+      <p class="sublab">Why creative and analog, and not as a matter of taste</p>
+      <p>In 2018 the Center for Artistic Activism, with Silas Harrebye (Roskilde University) and Stephen Duncombe (NYU), ran a three-day A/B test on a busy Copenhagen bridge, pairing conventional tactics (a speech, a petition table, flyering) against creative ones on the same issue. They collected 108 spot interviews, 30 observation sheets, petition and flyer tallies, video, and follow-up surveys two weeks later. The creative versions gathered more signatures, moved flyers faster, and were recalled better two weeks on. People described the conventional tactics as "annoying," "lecturing," and "predictable," and the creative ones as "funny," "different," and "surprising." <a href="https://commonslibrary.org/the-copenhagen-experiment-measuring-the-relative-effectiveness-of-creative-vs-conventional-forms-of-activism/" target="_blank" rel="noopener">Read the study free &rarr;</a></p>
+
+      <p class="sublab">The report: &aelig;ffect, and its seven elements</p>
+      <p>The Center for Artistic Activism coined <b>&aelig;ffect</b> to hold two things at once: <b>affect</b>, how your work moved somebody, and <b>effect</b>, what it changed. Most campaign reports only count effect, badly, by counting views. Your report walks all seven elements below. Each one gets an example so you can see what the answer looks like, built from a single running case: <b>a campaign against a proposed 40% rent increase at a 240-unit complex.</b></p>
+      <div class="elem">
+        <div class="row"><div class="n">1 &middot; Goals</div><div class="d">What do you want to accomplish? <i>Example: "Get eleven tenants to speak at the rent board hearing on the 14th, and get one local reporter to write the story using the word 'increase' rather than 'adjustment.'" Notice both are things that either happen or don't.</i></div></div>
+        <div class="row"><div class="n">2 &middot; Audience</div><div class="d">Who do you want to reach, and who are you reaching through? <i>Example: "Primary: the five rent board members, three of whom have never heard from a tenant in this building. Secondary: the 190 households who got the letter, most of whom think they are the only one. Reached through: the two church bulletins and the laundromat on Ashe Street."</i></div></div>
+        <div class="row"><div class="n">3 &middot; Ethics</div><div class="d">What principles guide the work, and what did you refuse to do? <i>Example: "Nobody's apartment number appears on anything public. We asked before photographing children, and two families said no, so they are not in it. We did not draw the landlord as an animal, though it was discussed, and the reasoning is in the report."</i></div></div>
+        <div class="row"><div class="n">4 &middot; Intervention</div><div class="d">What did you actually make and do? <i>Example: "190 numbered index cards, one per household, hand-carried in a silent line from the complex to the board meeting; a folded one-page zine with the timeline and the three asks; a chalk line on the sidewalk showing what 40% of a month's groceries looks like; and one Instagram post, used only to tell people the time and place."</i></div></div>
+        <div class="row"><div class="n">5 &middot; Metrics</div><div class="d">How will you know if it worked, decided <em>before</em> you run it? <i>Example: "Count speakers at the hearing. Count zines taken versus zines printed. Keep every card that came back with writing on it. Save any press coverage and note which words it used. Ask five people two weeks later what they remember."</i></div></div>
+        <div class="row"><div class="n">6 &middot; Evaluation</div><div class="d">Did it work? Say what did not. <i>Example: "Nine people spoke, not eleven. 140 of 200 zines went. The chalk was gone in one rain and almost nobody saw it, which was a design failure we should have predicted. The paper ran the story and used 'increase.' Affect: four people told us it was the first time they had been in a room with their neighbors, and one cried, which no metric caught."</i></div></div>
+        <div class="row"><div class="n">7 &middot; Iteration</div><div class="d">What would you change? <i>Example: "Chalk was wrong for October. Next time the same information goes on a laminated card zip-tied to the mailbox cluster, where it stays dry and people stand still for thirty seconds anyway."</i></div></div>
+      </div>
+
+      <p class="sublab">Access, including for things you make by hand</p>
+      <p>Digital accessibility still applies to whatever you put online (alt text, captions, contrast, readable type). But an analog artifact has its own access questions, and "it's a physical object so accessibility doesn't apply" is the wrong answer. Name how you handled at least three of these:</p>
+      <div class="eg">
+        <span class="lab">Access for analog and hand-built work</span>
+        <span class="now"><b>Physical access.</b> Is the location step-free, and is there a route that does not involve stairs, gravel, or a curb? <i>Example: the listening booth moved from the library steps to the ground-floor atrium.</i></span>
+        <span class="now"><b>Print and sight.</b> Type at 14pt or larger, high contrast, no text over busy photographs, and a large-print version on request. <i>Example: ten of the 200 zines were printed at 18pt.</i></span>
+        <span class="now"><b>Language.</b> Plain language at roughly an eighth-grade level, and translation where your audience needs it. <i>Example: 40 of the cards were printed in Spanish because a third of the complex speaks it at home.</i></span>
+        <span class="now"><b>Time, seating, and stamina.</b> Somewhere to sit, a way to take part in two minutes instead of forty, and no requirement to stand in a line. <i>Example: the procession had a short route option and two chairs at the end.</i></span>
+        <span class="now"><b>Sensory load.</b> No sudden noise or strobing, a quieter time slot, and a warning if part of it is loud. <i>Example: the last thirty minutes of the booth were posted as a quiet hour.</i></span>
+        <span class="now"><b>Touch and non-visual access.</b> Can a blind participant take part? <i>Example: the cards were rubber-stamped so the number could be felt, and a volunteer read the zine aloud on request.</i></span>
+        <span class="now"><b>A route in for people who cannot be there.</b> Presence is the point, so name how someone who could not come still participated. <i>Example: eleven people mailed in a card, and their cards were carried by somebody else.</i></span>
+      </div>
+
+          </div>
+
+    <p class="note">Where and when each piece is due is on the <a href="schedule.html">Schedule</a>. How the course runs and the full grading breakdown are in the <a href="syllabus.html">Syllabus</a>.</p>
+    <p>
+      <a class="cta" href="projects.html">&larr; Back to Major Projects</a>
+      <a class="cta ghost" href="schedule.html">See the Schedule</a>
+    </p>
+
+    <footer>
+      ENG 4100 &middot; Writing for Social Media &middot; Dr. Sarah Long &middot; Appalachian State University &middot; Fall 2026
+    </footer>
+
+  </div>
+</body>
+</html>

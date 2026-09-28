@@ -34,6 +34,24 @@
   .keyrow{display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px; font-size:.86rem}
   .keyrow span{font-weight:700}
   .k-ex{color:var(--good)} .k-me{color:var(--accent)} .k-de{color:var(--gold)} .k-no{color:var(--no)}
+  /* worked examples + build steps (added Sep 2026 for the narrative/creative redesign) */
+  .eg{background:var(--accent-soft); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:8px; padding:11px 14px; margin:8px 0 12px; font-size:.92rem}
+  .eg .lab{display:block; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:800; margin-bottom:5px}
+  .eg .was, .eg .now{display:block; margin:5px 0; padding-left:.85rem; border-left:2px solid var(--line)}
+  .eg .was{color:var(--muted)}
+  .eg .now{font-weight:600}
+  .eg .who{display:block; font-size:.8rem; color:var(--muted); font-style:italic; margin:1px 0 4px .85rem}
+  .steps{counter-reset:st; list-style:none; padding:0; margin:6px 0 10px}
+  .steps li{counter-increment:st; position:relative; padding-left:2.1rem; margin:.7rem 0; font-size:.95rem}
+  .steps li::before{content:counter(st); position:absolute; left:0; top:.05rem; width:1.5rem; height:1.5rem; border-radius:50%; background:var(--accent); color:#fff; font:800 .78rem/1.5rem system-ui,sans-serif; text-align:center}
+  .steps li b{color:var(--accent)}
+  .elem{border:1px solid var(--line); border-radius:9px; padding:0; margin:8px 0 12px; overflow:hidden}
+  .elem .row{display:grid; grid-template-columns:minmax(120px,1fr) 2.1fr; gap:0; border-top:1px solid var(--line)}
+  .elem .row:first-child{border-top:none}
+  .elem .n{background:var(--accent-soft); padding:9px 12px; font-weight:800; font-size:.86rem; color:var(--accent)}
+  .elem .d{padding:9px 12px; font-size:.9rem}
+  .elem .d i{color:var(--muted)}
+  @media (max-width:560px){ .elem .row{grid-template-columns:1fr} .elem .n{border-bottom:1px solid var(--line)} }
   .proj{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; border-left:5px solid var(--accent)}
   .proj .top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
   .proj .tag{font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--accent)}
@@ -82,7 +100,7 @@
     <header class="masthead">
       <p class="kick">Appalachian State University · Fall 2026</p>
       <h1>Major Projects</h1>
-      <p>Three projects carry the course, and each one builds on the last. You analyze how a movement works, plan a strategy for your own cause, then make and measure a real campaign. Each project is scored on a handful of criteria, and the weekly modules walk you through building it.</p>
+      <p>Three projects carry the course, and each one builds on the last. You analyze how a movement works, build a narrative strategy for your own cause, then make and measure a campaign that exists in the world. Each project is scored on a handful of criteria, and the weekly modules walk you through building it.</p>
     </header>
 
     <div class="howto">
@@ -99,7 +117,7 @@
       <div class="top"><span class="tag">Project 1 · introduced Week 3 · due Week 6</span><span class="wt">20%</span></div>
       <h2>Movement Media Analysis</h2>
       <p class="fmt">Research-grounded analysis · submitted as a Google Doc</p>
-      <p>Pick one movement, one of our cases or one you bring me and I approve, and take apart how it actually reached people. Every movement runs on a media theory: a working set of beliefs about how ideas travel and how strangers become a "we." Your job is to name that theory, show its slow tools and its fast ones, read a few real artifacts up close (a pamphlet, a poster, a chant, a broadcast, a hashtag), weigh the ethics of how it persuaded, then carry concrete lessons back to your own cause. Think close reading of how the reaching happened, backed by real sources, about 1,500 to 2,000 words. You're explaining the mechanics of connection, not retelling the movement's history.</p>
+      <p>Pick one movement, one of our cases or one you bring me and I approve, and take apart how it actually reached people. Every movement runs on a media theory: a working set of beliefs about how ideas travel and how strangers become a "we." Your job is to name that theory, show its slow tools and its fast ones, read a few primary artifacts up close (a pamphlet, a poster, a chant, a broadcast, a hashtag), weigh the ethics of how it persuaded, then carry concrete lessons back to your own cause. Think close reading of how the reaching happened, backed by credible sources, about 1,500 to 2,000 words. You're explaining the mechanics of connection, not retelling the movement's history.</p>
       <details class="movepick"><summary><b>Need a movement? A few ideas beyond our cases</b></summary>
         <p>All have rich, researchable media. Pick one and clear it with me first:</p>
         <ul class="needs">
@@ -122,11 +140,11 @@
       <ul class="needs">
         <li><b>About 1,500&ndash;2,000 words.</b> One movement, read closely, not a survey of&nbsp;ten.</li>
         <li>The movement's <b>media theory</b>, named and put to work (ritual vs. transmission, slow vs. fast, owning vs. renting the&nbsp;channel).</li>
-        <li><b>Three to five real primary artifacts</b>, quoted or described and read up close, plus credible secondary sources, cited&nbsp;consistently. A <b>primary artifact</b> is a piece of the movement's own communication: a newspaper page, a poster or flyer, a pamphlet or zine, a speech, a staged photograph, a protest sign or banner, a slogan or song, a manifesto or communiqu&eacute;, a logo, or a specific hashtag, post, or thread. (A Wikipedia page or a news story <em>about</em> the movement is a <em>secondary</em> source, not an&nbsp;artifact.)</li>
+        <li><b>Three to five primary artifacts</b>, quoted or described and read up close, plus credible secondary sources, cited&nbsp;consistently. A <b>primary artifact</b> is a piece of the movement's own communication: a newspaper page, a poster or flyer, a pamphlet or zine, a speech, a staged photograph, a protest sign or banner, a slogan or song, a manifesto or communiqu&eacute;, a logo, or a specific hashtag, post, or thread. (A Wikipedia page or a news story <em>about</em> the movement is a <em>secondary</em> source, not an&nbsp;artifact.)</li>
         <li>A clear read of <b>how</b> the media built community and moved ideas, with its tensions and&nbsp;trade-offs.</li>
         <li>Concrete, usable <b>lessons for your own cause</b>, tied to what the case actually&nbsp;shows.</li>
       </ul>
-      <p class="model"><b>Models to study.</b> Read one or two of these for how a strong analysis <em>thinks</em>, the depth of the reading and the way every claim is backed by real evidence. Study the thinking, not the layout: a magazine piece, a research report, and a museum essay all look different, and none is the template for how yours should look on the page.</p>
+      <p class="model"><b>Models to study.</b> Read one or two of these for how a strong analysis <em>thinks</em>, the depth of the reading and the way every claim is backed by evidence. Study the thinking, not the layout: a magazine piece, a research report, and a museum essay all look different, and none is the template for how yours should look on the page.</p>
       <ul class="needs">
         <li><a href="https://www.cjr.org/analysis/history-black-panther-newspaper.php" target="_blank" rel="noopener">The Black Panther newspaper</a> (Columbia Journalism Review): one movement's print paper read as its organizing&nbsp;engine.</li>
         <li><a href="https://hyperallergic.com/366630/designing-a-revolutionary-visual-identity-for-the-black-panthers/" target="_blank" rel="noopener">Emory Douglas &amp; the Panthers' visual identity</a> (Hyperallergic): a movement's design and imagery as&nbsp;media.</li>
@@ -144,7 +162,7 @@
       </div></div>
       <div class="crit"><div class="cname">Evidence &amp; primary artifacts</div><div class="levels">
         <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>Well-chosen artifacts and sources, closely read and fully cited</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">4 pts</span></span>Grounded in real artifacts and credible sources, cited consistently</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4 pts</span></span>Grounded in primary artifacts and credible sources, cited consistently</div>
         <div class="lvl dev"><span class="t">Developing<span class="pts">3 pts</span></span>Some evidence, thin or loosely cited</div>
         <div class="lvl not"><span class="t">Not yet<span class="pts">1.5 pts</span></span>Little evidence, or uncited</div>
       </div></div>
@@ -163,83 +181,105 @@
     </div>
 
     <div class="proj">
-      <div class="top"><span class="tag">Project 2 · set up Week 9 · due Week 11</span><span class="wt">25%</span></div>
-      <h2>Content Strategy &amp; Audit</h2>
-      <p class="fmt">Strategy document · submitted as a Google Doc</p>
-      <p>Take your cause and do two things: read where it stands right now, then write the plan that moves it forward. Start with an audit, a clear-eyed look at its current channels and what is and isn't working (real traction versus vanity metrics). Then define the actual audience and a few reachable goals, choose the channels and a voice that fits each platform and the cause, and lay out an editorial calendar someone could run. The test is simple: could a volunteer pick this up and run the cause's communications from it for a month? Plan on roughly 2,000 words plus the calendar.</p>
-      <p class="sublab">What it needs</p>
-      <ul class="needs">
-        <li>An <b>audit</b> of the cause's current presence that separates real traction from vanity&nbsp;metrics.</li>
-        <li>One or two <b>specific audiences</b> (never "everyone") and a few concrete, measurable&nbsp;goals.</li>
-        <li><b>Channel choices you can defend</b>, and a voice tuned to each platform and to the&nbsp;cause.</li>
-        <li>An <b>editorial calendar</b> sized to real capacity, with a few sample&nbsp;posts.</li>
-        <li>Roughly <b>2,000 words plus the calendar</b>, in a Google Doc someone else could run&nbsp;from.</li>
-      </ul>
-      <p class="model"><b>New to this? Here's a model to study:</b> the Commons Social Change Library's <em>Communications and Media: Start Here</em> (free). It walks an advocacy communications plan the way yours will, moving from audience to message to channels to voice, with worked examples from real campaigns. <a href="https://commonslibrary.org/communications-and-media-start-here/" target="_blank" rel="noopener">Read it free &rarr;</a></p>
+      <div class="top"><span class="tag">Project 2 &middot; set up Week 9 &middot; due Week 11</span><span class="wt">25%</span></div>
+      <h2>Narrative Strategy</h2>
+      <p class="fmt">Strategy document (roughly 2,000 words) + one completed Story Canvas &middot; submitted as a Google Doc</p>
+      <p>Every cause is already inside a story somebody else wrote. Before your cause can win anything, that story has to change. So this project is not a posting schedule. You diagnose the dominant story about your cause, find the place where it can be broken, and then write the story you want people carrying around instead. You will use three named frameworks from movement communications, apply them to your own cause, and hand in a plan a volunteer could pick up and tell.</p>
+
+      <p class="sublab">The six steps</p>
+      <ol class="steps">
+        <li><b>Diagnose the story you are up against.</b> Use the five elements of narrative from story-based strategy (below) to take apart the version of your cause that is already circulating. Not what you wish people thought. What they already think.</li>
+        <li><b>Name the underlying assumption, and pick your point of intervention.</b> Every story rests on something unstated that the audience has to accept for it to work. Find it. That assumption is the softest place to hit.</li>
+        <li><b>Refuse the inherited frame and build your own.</b> George Lakoff, a cognitive linguist, argued in <i>Don't Think of an Elephant!</i> (2004) that "activating a frame, even when rejecting it, strengthens the frame." So you cannot argue your way out of a frame. You have to speak from a different one.</li>
+        <li><b>Write the public narrative.</b> Marshall Ganz, an organizer who worked with the United Farm Workers and now teaches at Harvard, built a three-part structure movement leaders use: Story of Self, Story of Us, Story of Now. Each part is a challenge, a choice, and an outcome.</li>
+        <li><b>Name your audience by what they value, not by their age.</b> Then write one call to action that a person could complete this week.</li>
+        <li><b>Fill out the Story Canvas and set your indicators.</b> One page, eleven boxes, and a clear answer to "how would I know the story moved?"</li>
+      </ol>
+
+      <p class="model"><b>The long version lives on its own page.</b> Every step worked out, the model to study, the frameworks it runs on, and an example of each move. Read it before you start Step&nbsp;1. <a href="project2-details.html">Open Project&nbsp;2 details &rarr;</a></p>
+
       <p class="sublab">The rubric</p>
-      <div class="crit"><div class="cname">Audit</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6.25 pts</span></span>Clear-eyed audit that separates real traction from vanity and finds the gaps others miss</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">5.5 pts</span></span>Reads the cause's current channels, audience, and what is and isn't working, with candor</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4 pts</span></span>Describes the presence but doesn't evaluate it</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No real audit</div>
+      <div class="crit"><div class="cname">Diagnosing the dominant story</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>All five elements applied with evidence from circulating texts, and the underlying assumption named in a way that changes how the reader sees the issue</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4.4 pts</span></span>Applies the five elements to the story already circulating and names the underlying assumption</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.2 pts</span></span>Describes what the student wishes people thought, or uses only some elements</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">1.6 pts</span></span>No diagnosis of an existing story</div>
       </div></div>
-      <div class="crit"><div class="cname">Audience &amp; goals</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6.25 pts</span></span>Specific audiences and goals that are measurable and genuinely reachable</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">5.5 pts</span></span>Defines real audience(s) and concrete goals tied to the cause's needs</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4 pts</span></span>Vague audience ("everyone") or fuzzy goals</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No defined audience or goals</div>
+      <div class="crit"><div class="cname">The reframe</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>Builds a frame from its own values that never repeats the opponent's words, and shows why the obvious rebuttal would have backfired</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4.4 pts</span></span>Names the inherited frame, explains the negation trap, and offers a frame of its own</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.2 pts</span></span>Argues against the frame while repeating its terms</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">1.6 pts</span></span>No framing work</div>
       </div></div>
-      <div class="crit"><div class="cname">Strategy &amp; platform-appropriate voice</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6.25 pts</span></span>Channel choices are justified and the voice is tuned convincingly to each platform and audience</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">5.5 pts</span></span>Channel choices fit the goals; voice suits both the platform and the cause</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4 pts</span></span>Some choices unexplained, or one voice pasted everywhere</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No coherent strategy or voice</div>
+      <div class="crit"><div class="cname">Public narrative (Self, Us, Now)</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>Three parts that hand off to each other, each built on a specific moment, ending on a date and a decision</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4.4 pts</span></span>All three parts written, each with a challenge, a choice, and an outcome</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.2 pts</span></span>One or two parts, or three parts that summarize instead of telling</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">1.6 pts</span></span>No narrative written</div>
       </div></div>
-      <div class="crit"><div class="cname">Editorial calendar &amp; feasibility</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6.25 pts</span></span>A concrete, sustainable calendar someone could actually run, with contingencies</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">5.5 pts</span></span>A clear editorial calendar sized to real capacity</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4 pts</span></span>A rough plan, over-ambitious or thin</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No calendar or plan</div>
+      <div class="crit"><div class="cname">Audience &amp; call to action</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>Segments named by values with the same ask rewritten for each, and an ask sized to what the audience can actually do</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4.4 pts</span></span>One or two audiences defined by what they value, and one specific, completable ask</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.2 pts</span></span>Audience defined by demographics only, or a vague ask ("raise awareness")</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">1.6 pts</span></span>"Everyone," or no ask</div>
+      </div></div>
+      <div class="crit"><div class="cname">Story Canvas &amp; indicators</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">5 pts</span></span>A canvas somebody else could run from, with indicators that track language, behavior, and relationships and a stated way to collect each</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">4.4 pts</span></span>All eleven boxes completed and coherent, with indicators beyond follower counts</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.2 pts</span></span>Boxes filled thinly, or indicators are all reach and likes</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">1.6 pts</span></span>No canvas, or no indicators</div>
       </div></div>
     </div>
 
     <div class="proj">
-      <div class="top"><span class="tag">Project 3 · set up Week 12 · due Week 16 · presented</span><span class="wt">30%</span></div>
-      <h2>Campaign + Impact Report</h2>
-      <p class="fmt">Multimodal campaign + written report · presented to the class</p>
-      <p>Design, produce, and present a small, ethical, <b>multimodal</b> campaign for your cause, grounded in one of the media theories from the course, then measure what it did. Multimodal means real pieces across more than one mode: words, image, sound, design, or in-person. Traditional social channels can be part of it, though they should not be the center, and you can leave them out entirely if you can defend analog methods. Then write the impact report: what circulated, what actually changed, and what counts as real impact versus noise. Figure three to five finished artifacts plus a report of about 1,500 words. You present the campaign and its results in the final weeks (the presentation itself is scored under Participation &amp; Final Presentation).</p>
+      <div class="top"><span class="tag">Project 3 &middot; set up Week 12 &middot; due Week 16 &middot; presented</span><span class="wt">30%</span></div>
+      <h2>Creative Campaign + &AElig;ffect Report</h2>
+      <p class="fmt">Three to five finished artifacts + an &aelig;ffect report (roughly 1,500 words) &middot; presented to the class</p>
+      <p>Take the narrative you built in Project 2 and make it exist in the world. Design, produce, and present a small, ethical campaign for your cause, then measure what it did to people and what it changed. The whole semester has been about putting the <em>social</em> back into social media, so here is the constraint that makes you do it: <b>at least one of your artifacts cannot be distributable on social media.</b> It has to need a body in a place. You may still build social pieces, and you may still run a social campaign if that is where your audience actually is, but you have to defend that choice rather than default to it.</p>
+
       <p class="sublab">What it needs</p>
       <ul class="needs">
-        <li><b>Three to five finished artifacts</b> across more than one mode, clearly one&nbsp;campaign.</li>
-        <li>A <b>named course media theory</b> that visibly drives the design and channel&nbsp;choices.</li>
-        <li>Ethics built in: <b>disclosure, fair representation, and basic accessibility</b> (alt text, captions,&nbsp;contrast).</li>
-        <li>An <b>impact report</b> (about 1,500 words) that names real success metrics, measures them, and reflects on what changed and what&nbsp;didn't.</li>
+        <li><b>Three to five finished artifacts</b> that clearly belong to one campaign, across more than one&nbsp;mode.</li>
+        <li><b>At least one artifact that cannot be distributed on social media</b>, plus one paragraph on what being present adds that a post could&nbsp;not.</li>
+        <li>The <b>narrative you built in Project 2</b>, visibly carried into the artifacts: the same frame, the same characters, the same&nbsp;ask.</li>
+        <li>A <b>named course theory</b> driving the design choices, and a defense of any social channel you&nbsp;use.</li>
+        <li><b>Ethics and access designed in</b>: disclosure, fair representation, digital accessibility where it applies, and at least three of the analog access moves&nbsp;above.</li>
+        <li>An <b>&aelig;ffect report</b> (about 1,500 words) that walks all seven elements, reports affect and effect, and names what did not&nbsp;work.</li>
+        <li><b>Documentation</b> of the artifacts, since the physical ones will not survive the semester: photographs, the object itself, or a scan.</li>
       </ul>
-      <p class="model"><b>New to this? Here's a model to study:</b> the Commons Social Change Library's <em>Refugees Welcome: An Organising Case Study</em> (free). It tells one campaign's story and then reports its outcomes at three levels (society, organisation, and the people involved), the kind of grounded impact read your report is after. <a href="https://commonslibrary.org/orientation-to-organizing-and-refugees-movement-case-study/" target="_blank" rel="noopener">Read it free &rarr;</a></p>
+
+      <p class="model"><b>The long version lives on its own page.</b> What counts as an artifact that cannot travel online, the evidence for going creative, all seven &aelig;ffect elements with an example of each, and how access works for handbuilt work. <a href="project3-details.html">Open Project&nbsp;3 details &rarr;</a></p>
+
       <p class="sublab">The rubric</p>
-      <div class="crit"><div class="cname">Multimodal campaign (craft &amp; coherence)</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">7.5 pts</span></span>Polished pieces across modes that clearly belong to one campaign and reinforce each other</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">6.5 pts</span></span>Real artifacts combining language, image, sound, or design into a coherent campaign</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4.5 pts</span></span>A few pieces, loosely related or uneven in craft</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2.5 pts</span></span>One mode only, or no finished artifacts</div>
+      <div class="crit"><div class="cname">The artifacts (craft &amp; coherence)</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6 pts</span></span>Finished pieces across modes that reinforce each other, made with care, and recognizable as one campaign at a glance</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">5.2 pts</span></span>Three to five completed artifacts in more than one mode that clearly belong together</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.6 pts</span></span>A few pieces, loosely related or uneven in craft</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>One mode only, or nothing finished</div>
       </div></div>
-      <div class="crit"><div class="cname">Grounded in a course media theory</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">7.5 pts</span></span>A named theory visibly shapes every design choice; the campaign is an argument for that approach</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">6.5 pts</span></span>A named course theory clearly informs the campaign's design and channel choices</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4.5 pts</span></span>A theory is mentioned but doesn't drive the work</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2.5 pts</span></span>No theoretical grounding</div>
+      <div class="crit"><div class="cname">The artifact that needs a body</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6 pts</span></span>An artifact whose whole effect depends on presence, and a defense of the social channels used or left out that could change a reader's mind</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">5.2 pts</span></span>At least one artifact that cannot circulate online, plus a paragraph on what presence adds</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.6 pts</span></span>A physical object that is essentially a printed post, or presence claimed but not designed for</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>Everything is shareable; nothing requires being there</div>
       </div></div>
-      <div class="crit"><div class="cname">Ethics: disclosure, representation, accessibility</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">7.5 pts</span></span>Ethics are designed in from the start; accessible, fair, transparent throughout</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">6.5 pts</span></span>Discloses with candor, represents people fairly, and meets basic accessibility (alt text, captions, contrast)</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4.5 pts</span></span>Some ethical gaps or accessibility oversights</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2.5 pts</span></span>Misleading, unfair, or inaccessible</div>
+      <div class="crit"><div class="cname">Narrative &amp; theory carried through</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6 pts</span></span>The Project 2 frame is legible in every artifact, and a named theory is arguable from the design alone</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">5.2 pts</span></span>The Project 2 narrative and a named course theory visibly shape the artifacts and channel choices</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.6 pts</span></span>A theory or frame is named but the artifacts would look the same without it</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No narrative or theoretical grounding</div>
       </div></div>
-      <div class="crit"><div class="cname">Impact report (honest metrics)</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">7.5 pts</span></span>Defines real success metrics, measures them, and reflects candidly on what changed and what didn't</div>
-        <div class="lvl meets"><span class="t">Meets<span class="pts">6.5 pts</span></span>Names real impact metrics (behavior, relationships, reach) over vanity ones, and reflects on the results</div>
-        <div class="lvl dev"><span class="t">Developing<span class="pts">4.5 pts</span></span>Reports mostly likes and follows, with little reflection</div>
-        <div class="lvl not"><span class="t">Not yet<span class="pts">2.5 pts</span></span>No measurement or reflection</div>
+      <div class="crit"><div class="cname">Ethics &amp; access (digital and analog)</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6 pts</span></span>Access shapes the design from the start rather than getting added, and the report names a tradeoff the campaign chose and why</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">5.2 pts</span></span>Discloses candidly, represents people fairly, meets digital accessibility where it applies, and handles at least three analog access moves</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.6 pts</span></span>Digital access covered but analog ignored, or gaps in consent and representation</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>Misleading, unfair, or unreachable</div>
+      </div></div>
+      <div class="crit"><div class="cname">&AElig;ffect report</div><div class="levels">
+        <div class="lvl exceeds"><span class="t">Exceeds<span class="pts">6 pts</span></span>All seven elements, metrics set before the campaign ran, affect evidenced in people's own words, and a failure examined rather than mentioned</div>
+        <div class="lvl meets"><span class="t">Meets<span class="pts">5.2 pts</span></span>Walks all seven elements, reports both affect and effect, and names what did not work</div>
+        <div class="lvl dev"><span class="t">Developing<span class="pts">3.6 pts</span></span>Some elements skipped, or reports mostly reach with little reflection</div>
+        <div class="lvl not"><span class="t">Not yet<span class="pts">2 pts</span></span>No measurement or reflection</div>
       </div></div>
     </div>
 
@@ -247,7 +287,7 @@
       <div class="top"><span class="tag" style="color:var(--gold)">Ongoing · completion</span><span class="wt" style="color:var(--gold)">15%</span></div>
       <h2>Field Notebook</h2>
       <p class="fmt">A private Google Doc · turned in twice</p>
-      <p>Your working notebook holds the in-class exercises, your <b>analog experiments</b> (a real undistracted conversation, a note circulated by hand, a day off the feed, a face-to-face ask), case notes, platform observations, and strategy scratch. It's graded on <b>completion</b>, not polish: full credit for doing the thinking and the fieldwork. You turn it in at the midterm check-in and again at the end of term.</p>
+      <p>Your working notebook holds the in-class exercises, your <b>analog experiments</b> (an undistracted conversation, a note circulated by hand, a day off the feed, a face-to-face ask), case notes, platform observations, and strategy scratch. It's graded on <b>completion</b>, not polish: full credit for doing the thinking and the fieldwork. You turn it in at the midterm check-in and again at the end of term.</p>
       <p class="sublab">The rubric</p>
       <div class="crit"><div class="cname">Weekly entries present</div><div class="levels">
         <div class="lvl exceeds"><span class="t">Exceeds</span>Every week complete, with extra digging where it got interesting</div>
@@ -256,7 +296,7 @@
         <div class="lvl not"><span class="t">Not yet</span>Mostly empty</div>
       </div></div>
       <div class="crit"><div class="cname">Analog experiments done</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds</span>Experiments actually attempted in the world and documented with real observation</div>
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Experiments actually attempted in the world and documented with close observation</div>
         <div class="lvl meets"><span class="t">Meets</span>The analog experiments are done and briefly written up</div>
         <div class="lvl dev"><span class="t">Developing</span>A few skipped or described without doing them</div>
         <div class="lvl not"><span class="t">Not yet</span>Not attempted</div>
@@ -294,7 +334,7 @@
         <div class="lvl not"><span class="t">Not yet</span>Disorganized or incomplete</div>
       </div></div>
       <div class="crit"><div class="cname">Presentation: honest results</div><div class="levels">
-        <div class="lvl exceeds"><span class="t">Exceeds</span>Reports real impact candidly, names what didn't work, and draws a lesson from it</div>
+        <div class="lvl exceeds"><span class="t">Exceeds</span>Reports impact candidly, names what didn't work, and draws a lesson from it</div>
         <div class="lvl meets"><span class="t">Meets</span>Reports the campaign's results with candor, including limits</div>
         <div class="lvl dev"><span class="t">Developing</span>Reports only the flattering numbers</div>
         <div class="lvl not"><span class="t">Not yet</span>No results, or misleading ones</div>
