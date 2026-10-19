@@ -27,8 +27,8 @@
   #w15 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
   #w15 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
   #w15 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
-  #w15 .honest{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
-  #w15 .honest b{color:var(--gold)}
+  #w15 .complicate{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w15 .complicate b{color:var(--gold)}
   /* beats list */
   #w15 ol.beats{list-style:none; padding-left:0; counter-reset:b; margin:14px 0}
   #w15 ol.beats li{counter-increment:b; position:relative; padding:11px 0 11px 42px; border-top:1px solid var(--line)}
@@ -154,10 +154,10 @@
     <div class="dek">The last move: you stand up and tell the room what you built for your cause, and what it actually did. About six minutes. Work through this before you present.</div>
   </div>
 
-  <div class="ground">This is your prep, not busywork. Read it, build your talk in the planner, run the honest-metrics drill, then do the reflection. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in front of you.</div>
+  <div class="ground">This is your prep, not busywork. Read it, build your talk in the planner, run the metrics drill, then do the reflection. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your <span class="term" data-pop="cause">cause</span> in front of you.</div>
 
   <div class="recall">
-    <b>Where the semester landed you:</b> you picked one real, low-traction cause in Week 1 and carried it through a media analysis (P1), an audit and strategy (P2), and now a built campaign with a measured result (P3). Nobody in that room knows this cause the way you do. For your six minutes, you are the person who did the work. Own it.
+    <b>Where the semester landed you:</b> you picked one small, low-traction cause in Week 1 and carried it through a media analysis (P1), an audit and strategy (P2), and now a built campaign with a measured result (P3). Nobody in that room knows this cause the way you do. For your six minutes, you are the person who did the work. Own it.
   </div>
 
   <h2>1 · A talk is not your report read aloud</h2>
@@ -170,15 +170,15 @@
   <h2>2 · The six beats</h2>
   <p>Every good campaign talk hits these, in order. The examples use a made-up cause (a push for a safe pedestrian crossing at a rural school) so you can see each beat land.</p>
   <ol class="beats">
-    <li><b>The cause, with a face.</b> Open so the room cares in ten seconds. A moment, a number, one real person.
+    <li><b>The cause, with a face.</b> Open so the room cares in ten seconds. A moment, a number, one actual person.
       <span class="eg">e.g. "Every morning, forty kids cross a fifty-mile-an-hour highway to get to Valle Crucis School. There is no crosswalk. There has never been one."</span></li>
-    <li><b>The problem, and the media job.</b> What did your cause need the media to actually do? Name the gap you found in P2.
+    <li><b>The problem, and the media job.</b> What did your cause need the media to actually do? Describe the problem you found in P2.
       <span class="eg">e.g. "Everyone local already agreed. The problem was not persuasion, it was that the county had never heard forty separate parents as one voice."</span></li>
     <li><b>The theory and the move.</b> Which course idea drove your campaign, and why that one for this cause?
       <span class="eg">e.g. "This called for <span class="term" data-pop="relational">relational organizing</span>, not a viral post. A trusted parent asking another parent beats any ad, so I built a phone tree, not a hashtag."</span></li>
-    <li><b>Show the work.</b> Put your real artifacts on the screen. The reel, the zine, the flyer, the event photo. Let them see it rather than merely describe it.
+    <li><b>Show the work.</b> Put your actual artifacts on the screen. The reel, the zine, the flyer, the event photo. Let them see it rather than merely describe it.
       <span class="eg">e.g. "Here is the one-page fact sheet parents handed to each other, and here is the sign-in sheet from the meeting it filled."</span></li>
-    <li><b>Honest impact.</b> What actually changed? Separate real movement from <span class="term" data-pop="vanity">vanity metrics</span>. Say what flopped too. That candor is part of the grade and the whole point of Week 14.
+    <li><b>Impact.</b> What actually changed? Separate movement from <span class="term" data-pop="vanity">vanity metrics</span>. Say what flopped too. That candor is part of the grade and the point of Week 14.
       <span class="eg">e.g. "The Facebook post got twelve likes, which is nothing. But nineteen families showed up to the county meeting, and the commissioner put a traffic study on the agenda. Bodies in a room, not likes."</span></li>
     <li><b>What is next, and a close.</b> The cause outlives this class. Name the next slow step, then one line that sticks. End clean, then "thank you."
       <span class="eg">e.g. "The study runs in the spring. Forty kids still cross that highway tomorrow. So I am not done. Thank you."</span></li>
@@ -196,7 +196,7 @@
     <textarea id="f_hook" placeholder="A moment, a number, one real person. Not 'Hi, my campaign is about…'"></textarea>
     <div class="hint">Ten seconds to make the room care about a cause they have never heard of.</div>
 
-    <label for="f_gap">2 · The problem and the media job <span class="n">the gap from your audit</span></label>
+    <label for="f_gap">2 · The problem and the media job <span class="n">the problem from your audit</span></label>
     <textarea id="f_gap" placeholder="What did your cause need the media to DO? (reach strangers? build trust? own a channel? get bodies in a room?)"></textarea>
 
     <label for="f_theory">3 · The theory and the move <span class="n">which course idea, and why</span></label>
@@ -205,7 +205,7 @@
     <label for="f_show">4 · Show the work <span class="n">name the artifacts you will put on screen</span></label>
     <textarea id="f_show" placeholder="e.g. the reel, the zine spread, the event flyer, the sign-in sheet. What is your single strongest visual?"></textarea>
 
-    <label for="f_impact">5 · Honest impact <span class="n">real change vs. vanity metrics, including what flopped</span></label>
+    <label for="f_impact">5 · Impact <span class="n">actual change vs. vanity metrics, including what flopped</span></label>
     <textarea id="f_impact" placeholder="e.g. the post got 12 likes (nothing), but 19 families showed up and a study got scheduled. Bodies, not likes."></textarea>
 
     <label for="f_close">6 · What is next, and a close <span class="n">one memorable last line + thanks</span></label>
@@ -219,70 +219,70 @@
   <h2>4 · Slides that help, not hurt</h2>
   <div class="ex">
     <div class="t">The rule</div>
-    Few words per slide. Your audience can read or listen, not both. Put your <span class="term" data-pop="visual">single strongest artifact</span> up large: the reel plays, the zine spread fills the screen, the event photo shows real faces. A slide that needs a paragraph is a handout, not a slide. Show the work; let the room see the campaign was real.
+    Few words per slide. Your audience can read or listen, not both. Put your <span class="term" data-pop="visual">single strongest artifact</span> up large: the reel plays, the zine spread fills the screen, the event photo shows actual faces. A slide that needs a paragraph is a handout, not a slide. Show the work; let the room see the campaign happened.
   </div>
 
-  <h2>5 · Honest impact or vanity metric?</h2>
-  <p>This is the hard part of a campaign talk, and it is the whole lesson of Week 14. A number can look like success and mean almost nothing. Remember <span class="term" data-pop="dean">Jodi Dean</span>: endless <span class="term" data-pop="circulation">circulation</span> can feel like politics while changing nothing. For each result below, make two calls. First, where does it sit: vanity, mixed, or real? Second, what does it actually tell you? Commit both, then Check. The honest answer is often "mixed."</p>
+  <h2>5 · Impact or vanity metric?</h2>
+  <p>This is the part people get wrong in a campaign talk, and it is the lesson of Week 14. A number can look like success and mean almost nothing. Remember <span class="term" data-pop="dean">Jodi Dean</span>: endless <span class="term" data-pop="circulation">circulation</span> can feel like politics while changing nothing. For each result below, make two calls. First, where does it sit: vanity, mixed, or impact? Second, what does it actually tell you? Commit both, then Check. The right answer is often "mixed."</p>
   <div class="diag" id="diag">
-    <div class="hint">Two judgments per result. The obvious read is sometimes wrong, a big number can be hollow and a tiny one can be real power.</div>
+    <div class="hint">Two judgments per result. The obvious read is sometimes wrong, a big number can be hollow and a tiny one can be actual power.</div>
 
     <div class="di" data-spec="vanity" data-trade="1">
       <div class="q">1. Your launch reel hit 8,000 views.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
       <div class="fb">Vanity, on its own. Eight thousand people scrolled past. You cannot reach any of them again, and not one has done anything yet. A view is the start of nothing until it turns into a relationship or an action.</div>
     </div>
 
     <div class="di" data-spec="mixed" data-trade="2">
       <div class="q">2. Forty-two people signed up for your email list off that reel.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
-      <div class="fb">Mixed, leaning real. A list is not action yet, but now you own a way to reach forty-two interested people without renting it from an algorithm. That is worth more than the 8,000 views that fed it.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Mixed, leaning toward impact. A list is not action yet, but now you own a way to reach forty-two interested people without renting it from an algorithm. That is worth more than the 8,000 views that fed it.</div>
     </div>
 
     <div class="di" data-spec="mixed" data-trade="3">
       <div class="q">3. Your petition got 300 online signatures. Six people came to the town council meeting.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
-      <div class="fb">Mixed. The 300 signatures are circulation, a click costs nothing. The six bodies in the room are the real signal: those people acted. Dean's warning, live. In a room, six beats three hundred.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Mixed. The 300 signatures are circulation, a click costs nothing. The six bodies in the room are the signal that counts: those people acted. Dean's warning, live. In a room, six beats three hundred.</div>
     </div>
 
     <div class="di" data-spec="real" data-trade="3">
       <div class="q">4. A local reporter called you for a story after your zine circulated at three churches.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
-      <div class="fb">Real. This is <span class="term" data-pop="earned">earned media</span>: someone with a platform chose to act on your slow, high-trust work, no money changed hands. A reporter deciding you are worth covering is a person doing something, and it multiplies your reach for free.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Impact. This is <span class="term" data-pop="earned">earned media</span>: someone with a platform chose to act on your slow, high-trust work, no money changed hands. A reporter deciding you are worth covering is a person doing something, and it multiplies your reach for free.</div>
     </div>
 
     <div class="di" data-spec="vanity" data-trade="1">
       <div class="q">5. A post got 1,200 likes, then engagement dropped to zero the next week.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
       <div class="fb">Vanity. A spike that leaves nothing behind is rented attention: it stops the moment the algorithm moves on. If nothing carried over to the next week, the number measured the platform, not your cause.</div>
     </div>
 
     <div class="di" data-spec="real" data-trade="4">
       <div class="q">6. Two volunteers grew into organizers who now run their own meetings without you.</div>
-      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Real</button></div>
-      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Real behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
-      <div class="fb">Real, and the deepest kind. This is what <span class="term" data-pop="brown">adrienne maree brown</span> means by growing capacity: the campaign now runs without you. No view count comes close to two people who can carry it forward.</div>
+      <div class="spec"><span class="l">Reads as</span><button data-v="vanity">Vanity</button><button data-v="mixed">Mixed</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Tells you</span><select><option value="">what does it actually tell you?</option><option value="1">Reach, but no relationship and no action</option><option value="2">A channel or relationship you now own</option><option value="3">Observable behavior: someone actually did something</option><option value="4">Built capacity or power that outlasts the campaign</option></select></div>
+      <div class="fb">Impact, and the deepest kind. This is what <span class="term" data-pop="brown">adrienne maree brown</span> means by growing capacity: the campaign now runs without you. No view count comes close to two people who can carry it forward.</div>
     </div>
 
     <button class="btn" id="checkDiag">Check my calls</button>
     <div class="score" id="score"></div>
   </div>
-  <div class="honest"><b>Bring this into your talk:</b> when you present your own numbers, do exactly this. Name what is vanity, name what is real, and say plainly what did not work. A presenter who admits the flop reads as more credible, not less. Evidence-honest is the whole brand of this course.</div>
+  <div class="complicate"><b>Bring this into your talk:</b> when you present your own numbers, do exactly this. Say what is vanity, say what is impact, and say outright what did not work. A presenter who admits the flop reads as more credible, not less. Following the evidence, wherever it lands, is what this course asks of you.</div>
 
   <h2>6 · Talk, do not read. Then practice out loud.</h2>
-  <p>Reading a script word for word drains the life out of a talk and loses the room. Keep a few <span class="term" data-pop="deliver">notes</span> as reminders, look up, and talk to us like people. Know your first line and your last line cold, so you start and end strong even if the middle wobbles. Then rehearse the whole thing <span class="term" data-pop="practice">out loud, on a clock, at least twice</span>. It is the only way to learn your real length (talks always run long) and to smooth the rough spots. Practicing in your head does not count.</p>
-  <p>A short <span class="term" data-pop="qa">Q and A</span> follows each talk. You can prepare for it. Almost every campaign gets some version of "what would you do differently?", "what surprised you?", and "what is next for the cause?" Have a real answer ready for each. "Good question, I am not sure, but here is my guess" is a respectable answer. You do not have to know everything.</p>
+  <p>Reading a script word for word drains the life out of a talk and loses the room. Keep a few <span class="term" data-pop="deliver">notes</span> as reminders, look up, and talk to us like people. Know your first line and your last line cold, so you start and end strong even if the middle wobbles. Then rehearse the whole thing <span class="term" data-pop="practice">out loud, on a clock, at least twice</span>. It is the only way to learn your full length (talks always run long) and to smooth the rough spots. Practicing in your head does not count.</p>
+  <p>A short <span class="term" data-pop="qa">Q and A</span> follows each talk. You can prepare for it. Almost every campaign gets some version of "what would you do differently?", "what surprised you?", and "what is next for the cause?" Have an answer ready for each. "Good question, I am not sure, but here is my guess" is a respectable answer. You do not have to know everything.</p>
 
   <h2>Ready to present?</h2>
   <ul class="check" id="checks">
     <li><input type="checkbox"><span class="lbl">I have <b>one</b> takeaway, and I say it out loud in the talk.</span></li>
-    <li><input type="checkbox"><span class="lbl">My strongest artifact is on a slide, big, so the room sees the real work.</span></li>
-    <li><input type="checkbox"><span class="lbl">I separate real impact from <span class="term" data-pop="vanity">vanity metrics</span>, and I name what flopped.</span></li>
+    <li><input type="checkbox"><span class="lbl">My strongest artifact is on a slide, big, so the room sees the work itself.</span></li>
+    <li><input type="checkbox"><span class="lbl">I separate measurable impact from <span class="term" data-pop="vanity">vanity metrics</span>, and I name what flopped.</span></li>
     <li><input type="checkbox"><span class="lbl">I can say it without <span class="term" data-pop="deliver">reading</span> from a script, first line and last line cold.</span></li>
     <li><input type="checkbox"><span class="lbl">I <span class="term" data-pop="practice">practiced out loud</span> and timed it. It is under six minutes.</span></li>
     <li><input type="checkbox"><span class="lbl">I can answer "what would you do differently?" and "what is next for the cause?"</span></li>
@@ -300,7 +300,7 @@
     <textarea id="n1" placeholder="e.g. Forty kids cross a highway with no crosswalk, and a phone tree moved the county when a Facebook post could not."></textarea>
     <div class="save" id="v1"></div>
 
-    <label for="n2">2. Which course idea drove your campaign, and what is your honest read on whether it worked? (Name one real result and one thing that flopped.)</label>
+    <label for="n2">2. Which course idea drove your campaign, and what is your read on whether it worked? (Name one measurable result and one thing that flopped.)</label>
     <textarea id="n2" placeholder="e.g. relational organizing. Real: 19 families at the meeting. Flopped: the boosted post, 12 likes and nothing after…"></textarea>
     <div class="save" id="v2"></div>
 
@@ -338,7 +338,7 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
 })();
 </script>
 <div class="close">
-    <b>Look what you did.</b> You started the semester with the idea that social media is older than your phone. You are ending it having run a real campaign for a real cause, chosen a media theory on purpose, produced the work, and measured what it actually moved. Walk up there and tell us about it. You earned this.
+    <b>Look what you did.</b> You started the semester with the idea that social media is older than your phone. You are ending it having run an actual campaign for an actual cause, chosen a media theory on purpose, produced the work, and measured what it actually moved. Walk up there and tell us about it. You earned this.
   </div>
 
   <div class="foot">
@@ -348,17 +348,17 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
 
   <!-- POPUPS -->
   <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>The Google Doc you copied in Week 1 and kept all semester: in-class exercises, analog experiments, case notes, strategy scratch. It stays in your own Drive, private to you, until you submit it. At the end of the course you add the final entry and turn the whole thing in.</p></div></dialog>
-  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The real, low-traction cause you chose in Week 1 and carried through every project. Its obscurity was the point: your media work could actually move the needle. Today you show the room what it moved.</p></div></dialog>
+  <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The small, low-traction cause you chose in Week 1 and carried through every project. Its obscurity was the point: your media work could actually move the needle. Today you show the room what it moved.</p></div></dialog>
   <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>P3: Creative Campaign + &AElig;ffect Report</h4><p>Your final project: a small, ethical, creative campaign for your cause, grounded in a named course theory and carrying your Project 2 narrative, plus a report on what it moved and what it changed. The presentation is the spoken version of that report.</p></div></dialog>
   <dialog class="pop" id="pop-one"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>One takeaway</h4><p>An audience forgets nearly everything in a short talk except, if you are lucky, one idea. So pick that idea on purpose and say it twice, near the start and again at the close.</p><p><b>Example:</b> "A phone tree moved the county when a viral post could not." Say that line early, then end on it. Trying to deliver everything usually delivers nothing.</p></div></dialog>
-  <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Vanity metrics</h4><p>Numbers that look impressive but do not track what actually matters: likes, views, follower counts, impressions. They give the rosiest picture possible while telling you little about whether anyone acted, changed, or stuck around.</p><p><b>Example:</b> a post with 5,000 likes and zero new volunteers is loud and empty. Twelve people who showed up to a meeting is quiet and real.</p><p><a href="https://en.wikipedia.org/wiki/Vanity_metric" target="_blank" rel="noopener">What a vanity metric is →</a></p></div></dialog>
-  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jodi Dean · communicative capitalism</h4><p>The political theorist you met in Week 11. Her warning: on social platforms, messages can become mere contributions to circulation, endlessly posted and forwarded while decoupled from any real action or response. Posting can feel like politics while changing nothing.</p><p><b>Why it is here:</b> her lens is exactly how you tell a real result from a hollow one. If your number just added to the churn, it is circulation, not change.</p></div></dialog>
-  <dialog class="pop" id="pop-circulation"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Circulation vs. change</h4><p>Circulation is a message moving around: shares, views, forwards, signatures. Change is someone doing something different because of it: showing up, giving money, shifting a policy, joining.</p><p><b>Example:</b> 300 people sharing your petition is circulation. Six of them driving to the council meeting is change. A campaign talk should be honest about which is which.</p></div></dialog>
-  <dialog class="pop" id="pop-relational"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Relational organizing</h4><p>From Week 12: field research shows a real conversation with someone who knows you moves people that mailers and ads cannot. The most powerful medium is a trusted person.</p><p><b>Example:</b> a parent texting another parent "will you come Tuesday?" outperforms any boosted post. If your campaign leaned on trusted messengers, this is the theory to name.</p></div></dialog>
-  <dialog class="pop" id="pop-brown"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown · emergent strategy</h4><p>From Week 13: "small is good, small is all"; move at the speed of trust; grow like mycelium, not like an ad campaign. Critical connections over critical mass.</p><p><b>Why it is here:</b> two volunteers who become organizers is her whole idea in one result. The deepest impact is capacity that keeps going without you.</p></div></dialog>
-  <dialog class="pop" id="pop-visual"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Show one strong artifact</h4><p>Put your single best piece of the campaign on a slide, large: the reel playing, the zine spread, a photo of real people at your event. A clear visual lands in three seconds what a paragraph of talking cannot.</p><p><b>Example:</b> a full-screen photo of nineteen families at the council meeting says "this was real" faster than any sentence. Avoid text-heavy slides; the room cannot read and listen at once.</p></div></dialog>
+  <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Vanity metrics</h4><p>Numbers that look impressive but do not track what actually matters: likes, views, follower counts, impressions. They give the rosiest picture possible while telling you little about whether anyone acted, changed, or stuck around.</p><p><b>Example:</b> a post with 5,000 likes and zero new volunteers is loud and empty. Twelve people who showed up to a meeting is quiet and it counts.</p><p><a href="https://en.wikipedia.org/wiki/Vanity_metric" target="_blank" rel="noopener">What a vanity metric is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jodi Dean · communicative capitalism</h4><p>The political theorist you met in Week 11. Her warning: on social platforms, messages can become mere contributions to circulation, endlessly posted and forwarded while decoupled from any action that counts or response. Posting can feel like politics while changing nothing.</p><p><b>Why it is here:</b> her lens is exactly how you tell a measurable result from a hollow one. If your number just added to the churn, it is circulation, not change.</p></div></dialog>
+  <dialog class="pop" id="pop-circulation"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Circulation vs. change</h4><p>Circulation is a message moving around: shares, views, forwards, signatures. Change is someone doing something different because of it: showing up, giving money, shifting a policy, joining.</p><p><b>Example:</b> 300 people sharing your petition is circulation. Six of them driving to the council meeting is change. A campaign talk should say which is which.</p></div></dialog>
+  <dialog class="pop" id="pop-relational"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Relational organizing</h4><p>From Week 12: field research shows an actual conversation with someone who knows you moves people that mailers and ads cannot. The most powerful medium is a trusted person.</p><p><b>Example:</b> a parent texting another parent "will you come Tuesday?" outperforms any boosted post. If your campaign leaned on trusted messengers, this is the theory to name.</p></div></dialog>
+  <dialog class="pop" id="pop-brown"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>adrienne maree brown · emergent strategy</h4><p>From Week 13: "small is good, small is all"; move at the speed of trust; grow like mycelium, not like an ad campaign. Critical connections over critical mass.</p><p><b>Why it is here:</b> two volunteers who become organizers is what her idea looks like when it works. The deepest impact is capacity that keeps going without you.</p></div></dialog>
+  <dialog class="pop" id="pop-visual"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Show one strong artifact</h4><p>Put your single best piece of the campaign on a slide, large: the reel playing, the zine spread, a photo of actual people at your event. A clear visual lands in three seconds what a paragraph of talking cannot.</p><p><b>Example:</b> a full-screen photo of nineteen families at the council meeting says "this was real" faster than any sentence. Avoid text-heavy slides; the room cannot read and listen at once.</p></div></dialog>
   <dialog class="pop" id="pop-deliver"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Talk, do not read</h4><p>Reading a script flattens your voice and loses eye contact. Keep a few notes as reminders and speak to the audience. You know this cause better than anyone in the room; trust that.</p><p><b>Example:</b> glance at "beat 3: the phone tree, why not a hashtag," then look up and just tell us. Talking to people beats a perfect paragraph read to the floor.</p></div></dialog>
-  <dialog class="pop" id="pop-practice"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Practice out loud and time it</h4><p>Rehearse the whole talk aloud at least twice, on a clock. It is the only way to learn your real length (talks always run long) and to smooth the rough spots before you are in front of people.</p><p><b>Example:</b> your first run comes in at eight minutes; you cut a detail, not your takeaway, and land at five-forty. Practicing silently does not count. Your mouth needs the reps.</p></div></dialog>
+  <dialog class="pop" id="pop-practice"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Practice out loud and time it</h4><p>Rehearse the whole talk aloud at least twice, on a clock. It is the only way to learn your full length (talks always run long) and to smooth the rough spots before you are in front of people.</p><p><b>Example:</b> your first run comes in at eight minutes; you cut a detail, not your takeaway, and land at five-forty. Practicing silently does not count. Your mouth needs the reps.</p></div></dialog>
   <dialog class="pop" id="pop-qa"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Handling questions</h4><p>The Q and A is not a trap; people ask because they are interested. Prepare for the usual three, what you would do differently, what surprised you, and what is next for the cause, and you will field most of it.</p><p><b>Example:</b> "What would I do differently? Skip the boosted post and put that time into the phone tree." Confident, specific, and clear about the flop. If you do not know, say so and offer your best guess.</p></div></dialog>
   <dialog class="pop" id="pop-earned"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Earned media</h4><p>Coverage of your cause that a third party publishes without you paying for it: a reporter's story, a repost from a bigger account, a mention in someone else's newsletter. The opposite of a paid ad, and usually more trusted because you did not buy it.</p><p><b>Example:</b> after your zine circulates at three churches, a local reporter calls and runs a story. You reached the whole county for free because your slow work earned it.</p><p><a href="https://en.wikipedia.org/wiki/Earned_media" target="_blank" rel="noopener">What earned media is →</a></p></div></dialog>
 
@@ -384,7 +384,7 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
   var BEATS = [
     ['f_hook','The cause, with a face'],['f_gap','The problem and the media job'],
     ['f_theory','The theory and the move'],['f_show','Show the work'],
-    ['f_impact','Honest impact'],['f_close','What is next, and a close']
+    ['f_impact','Impact'],['f_close','What is next, and a close']
   ];
   function val(id){ var e=document.getElementById(id); return e ? (e.value||'').trim() : ''; }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
