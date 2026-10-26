@@ -86,6 +86,21 @@
   #w11 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
   #w11 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
   #w11 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  #w11 .sortbox{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w11 .sortbox h3{margin:0 0 3px; font-size:1.08rem}
+  #w11 .sortbox .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w11 .li{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:9px 0}
+  #w11 .li .q{font-size:.97rem; margin-bottom:8px}
+  #w11 .li button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px; margin-bottom:4px}
+  #w11 .li button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w11 .li .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w11 .li.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w11 .li.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w11 .three{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0}
+  #w11 .three>div{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:.9rem}
+  #w11 .three b{display:block; color:var(--accent2,var(--accent)); font-size:.72rem; letter-spacing:.09em; text-transform:uppercase; margin-bottom:4px}
+  @media (max-width:620px){ #w11 .three{grid-template-columns:1fr} }
+  #w11 .modelq{border-left:3px solid var(--accent); padding:4px 0 4px 14px; margin:10px 0; font-style:italic; color:var(--ink)}
   @media (prefers-color-scheme:dark){
     #w11{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; --accent:#d98a92; background:#12171d}
     #w11 .recall{background:#16241c; border-color:#2c4536}
@@ -95,6 +110,8 @@
     #w11 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
     #w11 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
     #w11 dialog.pop{background:#1a2129}
+    #w11 .li.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w11 .li.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
   }
 
   /* injected: shared site menu + prev/next (self-contained, oxblood) */
@@ -137,7 +154,7 @@
   <div class="mast">
     <div class="kick">Week 11 · Thursday module</div>
     <h1>Circulation Is Not Action</h1>
-    <div class="dek">Tuesday you felt the distance between posting and doing. Today you name the theory behind it, stress-test it on cases where the obvious call is wrong, and use it to finalize your strategy.</div>
+    <div class="dek">Tuesday you felt the distance between posting and doing. Today you get the theory behind it, stress-test it on cases where the obvious call is wrong, and use it to finalize your strategy.</div>
   </div>
 
   <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
@@ -146,11 +163,11 @@
   <div class="duebox"><b>Due today:</b> Project 2 (Narrative Strategy) is due in this module. The last section walks you through finalizing it, so save that part for last and let today's ideas tighten your strategy before you submit.</div>
 
   <div class="recall">
-    <b>Where Tuesday left off:</b> almost every hand went up for "I posted about a cause," and almost every hand dropped for "and something changed because of it." That empty column has a name. Today we give it two: <span class="term" data-pop="commcap">communicative capitalism</span> (why posting feels like politics while changing nothing) and the <span class="term" data-pop="attention">attention economy</span> (what's actually being mined). Then Jenny Odell on what to do about it.
+    <b>Where Tuesday left off:</b> almost every hand went up for "I posted about a cause," and almost every hand dropped for "and something changed because of it." There are two terms for that empty column: <span class="term" data-pop="commcap">communicative capitalism</span> (why posting feels like politics while changing nothing) and the <span class="term" data-pop="attention">attention economy</span> (what's actually being mined). Then Jenny Odell on what to do about it.
   </div>
 
   <h2>1 · Communicative capitalism</h2>
-  <p>In 2005, before the iPhone, <span class="term" data-pop="dean">Jodi Dean</span> named the trap you felt Tuesday. Her claim: on networked platforms, your political speech stops being a <em>message</em> (something a person receives and answers) and becomes a <em>contribution to circulation</em> (one more unit added to the flow, valued only for moving). The <span class="term" data-pop="foreclosure">foreclosure of politics</span> is her name for the result: the energy that could have become action gets fully spent as circulation instead.</p>
+  <p>In 2005, before the iPhone, <span class="term" data-pop="dean">Jodi Dean</span> described the trap you felt Tuesday. Her claim: on networked platforms, your political speech stops being a <em>message</em> (something a person receives and answers) and becomes a <em>contribution to circulation</em> (one more unit added to the flow, valued only for moving). The <span class="term" data-pop="foreclosure">foreclosure of politics</span> is what she calls the result: the energy that could have become action gets fully spent as circulation instead.</p>
   <div class="ex">
     <div class="t">See it (a with / without pair)</div>
     <p style="margin:.3em 0"><b>Message:</b> you email 200 neighbors, "The rezoning vote is Tuesday at 6pm at Town Hall, be there," and 40 people show up. It was received, answered, and acted on. It had <span class="term" data-pop="usevalue">use value</span>.</p>
@@ -161,9 +178,9 @@
     <p style="margin:.4em 0"><a href="https://commonconf.wordpress.com/wp-content/uploads/2010/09/proofs-of-tech-fetish.pdf" target="_blank" rel="noopener">Dean, "Communicative Capitalism: Circulation and the Foreclosure of Politics"</a> <span class="g">(free PDF of the 2005 article). Read the opening pages and find her line about messages losing their communicative use and becoming just contributions to circulation. It's dense; read it slowly, one paragraph at a time.</span></p>
     <blockquote>"The message is simply part of a circulating data stream. Its particular content is irrelevant. Who sent it is irrelevant. Who receives it is irrelevant. That it need be responded to is irrelevant. The only thing that is relevant is circulation."</blockquote>
     <div class="qa">
-      <div class="qq">Your turn: find one thing your cause posted in the last month that was pure contribution, no one had to receive it, no one had to answer, nothing changed. Write what it would have taken to make it a message instead.</div>
+      <div class="qq">Your turn: find one thing the organization you've been studying posted recently that was pure contribution, no one had to receive it, no one had to answer, nothing changed. Write what it would have taken to make it a message instead.</div>
       <textarea id="qa1" placeholder="e.g., we posted an infographic about food deserts. 300 likes, zero uptake. To make it a message: attach one real ask (bring a bag to the Saturday drive) to a specific person who has to reply…"></textarea>
-      <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer names the missing <em>uptake</em>, rather than "we should get more engagement." Example: "Our black-square solidarity post asked nothing of anyone and reached no decision-maker. A message version: a templated email our followers could send, with one click, to the specific council member whose vote we needed. Same feeling, but now it lands on someone accountable for a reply."</div></details>
+      <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer points to the missing <em>uptake</em>, rather than "we should get more engagement." Example: "Our black-square solidarity post asked nothing of anyone and reached no decision-maker. A message version: a templated email our followers could send, with one click, to the specific council member whose vote we needed. Same feeling, but now it lands on someone accountable for a reply."</div></details>
     </div>
   </div>
 
@@ -176,7 +193,7 @@
     <p style="margin:.4em 0"><a href="https://medium.com/@the_jennitaur/how-to-do-nothing-57e100f59bbb" target="_blank" rel="noopener">Odell, "How to Do Nothing" (the 2017 talk that became the book)</a> <span class="g">(free full transcript). Read from the rose-garden opening through her account of what attention is for. Watch how she treats attention as a shared, almost civic resource, not a personal productivity hack.</span></p>
     <blockquote>"What the tech writer Jonathan Crary calls 'the attention economy' … it's a violence against the human capacity to reflect. And reflection is exactly the thing that this culture, at this moment, cannot afford to lose."</blockquote>
     <div class="qa">
-      <div class="qq">Your turn: name one place your own attention gets mined every day (the app, the feed, the notification), and one actual thing you could re-place it on that would actually help your cause. Be concrete about both.</div>
+      <div class="qq">Your turn: pick one place your own attention gets mined every day (the app, the feed, the notification), and one actual thing you could re-place it on that would actually help your cause. Be concrete about both.</div>
       <textarea id="qa2" placeholder="e.g., I lose 40 minutes a night to the for-you feed. Re-placed: 40 minutes writing three real messages to people I already know who care about this…"></textarea>
       <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer re-places attention on something that builds a <em>relationship or a condition</em>, rather than "read more news." Example: "I doom-scroll local outrage for an hour. Re-placed: I go to the actual county commission meeting once a month, where the decisions I'm angry about are made in a room I can stand in. Odell's move, aimed at the place the power actually is."</div></details>
     </div>
@@ -237,31 +254,163 @@
   <h2>4 · The case that spent 100 million views on nothing</h2>
   <div class="case">
     <div class="t">Kony 2012</div>
-    <p style="margin:.5em 0">In March 2012, an advocacy group released a 30-minute film urging the world to help capture a warlord, Joseph Kony. <span class="term" data-pop="kony">Kony 2012</span> hit roughly 100 million views in six days, the fastest-spreading video to that point in history. It felt like a movement had happened overnight. Then almost nothing followed. Kony was never captured. The planned real-world action ("Cover the Night") mostly evaporated. The organization was badly criticized and soon fell apart. The circulation was total; the action was near zero.</p>
+    <p style="margin:.5em 0">In March 2012, an advocacy group released a 30-minute film urging the world to help capture a warlord, Joseph Kony. <span class="term" data-pop="kony">Kony 2012</span> hit roughly 100 million views in six days, the fastest-spreading video to that point in history. It felt like a movement had happened overnight. Then almost nothing followed. Kony was never captured. The planned offline action ("Cover the Night") mostly evaporated. The organization was badly criticized and soon fell apart. The circulation was total; the action was near zero.</p>
     <p style="margin:.5em 0">Hold it against case 2 in the tool. The Ice Bucket Challenge looked just as frivolous, yet it wired a donation channel to the reach and funded an actual scientific discovery. Same era, same virality. One converted circulation into action; the other spent it. That difference is the lesson, and it is what Project 2 asks you to do.</p>
     <div class="qa">
-      <div class="qq">Your turn: Kony 2012 had more reach than your cause will ever get, and produced less than 60 phone calls would. In one sentence, what was it missing that would have turned that ocean of attention into something that lasted?</div>
+      <div class="qq">Your turn: Kony 2012 reached about 100 million people in six days and still never got the thing on the poster. Using Dean's idea, what was the film asking of a viewer, and what would it have had to ask instead?</div>
       <textarea id="qa3" placeholder="one sentence…"></textarea>
       <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">"It had no channel to catch the attention and no local structure to hand it to, so 100 million people felt something for a week and then the feeling, having nowhere to go, became the whole event." Reach with no conversion and no organization behind it is just very loud circulation.</div></details>
     </div>
   </div>
 
   <!-- NOTEBOOK -->
-  <h2>5 · Finalize your strategy</h2>
+
+  <h2>5 · Your public narrative: Self, Us, Now</h2>
+  <p>You have a frame now. A frame is not yet a story anybody can tell. This step turns it into one, using the structure your strategy document asks for in section 4.</p>
+  <p><span class="term" data-pop="ganz">Marshall Ganz</span> built the <span class="term" data-pop="pubnar">public narrative</span> model out of ten years organizing farmworkers. It has three parts, and they hand off to each other in order: <b>Story of Self</b> (why this claims me), <b>Story of Us</b> (why it claims the people I am talking to), <b>Story of Now</b> (why it has to be answered this week). Drop any one of them and the thing stops working. Self alone is a personal essay. Us alone is a press release. Now alone is a demand from a stranger.</p>
+
+  <div class="ex">
+    <div class="t">The part everybody skips</div>
+    Each of the three parts carries a <b>challenge</b>, a <b>choice</b>, and an <b>outcome</b>. The choice is the hinge, and it is the one most drafts leave out. A challenge and an outcome with no choice between them is a report: this happened, then that happened. The choice is the only place your values become visible, because a choice shows what you were willing to do when you did not have to. Watch for it: if a reader cannot point to the sentence where somebody decided something, the part is not finished.
+  </div>
+
+  <div class="case">
+    <div class="t">From the model you can read in full</div>
+    <p style="margin:.5em 0">The published example, "Ready from Bell to Bell," opens its Story of Self in a tenth-grade classroom:</p>
+    <div class="modelq">"In tenth grade, I got my period during second period. I knew what had happened before I even stood up. I checked my backpack. Nothing. I asked the girl beside me. She didn't have anything either."</div>
+    <p style="margin:.5em 0">That is the challenge, and it is specific enough to picture. The choice arrives a paragraph later, and it is small on purpose:</p>
+    <div class="modelq">"A few weeks later, I asked if I could help keep that drawer stocked. I brought in a box of pads. It was a small decision, but it changed what I noticed about school."</div>
+    <p style="margin:.5em 0">Then the outcome, which is a shift in attention rather than a victory: she starts asking why a predictable need depends on knowing which teacher has a drawer. Notice the scale. The challenge is one morning. The choice is a box of pads. You do not need a dramatic life to write a usable Story of Self; you need one moment where you decided something.</p>
+    <p style="margin:.5em 0">The Story of Us then widens from her teacher's desk drawer to every adult quietly doing the same thing, which is what makes it a shared condition rather than her bad day. The Story of Now closes on a date and an action.</p>
+    <div class="complicate"><b>Worth saying out loud:</b> the model labels its narrative as written for a fictional organizer. Yours has to come from something that actually happened to you. If your cause has no personal entry point yet, that is useful information about the cause you picked, and it is better to discover it now than in the draft.</div>
+  </div>
+
+  <div class="sortbox" id="ganzbox">
+    <h3>Which part is this?</h3>
+    <div class="hint">Five passages from campaign narratives. Decide which of the three parts each one belongs to, then check. The distinction is about <em>whose</em> challenge is on the page, not about how the sentence sounds.</div>
+
+    <div class="li" data-a="self">
+      <div class="q">"I spent two winters driving my grandmother forty minutes each way to dialysis, and I never once thought of us as people with a transportation problem."</div>
+      <div class="opts"><button data-v="self">Self</button><button data-v="us">Us</button><button data-v="now">Now</button></div>
+      <div class="fb">Self. One speaker, one specific experience, told in the first person singular. It has a challenge. Push it further and find the sentence where this person decided to do something about it, because that choice is what is missing here.</div>
+    </div>
+    <div class="li" data-a="us">
+      <div class="q">"There are four hundred households in this county more than thirty minutes from the nearest clinic, and almost every one of them has somebody doing the driving."</div>
+      <div class="opts"><button data-v="self">Self</button><button data-v="us">Us</button><button data-v="now">Now</button></div>
+      <div class="fb">Us. It moves from one person to a shared condition, and it does it with a number plus the recognizable detail ("somebody doing the driving") so the audience can locate themselves in it. A statistic by itself would not do this.</div>
+    </div>
+    <div class="li" data-a="now">
+      <div class="q">"The county budget is set on November 12. Until then, one line item can still be moved. After that it cannot, for another year."</div>
+      <div class="opts"><button data-v="self">Self</button><button data-v="us">Us</button><button data-v="now">Now</button></div>
+      <div class="fb">Now. A deadline that exists whether or not anybody is motivated by it, and a window that closes. This is what makes urgency credible instead of manufactured.</div>
+    </div>
+    <div class="li" data-a="self">
+      <div class="q">"So I stopped waiting for the department to fix it and started keeping the list myself, in a notebook, badly, for about six months."</div>
+      <div class="opts"><button data-v="self">Self</button><button data-v="us">Us</button><button data-v="now">Now</button></div>
+      <div class="fb">Self, and this one is the choice. "I stopped waiting and started" is exactly the hinge sentence most drafts are missing. The unglamorous detail (a notebook, badly, six months) is what makes it believable.</div>
+    </div>
+    <div class="li" data-a="us">
+      <div class="q">"Every person in this room has covered a shift for somebody who could not afford to lose one."</div>
+      <div class="opts"><button data-v="self">Self</button><button data-v="us">Us</button><button data-v="now">Now</button></div>
+      <div class="fb">Us. It hands the audience their own memory and lets them supply the evidence, which is more durable than being told what they have in common.</div>
+    </div>
+    <button class="btn" id="checkGanz">Check</button>
+    <div class="score" id="ganzscore"></div>
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: write the choice sentence for your own Story of Self. One sentence, past tense, starting from something you actually did about your cause, however small.</div>
+    <textarea id="qa4" placeholder="e.g., After the third time the bus skipped our stop, I started writing down the time and the route number every single morning&hellip;"></textarea>
+    <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A usable choice sentence is small, dated, and slightly embarrassing in its ordinariness. "I decided to dedicate myself to transit justice" is not a choice, it is a label. "I started writing down the time and the route number every morning" is a choice, because somebody could have done otherwise and you can picture it.</div></details>
+  </div>
+
+  <h2>6 · How the story travels, and how you would know it worked</h2>
+  <p>These are the last two sections of the strategy document, and they are the two that separate a plan from a wish. Everything above this point decides what you are saying. These decide whether it moves and whether you can tell.</p>
+
+  <p><b>How the story travels</b> is not a posting schedule. The model does one thing worth copying: <b>it gives every piece a job.</b> Three pieces, three jobs, in order. The first introduces the frame (a thirty-second reel moving from pencils and soap to an empty shelf, then a stocked one). The second explains the opportunity in plain language (a Facebook post on the new state law, with the board's contact information). The third supplies the deadline and the action. Platforms get assigned by what they actually do: Instagram carries the frame because the frame is visual, Facebook reaches the parents and community groups, and direct messages to PTA members and teachers turn passive agreement into a relationship. Sequence matters only because the jobs are different.</p>
+
+  <div class="ex">
+    <div class="t">The test for this section</div>
+    Point at any piece in your campaign and ask what job it does that no other piece does. If two pieces have the same job, you have one piece and a duplicate. If a piece has no job, it is there because posting felt like progress, which is the exact trap section 1 of this module just spent four hundred words on.
+  </div>
+
+  <p style="margin-top:1.4em"><b>Outcomes and indicators</b> are two different things, and the drafts that lose points here collapse them. An <span class="term" data-pop="outcome">outcome</span> is the change you want in the world. An <span class="term" data-pop="indicator">indicator</span> is the evidence you would be able to see if that change were happening. Outcome: the district publishes a supply-access plan. Indicator: thirty-five confirmed emails by October 23. The outcome is the point; the indicator is how you find out, early, whether you are getting there.</p>
+
+  <p>Jodi Dean is the reason this matters, and you met her at the top of this module. If circulation can feel exactly like politics while changing nothing, then a metric made of circulation cannot tell you whether anything changed. Follower counts, impressions, and likes all measure how much the stream moved. They are not evidence about the world. So your indicators have to be made of something else, and the model uses three kinds.</p>
+
+  <div class="three">
+    <div><b>Language</b>Somebody else starts using your words. The model collects district communications and local discussion before the campaign, codes how the issue gets described (an emergency, a donation, a student problem, an expected part of school operations), and after the campaign looks for the readiness frame in comparable public texts. Screenshots with dates, so you are not remembering the language you hoped to hear.</div>
+    <div><b>Behavior</b>Somebody does something that costs them a little. Thirty-five confirmed emails by a date, three people willing to speak at public comment. Showing up is a much higher bar than agreeing, which is why this is the indicator that is hardest to fake.</div>
+    <div><b>Relationships</b>People who did not know each other are now connected without you in the middle. Four people who met through the campaign now text each other directly. This is the one that predicts whether anything survives after you graduate.</div>
+  </div>
+
+  <div class="ex">
+    <div class="t">Say how you would collect it</div>
+    An indicator you have no method for is a hope. The rubric's top band asks for a stated way to collect each one, and the model shows what that looks like: gather the "before" texts <em>first</em>, keep dated screenshots, count confirmed actions rather than claimed ones, and let participants self-report voluntarily. Decide your collection method now, while it is still possible to capture a baseline.
+  </div>
+
+  <div class="sortbox" id="oibox">
+    <h3>Outcome or indicator?</h3>
+    <div class="hint">Six statements from student strategy documents. Mark each one, then check. Two of these are neither, and spotting those is the useful part.</div>
+
+    <div class="li" data-a="out">
+      <div class="q">The town council adopts a sidewalk plan for Highway 105 at its spring session.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Outcome. A change in the world, and you can tell whether it happened. Good outcomes are this falsifiable.</div>
+    </div>
+    <div class="li" data-a="ind">
+      <div class="q">Nineteen residents signed up to speak at the public hearing, and eleven of them actually spoke.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Indicator, of the behavior kind, and a strong one because it reports the gap between signing up and showing up. That gap is information other people's dashboards never give them.</div>
+    </div>
+    <div class="li" data-a="no">
+      <div class="q">The campaign reel reached 41,000 accounts and gained 1,200 new followers.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Neither, and this is the one the rubric docks. Reach measures circulation, so it tells you the stream moved and nothing about whether the world did. It is fine to report it. It cannot be the evidence your strategy rests on.</div>
+    </div>
+    <div class="li" data-a="ind">
+      <div class="q">The county's own newsletter described the issue as "basic readiness" for the first time, in its March edition.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Indicator, of the language kind, and the strongest sort: an institution that was not part of your campaign is now using your frame in its own voice. Note that this is only readable because somebody collected the "before" language first.</div>
+    </div>
+    <div class="li" data-a="out">
+      <div class="q">Students can get menstrual supplies at school without having to ask a particular adult.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Outcome. It states the condition you are trying to produce, in terms of what a student can actually do. This is the model's own outcome, and notice it describes a change in everyday experience rather than a policy document.</div>
+    </div>
+    <div class="li" data-a="no">
+      <div class="q">Raise awareness about food insecurity among students on this campus.</div>
+      <div class="opts"><button data-v="out">Outcome</button><button data-v="ind">Indicator</button><button data-v="no">Neither</button></div>
+      <div class="fb">Neither. There is no state of the world here that could be shown to have arrived, so there is nothing to measure and no way to fail. Turn it into an outcome by asking what a person would be able to do, or what an institution would have to publish, if awareness had been raised.</div>
+    </div>
+    <button class="btn" id="checkOI">Check</button>
+    <div class="score" id="oiscore"></div>
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: write one outcome for your cause, then one indicator for each of the three kinds, and say how you would collect each. If you cannot describe the collection method in a sentence, the indicator is not usable yet.</div>
+    <textarea id="qa5" placeholder="OUTCOME: &hellip;&#10;LANGUAGE: &hellip; (collect by&hellip;)&#10;BEHAVIOR: &hellip; (collect by&hellip;)&#10;RELATIONSHIPS: &hellip; (collect by&hellip;)"></textarea>
+    <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">"OUTCOME: the library keeps the late-night study room open through finals week. LANGUAGE: staff and the student paper call it 'the study room' rather than 'the pilot' (collect: screenshot the paper and the library's own posts, before and after). BEHAVIOR: 40 students sign the request and 12 attend the board meeting (collect: the sign-in sheet at the door, not the petition count). RELATIONSHIPS: three of the twelve now organize their own study nights without me (collect: ask them in week six)."</div></details>
+  </div>
+
+  <h2>7 · Finalize your strategy</h2>
+  <div class="complicate"><b>A note on &ldquo;your cause&rdquo; before you write anything below.</b> You chose a cause in Week 1 and an organization that works on it, and you have spent P1 and P2 studying that organization's media. <b>You have not run a campaign of your own yet. That is Project 3.</b> So when a prompt asks what your cause <em>posted</em> or <em>did</em>, it means <b>the organization you have been studying</b>, and you answer it from their feed, their site, their emails. When a prompt asks what you <em>would</em> do, it means <b>your own Project 2 strategy</b>, which is a plan rather than a history. If the organization barely posts at all, say so and use it: an absence is evidence about how they work.</div>
+
+
   <p>This is the part that's yours, and it's how you land Project 2. Draft privately here (it autosaves on this device so you won't lose it), then send it to your Field Notebook and fold it into your strategy before you submit.</p>
   <div class="nb">
     <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading.</div>
     <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">↗ Open your Field Notebook (Google Doc)</a>
 
-    <label for="n1">1. Audit: list what your cause did to reach people in the last month, and mark each one circulation or action. Count how much is circulation.</label>
+    <label for="n1">1. Audit: list what the organization you've been studying did to reach people in the last month, and mark each one circulation or action. Count how much is circulation.</label>
     <textarea id="n1" placeholder="e.g., 6 posts (circulation), 1 shared reel (circulation), one email with a real ask (action, 12 replies), one table at the market (action, 4 new contacts)…"></textarea>
     <div class="save" id="v1"></div>
 
-    <label for="n2">2. Where is your P2 strategy secretly optimizing for circulation (chasing reach and metrics) when what your cause actually needs is uptake and relationships? Name the one place you were about to build the wrong thing.</label>
+    <label for="n2">2. Where is your P2 strategy secretly optimizing for circulation (chasing reach and metrics) when what your cause actually needs is uptake and relationships? Pick the one place you were about to build the wrong thing.</label>
     <textarea id="n2" placeholder="e.g., my whole calendar was 'post 4x a week to grow followers,' but we have no way to hold anyone who shows up, so I'd have been buying circulation I couldn't cash…"></textarea>
     <div class="save" id="v2"></div>
 
-    <label for="n3">3. Odell's move, applied: name one thing to WITHDRAW attention from (a vanity metric or channel to stop feeding) and one grounded place to RE-PLACE it (a relationship or condition you'll build instead).</label>
+    <label for="n3">3. Odell's move, applied: pick one thing to WITHDRAW attention from (a vanity metric or channel to stop feeding) and one grounded place to RE-PLACE it (a relationship or condition you'll build instead).</label>
     <textarea id="n3" placeholder="e.g., WITHDRAW: chasing follower count and daily posting. RE-PLACE: a monthly in-person meetup for the 15 people who already care, so the core gets deep enough to hold weight…"></textarea>
     <div class="save" id="v3"></div>
 
@@ -308,6 +457,10 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
   </div>
 
   <!-- POPUPS -->
+  <dialog class="pop" id="pop-ganz"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Marshall Ganz</h4><p>An organizer who left Harvard in 1964 to work in the civil rights movement, spent sixteen years with the United Farm Workers alongside Cesar Chavez and Dolores Huerta, and went back decades later to finish his degree. He now teaches organizing at the Harvard Kennedy School.</p><p><b>Why he is here:</b> public narrative came out of training farmworkers, many with little formal schooling, to speak publicly and persuasively. The structure exists because it is teachable, which is also why your strategy document has to be something a volunteer could pick up and tell.</p><p><a href="https://en.wikipedia.org/wiki/Marshall_Ganz" target="_blank" rel="noopener">About Marshall Ganz &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-pubnar"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Public narrative</h4><p>Ganz's three-part structure: Story of Self (why this claims me), Story of Us (why it claims us), Story of Now (why it must be answered today). Each part carries a challenge, a choice, and an outcome.</p><p><b>With / without the choice:</b> WITHOUT: "The bus kept skipping our stop. Eventually the route was fixed." That is a report. WITH: "The bus kept skipping our stop, so I started writing down the time and route number every morning. Six months later I had a document nobody could argue with." Same events, but now you can see what the speaker values, because you saw them decide.</p></div></dialog>
+  <dialog class="pop" id="pop-outcome"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Outcome</h4><p>The change in the world you are working toward, stated so that somebody could tell whether it arrived.</p><p><b>With / without:</b> WITHOUT: "more awareness of the crosswalk issue." WITH: "the town installs a signal at the Hardin Park crossing before the next school year." Only the second can be true or false.</p></div></dialog>
+  <dialog class="pop" id="pop-indicator"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Indicator</h4><p>Evidence you could actually observe that tells you whether the outcome is getting closer, collected in a way you have decided in advance.</p><p><b>The three kinds:</b> language (somebody else uses your words), behavior (somebody does something that costs them a little), relationships (people connect to each other without you in the middle).</p><p><b>Not an indicator:</b> reach, impressions, follower count, likes. Those measure circulation, which is the thing Jodi Dean warns can rise while nothing changes.</p></div></dialog>
   <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
   <dialog class="pop" id="pop-cause"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Your cause</h4><p>The small, low-traction cause you chose in Week 1 to carry through the whole course. Its obscurity is the point: your media work can actually move the needle.</p></div></dialog>
   <dialog class="pop" id="pop-commcap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Communicative capitalism</h4><p>Jodi Dean's term (2005) for a system where the sheer volume of our messaging becomes a form of capitalism in itself. Your political speech gets valued for how much it <em>circulates</em>, not for whether anyone receives, answers, or acts on it.</p><p><b>Example:</b> a hashtag trends worldwide for two days, generates millions of posts, and changes no policy and no vote. The trend, not the outcome, was the product.</p></div></dialog>
@@ -317,11 +470,11 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
   <dialog class="pop" id="pop-attention"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The attention economy</h4><p>The idea that in a world of unlimited information, human attention is the truly scarce resource, so it becomes the thing companies compete to capture and sell. Free apps aren't charities; they sell your attention to advertisers.</p><p><b>Example:</b> an infinite-scroll feed is engineered to hold your eyes as long as possible, because every extra minute is inventory it can sell. You are not the customer; you're the product.</p><p><a href="https://en.wikipedia.org/wiki/Attention_economy" target="_blank" rel="noopener">What the attention economy is →</a></p></div></dialog>
   <dialog class="pop" id="pop-simon"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Herbert Simon</h4><p>Economist and cognitive scientist (1916–2001), a Nobel laureate. In 1971 he wrote the line the whole attention economy runs on: "a wealth of information creates a poverty of attention." He saw the trade-off decades before the feed made it a business model.</p></div></dialog>
   <dialog class="pop" id="pop-odell"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Jenny Odell</h4><p>Oakland-based artist and writer. Her book <em>How to Do Nothing: Resisting the Attention Economy</em> (2019) grew from a 2017 talk. Her argument: reclaiming your attention from the feed, and re-placing it on actual places and people, is a form of repair and even resistance, not laziness.</p><p><a href="https://en.wikipedia.org/wiki/Jenny_Odell" target="_blank" rel="noopener">About Jenny Odell →</a></p></div></dialog>
-  <dialog class="pop" id="pop-donothing"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Doing nothing"</h4><p>Odell's deliberately provocative name for a practice: refusing to spend your attention on things designed to harvest it, and putting it instead on the slow, unproductive-looking things (a place, a community, sustained thought) that everything solid is built from. It is not opting out of the world; it's opting back into the part of it that isn't for sale.</p><p><b>Example:</b> instead of an hour scrolling local outrage, an hour at the actual neighborhood meeting where those decisions get made.</p></div></dialog>
-  <dialog class="pop" id="pop-bioregion"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Bioregionalism</h4><p>Paying attention to the living system you actually live in, your watershed, your soil, your local plants and food and weather, rather than an abstract "everywhere" online. Odell uses it to make attention concrete: know your place before you try to save the world.</p><p><b>Appalachian tie:</b> this is native ground here. Knowing your holler and your creek, saving seeds, foraging ramps in spring, keeping a family foodway alive, the New River is one of the oldest rivers on earth and runs right through this region. That rooted, place-based attention (the same instinct behind Slow Food and regenerative farming) is exactly the kind Odell says the feed erodes. Re-placing attention on your bioregion is a very old Appalachian practice with a new name.</p><p><a href="https://en.wikipedia.org/wiki/Bioregionalism" target="_blank" rel="noopener">What bioregionalism is →</a></p></div></dialog>
+  <dialog class="pop" id="pop-donothing"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Doing nothing"</h4><p>Odell's deliberately provocative term for a practice: refusing to spend your attention on things designed to harvest it, and putting it instead on the slow, unproductive-looking things (a place, a community, sustained thought) that everything solid is built from. It is not opting out of the world; it's opting back into the part of it that isn't for sale.</p><p><b>Example:</b> instead of an hour scrolling local outrage, an hour at the actual neighborhood meeting where those decisions get made.</p></div></dialog>
+  <dialog class="pop" id="pop-bioregion"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Bioregionalism</h4><p>Paying attention to the living system you actually live in, your watershed, your soil, your local plants and food and weather, rather than an abstract "everywhere" online. Odell uses it to make attention concrete: know your place before you try to save the world.</p><p><b>Appalachian tie:</b> this is native ground here. Knowing your holler and your creek, saving seeds, foraging ramps in spring, keeping a family foodway alive, the New River is one of the oldest rivers on earth and runs right through this region. That rooted, place-based attention (the same instinct behind Slow Food and regenerative farming) is exactly the kind Odell says the feed erodes. Re-placing attention on your bioregion is a very old Appalachian practice under a newer word.</p><p><a href="https://en.wikipedia.org/wiki/Bioregionalism" target="_blank" rel="noopener">What bioregionalism is →</a></p></div></dialog>
   <dialog class="pop" id="pop-lean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>"Leans," not a box</h4><p>Activity rarely sits at a pure extreme. Most of it leans one way while carrying a little of the other. The skill isn't slapping on a label; it's seeing which way the weight falls and what is going on underneath.</p></div></dialog>
   <dialog class="pop" id="pop-icebucket"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/icebucket.jpg" alt="A person dumping a bucket of ice water over their head for the ALS Ice Bucket Challenge"><h4>The Ice Bucket Challenge</h4><p>A 2014 viral trend where people filmed themselves dumping ice water on their heads to raise awareness of ALS, a fatal neurological disease, and nominated friends to do the same.</p><p><b>Why it's here:</b> it looked like the definition of empty slacktivism, yet it raised over $100 million and helped fund the discovery of a gene tied to ALS. The trick was a donation channel wired directly to the reach. Proof that circulation isn't automatically hollow, it's hollow when nothing catches it.</p><p><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge" target="_blank" rel="noopener">What the Ice Bucket Challenge did →</a></p></div></dialog>
-  <dialog class="pop" id="pop-kony"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Kony 2012</h4><p>A 30-minute advocacy film released in March 2012 by the group Invisible Children, calling for the capture of Ugandan warlord Joseph Kony. It hit about 100 million views in six days, the fastest-spreading video of its time.</p><p><b>What happened next:</b> almost nothing. Kony was never caught, the "Cover the Night" real-world action fizzled, and the organization collapsed amid criticism. The textbook case of total circulation and near-zero action, communicative capitalism in one clip.</p><p><a href="https://en.wikipedia.org/wiki/Kony_2012" target="_blank" rel="noopener">The Kony 2012 story →</a></p></div></dialog>
+  <dialog class="pop" id="pop-kony"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Kony 2012</h4><p>A 30-minute advocacy film released in March 2012 by the group Invisible Children, calling for the capture of Ugandan warlord Joseph Kony. It hit about 100 million views in six days, the fastest-spreading video of its time.</p><p><b>What happened next:</b> almost nothing. Kony was never caught, the "Cover the Night" offline action fizzled, and the organization collapsed amid criticism. The textbook case of total circulation and near-zero action, communicative capitalism in one clip.</p><p><a href="https://en.wikipedia.org/wiki/Kony_2012" target="_blank" rel="noopener">The Kony 2012 story →</a></p></div></dialog>
   <dialog class="pop" id="pop-slacktivism"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>Slacktivism</h4><p>A dismissive mashup of "slacker" and "activism": low-effort online gestures (a like, a shared graphic, a profile-frame) that make you feel involved while asking almost nothing and changing almost nothing.</p><p><b>Careful, though:</b> the term can be too blunt. As the Ice Bucket case shows, a "slacktivist" gesture wired to an actual channel can convert into action. The useful question isn't "is this slacktivism," it's "does anything catch it?"</p><p><a href="https://en.wikipedia.org/wiki/Slacktivism" target="_blank" rel="noopener">What slacktivism means →</a></p></div></dialog>
   <dialog class="pop" id="pop-spectacle"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><h4>The society of the spectacle</h4><p>An idea from French theorist Guy Debord (1967): in modern life, actual relationships and actions get replaced by their <em>images</em>, we relate to representations of life instead of living it. Dean's "communicative capitalism" is a direct descendant, updated for the feed.</p><p><b>Example:</b> attending a protest mainly to post that you were there, until the image of participating matters more than the participating. Debord saw the shape of this fifty years early.</p><p><a href="https://en.wikipedia.org/wiki/The_Society_of_the_Spectacle" target="_blank" rel="noopener">About The Society of the Spectacle →</a></p></div></dialog>
   <dialog class="pop" id="pop-repaircafe"><div class="in"><button class="x" onclick="this.closest('dialog').close()">×</button><img class="popimg" src="images/repaircafe.jpg" alt="Volunteers and visitors mending broken household items together at a repair cafe"><h4>Repair café</h4><p>A recurring free gathering where volunteers help neighbors fix broken things, lamps, bikes, clothes, instead of tossing them. The point is as much the connection as the repair: people meet, teach, and build trust over a shared table.</p><p><b>Example:</b> a monthly repair café at a library becomes the room where a neighborhood actually knows each other, the kind of slow, high-trust "social" this course keeps pointing back to.</p><p><a href="https://en.wikipedia.org/wiki/Repair_caf%C3%A9" target="_blank" rel="noopener">What a repair café is →</a></p></div></dialog>
@@ -367,8 +520,37 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
     if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
     else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The "honest read" is the harder, more useful judgment, and cases 2, 5, and 6 are where the obvious answer misleads.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
   });
+  // Self/Us/Now + Outcome/Indicator sorters
+  root.querySelectorAll('.li').forEach(function(li){
+    li.querySelectorAll('.opts button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        li.querySelectorAll('.opts button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); li.dataset.pick = btn.dataset.v;
+        li.classList.remove('right','wrong');
+      });
+    });
+  });
+  function wireCheck(boxId, btnId, scoreId, tail){
+    var btn = document.getElementById(btnId); if(!btn) return;
+    btn.addEventListener('click', function(){
+      var items = document.getElementById(boxId).querySelectorAll('.li');
+      var n = items.length, ok = 0, answered = 0;
+      items.forEach(function(li){
+        if(!li.dataset.pick) return;
+        answered++; li.classList.remove('right','wrong');
+        if(li.dataset.pick === li.dataset.a){ li.classList.add('right'); ok++; }
+        else { li.classList.add('wrong'); }
+      });
+      var sc = document.getElementById(scoreId); sc.style.display = 'block';
+      if(answered < n){ sc.textContent = 'Mark all ' + n + ' first (' + answered + '/' + n + ' done).'; sc.style.color = 'var(--gold)'; }
+      else { sc.textContent = ok + ' of ' + n + ' right. ' + tail; sc.style.color = (ok === n) ? 'var(--accent2)' : 'var(--accent)'; }
+    });
+  }
+  wireCheck('ganzbox','checkGanz','ganzscore','Read the feedback on any you missed; the three parts are judged by whose challenge is on the page.');
+  wireCheck('oibox','checkOI','oiscore','The two marked Neither are the ones that cost points on the rubric.');
+
   // notebook persistence (on-device draft)
-  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+  ['qa1','qa2','qa3','qa4','qa5','n1','n2','n3','n4'].forEach(function(id){
     var ta = document.getElementById(id); if(!ta) return;
     var key = 'e4_w11_' + id;
     try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
