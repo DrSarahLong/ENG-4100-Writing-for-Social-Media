@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ENG 4100 · Week 14 · What Actually Counts</title>
+<title>ENG 4100 · Week 14 · Did It Work?</title>
 <style>
   #w14{
     --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
@@ -92,6 +92,14 @@
   #w14 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
   #w14 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
   #w14 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  #w14 .bd5{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:11px; margin:13px 0}
+  #w14 .bd5>div{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:10px; padding:12px 14px; font-size:.93rem; line-height:1.44}
+  #w14 .bd5 h4{margin:0 0 5px; font-size:.97rem; color:var(--accent)}
+  #w14 .bd5 .eg{display:block; margin-top:7px; padding-top:7px; border-top:1px dotted var(--line); color:var(--soft); font-size:.89rem}
+  #w14 .seven{counter-reset:sv; margin:14px 0}
+  #w14 .seven .s{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 15px 12px 54px; margin:9px 0; position:relative; font-size:.95rem; line-height:1.46}
+  #w14 .seven .s::before{counter-increment:sv; content:counter(sv); position:absolute; left:17px; top:10px; font:700 1.3rem Georgia,serif; color:var(--accent)}
+  #w14 .seven .s b{color:var(--accent)}
   @media (prefers-color-scheme:dark){
     #w14{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; --accent:#d98a92; background:#12171d}
     #w14 .recall{background:#16241c; border-color:#2c4536}
@@ -141,25 +149,31 @@
 <div id="w14">
 
   <div class="mast">
-    <div class="kick">Week 14 · Thursday module</div>
-    <h1>What Actually Counts</h1>
-    <div class="dek">Tuesday you argued about which campaign won. Today you build the framework that settles it, then draft the impact report for your own.</div>
+    <div class="kick">Week 14 &middot; Thursday module</div>
+    <h1>Did It Work?</h1>
+    <div class="dek">Your artifact is in the world. Now you have to say what it did, which means measuring two different things that most campaigns confuse for each other.</div>
+    <span class="clock">About 75 minutes &middot; work at your own pace</span>
   </div>
 
   <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
-  <div class="ground">Move at your own pace, but do the whole thing. The readings, the sort, the case, and the writing are the instruction. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your campaign in mind, because the last section is a working draft of your <span class="term" data-pop="p3">P3 impact report</span>.</div>
+  <div class="ground">This is the module for our Thursday class on Zoom. Dr. Long will open, orient you, and stay on for questions while you work. Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your Week 13 production plan beside you. By the end of today you have the measurement half of <span class="term" data-pop="p3">Project 3</span> drafted.</div>
 
-  <div class="recall">
-    <b>Where Tuesday left off:</b> KONY 2012 got about 100 million views and changed almost nothing; a 40-person crosswalk campaign got the crosswalk. The big number measured the wrong thing. We named the trap (<span class="term" data-pop="vanity">vanity metrics</span>), the callback to <span class="term" data-pop="dean">Jodi Dean</span> ("circulation is not change"), and the ladder from reach up to power. Today we make it usable.
-  </div>
+  <div class="recall"><b>Where Week 13 left off:</b> you made the five build decisions, answered three of the seven access questions as changes to the object, said what could physically destroy your artifact, and set three dates. If your artifact is out there now, today's work is about it. If it goes out next week, today's work is the measurement plan you set <em>before</em> it runs, which is the stronger order anyway.</div>
 
-  <h2>1 · Vanity metrics and the impact ladder</h2>
-  <p>A metric is a number you decide to watch. The trouble is that platforms hand you the easy numbers for free (views, likes, followers) and hide the ones that would actually tell you whether your cause is moving. A <span class="term" data-pop="vanity">vanity metric</span> is any number that reliably goes up and reliably tells you nothing you can act on.</p>
+  <h2>1 &middot; &AElig;ffect: two words, because one was never enough</h2>
+  <p>The Center for Artistic Activism, founded in 2009 by Stephen Duncombe and Steve Lambert, coined <span class="term" data-pop="aeffect">&aelig;ffect</span> for a problem they kept running into. Artists measure whether a thing moved people. Organizers measure whether a thing changed something. Creative activism has to answer both, and the two answers come from different evidence.</p>
+
   <div class="ex">
-    <div class="t">See it: same number, different truth</div>
-    "Our reel got 50,000 views." Sounds like a win. Now ask the follow-up questions: did anyone show up, sign, call, donate, or come back? If the answer is "we don't know," the 50,000 is <span class="term" data-pop="reach">reach</span> and nothing more. Compare: "Nine people from that reel came to our first meeting and four are still volunteering." Smaller number, measurable impact, because it reached a rung the view count never touches.
+    <div class="t">The two halves, on one campaign</div>
+    <b>Affect</b> is what it moved in people: what they felt, said, remembered, or understood differently. <b>Effect</b> is what it changed in the world: a policy, a practice, a budget line, a decision, a count.<br><br>
+    Take 200 hand-stamped cards collected over three weeks and carried into a school board meeting. <b>Effect:</b> the district published its supply-access plan nine days later. <b>Affect:</b> four people said it was the first time they had been in a room with their neighbors talking about it, and one of them cried while writing her card. The first one you can put in a table. The second one is why anybody came back the next week, and it will not fit in a table.
   </div>
-  <p>Here is the ladder we built Tuesday. A metric isn't good or bad on its own. It's worth what it can reach. Rungs 1 and 2 are cheap and easy to fake. Rungs 3 through 5 are hard to get and hard to fake, which is exactly why they mean something.</p>
+
+  <div class="complicate"><b>The complication:</b> affect is the easier half to fake and the more difficult half to document, so the temptation runs both ways. &ldquo;People seemed moved&rdquo; is not evidence. A written quote with a date, a count of how many people stayed past the ask, a line somebody said that you wrote down within the hour: that is evidence. Collect affect the way you would collect anything else, in the moment, in writing.</div>
+
+  <h2>2 &middot; The ladder, and the column it cannot see</h2>
+  <p>Here is the effect half, laid out. Any result you can produce sits on one of five rungs.</p>
+
   <div class="ladder">
     <div class="rung real"><span class="num">5</span><span class="nm">Power</span><span>a decision changed; access to someone who couldn't be reached before</span></div>
     <div class="rung real"><span class="num">4</span><span class="nm">Relationship</span><span>people you can reach again; volunteers who stay; a list you own</span></div>
@@ -168,122 +182,137 @@
     <div class="rung van"><span class="num">1</span><span class="nm">Reach</span><span><span class="term" data-pop="reach">views, impressions</span>: how many were shown it</span></div>
     <div class="cap">Vanity lives on rungs 1&ndash;2. Impact lives on 3&ndash;5. The one test for any number: does it move something up to rung 3 or higher? If it can't, it's vanity, no matter how big.</div>
   </div>
-  <div class="complicate"><b>The complication:</b> rungs 1 and 2 are not worthless, and pretending they are will get you laughed out of a strategy meeting. Reach is the fuel; the point is that fuel is only worth something if it drives the engine. A <span class="term" data-pop="kpi">KPI</span> (the metric you actually steer by) should almost always sit on rung 3 or higher. Watch reach the way you watch a gas gauge: useful, never the destination.</div>
-  <div class="read">
-    <div class="t">Read the source (6&ndash;8 min)</div>
-    <p style="margin:.4em 0"><a href="https://leanstartup.co/resources/articles/measuring-impact-vanity-metrics/" target="_blank" rel="noopener">"Is Your Nonprofit Addicted to Vanity Metrics?"</a> <span class="g">(Lean Startup, free, no login). Written for exactly your situation: a cause with a small budget and a big temptation to chase the numbers that feel good. Read it for the swap it keeps making, from a vanity number to an <span class="term" data-pop="actionable">actionable</span> one.</span></p>
-    <blockquote>"Vanity metrics are those sneaky numbers that make you feel good about the work you've done, but don't get you closer to achieving your mission."</blockquote>
-    <div class="qa">
-      <div class="qq">Your turn: name the one vanity metric your campaign is most tempted to lead with. Then write the actionable metric that should replace it (what you'd count instead, and how you'd count it).</div>
-      <textarea id="qa1" placeholder="e.g., tempted to lead with 'reach on our launch post.' Replace with: number of people who filled out the volunteer form from that post, counted in the form's own tally…"></textarea>
-      <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer names a specific replacement you can actually observe, not another feeling. Example: "Tempted to brag about follower count. Replace it with: RSVPs to our next in-person event, because a follower who won't cross the street for us isn't support, it's a number. I count RSVPs in the sign-up sheet, then count who actually shows."</div></details>
-    </div>
-  </div>
 
-  <h2>2 · Circulation is not change</h2>
-  <p>Week 11 gave you <span class="term" data-pop="dean">Jodi Dean</span> and <span class="term" data-pop="commcap">communicative capitalism</span>: the trap where posting <em>feels</em> like politics because the message circulates, gets shared, quoted, liked, while never requiring a response from anyone with power and never requiring an action from you. The loop closes on itself. This is the theory under the vanity metric. A view is a contribution to circulation. Circulation is the thing that feels like change and isn't.</p>
-  <div class="ex">
-    <div class="t">See it</div>
-    A petition circulates to 10,000 signatures. Everyone who signs feels like they did something, and the feeling is real. If the target never has to respond and nothing follows, those 10,000 signatures did what Dean warned about: they turned a demand into content. The signing replaced the pressure it was supposed to create. The number went up. The needle did not.
-  </div>
-  <p>So what should you watch instead? <span class="term" data-pop="tufekci">Zeynep Tufekci</span> (Week 10) gives the strongest answer. She argues that what actually threatens power isn't a movement's size on a given day, it's its <span class="term" data-pop="capacity">capacity</span>: the proven ability to act, to make decisions, to keep going, to escalate. A giant one-day march can <em>signal</em> big numbers while hiding the fact that the movement can't do anything next week. The metric that matters is not "how many showed up once" but "what can this group reliably do again." Behavior, relationships, and power, the top of the ladder, are just the visible signs of capacity.</p>
+  <p>The ladder measures effect and nothing else. That is its use and its limit. A campaign can land on rung 3 and leave no trace in anybody, and a campaign can stall on rung 2 and change how a hundred people talk about the thing for a year. Your report has to carry both columns, because a creative campaign that only reports effect has thrown away its own advantage.</p>
+
   <div class="read">
     <div class="t">Read the source (8&ndash;10 min)</div>
-    <p style="margin:.4em 0"><a href="https://www.twitterandteargas.org/downloads/twitter-and-tear-gas-by-zeynep-tufekci.pdf" target="_blank" rel="noopener">Tufekci, <em>Twitter and Tear Gas</em></a> <span class="g">(the author's free full-text PDF, released under Creative Commons). Read the Introduction, and the section on how a big protest is a <em>signal</em> of underlying capacity, not the capacity itself. Ask as you read: what could this movement's numbers be hiding?</span></p>
-    <div class="qa">
-      <div class="qq">Your turn: describe a moment where your cause (or one you follow) had a burst of attention. Did it build capacity (people who can act again) or just circulate (a spike, then silence)? How can you tell the difference?</div>
-      <textarea id="qa2" placeholder="e.g., our post about the closure went semi-viral locally. You can tell it was mostly circulation because nothing exists now that didn't exist before it: no list, no volunteers, no meeting on the calendar…"></textarea>
-      <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer tests for what remains. Example: "The spike felt huge, but Tufekci's question exposes it: afterward we had zero new people we could contact directly. All the energy went into a feed we don't own. That's circulation. Capacity would have looked like 30 names in a spreadsheet we could email next month."</div></details>
-    </div>
+    <p style="margin:.4em 0"><a href="https://commonslibrary.org/the-copenhagen-experiment-measuring-the-relative-effectiveness-of-creative-vs-conventional-forms-of-activism/" target="_blank" rel="noopener">The Copenhagen Experiment</a> <span class="g">(Commons Social Change Library, free). You met this in Week 12 for its result. Read it this time for its method, because it is the closest thing you have to a model: no budget, three days, and they still produced numbers they could defend.</span></p>
+    <blockquote>&ldquo;Creative activism outperformed conventional activism on almost every quantitative measure.&rdquo;</blockquote>
+    <p style="margin:.4em 0"><span class="g">What to notice: 108 spot interviews with passersby, 30 structured observation sheets filled in by people watching rather than participating, video of both conditions, and a follow-up survey two weeks later to test what stuck. Every one of those is something you could do on Sanford Mall with a clipboard.</span></p>
+    <p style="margin:.4em 0"><a href="UnleashingCreativeCampaignsToolkit2025.pdf" target="_blank" rel="noopener">Unleashing Creative Campaigns</a> <span class="g">(Center for Artistic Activism, 2025, free). Two pages to use rather than read. The <b>Action Observation Sheet</b> on PDF page 65 is the observation instrument Copenhagen used, already built, and you can hand it to somebody who agrees to watch your action instead of taking part in it. <b>Did It Work?</b> on page 70 is their post-action reflection, and it maps onto elements 6 and 7 of your report.</span></p>
   </div>
 
-  <!-- INTERACTIVE -->
-  <h2>3 · Vanity or impact?</h2>
+  <h2>3 &middot; Vanity or impact?</h2>
   <div class="diag" id="diag">
-    <div class="hint">Two judgments per result, and the right answer is often "depends." First: is this a <b>vanity</b> number, a <b>real</b> sign of impact, or does it <b>depend</b> on something the sentence doesn't tell you? Second: what actually counts here? Commit both, then Check. The two cases that split the room are the point.</div>
+    <div class="hint">Six results from analog, handmade campaigns. Two judgments on each, and &ldquo;depends&rdquo; is frequently the right call. First: is this a <b><span class="term" data-pop="vanity">vanity</span></b> number, a sign of <b>impact</b>, or does it <b>depend</b> on something the sentence does not tell you? Second: what does it actually count as? Commit both, then Check.</div>
 
     <div class="di" data-spec="vanity" data-trade="1">
-      <div class="q">1. Your launch post is shown to 2 million people this week.</div>
+      <div class="q">1. Your photograph of the quilt square wall got 40,000 views on TikTok.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Vanity. Two million <span class="term" data-pop="reach">impressions</span> is rung 1, pure reach. Nobody did anything and you can't reach a single one of them again. Fuel, not a result, until it converts.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Vanity. This is a number about the documentation, not the artifact. 40,000 people saw a photograph of a wall; nobody added to the wall because of it, and you cannot reach one of them again. <span class="term" data-pop="dean">Jodi Dean</span> would point out that this is <span class="term" data-pop="commcap">communicative capitalism</span> doing exactly what the course has been warning you about.</div>
     </div>
 
     <div class="di" data-spec="real" data-trade="2">
-      <div class="q">2. Fifty people showed up to a public meeting your campaign organized.</div>
+      <div class="q">2. Of 200 cards you put out over three weeks, 164 came back filled in.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Impact. Fifty bodies in a room is rung 3, action. People spent a scarce, unfakeable resource (their evening) on you. That is worth more than any view count, and much more difficult to get.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Impact, rung 3. Each of those 164 people stopped, picked up a pen, and wrote something in their own handwriting. That is a behavior with a cost, which is what makes it countable as action rather than attention. The 36 that did not come back are also information: report them.</div>
     </div>
 
     <div class="di" data-spec="depends" data-trade="1">
-      <div class="q">3. Your account grew from 500 to 1,000 followers this month.</div>
+      <div class="q">3. Eleven people told you at the table that they loved the project.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Depends, and by default it counts as option 1. A follower is reach until you prove otherwise. If those 500 are local people you can turn out (rung 4), it's gold; if they're randoms or bought, it's decoration. The number alone can't tell you, which is exactly why "depends" is the right call.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Depends, and by default it counts as option 1. Praise at a table is the analog version of a like: pleasant, cheap, and offered to your face by people who do not want to be rude. It becomes affect evidence if you wrote down what they actually said and when, and it becomes rung 3 only if one of them did something afterward.</div>
     </div>
 
     <div class="di" data-spec="real" data-trade="4">
-      <div class="q">4. A city council member replied to your email and put your issue on the agenda.</div>
+      <div class="q">4. The district published its supply-access plan nine days after your procession, and the published document uses the phrase your campaign built.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Impact. This is rung 5, power. One reply from a decision-maker who now has to deal with you is worth more than a million strangers who never will. Access you didn't have last week.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Impact, rung 4, and the strongest result in this set. An institution did something it was not previously doing, and the language it used came from you, which is the language indicator from Project 2 showing up as evidence. Attribution is still a question you have to treat carefully: say what happened and when, and say what else was happening at the same time.</div>
     </div>
 
-    <div class="di" data-spec="depends" data-trade="1">
-      <div class="q">5. Your petition reached 10,000 signatures. The target has ignored it and nothing has followed.</div>
+    <div class="di" data-spec="depends" data-trade="3">
+      <div class="q">5. Six people asked how they could help with the next one.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Depends, and as described it's option 1, textbook <span class="term" data-pop="dean">Dean</span>. Signatures are <em>potential</em> power (rung 5) only if you put them to work: deliver them loudly, organize the signers, threaten an actual consequence. Ignored and unused, 10,000 signatures are 10,000 contributions to circulation.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Depends, and it counts as rung 4 only if you got contact information. Six people who asked and walked away are six people you cannot find. Six names and numbers in a list you own is <span class="term" data-pop="capacity">capacity</span>, which is the thing <span class="term" data-pop="tufekci">Tufekci</span> says power actually watches for. The difference between those two outcomes is a clipboard.</div>
     </div>
 
-    <div class="di" data-spec="real" data-trade="3">
-      <div class="q">6. Twelve volunteers now run your events on their own, without you in the room.</div>
+    <div class="di" data-spec="vanity" data-trade="1">
+      <div class="q">6. You made 60 buttons and all 60 were gone from the table by noon.</div>
       <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
-      <div class="tr"><span class="l">Counts as</span><select><option value="">what actually counts here?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: someone did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
-      <div class="fb">Impact, and the strongest one here. Rung 4, relationship and <span class="term" data-pop="capacity">capacity</span>. This is what Tufekci says power actually fears: a group that can act again next week whether or not you're watching. No view count comes close.</div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Vanity, and this is the one that catches people, because it feels like distribution. Free things leave a table. You have measured supply, not interest, and you do not know whether a single button was worn. Count how many you see on backpacks the following week and you have a behavior instead.</div>
     </div>
 
     <button class="btn" id="checkDiag">Check my calls</button>
     <div class="score" id="score"></div>
   </div>
 
-  <!-- MINI CASE -->
-  <h2>4 · The viral campaign that actually delivered</h2>
-  <div class="case">
-    <div class="t">The ALS Ice Bucket Challenge, 2014</div>
-    <p style="margin:.5em 0">Everything about the <span class="term" data-pop="icebucket">Ice Bucket Challenge</span> should have made it a vanity story: people dumped ice water on their heads, tagged three friends, and moved on. Peak circulation, low commitment, the exact shape of a stunt that changes nothing. Except it raised roughly <b>$115 million for ALS research in about eight weeks</b>, and the ALS Association put that money into research that helped identify a gene tied to the disease (NEK1). A viral moment converted into funded science and, eventually, changed lives.</p>
-    <p style="margin:.5em 0">So did the ladder just break? No. Look closer. The challenge had a conversion machine attached to the circulation: a specific ask (donate), an existing organization ready to catch and spend the money, and a clear behavior baked into the meme. The virality was fuel, and there was an engine to burn it in. That's the difference between this and KONY 2012, which had the reach and no working engine underneath.</p>
-    <div class="complicate"><b>The complication:</b> this is the exception, and treating it as the rule is how campaigns die. Most viral moments have no engine and convert to nothing. The lesson isn't "go viral." It's that reach is only ever worth what it converts into, so build the engine (the ask, the list, the way to catch people) <em>before</em> you chase the reach.</div>
-    <div class="qa">
-      <div class="qq">Your turn: if a burst of attention hit your cause tomorrow, what's your engine? Name the one specific thing that would catch it and turn a view into an action. If you don't have one yet, say what you'd build.</div>
-      <textarea id="qa3" placeholder="one or two sentences…"></textarea>
-      <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">"Right now we have no engine, so a viral moment would evaporate. The one thing I'd build first is a pinned link to a 20-second volunteer sign-up form, so any spike drops names into a list I own instead of a feed I rent. Reach with nowhere to land is just weather."</div></details>
-    </div>
+  <h2>4 &middot; How to measure a handmade thing in three weeks with no money</h2>
+  <p>You cannot run a validated survey, you have no sample frame, and you are not getting IRB approval by Week 16. What you can do is build the measurement into the artifact so taking part and being counted are the same act. The Center for Artistic Activism's own evaluation guidance leans on exactly these, and they are free.</p>
+
+  <div class="bd5">
+    <div><h4>The counts you already have</h4>These are the cheapest <span class="term" data-pop="actionable">actionable</span> numbers you will ever get. Put out a known number and count what is left. How many taken, how many returned, how many filled in, how many stayed past the ask, how long the average person lingered.<span class="eg">200 out, 164 back, 36 unaccounted for. Say the 36 out loud in the report.</span></div>
+    <div><h4>A comment wall</h4>The artifact collects the data. People write a line; the lines are the record, and you can code them later for language.<span class="eg">Code the 164 cards for whether they use the word &ldquo;charity&rdquo; or the word &ldquo;ready.&rdquo; That is your language indicator, measured.</span></div>
+    <div><h4>A speak-out, with somebody writing</h4>An open mic or a two-chair session where one person's job is to write down what gets said, with the date. That is how affect becomes quotable.<span class="eg">&ldquo;I didn't know anybody else here was dealing with this.&rdquo; Written down at 2:40 p.m. on the 14th, and used with permission.</span></div>
+    <div><h4>Call and response</h4>Ask the crowd a question with two physical answers, and count the bodies. A show of hands, a side of the room, a dot on a board.<span class="eg">Two jars and a handful of beans: &ldquo;Did you know the district has a program?&rdquo; Yes jar, no jar. You now have a baseline.</span></div>
+    <div><h4>An interactive prop</h4>Something participants physically alter, so the artifact ends the week in a measurably different state than it started.<span class="eg">A board with 240 blank squares, one per apartment. At the end, 83 are filled. The photograph of it is the finding.</span></div>
+    <div><h4>The two-week follow-up</h4>Copenhagen's best move, and the cheapest one. Go back to the same place two weeks later and ask five people whether they remember seeing anything.<span class="eg">Three of five remembered it unprompted. One remembered the message and not the object, which tells you something about your design.</span></div>
   </div>
 
-  <!-- NOTEBOOK -->
-  <h2>5 · Draft your impact report</h2>
-  <p>Now the part that's yours, and it's a working draft of your <span class="term" data-pop="p3">P3 impact report</span>. Write privately here (it autosaves on this device), then send it to your Field Notebook. Bring the three metrics you wrote Tuesday.</p>
+  <div class="ex">
+    <div class="t">And the three indicators from Project 2 still apply</div>
+    <b>Language:</b> did the words people use change? Collect a before sample and an after sample, with dates. <b>Behavior:</b> did anybody do something they were not doing? Count it. <b>Relationships:</b> are there people who will act again, and do you have their contact information? None of the three is a follower count, which is the point of having them.
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: pick two of the six methods above and write exactly how you are running them on your own artifact. Include the number you expect and the number you would call a failure.</div>
+    <textarea id="qa1" data-label="Two measurement methods, with the numbers I expect and the number I would call a failure" placeholder="e.g., COUNTS: 120 zines out at the bus stop over three mornings. I expect 90 taken. Under 40 means the handout spot is wrong, not that nobody cares. FOLLOW-UP: I go back the third week and ask five people at the same stop whether they remember a zine. If none of five remembers it, the design failed, and I will say that&hellip;"></textarea>
+    <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer commits to a number before it has the result. "CALL AND RESPONSE: two jars, one question, beans. 'Have you ever had to leave class to deal with this?' I expect the yes jar to be heavier, and if it is not, my premise about how common this is was wrong and that is worth finding out. COMMENT WALL: I code every card for whether it describes the problem as personal or as the school's. I expect most will say personal at the start of week one and I will compare week one against week three." Notice the second one builds a before-and-after comparison into a three-week table.</div></details>
+  </div>
+
+  <h2>5 &middot; Set the number before you run it, and report what failed</h2>
+  <p>Two rules, and the rubric rewards both.</p>
+
+  <div class="seven">
+    <div class="s"><b>Decide what counts as success before the artifact goes out.</b> A metric chosen afterward will always be the one you happened to hit. A <span class="term" data-pop="kpi">metric you steer by</span>, chosen in advance, can tell you no, which is the only reason to have one. Write the number down with a date next to it.</div>
+    <div class="s"><b>Report the part that did not work, in the report, in your own words.</b> Not as a confession. As the finding that produces your iteration, which is &aelig;ffect element 7 and five points of your grade.</div>
+  </div>
+
+  <div class="case">
+    <div class="t">What this sounds like when somebody does it properly</div>
+    <p style="margin:.45em 0">From the evaluation section of a campaign against a 40% rent increase at a 240-unit complex:</p>
+    <blockquote style="margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic">&ldquo;Nine people spoke, not the eleven who had signed up. 140 of 200 zines went. The chalk was gone in one rain and almost nobody saw it, which was a design failure we should have predicted. The paper ran the story and used the word &lsquo;increase.&rsquo; Affect: four people told us it was the first time they had been in a room with their neighbors, and one cried, which no metric caught.&rdquo;</blockquote>
+    <p style="margin:.45em 0">And the iteration that falls out of it: <em>&ldquo;Chalk was wrong for October. Next time the same information goes on a laminated card zip-tied to the mailbox cluster, where it stays dry and people stand still for thirty seconds anyway.&rdquo;</em></p>
+    <p style="margin:.45em 0">Count the moves in that paragraph. A shortfall stated as a number rather than a feeling. A count with a denominator. A failure diagnosed rather than apologized for. One piece of effect evidence from outside the campaign. And one piece of affect evidence the author explicitly says the numbers missed.</p>
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: write your evaluation paragraph in that shape, using whatever you have so far. If your artifact has not run yet, write it in future tense with the numbers you are committing to.</div>
+    <textarea id="qa2" data-label="My evaluation paragraph" placeholder="e.g., 83 of 240 squares were filled by the Friday. Two of the three mornings I tabled it rained and I got almost nobody, which I should have planned around. The RA emailed to ask whether she could put one in her building, which I did not expect and is the best thing that happened&hellip;"></textarea>
+  </div>
+
+  <h2>6 &middot; Draft the report</h2>
+  <p>Seven elements. Write the measurement half now while the material is in front of you.</p>
+
   <div class="nb">
     <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading.</div>
-    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&uarr; Open your Field Notebook (Google Doc)</a>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&#8599; Open your Field Notebook (Google Doc)</a>
 
-    <label for="n1">1. Your theory of change, in a sentence. If your campaign works, WHO does WHAT differently? (This is what all your metrics are trying to detect.)</label>
-    <textarea id="n1" placeholder="e.g., if this works, 30 renters in our building who were silent will show up to the next housing meeting and speak…"></textarea>
+    <label for="n1">1. Metrics. What you are counting, how, and the number you set in advance. One effect measure and one affect measure, minimum.</label>
+    <textarea id="n1" placeholder="e.g., EFFECT: cards returned out of 200, target 120. AFFECT: every line somebody says to me at the table, written in a notebook with the time, plus the coded language on the cards&hellip;"></textarea>
     <div class="save" id="v1"></div>
 
-    <label for="n2">2. Define your THREE success metrics, one each from ACTION, RELATIONSHIP, and POWER. For each, write exactly what you would count and how (where the number comes from).</label>
-    <textarea id="n2" placeholder="e.g., ACTION: # who sign the pledge, counted on the sheet. RELATIONSHIP: # who give an email and stay on the list a month later. POWER: whether one official agrees to meet, yes/no…"></textarea>
+    <label for="n2">2. Evaluation. What the numbers say, including the ones that came in low or not at all.</label>
+    <textarea id="n2" placeholder="e.g., 164 of 200 back. 11 of 164 used the word 'charity' and 96 used some version of 'should already be there,' which is the shift I was looking for. The Spanish cards: 4 of 40 came back, so that reach failed and I know why&hellip;"></textarea>
     <div class="save" id="v2"></div>
 
-    <label for="n3">3. Name the vanity metric you'll be tempted to report because it looks big, and write the sentence you'll use instead to tell the accurate story of your campaign.</label>
-    <textarea id="n3" placeholder="e.g., tempting: '12,000 impressions.' Instead: 'Nine people came to the first meeting and four are still organizing with us.'…"></textarea>
+    <label for="n3">3. Affect, with evidence. What it moved, quoted or counted, with dates. Say which parts no number captured.</label>
+    <textarea id="n3" placeholder="e.g., three quotes written down the day they were said, with permission to use them. The thing I cannot measure: two people stood reading the wall for several minutes and left without writing anything, and I do not know what that was&hellip;"></textarea>
     <div class="save" id="v3"></div>
 
-    <label for="n4">4. The small-numbers paragraph. Draft what you'll write in your report if the numbers come back small. Why a small, solid number can beat a big, empty one, in your own words.</label>
-    <textarea id="n4" placeholder="e.g., 'This campaign reached few people and moved some of them. Four new organizers is not a headline, but it's four more than we had, and unlike a view count, they'll still be here next month…'"></textarea>
+    <label for="n4">4. Iteration. What you would change, specifically enough that somebody else could do it.</label>
+    <textarea id="n4" placeholder="e.g., the table goes inside the door rather than outside it, the prompt gets shorter, and the Spanish version gets checked by an actual speaker before it prints&hellip;"></textarea>
     <div class="save" id="v4"></div>
+
+    <label for="n5">5. Attribution, carefully. What else was happening that could explain your result, and what you can and cannot claim.</label>
+    <textarea id="n5" placeholder="e.g., the state law changed in July, so the district may have been moving anyway. What I can claim is that the plan was published nine days after the meeting and uses our phrase. What I cannot claim is that we caused it&hellip;"></textarea>
+    <div class="save" id="v5"></div>
 
     <div class="btns">
       <button class="btn" id="copy">Copy for my notebook</button>
@@ -310,40 +339,33 @@ function pr(t){var l=t.id&&document.querySelector('label[for="'+t.id+'"]');if(l)
 b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(h?h.textContent.trim():'My writing')+'\n\n';document.querySelectorAll('textarea').forEach(function(t){if(t===o||t.readOnly)return;x+=pr(t)+'\n'+((t.value||'').trim()||'[blank]')+'\n\n----------\n\n';});o.value=x;p.style.display='block';o.focus();o.select();});
 })();
 </script>
-<div class="close">
-    <b>Close it out.</b> You have a rule you'll carry past this class: before you celebrate a number, ask what rung it reaches and whether you could fake it. If it's reach or engagement, it's fuel. If it's action, relationship, or power, it's a result. Report the results, and say so when they're small.
+  <div class="close">
+    <b>Close it out.</b> You have both halves now: what your artifact changed, and what it moved. Most campaigns report one and guess at the other. Write the evaluation section while the material is fresh, because the version you write three weeks from memory will be flattering and wrong.
   </div>
 
   <div class="prime">
-    <b>Before Tuesday (a 10-minute prime):</b> next week you present your campaign and impact report. Read the short, clear guide <span class="term" data-pop="present">"Giving Effective Presentations"</span> (UNC Learning Center, free), then write one line in your notebook: <em>what is the single most important thing your audience should walk away understanding about your cause?</em> That one sentence is the spine of your presentation. Bring it.
+    <b>Before Tuesday (10 minutes):</b> presentations start next week. Five minutes each, on your campaign and what it did. Skim <span class="term" data-pop="present">this short guide to giving a presentation</span>, then decide the one thing you want the room to remember and write it as a single sentence. Bring the artifact itself if you can carry it.
   </div>
 
-  <div class="foot">
-    <a href="#" onclick="return false" style="opacity:.4">&lsaquo; Week 13 · Emergent Strategy</a>
-    <a href="#" onclick="return false">Week 15 · Presenting Your Campaign &rsaquo;</a>
-  </div>
-
-  <!-- POPUPS -->
   <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Vanity metric</h4><p>A number that reliably goes up and reliably tells you nothing you can act on. It flatters the effort without measuring the result.</p><p><b>Example:</b> "Our post got 50,000 views." Impressive, and useless on its own, because it says nothing about whether a single person did anything. The fix is to swap it for a number that maps to an action.</p><p><a href="https://en.wikipedia.org/wiki/Vanity_metric" target="_blank" rel="noopener">What a vanity metric is &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-actionable"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Actionable metric</h4><p>The opposite of a vanity metric: a number tied to a observable behavior, so it can actually guide a decision. If it moves, you know something changed and you know roughly why.</p><p><b>Example:</b> not "reach on our sign-up post," but "how many people completed the sign-up form." One is applause; the other tells you whether the post worked.</p></div></dialog>
   <dialog class="pop" id="pop-reach"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Reach vs. impressions</h4><p><b>Reach</b> is how many separate people saw something. <b>Impressions</b> is how many times it was shown, so one person who saw it five times is 1 reach and 5 impressions. Both live on the bottom rung of the ladder: they count eyeballs, not action.</p><p><b>Example:</b> a post with 10,000 impressions and 2,000 reach was seen an average of five times each by 2,000 people. Neither number tells you if anyone cared.</p><p><a href="https://en.wikipedia.org/wiki/Impression_(online_media)" target="_blank" rel="noopener">What an impression is &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-engagement"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Engagement rate</h4><p>The share of people who saw a post and did something light with it (liked, commented, shared, saved), usually written as those actions divided by reach or followers. It's a step up from raw reach, but still rung 2: a like costs almost nothing and commits no one.</p><p><b>Example:</b> a post seen by 1,000 people with 50 likes and 10 comments has a 6% engagement rate. Better signal than views, still not a person in a room.</p><p><a href="https://en.wikipedia.org/wiki/Customer_engagement" target="_blank" rel="noopener">About engagement online &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-kpi"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>KPI (key performance indicator)</h4><p>The one or few numbers you decide to actually steer by, out of the hundreds you could track. Choosing your KPI is a values decision: it announces what you are actually trying to do.</p><p><b>Example:</b> if your campaign's KPI is "views," you'll make choices that chase attention. If it's "new volunteers who stay a month," you'll make completely different choices. Pick a KPI on rung 3 or higher.</p><p><a href="https://en.wikipedia.org/wiki/Performance_indicator" target="_blank" rel="noopener">What a KPI is &rarr;</a></p></div></dialog>
-  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Jodi Dean</h4><p>Political theorist (Week 11). Her idea of <b>communicative capitalism</b> is the engine under this whole week: on our platforms, the endless circulation of messages can substitute for actual politics, so posting feels like doing something while the message just loops.</p><p><b>Her line for this week:</b> a contribution to circulation is not an act. Your reach going up can feel exactly like organizing, and be nothing like it.</p></div></dialog>
-  <dialog class="pop" id="pop-commcap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Communicative capitalism</h4><p>Dean's name for the condition where our participation (posting, sharing, liking) gets captured as content and circulation rather than turned into decisions or responses from power. The activity is real; the political effect often isn't.</p><p><b>Example:</b> a hashtag trends for a day, millions join in, no official ever has to answer for anything, and the trend fades. The circulating replaced the pressure.</p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Jodi Dean</h4><p>Political theorist (Week 11). Her idea of <b>communicative capitalism</b> is the engine under this week: on our platforms, the endless circulation of messages can substitute for actual politics, so posting feels like doing something while the message just loops.</p><p><b>Her line for this week:</b> a contribution to circulation is not an act. Your reach going up can feel exactly like organizing, and be nothing like it.</p></div></dialog>
+  <dialog class="pop" id="pop-commcap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Communicative capitalism</h4><p>Dean's term for the condition where our participation (posting, sharing, liking) gets captured as content and circulation rather than turned into decisions or responses from power. The activity happens; the political effect often does not.</p><p><b>Example:</b> a hashtag trends for a day, millions join in, no official ever has to answer for anything, and the trend fades. The circulating replaced the pressure.</p></div></dialog>
   <dialog class="pop" id="pop-tufekci"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Zeynep Tufekci</h4><p>Sociologist of technology and social movements (Week 10, <em>Twitter and Tear Gas</em>). She studies why networked movements can gather huge crowds fast and still lose.</p><p><b>Her point for this week:</b> a protest's size is a <em>signal</em> of underlying capacity, not the capacity itself. What power actually watches for is whether a movement can act again, decide, and escalate, none of which shows up in a view count.</p></div></dialog>
   <dialog class="pop" id="pop-capacity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Capacity</h4><p>What a movement can reliably do, not how big it looked once. Can it turn people out again next month? Make a decision without falling apart? Escalate when ignored? Capacity is what the top rungs of the ladder are trying to measure.</p><p><b>Example:</b> 500 people at one march is a number. 30 people who will organize the next three actions whether or not it's trending is capacity, and it's scarier to power.</p></div></dialog>
-  <dialog class="pop" id="pop-icebucket"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><img class="popimg" src="images/icebucket.jpg" alt="A person dumping a bucket of ice water over their head for the ALS Ice Bucket Challenge"><h4>The ALS Ice Bucket Challenge</h4><p>A 2014 viral fundraiser: people filmed themselves dumping ice water over their heads, challenged friends to do the same or donate to fight ALS (a fatal nerve disease), and posted it. It spread worldwide in weeks.</p><p><b>Why it's here:</b> it raised roughly $115 million and funded research that helped find a gene tied to ALS. The rare viral moment with an actual engine (a clear ask and an organization ready to spend the money) behind it.</p><p><a href="https://en.wikipedia.org/wiki/Ice_Bucket_Challenge" target="_blank" rel="noopener">About the Ice Bucket Challenge &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-present"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Giving Effective Presentations</h4><p>A short, clear guide from the UNC Learning Center (free, Creative Commons) on structuring and delivering a talk: the kinds of delivery, how to practice, how to handle nerves, and how to keep an audience with you. Your Week 15 prime.</p><p><a href="https://learningcenter.unc.edu/tips-and-tools/giving-effective-presentations/" target="_blank" rel="noopener">Read the guide &rarr;</a></p></div></dialog>
   <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>P3: Creative Campaign + &AElig;ffect Report</h4><p>Your third project: the small, ethical, creative campaign you've been building for your cause, at least one piece of which cannot travel on social media, plus a report built on the seven &aelig;ffect elements (goals, audience, ethics, intervention, metrics, evaluation, iteration). This week you draft the report half. You present it in the final weeks.</p></div></dialog>
   <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-aeffect"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>&AElig;ffect</h4><p>A word the Center for Artistic Activism made by jamming <em>affect</em> and <em>effect</em> together, because creative activism has to be judged on both and the two are usually measured separately. The Center was founded in 2009 by Stephen Duncombe, a scholar of political culture, and Steve Lambert, an artist, after years of watching artists and organizers talk past each other.</p><p><b>Affect:</b> what it moved in people. What they felt, said, remembered, or understood differently afterward.<br><b>Effect:</b> what it changed in the world. A policy, a practice, a budget, a decision, a number.</p><p><b>Example:</b> a hand-stitched banner carried into a council meeting gets the item put on the agenda (effect) and gets three strangers exchanging phone numbers in the parking lot afterward (affect). Report only the first and you have thrown away the reason you made it by hand.</p><p><a href="https://c4aa.org/" target="_blank" rel="noopener">Center for Artistic Activism &#8599;</a></p></div></dialog>
 
 </div>
 
 <script>
 (function(){
   var root = document.getElementById('w14');
-  // popups
   root.querySelectorAll('.term').forEach(function(b){
     b.addEventListener('click', function(e){
       if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
@@ -352,7 +374,7 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
       if(d && d.showModal) d.showModal();
     });
   });
-  // diagnose interactive
+  // diagnose interactive: commit both calls, then check
   root.querySelectorAll('.di').forEach(function(di){
     di.querySelectorAll('.spec button').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -376,10 +398,10 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
     });
     var s = document.getElementById('score'); s.style.display='block';
     if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
-    else { s.textContent = full + ' of ' + n + ' fully right. Amber = you got one of the two calls. The two "depends" cases are the hardest and the most honest.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber means you got one of the two calls. The two "depends" cases are the ones to argue about, because what they depend on is a decision you still get to make.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
   });
-  // notebook persistence (on-device draft)
-  ['qa1','qa2','qa3','n1','n2','n3','n4'].forEach(function(id){
+  // on-device drafting (nothing is transmitted)
+  ['qa1','qa2','n1','n2','n3','n4','n5'].forEach(function(id){
     var ta = document.getElementById(id); if(!ta) return;
     var key = 'e4_w14_' + id;
     try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
@@ -388,13 +410,21 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
       var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
     });
   });
+  function g(id){ var e=document.getElementById(id); return e? e.value.trim() : ''; }
   function entryText(){
-    function g(id){ var e=document.getElementById(id); return e? e.value : ''; }
-    return 'ENG 4100 · Field Notebook · Week 14: What Actually Counts\n'
-      + '1. My theory of change (who does what differently):\n' + (g('n1')||'(blank)') + '\n\n'
-      + '2. Three real metrics (action / relationship / power) + how I count each:\n' + (g('n2')||'(blank)') + '\n\n'
-      + '3. The vanity metric I’ll be tempted by + the honest sentence instead:\n' + (g('n3')||'(blank)') + '\n\n'
-      + '4. My honest-results paragraph (why small-but-real beats big-but-empty):\n' + (g('n4')||'(blank)') + '\n';
+    return 'ENG 4100 \u00b7 Field Notebook \u00b7 Week 14: Did It Work?\n\n'
+      + 'TWO MEASUREMENT METHODS, WITH MY EXPECTED AND FAILURE NUMBERS:\n' + (g('qa1')||'(blank)') + '\n\n'
+      + 'MY EVALUATION PARAGRAPH:\n' + (g('qa2')||'(blank)') + '\n\n'
+      + 'THE REPORT, MEASUREMENT HALF\n'
+      + '1. Metrics (one effect, one affect, numbers set in advance):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Evaluation (including what came in low):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. Affect, with evidence and dates:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. Iteration:\n' + (g('n4')||'(blank)') + '\n\n'
+      + '5. Attribution (what else could explain it):\n' + (g('n5')||'(blank)') + '\n';
+  }
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
   }
   document.getElementById('copy').addEventListener('click', function(){
     var txt = entryText(), tag = document.getElementById('copied');
@@ -402,10 +432,6 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
     else { fallback(txt); done(); }
   });
-  function fallback(txt){
-    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
-    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
-  }
   document.getElementById('dl').addEventListener('click', function(){
     var a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
@@ -414,9 +440,9 @@ b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(
 })();
 </script>
 <nav class="rcpn">
-<a class="pv" href="module-w13-emergent.html"><span class="s">&larr; Week 13</span>Small Is All</a>
+<a class="pv" href="module-w13-emergent.html"><span class="s">&larr; Week 13</span>Make It, and Make It Reachable</a>
 <a class="hm" href="schedule.html"><span class="s">Menu</span>All weeks</a>
-<a class="nx" href="module-w15-presenting.html"><span class="s">Week 15 &rarr;</span>Present Your Campaign</a>
+<a class="nx" href="module-w15-presenting.html"><span class="s">Week 15 &rarr;</span>Campaign Presentations</a>
 </nav>
 </body>
 </html>
