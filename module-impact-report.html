@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENG 4100 · Week 14 · Did It Work?</title>
+<style>
+  #w14{
+    --ink:#1f2933; --soft:#5b6673; --line:#dbe1e8; --paper:#ffffff; --panel:#f4f7fa;
+    --accent:#8c2f39; --accent2:#2c6b52; --gold:#8a5a1f; --wrong:#9a3b3b;
+    color:var(--ink); background:var(--paper);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Georgia,serif;
+    max-width:760px; margin:0 auto; padding:0 20px 90px;
+  }
+  #w14 *{box-sizing:border-box}
+  #w14 .mast{padding:34px 0 20px; border-bottom:2px solid var(--accent)}
+  #w14 .kick{font-size:.75rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w14 h1{font-size:2rem; line-height:1.1; margin:8px 0 6px; letter-spacing:-.015em}
+  #w14 .dek{color:var(--soft); font-size:1.05rem}
+  #w14 .clock{display:inline-block; margin-top:10px; font-size:.8rem; color:var(--soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:3px 12px}
+  #w14 h2{font-size:1.3rem; margin:36px 0 8px; letter-spacing:-.01em; padding-top:6px}
+  #w14 h2 .mn{font-size:.72rem; color:var(--soft); font-weight:400; letter-spacing:.08em; text-transform:uppercase; margin-left:8px}
+  #w14 p{margin:.7em 0}
+  #w14 .ground{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:22px 0; font-size:.98rem; color:var(--soft)}
+  #w14 .recall{background:#eef4f0; border:1px solid #cfe0d6; border-radius:9px; padding:14px 17px; margin:22px 0}
+  #w14 .recall b{color:var(--accent2)}
+  #w14 .ex{border:1px dashed var(--line); border-radius:9px; padding:12px 15px; margin:12px 0; background:var(--panel); font-size:.96rem}
+  #w14 .ex .t{font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:3px}
+  #w14 .term{background:none; border:none; border-bottom:2px dotted var(--accent); color:var(--accent); font:inherit; font-weight:600; padding:0; cursor:pointer}
+  #w14 .complicate{background:#fbf3e6; border:1px solid #e8d3ad; border-radius:9px; padding:12px 15px; margin:14px 0; font-size:.92rem; color:#6b4e22}
+  #w14 .complicate b{color:var(--gold)}
+  /* ladder visual */
+  #w14 .ladder{border:1px solid var(--line); border-radius:11px; padding:15px 16px; margin:16px 0; background:var(--panel)}
+  #w14 .ladder .rung{display:flex; align-items:baseline; gap:10px; padding:8px 11px; margin:5px 0; border-radius:8px; background:var(--paper); border:1px solid var(--line); font-size:.95rem}
+  #w14 .ladder .rung .num{font-weight:700; font-size:.8rem; width:1.4em; color:var(--soft)}
+  #w14 .ladder .rung .nm{font-weight:700; min-width:112px}
+  #w14 .ladder .rung.real{border-left:4px solid var(--accent2)}
+  #w14 .ladder .rung.van{border-left:4px solid var(--gold); opacity:.9}
+  #w14 .ladder .cap{font-size:.82rem; color:var(--soft); margin-top:8px}
+  /* guided reading */
+  #w14 .read{background:#f0f3f8; border:1px solid #d3ddea; border-radius:10px; padding:15px 17px; margin:18px 0}
+  #w14 .read .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  #w14 .read a{color:var(--accent); font-weight:600}
+  #w14 .read .g{font-size:.9rem; color:var(--soft)}
+  #w14 .read blockquote{margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic; color:var(--ink); font-size:.98rem}
+  #w14 .qa{margin-top:10px}
+  #w14 .qa .qq{font-weight:600; font-size:.95rem}
+  #w14 .qa textarea{width:100%; min-height:52px; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:15px/1.5 inherit; color:var(--ink); background:var(--paper); resize:vertical; margin-top:5px}
+  #w14 .reveal{margin-top:6px}
+  #w14 .reveal>summary{cursor:pointer; color:var(--accent); font-weight:600; font-size:.9rem}
+  #w14 .reveal .model{margin-top:7px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:.92rem; color:var(--soft)}
+  /* diagnose interactive */
+  #w14 .diag{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--panel)}
+  #w14 .diag h3{margin:0 0 3px; font-size:1.08rem}
+  #w14 .diag .hint{font-size:.86rem; color:var(--soft); margin-bottom:12px}
+  #w14 .di{background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin:10px 0}
+  #w14 .di .q{font-size:.97rem; margin-bottom:8px}
+  #w14 .di .l{font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); font-weight:700; margin-right:7px}
+  #w14 .di .spec{margin-bottom:7px}
+  #w14 .di .spec button{border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 13px; font:600 .86rem inherit; cursor:pointer; margin-right:5px}
+  #w14 .di .spec button.sel{border-color:var(--accent); background:var(--accent); color:#fff}
+  #w14 .di .tr select{font:inherit; font-size:.88rem; padding:5px 8px; border:1.5px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); max-width:100%}
+  #w14 .di .fb{display:none; margin-top:9px; font-size:.88rem; padding:8px 11px; border-radius:7px}
+  #w14 .di.right .fb{display:block; background:#e7f2eb; color:#245c3d; border:1px solid #bfe0cc}
+  #w14 .di.partial .fb{display:block; background:#fbf3e6; color:#6b4e22; border:1px solid #e8d3ad}
+  #w14 .di.wrong .fb{display:block; background:#f9ebeb; color:#7d2f2f; border:1px solid #e6c3c3}
+  #w14 .btn{display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:11px 20px; font:600 .95rem inherit; cursor:pointer; margin-top:6px}
+  #w14 .btn.ghost{background:none; color:var(--accent); border:1.5px solid var(--accent)}
+  #w14 .score{margin-top:11px; font-weight:700; display:none}
+  /* mini case */
+  #w14 .case{border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:15px 17px; margin:18px 0; background:var(--paper)}
+  #w14 .case .t{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  /* notebook */
+  #w14 .nb{border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; background:var(--paper)}
+  #w14 .nb .lead{font-size:.92rem; color:var(--soft); margin-bottom:4px}
+  #w14 .nb .sheet{display:inline-block; margin:8px 0 6px; font-size:.86rem}
+  #w14 .nb label{display:block; font-weight:600; font-size:.95rem; margin:15px 0 5px}
+  #w14 .nb textarea{width:100%; min-height:60px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font:15px/1.5 inherit; color:var(--ink); background:var(--panel); resize:vertical}
+  #w14 .nb .save{font-size:.8rem; color:var(--accent2); margin-top:5px; height:1em}
+  #w14 .nb .btns{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  #w14 .nb .tiny{font-size:.82rem; color:var(--soft); background:none; border:none; cursor:pointer; text-decoration:underline}
+  #w14 .copied{font-size:.84rem; color:var(--accent2); font-weight:600}
+  #w14 .close{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:14px 17px; margin:26px 0 10px; color:var(--soft); font-size:.96rem}
+  #w14 .prime{background:#eef1f7; border:1px solid #cfd8ea; border-left:4px solid var(--accent); border-radius:9px; padding:14px 17px; margin:16px 0}
+  #w14 .prime b{color:var(--accent)}
+  #w14 dialog.pop{border:none; border-radius:12px; padding:0; max-width:400px; box-shadow:0 20px 50px rgba(0,0,0,.28)}
+  #w14 dialog.pop::backdrop{background:rgba(15,23,32,.45)}
+  #w14 dialog.pop .in{padding:17px 19px; position:relative}
+  #w14 dialog.pop h4{margin:0 0 6px; color:var(--accent); font-size:1.05rem}
+  #w14 dialog.pop p{margin:.4em 0; font-size:.94rem}
+  #w14 dialog.pop .x{position:absolute; top:6px; right:10px; border:none; background:none; font-size:1.3rem; cursor:pointer; color:var(--soft)}
+  #w14 dialog.pop img.popimg{display:block; width:100%; max-height:150px; object-fit:cover; border-radius:8px; margin:2px 0 10px}
+  #w14 .foot{display:flex; justify-content:space-between; margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:.9rem}
+  #w14 .foot a{color:var(--accent); font-weight:600; text-decoration:none}
+  #w14 .bd5{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:11px; margin:13px 0}
+  #w14 .bd5>div{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--accent); border-radius:10px; padding:12px 14px; font-size:.93rem; line-height:1.44}
+  #w14 .bd5 h4{margin:0 0 5px; font-size:.97rem; color:var(--accent)}
+  #w14 .bd5 .eg{display:block; margin-top:7px; padding-top:7px; border-top:1px dotted var(--line); color:var(--soft); font-size:.89rem}
+  #w14 .seven{counter-reset:sv; margin:14px 0}
+  #w14 .seven .s{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 15px 12px 54px; margin:9px 0; position:relative; font-size:.95rem; line-height:1.46}
+  #w14 .seven .s::before{counter-increment:sv; content:counter(sv); position:absolute; left:17px; top:10px; font:700 1.3rem Georgia,serif; color:var(--accent)}
+  #w14 .seven .s b{color:var(--accent)}
+  @media (prefers-color-scheme:dark){
+    #w14{--ink:#e6eaef; --soft:#9aa5b1; --line:#38424d; --paper:#12171d; --panel:#1a2129; --accent:#d98a92; background:#12171d}
+    #w14 .recall{background:#16241c; border-color:#2c4536}
+    #w14 .complicate{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w14 .read,#w14 .prime{background:#171d2b; border-color:#2c3a56}
+    #w14 .di.right .fb{background:#16281d; border-color:#2f5a3d; color:#a7d9ba}
+    #w14 .di.partial .fb{background:#2a2213; border-color:#4a3c1e; color:#e2c893}
+    #w14 .di.wrong .fb{background:#2a1717; border-color:#5a2f2f; color:#e0a7a7}
+    #w14 dialog.pop{background:#1a2129}
+  }
+
+  /* injected: shared site menu + prev/next (self-contained, oxblood) */
+  .rcnav{position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #dbe1e8;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .rcnav .in{max-width:820px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;gap:5px 15px;flex-wrap:wrap}
+  .rcnav .bd{font-family:Georgia,"Iowan Old Style",serif;font-weight:700;color:#1f2933;text-decoration:none;margin-right:auto;font-size:1rem}
+  .rcnav .bd small{display:block;font-family:system-ui,sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:#8c2f39}
+  .rcnav a.l{color:#1f2933;text-decoration:none;font-weight:600;font-size:.88rem;border-bottom:2px solid transparent;padding:2px 0}
+  .rcnav a.l:hover{color:#8c2f39;border-bottom-color:#8c2f39}
+  .rcnav a.lms{background:#8c2f39;color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;border-radius:8px;padding:6px 12px}
+  .rcpn{max-width:760px;margin:20px auto 44px;padding:0 20px;display:flex;gap:10px;align-items:stretch;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  .rcpn a{flex:1;text-decoration:none;background:#faf6f3;border:1px solid #dbe1e8;border-radius:10px;padding:10px 14px;color:#1f2933;font-weight:700;font-size:.9rem;display:flex;flex-direction:column;justify-content:center}
+  .rcpn a:hover{border-color:#8c2f39;color:#8c2f39}
+  .rcpn a.nx{text-align:right}
+  .rcpn a.hm{flex:0 0 auto;text-align:center;color:#8c2f39;justify-content:center}
+  .rcpn a .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:#7a828c;font-weight:800}
+  @media (prefers-color-scheme:dark){
+    .rcnav{background:#12171d;border-bottom-color:#38424d}
+    .rcnav .bd{color:#e6eaef}.rcnav .bd small{color:#d98a92}
+    .rcnav a.l{color:#e6eaef}.rcnav a.l:hover{color:#d98a92;border-bottom-color:#d98a92}
+    .rcnav a.lms{background:#d98a92;color:#12171d}
+    .rcpn a{background:#1a2129;border-color:#38424d;color:#e6eaef}
+    .rcpn a:hover{border-color:#d98a92;color:#d98a92}
+    .rcpn a.hm{color:#d98a92}.rcpn a .s{color:#9aa5b1}
+  }
+
+</style>
+</head>
+<body>
+<nav class="rcnav"><div class="in">
+<a class="bd" href="index.html">ENG 4100<small>Writing for Social Media</small></a>
+<a class="l" href="index.html">Home</a>
+<a class="l" href="syllabus.html">Syllabus</a>
+<a class="l" href="schedule.html">Schedule</a>
+<a class="l" href="projects.html">Major Projects</a>
+<a class="lms" href="https://appstate.instructure.com/" target="_blank" rel="noopener">Canvas &rarr;</a>
+</div></nav>
+<div id="w14">
+
+  <div class="mast">
+    <div class="kick">Week 14 &middot; Thursday module</div>
+    <h1>Did It Work?</h1>
+    <div class="dek">Your artifact is in the world. Now you have to say what it did, which means measuring two different things that most campaigns confuse for each other.</div>
+  </div>
+
+  <div class="zoombar" style="background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:9px; padding:11px 15px; margin:18px 0; font-size:.94rem">&#128205; <b>Thursday class meets on Zoom.</b> Join at <a href="https://appstate.zoom.us/my/drsarahlong" target="_blank" rel="noopener" style="font-weight:600">appstate.zoom.us/my/drsarahlong</a> and sign in so you are marked present.</div>
+  <div class="ground">Keep your <span class="term" data-pop="notebook">Field Notebook</span> open and your Week 13 production plan beside you. By the end of today you have the measurement half of <span class="term" data-pop="p3">Project 3</span> drafted.</div>
+
+  <div class="recall"><b>Where Week 13 left off:</b> you made the five build decisions, answered three of the seven access questions as changes to the object, said what could physically destroy your artifact, and set three dates. If your artifact is out there now, today's work is about it. If it goes out next week, today's work is the measurement plan you set <em>before</em> it runs, which is the stronger order anyway.</div>
+
+  <h2>1 &middot; &AElig;ffect: two words, because one was never enough</h2>
+  <p>The Center for Artistic Activism, founded in 2009 by Stephen Duncombe and Steve Lambert, coined <span class="term" data-pop="aeffect">&aelig;ffect</span> for a problem they kept running into. Artists measure whether a thing moved people. Organizers measure whether a thing changed something. Creative activism has to answer both, and the two answers come from different evidence.</p>
+
+  <div class="ex">
+    <div class="t">The two halves, on one campaign</div>
+    <b>Affect</b> is what it moved in people: what they felt, said, remembered, or understood differently. <b>Effect</b> is what it changed in the world: a policy, a practice, a budget line, a decision, a count.<br><br>
+    Take 200 hand-stamped cards collected over three weeks and carried into a school board meeting. <b>Effect:</b> the district published its supply-access plan nine days later. <b>Affect:</b> four people said it was the first time they had been in a room with their neighbors talking about it, and one of them cried while writing her card. The first one you can put in a table. The second one is why anybody came back the next week, and it will not fit in a table.
+  </div>
+
+  <div class="complicate"><b>The complication:</b> affect is the easier half to fake and the more difficult half to document, so the temptation runs both ways. &ldquo;People seemed moved&rdquo; is not evidence. A written quote with a date, a count of how many people stayed past the ask, a line somebody said that you wrote down within the hour: that is evidence. Collect affect the way you would collect anything else, in the moment, in writing.</div>
+
+  <h2>2 &middot; The ladder, and the column it cannot see</h2>
+  <p>Here is the effect half, laid out. Any result you can produce sits on one of five rungs.</p>
+
+  <div class="ladder">
+    <div class="rung real"><span class="num">5</span><span class="nm">Power</span><span>a decision changed; access to someone who couldn't be reached before</span></div>
+    <div class="rung real"><span class="num">4</span><span class="nm">Relationship</span><span>people you can reach again; volunteers who stay; a list you own</span></div>
+    <div class="rung real"><span class="num">3</span><span class="nm">Action</span><span>someone did the thing: showed up, signed, called, switched, gave</span></div>
+    <div class="rung van"><span class="num">2</span><span class="nm">Engagement</span><span><span class="term" data-pop="engagement">likes, comments, shares, saves</span></span></div>
+    <div class="rung van"><span class="num">1</span><span class="nm">Reach</span><span><span class="term" data-pop="reach">views, impressions</span>: how many were shown it</span></div>
+    <div class="cap">Vanity lives on rungs 1&ndash;2. Impact lives on 3&ndash;5. The one test for any number: does it move something up to rung 3 or higher? If it can't, it's vanity, no matter how big.</div>
+  </div>
+
+  <p>The ladder measures effect and nothing else. That is its use and its limit. A campaign can land on rung 3 and leave no trace in anybody, and a campaign can stall on rung 2 and change how a hundred people talk about the thing for a year. Your report has to carry both columns, because a creative campaign that only reports effect has thrown away its own advantage.</p>
+
+  <div class="read">
+    <div class="t">Read the source (8&ndash;10 min)</div>
+    <p style="margin:.4em 0"><a href="https://commonslibrary.org/the-copenhagen-experiment-measuring-the-relative-effectiveness-of-creative-vs-conventional-forms-of-activism/" target="_blank" rel="noopener">The Copenhagen Experiment</a> <span class="g">(Commons Social Change Library, free). You met this in Week 12 for its result. Read it this time for its method, because it is the closest thing you have to a model: no budget, three days, and they still produced numbers they could defend.</span></p>
+    <blockquote>&ldquo;Creative activism outperformed conventional activism on almost every quantitative measure.&rdquo;</blockquote>
+    <p style="margin:.4em 0"><span class="g">What to notice: 108 spot interviews with passersby, 30 structured observation sheets filled in by people watching rather than participating, video of both conditions, and a follow-up survey two weeks later to test what stuck. Every one of those is something you could do on Sanford Mall with a clipboard.</span></p>
+    <p style="margin:.4em 0"><a href="UnleashingCreativeCampaignsToolkit2025.pdf" target="_blank" rel="noopener">Unleashing Creative Campaigns</a> <span class="g">(Center for Artistic Activism, 2025, free). Two pages to use rather than read. The <b>Action Observation Sheet</b> on PDF page 65 is the observation instrument Copenhagen used, already built, and you can hand it to somebody who agrees to watch your action instead of taking part in it. <b>Did It Work?</b> on page 70 is their post-action reflection, and it maps onto elements 6 and 7 of your report.</span></p>
+  </div>
+
+  <h2>3 &middot; Vanity or impact?</h2>
+  <div class="diag" id="diag">
+    <div class="hint">Six results from analog, handmade campaigns. Two judgments on each, and &ldquo;depends&rdquo; is frequently the right call. First: is this a <b><span class="term" data-pop="vanity">vanity</span></b> number, a sign of <b>impact</b>, or does it <b>depend</b> on something the sentence does not tell you? Second: what does it actually count as? Commit both, then Check.</div>
+
+    <div class="di" data-spec="vanity" data-trade="1">
+      <div class="q">1. Your photograph of the quilt square wall got 40,000 views on TikTok.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Vanity. This is a number about the documentation, not the artifact. 40,000 people saw a photograph of a wall; nobody added to the wall because of it, and you cannot reach one of them again. <span class="term" data-pop="dean">Jodi Dean</span> would point out that this is <span class="term" data-pop="commcap">communicative capitalism</span> doing exactly what the course has been warning you about.</div>
+    </div>
+
+    <div class="di" data-spec="real" data-trade="2">
+      <div class="q">2. Of 200 cards you put out over three weeks, 164 came back filled in.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Impact, rung 3. Each of those 164 people stopped, picked up a pen, and wrote something in their own handwriting. That is a behavior with a cost, which is what makes it countable as action rather than attention. The 36 that did not come back are also information: report them.</div>
+    </div>
+
+    <div class="di" data-spec="depends" data-trade="1">
+      <div class="q">3. Eleven people told you at the table that they loved the project.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Depends, and by default it counts as option 1. Praise at a table is the analog version of a like: pleasant, cheap, and offered to your face by people who do not want to be rude. It becomes affect evidence if you wrote down what they actually said and when, and it becomes rung 3 only if one of them did something afterward.</div>
+    </div>
+
+    <div class="di" data-spec="real" data-trade="4">
+      <div class="q">4. The district published its supply-access plan nine days after your procession, and the published document uses the phrase your campaign built.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Impact, rung 4, and the strongest result in this set. An institution did something it was not previously doing, and the language it used came from you, which is the language indicator from Project 2 showing up as evidence. Attribution is still a question you have to treat carefully: say what happened and when, and say what else was happening at the same time.</div>
+    </div>
+
+    <div class="di" data-spec="depends" data-trade="3">
+      <div class="q">5. Six people asked how they could help with the next one.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Depends, and it counts as rung 4 only if you got contact information. Six people who asked and walked away are six people you cannot find. Six names and numbers in a list you own is <span class="term" data-pop="capacity">capacity</span>, which is the thing <span class="term" data-pop="tufekci">Tufekci</span> says power actually watches for. The difference between those two outcomes is a clipboard.</div>
+    </div>
+
+    <div class="di" data-spec="vanity" data-trade="1">
+      <div class="q">6. You made 60 buttons and all 60 were gone from the table by noon.</div>
+      <div class="spec"><span class="l">Call it</span><button data-v="vanity">Vanity</button><button data-v="depends">Depends</button><button data-v="real">Impact</button></div>
+      <div class="tr"><span class="l">Counts as</span><select><option value="">what does it actually count as?</option><option value="1">Nothing durable yet: pure reach or circulation</option><option value="2">Observable behavior: somebody did a thing</option><option value="3">A relationship or capacity you can activate again</option><option value="4">Access to, or a shift in, power</option></select></div>
+      <div class="fb">Vanity, and this is the one that catches people, because it feels like distribution. Free things leave a table. You have measured supply, not interest, and you do not know whether a single button was worn. Count how many you see on backpacks the following week and you have a behavior instead.</div>
+    </div>
+
+    <button class="btn" id="checkDiag">Check my calls</button>
+    <div class="score" id="score"></div>
+  </div>
+
+  <h2>4 &middot; How to measure a handmade thing in three weeks with no money</h2>
+  <p>You cannot run a validated survey, you have no sample frame, and you are not getting IRB approval by Week 16. What you can do is build the measurement into the artifact so taking part and being counted are the same act. The Center for Artistic Activism's own evaluation guidance leans on exactly these, and they are free.</p>
+
+  <div class="bd5">
+    <div><h4>The counts you already have</h4>These are the cheapest <span class="term" data-pop="actionable">actionable</span> numbers you will ever get. Put out a known number and count what is left. How many taken, how many returned, how many filled in, how many stayed past the ask, how long the average person lingered.<span class="eg">200 out, 164 back, 36 unaccounted for. Say the 36 out loud in the report.</span></div>
+    <div><h4>A comment wall</h4>The artifact collects the data. People write a line; the lines are the record, and you can code them later for language.<span class="eg">Code the 164 cards for whether they use the word &ldquo;charity&rdquo; or the word &ldquo;ready.&rdquo; That is your language indicator, measured.</span></div>
+    <div><h4>A speak-out, with somebody writing</h4>An open mic or a two-chair session where one person's job is to write down what gets said, with the date. That is how affect becomes quotable.<span class="eg">&ldquo;I didn't know anybody else here was dealing with this.&rdquo; Written down at 2:40 p.m. on the 14th, and used with permission.</span></div>
+    <div><h4>Call and response</h4>Ask the crowd a question with two physical answers, and count the bodies. A show of hands, a side of the room, a dot on a board.<span class="eg">Two jars and a handful of beans: &ldquo;Did you know the district has a program?&rdquo; Yes jar, no jar. You now have a baseline.</span></div>
+    <div><h4>An interactive prop</h4>Something participants physically alter, so the artifact ends the week in a measurably different state than it started.<span class="eg">A board with 240 blank squares, one per apartment. At the end, 83 are filled. The photograph of it is the finding.</span></div>
+    <div><h4>The two-week follow-up</h4>Copenhagen's best move, and the cheapest one. Go back to the same place two weeks later and ask five people whether they remember seeing anything.<span class="eg">Three of five remembered it unprompted. One remembered the message and not the object, which tells you something about your design.</span></div>
+  </div>
+
+  <div class="ex">
+    <div class="t">And the three indicators from Project 2 still apply</div>
+    <b>Language:</b> did the words people use change? Collect a before sample and an after sample, with dates. <b>Behavior:</b> did anybody do something they were not doing? Count it. <b>Relationships:</b> are there people who will act again, and do you have their contact information? None of the three is a follower count, which is the point of having them.
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: pick two of the six methods above and write exactly how you are running them on your own artifact. Include the number you expect and the number you would call a failure.</div>
+    <textarea id="qa1" data-label="Two measurement methods, with the numbers I expect and the number I would call a failure" placeholder="e.g., COUNTS: 120 zines out at the bus stop over three mornings. I expect 90 taken. Under 40 means the handout spot is wrong, not that nobody cares. FOLLOW-UP: I go back the third week and ask five people at the same stop whether they remember a zine. If none of five remembers it, the design failed, and I will say that&hellip;"></textarea>
+    <details class="reveal"><summary>Compare with one strong reading</summary><div class="model">A strong answer commits to a number before it has the result. "CALL AND RESPONSE: two jars, one question, beans. 'Have you ever had to leave class to deal with this?' I expect the yes jar to be heavier, and if it is not, my premise about how common this is was wrong and that is worth finding out. COMMENT WALL: I code every card for whether it describes the problem as personal or as the school's. I expect most will say personal at the start of week one and I will compare week one against week three." Notice the second one builds a before-and-after comparison into a three-week table.</div></details>
+  </div>
+
+  <h2>5 &middot; Set the number before you run it, and report what failed</h2>
+  <p>Two rules, and the rubric rewards both.</p>
+
+  <div class="seven">
+    <div class="s"><b>Decide what counts as success before the artifact goes out.</b> A metric chosen afterward will always be the one you happened to hit. A <span class="term" data-pop="kpi">metric you steer by</span>, chosen in advance, can tell you no, which is the only reason to have one. Write the number down with a date next to it.</div>
+    <div class="s"><b>Report the part that did not work, in the report, in your own words.</b> Not as a confession. As the finding that produces your iteration, which is &aelig;ffect element 7 and five points of your grade.</div>
+  </div>
+
+  <div class="case">
+    <div class="t">What this sounds like when somebody does it properly</div>
+    <p style="margin:.45em 0">From the evaluation section of a campaign against a 40% rent increase at a 240-unit complex:</p>
+    <blockquote style="margin:10px 0; padding:8px 14px; border-left:3px solid var(--accent); font-style:italic">&ldquo;Nine people spoke, not the eleven who had signed up. 140 of 200 zines went. The chalk was gone in one rain and almost nobody saw it, which was a design failure we should have predicted. The paper ran the story and used the word &lsquo;increase.&rsquo; Affect: four people told us it was the first time they had been in a room with their neighbors, and one cried, which no metric caught.&rdquo;</blockquote>
+    <p style="margin:.45em 0">And the iteration that falls out of it: <em>&ldquo;Chalk was wrong for October. Next time the same information goes on a laminated card zip-tied to the mailbox cluster, where it stays dry and people stand still for thirty seconds anyway.&rdquo;</em></p>
+    <p style="margin:.45em 0">Count the moves in that paragraph. A shortfall stated as a number rather than a feeling. A count with a denominator. A failure diagnosed rather than apologized for. One piece of effect evidence from outside the campaign. And one piece of affect evidence the author explicitly says the numbers missed.</p>
+  </div>
+
+  <div class="qa">
+    <div class="qq">Your turn: write your evaluation paragraph in that shape, using whatever you have so far. If your artifact has not run yet, write it in future tense with the numbers you are committing to.</div>
+    <textarea id="qa2" data-label="My evaluation paragraph" placeholder="e.g., 83 of 240 squares were filled by the Friday. Two of the three mornings I tabled it rained and I got almost nobody, which I should have planned around. The RA emailed to ask whether she could put one in her building, which I did not expect and is the best thing that happened&hellip;"></textarea>
+  </div>
+
+  <h2>6 &middot; Draft the report</h2>
+  <p>Seven elements. Write the measurement half now while the material is in front of you.</p>
+
+  <div class="nb">
+    <div class="lead">Your Field Notebook is a <b>Google Doc</b> you keep for the whole course. Write here, then hit <b>Copy for my notebook</b> and paste into your doc under this week's heading.</div>
+    <a class="sheet term" data-pop="notebook" href="#" data-note="notebook-sheet-url" target="_blank" rel="noopener">&#8599; Open your Field Notebook (Google Doc)</a>
+
+    <label for="n1">1. Metrics. What you are counting, how, and the number you set in advance. One effect measure and one affect measure, minimum.</label>
+    <textarea id="n1" placeholder="e.g., EFFECT: cards returned out of 200, target 120. AFFECT: every line somebody says to me at the table, written in a notebook with the time, plus the coded language on the cards&hellip;"></textarea>
+    <div class="save" id="v1"></div>
+
+    <label for="n2">2. Evaluation. What the numbers say, including the ones that came in low or not at all.</label>
+    <textarea id="n2" placeholder="e.g., 164 of 200 back. 11 of 164 used the word 'charity' and 96 used some version of 'should already be there,' which is the shift I was looking for. The Spanish cards: 4 of 40 came back, so that reach failed and I know why&hellip;"></textarea>
+    <div class="save" id="v2"></div>
+
+    <label for="n3">3. Affect, with evidence. What it moved, quoted or counted, with dates. Say which parts no number captured.</label>
+    <textarea id="n3" placeholder="e.g., three quotes written down the day they were said, with permission to use them. The thing I cannot measure: two people stood reading the wall for several minutes and left without writing anything, and I do not know what that was&hellip;"></textarea>
+    <div class="save" id="v3"></div>
+
+    <label for="n4">4. Iteration. What you would change, specifically enough that somebody else could do it.</label>
+    <textarea id="n4" placeholder="e.g., the table goes inside the door rather than outside it, the prompt gets shorter, and the Spanish version gets checked by an actual speaker before it prints&hellip;"></textarea>
+    <div class="save" id="v4"></div>
+
+    <label for="n5">5. Attribution, carefully. What else was happening that could explain your result, and what you can and cannot claim.</label>
+    <textarea id="n5" placeholder="e.g., the state law changed in July, so the district may have been moving anyway. What I can claim is that the plan was published nine days after the meeting and uses our phrase. What I cannot claim is that we caused it&hellip;"></textarea>
+    <div class="save" id="v5"></div>
+
+    <div class="btns">
+      <button class="btn" id="copy">Copy for my notebook</button>
+      <span class="copied" id="copied"></span>
+      <button class="tiny" id="dl">or download as .txt</button>
+    </div>
+  </div>
+
+  <!-- filter-safe gather export (no download/clipboard/popup) -->
+<div class="wgather" style="background:#eef4f0;border:1px solid #cfe0d6;border-left:5px solid #2f7d54;border-radius:12px;padding:15px 18px;margin:24px 0;font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#26302a">
+<b style="color:#2f7d54;font-size:1.02rem">Save your writing</b>
+<p style="margin:6px 0 10px">Click the button below to pull everything you've typed on this page into one box, then <b>copy and paste it into your Google Doc notebook.</b> Keep it on your own drive and build on it all term. You turn the notebook in at only two points, the <b>midterm and end-of-term check-ins</b>, so there's nothing to upload week to week. (Graded projects have their own Canvas dropboxes and deadlines.) This pastes raw text, so you'll format the Doc yourself, or just write straight into it. Writer's choice!</p>
+<button type="button" class="wgather-btn" style="background:#2f7d54;color:#fff;border:none;border-radius:8px;padding:10px 16px;font:600 .93rem inherit;cursor:pointer">Gather all my writing</button>
+<div class="wgather-wrap" style="display:none;margin-top:12px">
+<textarea class="wgather-out" readonly rows="12" style="width:100%;border:1.5px solid #cfe0d6;border-radius:8px;padding:10px 12px;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace;background:#fff;color:#222;resize:vertical"></textarea>
+<p style="margin:6px 0 0;font-size:.85rem;color:#4a5a50">Selected and ready. Press <b>Ctrl+C</b> (Mac <b>&#8984;C</b>) to copy, then paste into your Google Doc.</p>
+</div>
+</div>
+<script>
+(function(){
+var w=document.currentScript.previousElementSibling;
+var b=w.querySelector('.wgather-btn'),o=w.querySelector('.wgather-out'),p=w.querySelector('.wgather-wrap');
+function pr(t){var l=t.id&&document.querySelector('label[for="'+t.id+'"]');if(l)return l.textContent.replace(/\s+/g,' ').trim();if(t.getAttribute('data-label'))return t.getAttribute('data-label').trim();if(t.getAttribute('placeholder'))return t.getAttribute('placeholder').replace(/\s+/g,' ').trim();return 'Response';}
+b.addEventListener('click',function(){var h=document.querySelector('h1');var x=(h?h.textContent.trim():'My writing')+'\n\n';document.querySelectorAll('textarea').forEach(function(t){if(t===o||t.readOnly)return;x+=pr(t)+'\n'+((t.value||'').trim()||'[blank]')+'\n\n----------\n\n';});o.value=x;p.style.display='block';o.focus();o.select();});
+})();
+</script>
+  <div class="close">
+    <b>Close it out.</b> You have both halves now: what your artifact changed, and what it moved. Most campaigns report one and guess at the other. Write the evaluation section while the material is fresh, because the version you write three weeks from memory will be flattering and wrong.
+  </div>
+
+  <div class="prime">
+    <b>Before Tuesday (10 minutes):</b> presentations start next week. Five minutes each, on your campaign and what it did. Skim <span class="term" data-pop="present">this short guide to giving a presentation</span>, then decide the one thing you want the room to remember and write it as a single sentence. Bring the artifact itself if you can carry it.
+  </div>
+
+  <dialog class="pop" id="pop-vanity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Vanity metric</h4><p>A number that reliably goes up and reliably tells you nothing you can act on. It flatters the effort without measuring the result.</p><p><b>Example:</b> "Our post got 50,000 views." Impressive, and useless on its own, because it says nothing about whether a single person did anything. The fix is to swap it for a number that maps to an action.</p><p><a href="https://en.wikipedia.org/wiki/Vanity_metric" target="_blank" rel="noopener">What a vanity metric is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-actionable"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Actionable metric</h4><p>The opposite of a vanity metric: a number tied to a observable behavior, so it can actually guide a decision. If it moves, you know something changed and you know roughly why.</p><p><b>Example:</b> not "reach on our sign-up post," but "how many people completed the sign-up form." One is applause; the other tells you whether the post worked.</p></div></dialog>
+  <dialog class="pop" id="pop-reach"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Reach vs. impressions</h4><p><b>Reach</b> is how many separate people saw something. <b>Impressions</b> is how many times it was shown, so one person who saw it five times is 1 reach and 5 impressions. Both live on the bottom rung of the ladder: they count eyeballs, not action.</p><p><b>Example:</b> a post with 10,000 impressions and 2,000 reach was seen an average of five times each by 2,000 people. Neither number tells you if anyone cared.</p><p><a href="https://en.wikipedia.org/wiki/Impression_(online_media)" target="_blank" rel="noopener">What an impression is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-engagement"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Engagement rate</h4><p>The share of people who saw a post and did something light with it (liked, commented, shared, saved), usually written as those actions divided by reach or followers. It's a step up from raw reach, but still rung 2: a like costs almost nothing and commits no one.</p><p><b>Example:</b> a post seen by 1,000 people with 50 likes and 10 comments has a 6% engagement rate. Better signal than views, still not a person in a room.</p><p><a href="https://en.wikipedia.org/wiki/Customer_engagement" target="_blank" rel="noopener">About engagement online &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-kpi"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>KPI (key performance indicator)</h4><p>The one or few numbers you decide to actually steer by, out of the hundreds you could track. Choosing your KPI is a values decision: it announces what you are actually trying to do.</p><p><b>Example:</b> if your campaign's KPI is "views," you'll make choices that chase attention. If it's "new volunteers who stay a month," you'll make completely different choices. Pick a KPI on rung 3 or higher.</p><p><a href="https://en.wikipedia.org/wiki/Performance_indicator" target="_blank" rel="noopener">What a KPI is &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-dean"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Jodi Dean</h4><p>Political theorist (Week 11). Her idea of <b>communicative capitalism</b> is the engine under this week: on our platforms, the endless circulation of messages can substitute for actual politics, so posting feels like doing something while the message just loops.</p><p><b>Her line for this week:</b> a contribution to circulation is not an act. Your reach going up can feel exactly like organizing, and be nothing like it.</p></div></dialog>
+  <dialog class="pop" id="pop-commcap"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Communicative capitalism</h4><p>Dean's term for the condition where our participation (posting, sharing, liking) gets captured as content and circulation rather than turned into decisions or responses from power. The activity happens; the political effect often does not.</p><p><b>Example:</b> a hashtag trends for a day, millions join in, no official ever has to answer for anything, and the trend fades. The circulating replaced the pressure.</p></div></dialog>
+  <dialog class="pop" id="pop-tufekci"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Zeynep Tufekci</h4><p>Sociologist of technology and social movements (Week 10, <em>Twitter and Tear Gas</em>). She studies why networked movements can gather huge crowds fast and still lose.</p><p><b>Her point for this week:</b> a protest's size is a <em>signal</em> of underlying capacity, not the capacity itself. What power actually watches for is whether a movement can act again, decide, and escalate, none of which shows up in a view count.</p></div></dialog>
+  <dialog class="pop" id="pop-capacity"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Capacity</h4><p>What a movement can reliably do, not how big it looked once. Can it turn people out again next month? Make a decision without falling apart? Escalate when ignored? Capacity is what the top rungs of the ladder are trying to measure.</p><p><b>Example:</b> 500 people at one march is a number. 30 people who will organize the next three actions whether or not it's trending is capacity, and it's scarier to power.</p></div></dialog>
+  <dialog class="pop" id="pop-present"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Giving Effective Presentations</h4><p>A short, clear guide from the UNC Learning Center (free, Creative Commons) on structuring and delivering a talk: the kinds of delivery, how to practice, how to handle nerves, and how to keep an audience with you. Your Week 15 prime.</p><p><a href="https://learningcenter.unc.edu/tips-and-tools/giving-effective-presentations/" target="_blank" rel="noopener">Read the guide &rarr;</a></p></div></dialog>
+  <dialog class="pop" id="pop-p3"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>P3: Creative Campaign + &AElig;ffect Report</h4><p>Your third project: the small, ethical, creative campaign you've been building for your cause, at least one piece of which cannot travel on social media, plus a report built on the seven &aelig;ffect elements (goals, audience, ethics, intervention, metrics, evaluation, iteration). This week you draft the report half. You present it in the final weeks.</p></div></dialog>
+  <dialog class="pop" id="pop-notebook"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>Your Field Notebook</h4><p>A Google Doc you copy once and keep all semester. Each week you paste in your entries. It stays in your own Drive and private to you until you submit it at the midterm and end of term. Draft in these boxes first, then copy your entries over.</p></div></dialog>
+  <dialog class="pop" id="pop-aeffect"><div class="in"><button class="x" onclick="this.closest('dialog').close()">&times;</button><h4>&AElig;ffect</h4><p>A word the Center for Artistic Activism made by jamming <em>affect</em> and <em>effect</em> together, because creative activism has to be judged on both and the two are usually measured separately. The Center was founded in 2009 by Stephen Duncombe, a scholar of political culture, and Steve Lambert, an artist, after years of watching artists and organizers talk past each other.</p><p><b>Affect:</b> what it moved in people. What they felt, said, remembered, or understood differently afterward.<br><b>Effect:</b> what it changed in the world. A policy, a practice, a budget, a decision, a number.</p><p><b>Example:</b> a hand-stitched banner carried into a council meeting gets the item put on the agenda (effect) and gets three strangers exchanging phone numbers in the parking lot afterward (affect). Report only the first and you have thrown away the reason you made it by hand.</p><p><a href="https://c4aa.org/" target="_blank" rel="noopener">Center for Artistic Activism &#8599;</a></p></div></dialog>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('w14');
+  root.querySelectorAll('.term').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.getAttribute('href') && b.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      var d = document.getElementById('pop-' + b.dataset.pop);
+      if(d && d.showModal) d.showModal();
+    });
+  });
+  // diagnose interactive: commit both calls, then check
+  root.querySelectorAll('.di').forEach(function(di){
+    di.querySelectorAll('.spec button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        di.querySelectorAll('.spec button').forEach(function(x){x.classList.remove('sel');});
+        btn.classList.add('sel'); di.dataset.pick = btn.dataset.v;
+        di.classList.remove('right','partial','wrong');
+      });
+    });
+  });
+  document.getElementById('checkDiag').addEventListener('click', function(){
+    var items = root.querySelectorAll('.di'), n = items.length, full = 0, answered = 0;
+    items.forEach(function(di){
+      var spec = di.dataset.pick, trade = di.querySelector('select').value;
+      if(!spec || !trade){ return; }
+      answered++;
+      var sOk = spec === di.dataset.spec, tOk = trade === di.dataset.trade;
+      di.classList.remove('right','partial','wrong');
+      if(sOk && tOk){ di.classList.add('right'); full++; }
+      else if(sOk || tOk){ di.classList.add('partial'); }
+      else { di.classList.add('wrong'); }
+    });
+    var s = document.getElementById('score'); s.style.display='block';
+    if(answered < n){ s.textContent = 'Make both calls on all six first (' + answered + '/' + n + ' complete).'; s.style.color='var(--gold)'; }
+    else { s.textContent = full + ' of ' + n + ' fully right. Amber means you got one of the two calls. The two "depends" cases are the ones to argue about, because what they depend on is a decision you still get to make.'; s.style.color = full===n ? 'var(--accent2)' : 'var(--accent)'; }
+  });
+  // on-device drafting (nothing is transmitted)
+  ['qa1','qa2','n1','n2','n3','n4','n5'].forEach(function(id){
+    var ta = document.getElementById(id); if(!ta) return;
+    var key = 'e4_w14_' + id;
+    try{ var v = localStorage.getItem(key); if(v){ ta.value = v; } }catch(e){}
+    ta.addEventListener('input', function(){
+      try{ localStorage.setItem(key, ta.value); }catch(e){}
+      var tag = ta.parentNode.querySelector('.save'); if(tag){ tag.textContent='saved on this device'; setTimeout(function(){tag.textContent='';},1100); }
+    });
+  });
+  function g(id){ var e=document.getElementById(id); return e? e.value.trim() : ''; }
+  function entryText(){
+    return 'ENG 4100 \u00b7 Field Notebook \u00b7 Week 14: Did It Work?\n\n'
+      + 'TWO MEASUREMENT METHODS, WITH MY EXPECTED AND FAILURE NUMBERS:\n' + (g('qa1')||'(blank)') + '\n\n'
+      + 'MY EVALUATION PARAGRAPH:\n' + (g('qa2')||'(blank)') + '\n\n'
+      + 'THE REPORT, MEASUREMENT HALF\n'
+      + '1. Metrics (one effect, one affect, numbers set in advance):\n' + (g('n1')||'(blank)') + '\n\n'
+      + '2. Evaluation (including what came in low):\n' + (g('n2')||'(blank)') + '\n\n'
+      + '3. Affect, with evidence and dates:\n' + (g('n3')||'(blank)') + '\n\n'
+      + '4. Iteration:\n' + (g('n4')||'(blank)') + '\n\n'
+      + '5. Attribution (what else could explain it):\n' + (g('n5')||'(blank)') + '\n';
+  }
+  function fallback(txt){
+    var t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t);
+  }
+  document.getElementById('copy').addEventListener('click', function(){
+    var txt = entryText(), tag = document.getElementById('copied');
+    function done(){ tag.textContent = 'Copied. Paste it into your Google Doc.'; setTimeout(function(){tag.textContent='';}, 4000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(txt); done(); }); }
+    else { fallback(txt); done(); }
+  });
+  document.getElementById('dl').addEventListener('click', function(){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([entryText()],{type:'text/plain'}));
+    a.download='eng4100-week14-notebook.txt'; a.click();
+  });
+})();
+</script>
+<nav class="rcpn">
+<a class="pv" href="module-w13-emergent.html"><span class="s">&larr; Week 13</span>Make It, and Make It Reachable</a>
+<a class="hm" href="schedule.html"><span class="s">Menu</span>All weeks</a>
+<a class="nx" href="module-w15-presenting.html"><span class="s">Week 15 &rarr;</span>Campaign Presentations</a>
+</nav>
+</body>
+</html>
